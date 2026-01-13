@@ -1,0 +1,22 @@
+{
+    "name": "Amalfi Guide",
+    "short_name": "Amalfi",
+    "description": "Expert guide to the Amalfi Coast",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ea580c",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/images/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
