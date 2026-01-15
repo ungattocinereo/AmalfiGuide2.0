@@ -13,7 +13,7 @@ export function Hero() {
                     className="absolute w-[200%] md:w-[140%] lg:w-[120%] aspect-[1456/816]"
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
                 >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
