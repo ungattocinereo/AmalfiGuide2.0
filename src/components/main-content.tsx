@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { SectionGrid } from "@/components/section-grid";
 import { PlaceDetails } from "@/components/place-details";
+import { Footer } from "@/components/footer";
 import { AnimatePresence, motion } from "framer-motion";
 import type { parseMarkdownContent, PlaceItem } from "@/lib/markdown-parser";
 
@@ -42,21 +43,7 @@ export function MainContent({ sections }: MainContentProps) {
                 </div>
 
                 {/* Footer */}
-                <footer className="py-16 md:py-20 px-8 bg-gray-950 text-gray-400 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                        <p className="mb-5 text-gray-500">© 2014-2026 Gregory Day // Amalfi.Day</p>
-                        <div className="flex justify-center gap-8 text-sm">
-                            <a href="#" className="hover:text-white transition-colors duration-150">Privacy</a>
-                            <a href="mailto:hello@amalfi.day" className="hover:text-white transition-colors duration-150">Contact</a>
-                            <a href="#" className="hover:text-white transition-colors duration-150">Instagram</a>
-                        </div>
-                    </motion.div>
-                </footer>
+                <Footer />
             </motion.div>
 
             {/* Details Overlay */}

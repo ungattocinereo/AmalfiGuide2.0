@@ -4,46 +4,16 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { X, MapPin, ExternalLink } from "lucide-react";
+import { StarHalf, MapTrifold } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import type { PlaceItem } from "@/lib/markdown-parser";
+import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 
 interface PlaceDetailsProps {
     item: PlaceItem;
     layoutId: string;
     onClose: () => void;
 }
-
-// Hiking trail map embed URLs - these show the full hiking routes
-const hikingMapUrls: Record<string, string> = {
-    "valle delle ferriere": "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d12088.04!2d14.6!3e2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x133b95f4dde3bb8d%3A0x4f4c4!2sValle+delle+Ferriere%2C+84011+Amalfi+SA!3m2!1d40.6332!2d14.6103!4m5!1s0x133b95c5a621fb95%3A0x!2sAmalfi%2C+SA!3m2!1d40.6340!2d14.6027!5e0!3m2!1sen!2sit!4v1",
-    "torre dello ziro": "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d6044.2!2d14.6!3e2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x133b95c5a621fb95%3A0x!2sAtrani%2C+SA!3m2!1d40.6363!2d14.6089!4m5!1s0x133b9!2sTorre+dello+Ziro!3m2!1d40.6400!2d14.6100!5e0!3m2!1sen!2sit!4v1",
-    "path of the gods": "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d24176.0!2d14.5!3e2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x133b97!2sBomerano%2C+Agerola!3m2!1d40.6394!2d14.5247!4m5!1s0x133b95!2sNocelle%2C+Positano!3m2!1d40.6202!2d14.4897!5e0!3m2!1sen!2sit!4v1",
-    "the lemon path": "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d6044.0!2d14.6!3e2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x133b9!2sChiesa+Madre+di+Santa+Maria+Maddalena%2C+Atrani!3m2!1d40.6361!2d14.6073!4m5!1s0x133b95!2sVia+Vescovado%2C+84010+Minori+SA!3m2!1d40.6497!2d14.6269!5e0!3m2!1sen!2sit!4v1",
-};
-
-// Get hiking map URL if this is a hiking trail
-const getHikingMapUrl = (name: string): string | null => {
-    const n = name.toLowerCase();
-    for (const [key, url] of Object.entries(hikingMapUrls)) {
-        if (n.includes(key)) return url;
-    }
-    // Handle Italian names
-    if (n.includes("sentiero degli dei")) return hikingMapUrls["path of the gods"];
-    if (n.includes("sentiero dei limoni")) return hikingMapUrls["the lemon path"];
-    return null;
-};
-
-// Basic mapping (duplicated for speed, should be shared util)
-const getImageForPlace = (name: string): string => {
-    const n = name.toLowerCase();
-    if (n.includes("square")) return "/images/atrani_square.png";
-    if (n.includes("castiglione")) return "/images/castiglione_beach.png";
-    if (n.includes("waterfall") && n.includes("atrani")) return "/images/atrani_waterfall.png";
-    if (n.includes("bando")) return "/images/santa_maria_del_bando.png";
-    if (n.includes("palme")) return "/images/le_palme.png";
-    if (n.includes("paranza")) return "/images/a_paranza.png";
-    return "/images/hero.webp";
-};
 
 export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const imageUrl = getImageForPlace(item.name);
@@ -168,7 +138,9 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         transition={{ delay: 0.35, duration: 0.3 }}
                         className="prose dark:prose-invert prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:font-light prose-p:leading-loose"
                     >
-                        <p>{item.details}</p>
+                        {item.details.split('\n\n').map((paragraph, idx) => (
+                            <p key={idx}>{paragraph}</p>
+                        ))}
                     </motion.div>
 
                     {/* Links Section */}
@@ -179,8 +151,35 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         className="pt-6 space-y-4"
                     >
                         {item.links.map((link: { label: string; url: string }, i: number) => {
-                            let Icon = ExternalLink;
-                            if (link.label.toLowerCase().includes("google") || link.label.toLowerCase().includes("map")) Icon = MapPin;
+                            // Determine link type
+                            const isGoogleMaps = link.label.toLowerCase().includes("google") ||
+                                                 link.label.toLowerCase().includes("view location") ||
+                                                 (link.url.includes("maps.") && !link.url.includes("tripadvisor"));
+                            const isTripAdvisor = link.url.includes("tripadvisor");
+                            const isHikeLink = link.label.toLowerCase().includes("hike");
+
+                            // Extract TripAdvisor rating from label like "4.5/5 | 250+ Reviews"
+                            const tripAdvisorMatch = link.label.match(/(\d+\.?\d*\/\d+)\s*\|\s*(.+)/);
+
+                            // Determine superscript text
+                            let superscriptText = link.label;
+                            if (isGoogleMaps) {
+                                superscriptText = "Google Maps";
+                            } else if (isTripAdvisor && tripAdvisorMatch) {
+                                superscriptText = tripAdvisorMatch[0];
+                            } else if (isTripAdvisor) {
+                                superscriptText = "TripAdvisor";
+                            }
+
+                            // Determine link text
+                            let linkText = "View";
+                            if (isGoogleMaps) {
+                                linkText = "View location";
+                            } else if (isTripAdvisor) {
+                                linkText = "View on TripAdvisor";
+                            } else if (isHikeLink) {
+                                linkText = "View hike map";
+                            }
 
                             return (
                                 <a
@@ -191,12 +190,22 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                                     className="group flex items-center gap-5 py-2 hover:translate-x-1 transition-transform duration-200 ease-out"
                                 >
                                     <div className="h-11 w-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-white group-hover:bg-orange-100 dark:group-hover:bg-orange-900/30 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all duration-200">
-                                        <Icon className="h-5 w-5" />
+                                        {isGoogleMaps ? (
+                                            <MapPin className="h-5 w-5" />
+                                        ) : isTripAdvisor ? (
+                                            <StarHalf size={20} weight="duotone" />
+                                        ) : isHikeLink ? (
+                                            <MapTrifold size={20} weight="duotone" />
+                                        ) : (
+                                            <ExternalLink className="h-5 w-5" />
+                                        )}
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-orange-500 transition-colors duration-150">{link.label}</span>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-orange-500 transition-colors duration-150">
+                                            {superscriptText}
+                                        </span>
                                         <span className="text-lg font-medium text-gray-900 dark:text-white">
-                                            View Location
+                                            {linkText}
                                         </span>
                                     </div>
                                 </a>

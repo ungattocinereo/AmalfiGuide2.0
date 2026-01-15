@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CaretRight } from "@phosphor-icons/react";
 import { useLayout } from "@/components/layout-context";
 import { PlaceCard } from "@/components/place-card";
 import type { PlaceItem } from "@/lib/markdown-parser";
@@ -39,7 +40,7 @@ const itemVariants = {
         y: 0,
         scale: 1,
         transition: {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 300,
             damping: 24,
         },
@@ -55,30 +56,48 @@ const itemVariants = {
 };
 
 export function SectionGrid({ title, description, items, onItemClick }: SectionGridProps) {
-    const { isAllExpanded } = useLayout();
+    const { isSectionExpanded, toggleSection } = useLayout();
 
     const isIntro = title.toLowerCase().includes("expert guide");
+    const isExpanded = isIntro || isSectionExpanded(title);
     const introGridClass = isIntro ? "grid grid-cols-1 md:grid-cols-3 gap-8 items-center" : "";
 
     return (
         <section className="py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0">
             <div className={introGridClass || "mb-8 md:mb-12 text-center md:text-left"}>
                 <div className={isIntro ? "md:col-span-2 text-center md:text-left" : ""}>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-4xl md:text-6xl font-serif font-black mb-4 text-gray-900 dark:text-gray-50 tracking-tight"
+                    <div
+                        className={!isIntro ? "cursor-pointer group flex items-center gap-3 md:gap-4" : ""}
+                        onClick={() => !isIntro && toggleSection(title)}
                     >
-                        {title}
-                    </motion.h2>
+                        {!isIntro && (
+                            <motion.div
+                                animate={{ rotate: isExpanded ? 90 : 0 }}
+                                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="flex-shrink-0"
+                            >
+                                <CaretRight
+                                    weight="bold"
+                                    className="h-6 w-6 md:h-8 md:w-8 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-150"
+                                />
+                            </motion.div>
+                        )}
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className={`text-4xl md:text-6xl font-serif font-black text-gray-900 dark:text-gray-50 tracking-tight ${!isIntro ? "group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-150" : "mb-4"}`}
+                        >
+                            {title}
+                        </motion.h2>
+                    </div>
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-serif italic mx-auto md:mx-0"
+                        className={`text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-serif italic mx-auto md:mx-0 ${!isIntro ? "mt-4 ml-9 md:ml-12" : ""}`}
                         dangerouslySetInnerHTML={{ __html: description }}
                     />
                 </div>
@@ -103,7 +122,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
             </div>
 
             <AnimatePresence mode="wait">
-                {isAllExpanded && (
+                {isExpanded && (
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"
@@ -111,7 +130,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         exit="exit"
                         className="overflow-hidden"
                     >
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10 pb-12">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10 pb-12 items-start">
                             {items.map((item, idx) => (
                                 <motion.div key={idx} variants={itemVariants}>
                                     <PlaceCard
