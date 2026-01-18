@@ -3,8 +3,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { X, MapPin, ExternalLink } from "lucide-react";
-import { StarHalf, MapTrifold } from "@phosphor-icons/react";
+import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
@@ -80,7 +79,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                     onClick={onClose}
                     className="absolute top-4 right-4 z-50 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md transition-all duration-150 hover:scale-105 active:scale-95"
                 >
-                    <X className="h-5 w-5" />
+                    <X size={20} />
                 </Button>
 
                 {/* Mobile Title Overlay */}
@@ -90,7 +89,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                     transition={{ delay: 0.15, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent md:hidden"
                 >
-                    <h2 className="text-3xl font-serif font-bold text-white">{item.name}</h2>
+                    <h2 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-3xl font-bold text-white">{item.name}</h2>
                     <p className="text-orange-300 font-bold uppercase text-sm tracking-wide">{item.category}</p>
                 </motion.div>
             </motion.div>
@@ -118,7 +117,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-5xl lg:text-6xl font-serif font-black text-gray-900 dark:text-gray-50 mb-5 leading-tight"
+                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
+                            className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-5 leading-tight"
                         >
                             {item.name}
                         </motion.h2>
@@ -191,13 +191,13 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                                 >
                                     <div className="h-11 w-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-white group-hover:bg-orange-100 dark:group-hover:bg-orange-900/30 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all duration-200">
                                         {isGoogleMaps ? (
-                                            <MapPin className="h-5 w-5" />
+                                            <MapPin size={20} weight="duotone" />
                                         ) : isTripAdvisor ? (
                                             <StarHalf size={20} weight="duotone" />
                                         ) : isHikeLink ? (
                                             <MapTrifold size={20} weight="duotone" />
                                         ) : (
-                                            <ExternalLink className="h-5 w-5" />
+                                            <ArrowSquareOut size={20} weight="duotone" />
                                         )}
                                     </div>
                                     <div className="flex flex-col">

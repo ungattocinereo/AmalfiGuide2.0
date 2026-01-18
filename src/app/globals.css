@@ -6,7 +6,8 @@
 
 @theme {
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-merriweather);
+  --font-serif: var(--font-libre-baskerville);
+  --font-heading: var(--font-libre-baskerville);
 
   /* Modern animation timings - fast & snappy */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -43,6 +44,12 @@
     transition: background-color 200ms ease-out, color 200ms ease-out;
   }
 
+  /* Libre Baskerville for all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-libre-baskerville);
+    font-weight: 700;
+  }
+
   /* Smooth focus states */
   *:focus-visible {
     @apply outline-none ring-2 ring-orange-400/50 ring-offset-2 ring-offset-white dark:ring-offset-gray-950;
@@ -52,6 +59,28 @@
 
 /* Modern Animation Utilities */
 @layer utilities {
+
+  /* Glassmorphism utility classes */
+  .glass {
+    @apply bg-white/20 backdrop-blur-xl border border-white/30;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-dark {
+    @apply dark:bg-black/30 dark:border-white/10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-hover {
+    transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 200ms ease-out,
+                background-color 200ms ease-out;
+  }
+
+  .glass-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
 
   /* Smooth hover transforms */
   .hover-lift {

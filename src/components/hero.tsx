@@ -75,9 +75,9 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
             >
-                <div className="bg-white/95 backdrop-blur-sm rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center gap-4 md:gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
+                <div className="bg-white/20 backdrop-blur-xl rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center gap-4 md:gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/30 hover:-translate-y-1 transition-transform duration-200">
                     {/* Timetables label */}
-                    <span className="text-[#E64900] text-xs md:text-sm font-medium tracking-wide pr-2 border-r border-[#E64900]/20">
+                    <span className="text-white text-xs md:text-sm font-medium tracking-wide pr-2 border-r border-white/30">
                         Timetables:
                     </span>
 
@@ -86,7 +86,7 @@ export function Hero() {
                         href="https://cnr.pw/bus"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex flex-col items-center gap-1 text-[#E64900] hover:text-[#c93d00] transition-colors"
+                        className="flex flex-col items-center gap-1 text-white hover:text-white/80 transition-colors"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M8 6v6"/>
@@ -105,7 +105,7 @@ export function Hero() {
                         href="https://cnr.pw/ferry"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex flex-col items-center gap-1 text-[#E64900] hover:text-[#c93d00] transition-colors"
+                        className="flex flex-col items-center gap-1 text-white hover:text-white/80 transition-colors"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
@@ -122,7 +122,7 @@ export function Hero() {
                         href="https://cnr.pw/shuttle"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex flex-col items-center gap-1 text-[#E64900] hover:text-[#c93d00] transition-colors"
+                        className="flex flex-col items-center gap-1 text-white hover:text-white/80 transition-colors"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
@@ -139,12 +139,14 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
             >
-                <p className="text-white/90 text-sm md:text-base leading-relaxed">
-                    This is your "Amalfi in a Pocket" Plan your perfect Amalfi Coast day with
-                    ready-to-use ideas for walks, swims, moto rides, and food stops—complete
-                    with clear directions, offline-friendly maps, and simplified transport
-                    timings so moving around stays effortless.
-                </p>
+                <div className="bg-white/15 backdrop-blur-xl rounded-2xl px-4 py-3 md:px-5 md:py-4 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
+                    <p className="text-white text-sm md:text-base leading-relaxed">
+                        This is your "Amalfi in a Pocket" Plan your perfect Amalfi Coast day with
+                        ready-to-use ideas for walks, swims, moto rides, and food stops—complete
+                        with clear directions, offline-friendly maps, and simplified transport
+                        timings so moving around stays effortless.
+                    </p>
+                </div>
             </motion.div>
         </section>
     );

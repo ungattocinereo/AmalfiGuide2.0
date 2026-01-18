@@ -42,7 +42,8 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
         // New Category Section
         if (line.startsWith("# ") && !line.startsWith("## ")) { // Single #
             if (currentItem) flushBuffer();
-            // Don't push currentItem here, it's pushed when new item starts or section ends
+            // Reset currentItem when starting a new section so description can be captured
+            currentItem = null;
 
             currentSection = {
                 title: line.replace("# ", "").trim(),

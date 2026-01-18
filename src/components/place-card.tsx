@@ -52,7 +52,7 @@ export function PlaceCard({ item, layoutId, onClick }: PlaceCardProps) {
 
             {/* Content Below */}
             <div className="flex flex-col gap-1 px-0.5">
-                <motion.h3 className="font-serif text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
+                <motion.h3 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
                     {item.name}
                 </motion.h3>
                 <motion.p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">

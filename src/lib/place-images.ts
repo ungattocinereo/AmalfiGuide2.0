@@ -25,34 +25,44 @@ export const getImageForPlace = (name: string): string => {
     const n = name.toLowerCase();
 
     // Atrani gems
-    if (n.includes("square") && n.includes("atrani")) return "/guide/square_in_atrani.jpg";
-    if (n.includes("castiglione")) return "/guide/castiglione.jpg";
-    if (n.includes("waterfall") && n.includes("atrani")) return "/guide/waterfall_in_atrani.jpg";
-    if (n.includes("bando")) return "/guide/Church-Santa-Maria-del-Bando.jpg";
+    if (n.includes("square") && n.includes("atrani")) return "/guide-webp/square_in_atrani.webp";
+    if (n.includes("castiglione")) return "/guide-webp/castiglione.webp";
+    if (n.includes("waterfall") && n.includes("atrani")) return "/guide-webp/waterfall_in_atrani.webp";
+    if (n.includes("bando")) return "/guide-webp/Church-Santa-Maria-del-Bando.webp";
 
     // Amalfi
-    if (n.includes("duomo") || n.includes("sant'andrea")) return "/guide/Duomo-di-Sant-Andrea.jpg";
-    if (n.includes("belvedere") || n.includes("san lorenzo")) return "/guide/elevator-amalfi.jpeg";
-    if (n.includes("secret waterfall") || n.includes("valle dei mulini")) return "/guide/waterfall-in-amalfi-new-from-inside.jpg";
+    if (n.includes("duomo") || n.includes("sant'andrea")) return "/guide-webp/Duomo-di-Sant-Andrea.webp";
+    if (n.includes("belvedere") || n.includes("san lorenzo")) return "/guide-webp/elevator-amalfi.webp";
+    if (n.includes("secret waterfall") || n.includes("valle dei mulini")) return "/guide-webp/waterfall-in-amalfi-new-from-inside.webp";
 
     // Restaurants
-    if (n.includes("palme")) return "/guide/le-palme.jpg";
-    if (n.includes("paranza")) return "/guide/A-Paranza.jpeg";
-    if (n.includes("smeraldino")) return "/guide/Lo-Smeraldino.jpg";
-    if (n.includes("arcate")) return "/guide/Le-Arcate.jpg";
-    if (n.includes("ciccio")) return "/guide/Da-Ciccio-Cielo-Mare-Terra.jpg";
+    if (n.includes("palme")) return "/guide-webp/le-palme.webp";
+    if (n.includes("paranza")) return "/guide-webp/A-Paranza.webp";
+    if (n.includes("smeraldino")) return "/guide-webp/Lo-Smeraldino.webp";
+    if (n.includes("arcate")) return "/guide-webp/Le-Arcate.webp";
+    if (n.includes("ciccio")) return "/guide-webp/Da-Ciccio-Cielo-Mare-Terra.webp";
 
     // Street Food
-    if (n.includes("apicella")) return "/guide/apicella-bakery.jpg";
-    if (n.includes("rua")) return "/guide/la-rua.jpg";
-    if (n.includes("pizza express")) return "/guide/pizza-express-amalfi.jpg";
+    if (n.includes("apicella")) return "/guide-webp/apicella-bakery.webp";
+    if (n.includes("rua")) return "/guide-webp/la-rua.webp";
+    if (n.includes("pizza express")) return "/guide-webp/pizza-express-amalfi.webp";
+
+    // Shops
+    if (n.includes("mimì") || n.includes("mimi") || n.includes("cocò") || n.includes("coco"))
+        return "/guide-webp/Mimi-Coco-di-Tutto-Un-Po.webp";
+    if (n.includes("grande mela") || n.includes("deco"))
+        return "/guide-webp/La-Grande-Mela-Supermarket-Deco.webp";
+    if (n.includes("dogi"))
+        return "/guide-webp/DOGI-Market.webp";
+    if (n.includes("tramontina"))
+        return "/guide-webp/La-Tramontina-Amalfi.webp";
 
     // Wider Area
-    if ((n.includes("ravello") && n.includes("terrace")) || n.includes("cimbrone")) return "/guide/Ravello-Infinity-Terrace.jpg";
-    if (n.includes("minori") || n.includes("sal de riso")) return "/guide/Minori-and-Sal-De-Riso.jpg";
-    if (n.includes("valico") || n.includes("chiunzi")) return "/guide/Al-Valico-di-Chiunzi.jpg";
-    if (n.includes("marina di praia") || n.includes("praiano")) return "/guide/marina-di-praia.jpg";
-    if (n.includes("lido degli artisti")) return "/guide/Lido-degli-Artisti.jpg";
+    if ((n.includes("ravello") && n.includes("terrace")) || n.includes("cimbrone")) return "/guide-webp/Ravello-Infinity-Terrace.webp";
+    if (n.includes("minori") || n.includes("sal de riso")) return "/guide-webp/Minori-and-Sal-De-Riso.webp";
+    if (n.includes("valico") || n.includes("chiunzi")) return "/guide-webp/Al-Valico-di-Chiunzi.webp";
+    if (n.includes("marina di praia") || n.includes("praiano")) return "/guide-webp/marina-di-praia.webp";
+    if (n.includes("lido degli artisti")) return "/guide-webp/Lido-degli-Artisti.webp";
 
     // Fallback
     return "/images/hero.webp";
