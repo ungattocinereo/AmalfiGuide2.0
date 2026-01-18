@@ -19,10 +19,33 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://amalfi.day"),
   title: "Amalfi Guide",
-  description: "Expert guide to the Amalfi Coast",
+  description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
   manifest: "/manifest.json",
   themeColor: "#E64900",
+  openGraph: {
+    title: "guide. AMALFI.DAY",
+    description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
+    url: "https://amalfi.day",
+    siteName: "Amalfi Guide",
+    images: [
+      {
+        url: "/images/site-preview.webp",
+        width: 1456,
+        height: 816,
+        alt: "Amalfi Coast guide with Italian flag",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "guide. AMALFI.DAY",
+    description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops.",
+    images: ["/images/site-preview.webp"],
+  },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
