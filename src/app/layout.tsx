@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Merriweather, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   title: "Amalfi Guide",
   description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
   manifest: "/manifest.json",
-  themeColor: "#E64900",
   openGraph: {
     title: "guide. AMALFI.DAY",
     description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
@@ -56,6 +55,10 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#E64900",
 };
 
 export default function RootLayout({
