@@ -82,16 +82,6 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                     <X size={20} />
                 </Button>
 
-                {/* Mobile Title Overlay */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent md:hidden"
-                >
-                    <h2 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-3xl font-bold text-white">{item.name}</h2>
-                    <p className="text-orange-300 font-bold uppercase text-sm tracking-wide">{item.category}</p>
-                </motion.div>
             </motion.div>
 
             {/* Content Section: Scrollable */}
@@ -104,7 +94,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                 onClick={handleContentClick}
             >
                 <div className="max-w-xl mx-auto space-y-8 min-h-full flex flex-col justify-center">
-                    <div className="hidden md:block">
+                    <div>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +108,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                             style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                            className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-5 leading-tight"
+                            className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-3 md:mb-5 leading-tight"
                         >
                             {item.name}
                         </motion.h2>
@@ -126,7 +116,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.3 }}
-                            className="text-xl lg:text-2xl text-gray-500 dark:text-gray-400 italic font-serif leading-relaxed"
+                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
+                            className="text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 italic leading-relaxed"
                         >
                             {item.tagline}
                         </motion.p>

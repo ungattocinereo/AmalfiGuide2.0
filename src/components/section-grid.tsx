@@ -76,7 +76,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
 
     return (
         <section className="py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0">
-            <div className={introGridClass || "mb-8 md:mb-12 text-center md:text-left"}>
+            <div className={introGridClass || "mb-8 md:mb-12 text-left"}>
                 {/* Photo - 1/3 on left for intro */}
                 {isIntro && (
                     <motion.div
@@ -135,7 +135,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                             className="space-y-4"
                         >
-                            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl font-serif italic mx-auto md:mx-0">
+                            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-libre-baskerville)' }}>
                                 A personally curated selection of the best spots, hidden gems, and authentic flavors on the Amalfi Coast from someone who moved here years ago and fell in love with the place.
                             </p>
                             {/* Signature with vertical line */}

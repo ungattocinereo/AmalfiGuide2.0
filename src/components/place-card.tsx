@@ -20,13 +20,13 @@ export function PlaceCard({ item, layoutId, onClick }: PlaceCardProps) {
         <motion.div
             layoutId={layoutId}
             onClick={onClick}
-            className="group relative w-full cursor-pointer flex flex-col gap-3"
+            className="group relative w-full cursor-pointer flex flex-col gap-4"
             whileHover={{ y: -4 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
             {/* Image/Map Container */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+            <div className="relative aspect-[4/5] md:aspect-[4/3] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-md group-hover:shadow-xl transition-shadow duration-300">
                 {hikingMapUrl ? (
                     <iframe
                         src={hikingMapUrl}
@@ -51,11 +51,11 @@ export function PlaceCard({ item, layoutId, onClick }: PlaceCardProps) {
             </div>
 
             {/* Content Below */}
-            <div className="flex flex-col gap-1 px-0.5">
-                <motion.h3 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
+            <div className="flex flex-col gap-1.5 px-1">
+                <motion.h3 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-base md:text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
                     {item.name}
                 </motion.h3>
-                <motion.p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                <motion.p className="text-sm text-gray-500 dark:text-gray-400 leading-[1.6]">
                     {item.shortInfo}
                 </motion.p>
             </div>

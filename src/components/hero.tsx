@@ -1,28 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function Hero() {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#E64900]">
-            {/* Layer 1: Shadow - above background */}
-            <div className="absolute inset-0 flex items-center justify-center z-[1]">
-                <motion.div
-                    className="absolute w-[200%] md:w-[140%] lg:w-[120%] aspect-[1456/816]"
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
-                >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src="/images/flag-shadow-orange.webp"
-                        alt=""
-                        className="w-full h-full object-contain"
-                    />
-                </motion.div>
-            </div>
+            {/* Layer 1: Shadow - above background, only renders when main image is loaded */}
+            {imageLoaded && (
+                <div className="absolute inset-0 flex items-start justify-center pt-[15vh] sm:pt-[12vh] md:items-center md:pt-0 z-[1]">
+                    <motion.div
+                        className="absolute w-[200%] md:w-[140%] lg:w-[120%] aspect-[1456/816]"
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/images/flag-shadow-orange.webp"
+                            alt=""
+                            className="w-full h-full object-contain"
+                        />
+                    </motion.div>
+                </div>
+            )}
 
             {/* Layer 2: Yellow sun gradient - less blur on mobile */}
             <motion.div
@@ -36,7 +40,7 @@ export function Hero() {
             />
 
             {/* Layer 3: Flag color - on top */}
-            <div className="absolute inset-0 flex items-center justify-center z-[3]">
+            <div className="absolute inset-0 flex items-start justify-center pt-[15vh] sm:pt-[12vh] md:items-center md:pt-0 z-[3]">
                 <motion.div
                     className="absolute w-[200%] md:w-[140%] lg:w-[120%] aspect-[1456/816]"
                     initial={{ opacity: 0, scale: 1.1 }}
@@ -49,6 +53,7 @@ export function Hero() {
                         fill
                         className="object-contain"
                         priority
+                        onLoad={() => setImageLoaded(true)}
                     />
                 </motion.div>
             </div>
@@ -70,12 +75,12 @@ export function Hero() {
 
             {/* Transport bar */}
             <motion.div
-                className="absolute bottom-[22%] left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[5%] lg:right-[8%] md:bottom-[10%] z-20"
+                className="absolute bottom-[22%] left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-1/2 md:right-[5%] lg:right-[8%] md:bottom-[10%] z-20"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
             >
-                <div className="bg-white/20 backdrop-blur-xl rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center gap-4 md:gap-6 shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/30 hover:-translate-y-1 transition-transform duration-200">
+                <div className="bg-white/20 backdrop-blur-xl rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center gap-6 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/30 hover:-translate-y-1 transition-transform duration-200">
                     {/* Timetables label */}
                     <span className="text-white text-xs md:text-sm font-medium tracking-wide pr-2 border-r border-white/30">
                         Timetables:

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "Amalfi Guide",
   description: "Expert guide to the Amalfi Coast",
   manifest: "/manifest.json",
+  themeColor: "#E64900",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
