@@ -10,9 +10,10 @@ interface PlaceCardProps {
     item: PlaceItem;
     layoutId: string;
     onClick: () => void;
+    aspectRatio?: string;
 }
 
-export function PlaceCard({ item, layoutId, onClick }: PlaceCardProps) {
+export function PlaceCard({ item, layoutId, onClick, aspectRatio }: PlaceCardProps) {
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
 
@@ -26,7 +27,7 @@ export function PlaceCard({ item, layoutId, onClick }: PlaceCardProps) {
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
             {/* Image/Map Container */}
-            <div className="relative aspect-[4/5] md:aspect-[4/3] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+            <div className={`relative ${aspectRatio || "aspect-[4/5] md:aspect-[4/3]"} w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-md group-hover:shadow-xl transition-shadow duration-300`}>
                 {hikingMapUrl ? (
                     <iframe
                         src={hikingMapUrl}

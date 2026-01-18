@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
-    const { setTheme, theme } = useTheme();
+    const { setTheme, resolvedTheme } = useTheme();
     const { isAllExpanded, toggleAllExpanded } = useLayout();
     const [mounted, setMounted] = React.useState(false);
 
@@ -75,10 +75,10 @@ export function Navbar() {
                         variant="ghost"
                         size="icon"
                         className="rounded-full h-8 w-8 sm:h-9 sm:w-9 bg-white/20 dark:bg-white/10 hover:bg-white/40 dark:hover:bg-white/20 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] text-gray-900 dark:text-white transition-all duration-200 ease-out hover:scale-105 hover:-translate-y-0.5 active:scale-95"
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
                     >
                         <div className="relative w-4 h-4 sm:w-5 sm:h-5">
-                            {mounted && theme === "dark" ? (
+                            {mounted && resolvedTheme === "dark" ? (
                                 <Moon weight="fill" className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200" />
                             ) : (
                                 <Sun weight="fill" className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200" />

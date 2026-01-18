@@ -20,7 +20,7 @@ export function Hero() {
                     >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src="/images/flag-shadow-orange.webp"
+                            src="/images/flag-shadow-orange-2.webp"
                             alt=""
                             className="w-full h-full object-contain"
                         />
@@ -30,7 +30,7 @@ export function Hero() {
 
             {/* Layer 2: Yellow sun gradient - less blur on mobile */}
             <motion.div
-                className="absolute -top-[10vw] -left-[5vw] w-[50vw] h-[50vw] rounded-full pointer-events-none z-[2] blur-[40px] md:blur-[80px]"
+                className="absolute -top-[25vw] -left-[20vw] md:-top-[10vw] md:-left-[5vw] w-[75vw] h-[75vw] md:w-[50vw] md:h-[50vw] rounded-full pointer-events-none z-[2] blur-[40px] md:blur-[80px] transition-all duration-300 ease-out"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
