@@ -51,7 +51,6 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
             <motion.div
                 layoutId={layoutId}
                 className="relative w-full h-[35vh] md:h-full md:w-1/2 md:order-2 cursor-zoom-out overflow-hidden"
-                onClick={onClose}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
                 {hikingMapUrl ? (
@@ -76,7 +75,10 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                 <Button
                     variant="ghost"
                     size="icon"
-                    onClick={onClose}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onClose();
+                    }}
                     className="absolute top-4 right-4 z-50 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md transition-all duration-150 hover:scale-105 active:scale-95"
                 >
                     <X size={20} />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { SectionGrid } from "@/components/section-grid";
@@ -17,6 +17,37 @@ interface MainContentProps {
 
 export function MainContent({ sections }: MainContentProps) {
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
+    const modalHistoryPushed = useRef(false);
+
+    // Push history state when modal opens (with guard against double-push in strict mode)
+    useEffect(() => {
+        if (selectedItem && !modalHistoryPushed.current) {
+            history.pushState({ modal: true }, '');
+            modalHistoryPushed.current = true;
+        }
+    }, [selectedItem]);
+
+    // Handle browser back button - closes modal when back is pressed
+    useEffect(() => {
+        const handlePopState = () => {
+            // Back button was pressed (or history.back() called), close the modal
+            if (modalHistoryPushed.current) {
+                modalHistoryPushed.current = false;
+                setSelectedItem(null);
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
+
+    // Universal close handler for X button, backdrop, Escape
+    // Calls history.back() which triggers popstate → setSelectedItem(null)
+    const handleCloseModal = useCallback(() => {
+        if (selectedItem && modalHistoryPushed.current) {
+            history.back(); // This triggers popstate, which closes modal
+        }
+    }, [selectedItem]);
 
     return (
         <main className="min-h-screen bg-white dark:bg-black transition-colors duration-200">
@@ -52,7 +83,7 @@ export function MainContent({ sections }: MainContentProps) {
                     <PlaceDetails
                         item={selectedItem}
                         layoutId={selectedItem.name}
-                        onClose={() => setSelectedItem(null)}
+                        onClose={handleCloseModal}
                     />
                 )}
             </AnimatePresence>
