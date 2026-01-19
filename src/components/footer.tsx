@@ -13,8 +13,11 @@ import {
     FacebookLogo,
     ShieldCheck,
 } from "@phosphor-icons/react";
+import { useLanguage } from "@/components/language-context";
 
 export function Footer() {
+    const { t } = useLanguage();
+
     return (
         <>
             {/* Main Footer */}
@@ -35,14 +38,14 @@ export function Footer() {
                                 className="h-16 w-auto mb-4 dark:invert dark:opacity-90"
                             />
                             <p className="text-xs text-gray-500 dark:text-gray-400 tracking-wide text-center md:text-left">
-                                Your friendly website in Amalfi Coast by Greg
+                                {t('footer.tagline')}
                             </p>
                         </div>
 
                         {/* Middle Column - Quick Links */}
                         <div className="flex flex-col gap-1 md:gap-3 items-center md:items-start">
                             <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-2">
-                                Explore
+                                {t('footer.explore')}
                             </h4>
                             <a
                                 href="https://www.pintourbus.com/napoli-amalfi-bus/"
@@ -51,7 +54,7 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <Bus size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Airport Shuttle</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.airportShuttle')}</span>
                             </a>
                             <a
                                 href="https://amalfi.day/amalfi-coast-on-the-moto/"
@@ -60,7 +63,7 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <Motorcycle size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Moto Bike Trails</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.motoBikeTrails')}</span>
                             </a>
                             <a
                                 href="https://amalfi.day/beaches-in-amalfi/"
@@ -69,7 +72,7 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <Umbrella size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Beach Review</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.beachReview')}</span>
                             </a>
                             <a
                                 href="https://amalfi.day/timetables/"
@@ -78,14 +81,14 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <Train size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Public Transport</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.publicTransport')}</span>
                             </a>
                         </div>
 
                         {/* Right Column - Connect */}
                         <div className="flex flex-col gap-1 md:gap-3 items-center md:items-start">
                             <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-2">
-                                Connect
+                                {t('footer.connect')}
                             </h4>
                             <a
                                 href="mailto:hello@amalfi.day"
@@ -101,7 +104,7 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <InstagramLogo size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Instagram</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.instagram')}</span>
                             </a>
                             <a
                                 href="https://facebook.com/amalfi.day"
@@ -110,11 +113,11 @@ export function Footer() {
                                 className="group flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                             >
                                 <FacebookLogo size={22} className="md:size-[18px] text-gray-400 group-hover:text-orange-500 transition-colors" weight="duotone" />
-                                <span className="text-base md:text-sm font-medium">Facebook</span>
+                                <span className="text-base md:text-sm font-medium">{t('footer.facebook')}</span>
                             </a>
                             <div className="flex items-center justify-center md:justify-start gap-3 py-3 md:py-0 w-full text-gray-500 dark:text-gray-400 mt-2">
                                 <DeviceMobile size={22} className="md:size-[18px] text-gray-400" weight="duotone" />
-                                <span className="text-base md:text-sm">Add to Homescreen</span>
+                                <span className="text-base md:text-sm">{t('footer.addToHomescreen')}</span>
                             </div>
                         </div>
                     </div>
@@ -132,7 +135,7 @@ export function Footer() {
                 >
                     <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
                         <p className="text-xs text-gray-500 dark:text-gray-500">
-                            © 2014-2026 Gregory Day // Amalfi.Day. All rights reserved.
+                            {t('footer.copyright')}
                         </p>
                         <span className="hidden md:inline text-gray-400 dark:text-gray-600">·</span>
                         <p className="text-xs text-gray-400 dark:text-gray-600">
@@ -144,7 +147,7 @@ export function Footer() {
                         className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-150"
                     >
                         <ShieldCheck size={14} weight="duotone" />
-                        <span>Privacy Policy</span>
+                        <span>{t('footer.privacyPolicy')}</span>
                     </a>
                 </motion.div>
             </footer>

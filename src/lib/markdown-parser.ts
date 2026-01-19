@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { Language } from "./i18n/types";
 
 export type PlaceItem = {
     name: string;
@@ -129,4 +130,17 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
     if (currentItem) flushBuffer();
 
     return sections;
+}
+
+/**
+ * Parses markdown content for a specific language.
+ * Looks for language-specific content files in src/data/content/texts.{lang}.md
+ */
+export function parseMarkdownContentForLanguage(language: Language): CategorySection[] {
+    const filePath = path.join(
+        process.cwd(),
+        "src/data/content",
+        `texts.${language}.md`
+    );
+    return parseMarkdownContent(filePath);
 }

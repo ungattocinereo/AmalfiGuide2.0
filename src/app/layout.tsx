@@ -3,6 +3,7 @@ import { Inter, Merriweather, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
+import { LanguageProvider } from "@/components/language-context";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const merriweather = Merriweather({
@@ -75,9 +76,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutProvider>
-            {children}
-          </LayoutProvider>
+          <LanguageProvider>
+            <LayoutProvider>
+              {children}
+            </LayoutProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

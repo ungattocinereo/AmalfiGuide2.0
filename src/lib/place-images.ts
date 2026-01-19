@@ -24,16 +24,34 @@ export const getHikingMapUrl = (name: string): string | null => {
 export const getImageForPlace = (name: string): string => {
     const n = name.toLowerCase();
 
-    // Atrani gems
-    if (n.includes("square") && n.includes("atrani")) return "/guide-webp/square_in_atrani.webp";
+    // Church of Saint Mary Magdalene (formerly Square in Atrani)
+    // Church: church (en), chiesa (it), iglesia (es), église (fr), kirche (de), церковь (ru)
+    // Mary Magdalene: mary magdalene (en), maria maddalena (it), maría magdalena (es),
+    //                 marie-madeleine (fr), maria magdalena (de), марии магдалины (ru)
+    if ((n.includes("church") || n.includes("chiesa") || n.includes("iglesia") ||
+         n.includes("église") || n.includes("kirche") || n.includes("церковь")) &&
+        (n.includes("mary magdalene") || n.includes("maria maddalena") || n.includes("maría magdalena") ||
+         n.includes("marie-madeleine") || n.includes("магдалины"))) return "/guide-webp/square_in_atrani.webp";
+
     if (n.includes("castiglione")) return "/guide-webp/castiglione.webp";
-    if (n.includes("waterfall") && n.includes("atrani")) return "/guide-webp/waterfall_in_atrani.webp";
+
+    // Waterfall: waterfall (en), cascata (it), cascada (es), cascade (fr), wasserfall (de), водопад (ru)
+    if ((n.includes("waterfall") || n.includes("cascata") || n.includes("cascada") ||
+         n.includes("cascade") || n.includes("wasserfall") || n.includes("водопад")) &&
+        n.includes("atrani")) return "/guide-webp/waterfall_in_atrani.webp";
+
     if (n.includes("bando")) return "/guide-webp/Church-Santa-Maria-del-Bando.webp";
 
     // Amalfi
     if (n.includes("duomo") || n.includes("sant'andrea")) return "/guide-webp/Duomo-di-Sant-Andrea.webp";
     if (n.includes("belvedere") || n.includes("san lorenzo")) return "/guide-webp/elevator-amalfi.webp";
-    if (n.includes("secret waterfall") || n.includes("valle dei mulini")) return "/guide-webp/waterfall-in-amalfi-new-from-inside.webp";
+
+    // Secret Waterfall: secret (en), segreta (it), secreta (es), secrète (fr), секретный (ru)
+    if (((n.includes("secret") || n.includes("segreta") || n.includes("secreta") ||
+          n.includes("secrète") || n.includes("секретный")) &&
+         (n.includes("waterfall") || n.includes("cascata") || n.includes("cascada") ||
+          n.includes("cascade") || n.includes("wasserfall") || n.includes("водопад"))) ||
+        n.includes("valle dei mulini")) return "/guide-webp/waterfall-in-amalfi-new-from-inside.webp";
 
     // Restaurants
     if (n.includes("palme")) return "/guide-webp/le-palme.webp";

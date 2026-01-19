@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/components/language-context";
 
 export function Hero() {
     const [imageLoaded, setImageLoaded] = useState(false);
+    const { t } = useLanguage();
 
     return (
         <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#E64900]">
@@ -83,7 +85,7 @@ export function Hero() {
                 <div className="bg-white/20 backdrop-blur-xl rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center gap-6 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.15)] border border-white/30 hover:-translate-y-1 transition-transform duration-200">
                     {/* Timetables label */}
                     <span className="text-white text-xs md:text-sm font-medium tracking-wide pr-2 border-r border-white/30">
-                        Timetables:
+                        {t('hero.timetables')}
                     </span>
 
                     {/* Bus */}
@@ -102,7 +104,7 @@ export function Hero() {
                             <path d="M9 18h5"/>
                             <circle cx="16" cy="18" r="2"/>
                         </svg>
-                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">Bus</span>
+                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">{t('hero.bus')}</span>
                     </a>
 
                     {/* Ferry */}
@@ -119,7 +121,7 @@ export function Hero() {
                             <path d="M12 10v4"/>
                             <path d="M12 2v3"/>
                         </svg>
-                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">Ferry</span>
+                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">{t('hero.ferry')}</span>
                     </a>
 
                     {/* Airport */}
@@ -132,7 +134,7 @@ export function Hero() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
                         </svg>
-                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">Airport</span>
+                        <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-medium opacity-70">{t('hero.airport')}</span>
                     </a>
                 </div>
             </motion.div>
@@ -146,10 +148,7 @@ export function Hero() {
             >
                 <div className="bg-white/15 backdrop-blur-xl rounded-2xl px-4 py-3 md:px-5 md:py-4 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
                     <p className="text-white text-sm md:text-base leading-relaxed">
-                        This is your "Amalfi in a Pocket" Plan your perfect Amalfi Coast day with
-                        ready-to-use ideas for walks, swims, moto rides, and food stops—complete
-                        with clear directions, offline-friendly maps, and simplified transport
-                        timings so moving around stays effortless.
+                        {t('hero.description')}
                     </p>
                 </div>
             </motion.div>

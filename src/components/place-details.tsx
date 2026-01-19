@@ -7,6 +7,7 @@ import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons
 import { Button } from "@/components/ui/button";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
+import { useLanguage } from "@/components/language-context";
 
 interface PlaceDetailsProps {
     item: PlaceItem;
@@ -15,6 +16,7 @@ interface PlaceDetailsProps {
 }
 
 export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
+    const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
 
@@ -157,21 +159,21 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             // Determine superscript text
                             let superscriptText = link.label;
                             if (isGoogleMaps) {
-                                superscriptText = "Google Maps";
+                                superscriptText = t("placeDetails.googleMaps");
                             } else if (isTripAdvisor && tripAdvisorMatch) {
                                 superscriptText = tripAdvisorMatch[0];
                             } else if (isTripAdvisor) {
-                                superscriptText = "TripAdvisor";
+                                superscriptText = t("placeDetails.tripAdvisor");
                             }
 
                             // Determine link text
-                            let linkText = "View";
+                            let linkText = t("placeDetails.view");
                             if (isGoogleMaps) {
-                                linkText = "View location";
+                                linkText = t("placeDetails.viewLocation");
                             } else if (isTripAdvisor) {
-                                linkText = "View on TripAdvisor";
+                                linkText = t("placeDetails.viewOnTripAdvisor");
                             } else if (isHikeLink) {
-                                linkText = "View hike map";
+                                linkText = t("placeDetails.viewHikeMap");
                             }
 
                             return (

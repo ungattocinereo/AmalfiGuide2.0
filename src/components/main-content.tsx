@@ -8,16 +8,23 @@ import { PlaceDetails } from "@/components/place-details";
 import { Footer } from "@/components/footer";
 import { AnimatePresence, motion } from "framer-motion";
 import type { parseMarkdownContent, PlaceItem } from "@/lib/markdown-parser";
+import { useLanguage } from "@/components/language-context";
+import { LanguageTransition } from "@/components/language-transition";
+import type { Language } from "@/lib/i18n/types";
 
 type CategorySection = ReturnType<typeof parseMarkdownContent>[number];
 
 interface MainContentProps {
-    sections: CategorySection[];
+    allContent: Record<Language, CategorySection[]>;
 }
 
-export function MainContent({ sections }: MainContentProps) {
+export function MainContent({ allContent }: MainContentProps) {
+    const { language } = useLanguage();
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
+
+    // Select sections for current language
+    const sections = allContent[language] || allContent.en;
 
     // Push history state when modal opens (with guard against double-push in strict mode)
     useEffect(() => {
@@ -51,6 +58,7 @@ export function MainContent({ sections }: MainContentProps) {
 
     return (
         <main className="min-h-screen bg-white dark:bg-black transition-colors duration-200">
+            <LanguageTransition />
             <Navbar />
             <Hero />
 

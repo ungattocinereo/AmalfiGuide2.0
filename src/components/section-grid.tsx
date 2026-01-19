@@ -4,6 +4,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CaretRight, User, Diamond, Church, Mountains, ForkKnife, Cookie, Storefront, Compass } from "@phosphor-icons/react";
 import { useLayout } from "@/components/layout-context";
+import { useLanguage } from "@/components/language-context";
 import { PlaceCard } from "@/components/place-card";
 import type { PlaceItem } from "@/lib/markdown-parser";
 
@@ -57,22 +58,57 @@ const itemVariants = {
 
 const getSectionIcon = (title: string) => {
     const t = title.toLowerCase();
-    if (t.includes("gems") || t.includes("atrani")) return Diamond;
-    if (t.includes("must visit") || t.includes("amalfi")) return Church;
-    if (t.includes("hiking") || t.includes("nature")) return Mountains;
-    if (t.includes("restaurant")) return ForkKnife;
-    if (t.includes("street food")) return Cookie;
-    if (t.includes("shop")) return Storefront;
-    if (t.includes("wider") || t.includes("not only")) return Compass;
+    // Gems section (all languages have "atrani" or gem variants)
+    if (t.includes("gems") || t.includes("gemme") || t.includes("joyas") ||
+        t.includes("joyaux") || t.includes("perlen") || t.includes("жемчужины") ||
+        t.includes("atrani")) return Diamond;
+    // Must Visit section
+    if (t.includes("must visit") || t.includes("da vedere") || t.includes("imprescindibles") ||
+        t.includes("incontournables") || t.includes("обязательно")) return Church;
+    // Hiking section
+    if (t.includes("hiking") || t.includes("nature") || t.includes("escursioni") ||
+        t.includes("natura") || t.includes("senderismo") || t.includes("naturaleza") ||
+        t.includes("randonnées") || t.includes("wandern") || t.includes("поход") ||
+        t.includes("природа")) return Mountains;
+    // Restaurant section
+    if (t.includes("restaurant") || t.includes("ristoranti") || t.includes("restaurantes") ||
+        t.includes("рестораны")) return ForkKnife;
+    // Street food section
+    if (t.includes("street food") || t.includes("cibo di strada") || t.includes("comida callejera") ||
+        t.includes("уличная еда")) return Cookie;
+    // Shops section
+    if (t.includes("shop") || t.includes("negozi") || t.includes("tiendas") ||
+        t.includes("boutiques") || t.includes("магазины")) return Storefront;
+    // Wider area section
+    if (t.includes("wider") || t.includes("not only") || t.includes("non solo") ||
+        t.includes("más allá") || t.includes("au-delà") || t.includes("не только")) return Compass;
     return Diamond; // fallback
 };
 
 export function SectionGrid({ title, description, items, onItemClick }: SectionGridProps) {
     const { isSectionExpanded, toggleSection } = useLayout();
+    const { t } = useLanguage();
 
-    const isIntro = title.toLowerCase().includes("expert guide");
-    const isGemsOfAtrani = title.toLowerCase().includes("gems of atrani");
-    const isHiking = title.toLowerCase().includes("hiking");
+    const titleLower = title.toLowerCase();
+
+    // Check for intro section (all language variants)
+    const isIntro = titleLower.includes("expert guide") ||
+                    titleLower.includes("guida esperta") ||
+                    titleLower.includes("guía experta") ||
+                    titleLower.includes("guide expert") ||
+                    titleLower.includes("experten-guide") ||
+                    titleLower.includes("экспертный путеводитель");
+
+    // Check for Gems of Atrani (all languages have "atrani" in title)
+    const isGemsOfAtrani = titleLower.includes("atrani") && !isIntro;
+
+    // Check for Hiking section (all language variants)
+    const isHiking = titleLower.includes("hiking") ||
+                     titleLower.includes("escursioni") ||
+                     titleLower.includes("senderismo") ||
+                     titleLower.includes("randonnées") ||
+                     titleLower.includes("поход");
+
     const isExpanded = isIntro || isSectionExpanded(title);
     const introGridClass = isIntro ? "flex flex-col md:flex-row gap-8 items-center" : "";
 
@@ -146,10 +182,10 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                         style={{ fontFamily: 'var(--font-libre-baskerville)' }}
                                         className="text-3xl lg:text-4xl font-light text-gray-900 dark:text-gray-50 leading-tight mb-6"
                                     >
-                                        Atrani: 0.2 km² Between the Mountains and the Sea
+                                        {t('section.gemsIntroTitle')}
                                     </h3>
                                     <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                                        A compact town compressed into just 0.2 km², set between Monte Aureo and Monte Civita and opening directly onto the sea. We live here, and this is a curated introduction to the places that define daily life in Atrani beyond its size.
+                                        {t('section.gemsIntroText')}
                                     </p>
                                 </motion.div>
 
@@ -297,7 +333,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             className={`text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50 tracking-tight ${!isIntro ? "group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-150" : "mb-4"}`}
                         >
                             {isIntro ? (
-                                <>Amalfi.Day Expert <span className="italic">Guide</span></>
+                                <span dangerouslySetInnerHTML={{ __html: t('section.expertGuideTitle') }} />
                             ) : (
                                 title
                             )}
@@ -312,14 +348,14 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             className="space-y-4"
                         >
                             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-libre-baskerville)' }}>
-                                A personally curated selection of the best spots, hidden gems, and authentic flavors on the Amalfi Coast from someone who moved here years ago and fell in love with the place.
+                                {t('section.expertGuideText')}
                             </p>
                             {/* Signature with vertical line */}
                             <div className="flex items-center gap-3 mt-6">
                                 <div className="w-px h-10 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
                                 <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                                     <User weight="duotone" className="h-5 w-5 text-orange-500" />
-                                    <span className="text-sm font-medium">Gregory Day, hotel owner</span>
+                                    <span className="text-sm font-medium">{t('section.expertGuideSignature')}</span>
                                 </div>
                             </div>
                         </motion.div>
