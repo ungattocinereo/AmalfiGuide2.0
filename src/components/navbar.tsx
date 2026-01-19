@@ -12,6 +12,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
+    DropdownMenuArrow,
 } from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
@@ -51,7 +52,7 @@ export function Navbar() {
                     </Button>
 
                     {/* Language Dropdown */}
-                    <DropdownMenu>
+                    <DropdownMenu modal={false}>
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="ghost"
@@ -63,7 +64,8 @@ export function Navbar() {
                                 <CaretDown weight="bold" className="h-3 w-3 opacity-60" />
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="rounded-2xl min-w-[180px] p-2 bg-white/70 dark:bg-black/70 backdrop-blur-2xl border border-white/30 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.2)] animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
+                        <DropdownMenuContent align="end" sideOffset={12} className="rounded-2xl min-w-[180px] p-2 bg-white/70 dark:bg-black/70 backdrop-blur-2xl border border-white/30 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.2)] animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
+                            <DropdownMenuArrow className="fill-white/70 dark:fill-black/70" />
                             <DropdownMenuItem onClick={() => setLanguage('en')} className="gap-3 cursor-pointer rounded-xl px-4 py-3 text-base font-medium hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-150"><span className="text-xl">🇬🇧</span><span>English</span></DropdownMenuItem>
                             <DropdownMenuItem onClick={() => setLanguage('it')} className="gap-3 cursor-pointer rounded-xl px-4 py-3 text-base font-medium hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-150"><span className="text-xl">🇮🇹</span><span>Italiano</span></DropdownMenuItem>
                             <DropdownMenuItem onClick={() => setLanguage('es')} className="gap-3 cursor-pointer rounded-xl px-4 py-3 text-base font-medium hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-150"><span className="text-xl">🇪🇸</span><span>Español</span></DropdownMenuItem>
