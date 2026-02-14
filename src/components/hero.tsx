@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/components/language-context";
 import { useLayout } from "@/components/layout-context";
 import { useTheme } from "next-themes";
+import { getBlurDataURL } from "@/lib/blur-data.generated";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -30,6 +31,7 @@ export function Hero() {
     const { isAllExpanded } = useLayout();
     const { resolvedTheme } = useTheme();
     const isDark = resolvedTheme === "dark";
+    const heroBlur = getBlurDataURL("/images/hero.webp");
     const t = (key: string) => {
         const val = _t(key);
         return val === key ? (defaults[key] ?? key) : val;
@@ -340,6 +342,8 @@ export function Hero() {
                         width={640}
                         height={800}
                         priority
+                        placeholder={heroBlur ? "blur" : "empty"}
+                        blurDataURL={heroBlur}
                         className="w-full h-auto block"
                     />
                 </motion.div>

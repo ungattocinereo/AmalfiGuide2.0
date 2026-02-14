@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
+import { getBlurDataURL } from "@/lib/blur-data.generated";
 
 interface PlaceCardProps {
     item: PlaceItem;
@@ -17,6 +18,7 @@ interface PlaceCardProps {
 export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: PlaceCardProps) {
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
+    const blurDataURL = getBlurDataURL(imageUrl);
 
     return (
         <motion.div
@@ -45,6 +47,8 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                         fill
                         sizes={sizes || "(max-width: 768px) 50vw, 33vw"}
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        placeholder={blurDataURL ? "blur" : "empty"}
+                        blurDataURL={blurDataURL}
                     />
                 )}
                 {/* Category Badge - Modern pill style */}

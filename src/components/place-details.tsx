@@ -7,6 +7,7 @@ import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons
 import { Button } from "@/components/ui/button";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
+import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { useLanguage } from "@/components/language-context";
 
 interface PlaceDetailsProps {
@@ -19,6 +20,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
+    const blurDataURL = getBlurDataURL(imageUrl);
 
     // Lock body scroll and handle Escape key
     useEffect(() => {
@@ -69,9 +71,11 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         src={imageUrl}
                         alt={item.name}
                         fill
-                        sizes="(max-width: 768px) 100vw, 60vw"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
                         priority
+                        placeholder={blurDataURL ? "blur" : "empty"}
+                        blurDataURL={blurDataURL}
                     />
                 )}
                 {/* Close Button */}

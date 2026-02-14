@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "prebuild": "npm run generate:blur",
+    "generate:blur": "tsx scripts/generate-blur-data.mts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -34,6 +36,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

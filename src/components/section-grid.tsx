@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { CaretRight, User, Diamond, Church, Mountains, ForkKnife, Cookie, Storefront, Compass } from "@phosphor-icons/react";
 import { useLayout } from "@/components/layout-context";
@@ -321,9 +322,11 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="hidden md:flex md:w-1/3 justify-center items-center"
                     >
-                        <img
+                        <Image
                             src="/images/gregs-masked.png"
                             alt="Gregory Day"
+                            width={250}
+                            height={250}
                             className="w-[250px] h-auto object-contain dark:opacity-90 drop-shadow-2xl"
                         />
                     </motion.div>
