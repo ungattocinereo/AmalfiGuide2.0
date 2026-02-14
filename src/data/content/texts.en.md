@@ -58,7 +58,7 @@ To find this hidden gem, walk up Via dei Dogi from the main square until the roa
 ---
 
 ### Church Santa Maria del Bando
-**Category**: Tripadviser top#1 in Atrani
+**Category**: Top #1
 **Tagline**: Sacret and beautiful place
 
 **Short info:**
@@ -84,7 +84,7 @@ Book your visit on their Facebook page: [S S.M. Del Bando](https://www.facebook.
 The essential landmarks that define Amalfi's history and daily life.
 
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
-**Category**: Historical Landmark
+**Category**: Landmark
 **Tagline**: The icon of Amalfi
 
 **Short info:**
@@ -225,7 +225,7 @@ Set in one of the most fascinating spots of the coast, the "Path of Lemons" wind
 From family kitchens to legendary dining rooms by the sea.
 
 ### Le Palme (Atrani)
-**Category**: Family Restaurant/Pizzeria
+**Category**: Family Spot
 **Tagline**: Authentic hospitality & seafood
 
 **Short info:**
@@ -245,7 +245,7 @@ The atmosphere is lively and friendly. Salvatore also manages a rental villa, st
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Michelin Restaurant
+**Category**: Michelin
 **Tagline**: Refined seafood excellence
 
 **Short info:**
@@ -261,7 +261,7 @@ Included in the Michelin Guide, A'Paranza is dedicated to quality. Despite its u
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Restaurant/Pizzeria with the View
+**Category**: Scenic Dining
 **Tagline**: The oldest place in Atrani with the view
 
 **Short info:**
@@ -283,7 +283,7 @@ Convenient parking is available for guests. Lo Smeraldino is frequently recommen
 ---
 
 ### Le Arcate (Atrani)
-**Category**: Seafront Dining
+**Category**: Seafront
 **Tagline**: The best seats in town
 
 **Short info:**
@@ -299,7 +299,7 @@ Le Arcate is a beloved local spot for those who want the best seats in Atrani. M
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Legendary Restaurant
+**Category**: Legendary
 **Tagline**: Garden-to-table with a view
 
 **Short info:**
@@ -318,7 +318,7 @@ Located in Vettica (just above Amalfi), Da Ciccio is an institution. They cultiv
 Small bites that say more than a long menu.
 
 ### Apicella Bakery (Amalfi)
-**Category**: Street Food / Breakfast
+**Category**: Breakfast
 **Tagline**: The local's secret breakfast pizza
 
 **Short info:**
@@ -387,7 +387,7 @@ The knowledgeable and welcoming staff provide expert recommendations on local pr
 ---
 
 ### La Grande Mela Supermarket Deco (Amalfi)
-**Category**: Supermarket & Grocery Store
+**Category**: Supermarket
 **Tagline**: Complete groceries with quality standards
 
 **Short info:**
@@ -404,7 +404,7 @@ The store is designed for convenient shopping with organized layout and regular 
 ---
 
 ### DOGI Market (Amalfi)
-**Category**: Supermarket & Alimentari
+**Category**: Alimentari
 **Tagline**: Traditional local market with neighborhood charm
 
 **Short info:**
@@ -421,7 +421,7 @@ The shop benefits from its prime location on one of Amalfi's main squares, makin
 ---
 
 ### La Tramontina Amalfi
-**Category**: Elite Coldcuts and Cheese
+**Category**: Deli
 **Tagline**: Legendary buffalo mozzarella and artisanal sandwiches
 
 **Short info:**
@@ -500,7 +500,7 @@ Located at a mountain pass (Valico di Chiunzi) about 3,000 feet above sea level,
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Beach / Chill
+**Category**: Beach Chill
 **Tagline**: Sun, cliffs, and spaghetti
 
 **Short info:**

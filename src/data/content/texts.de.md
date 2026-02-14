@@ -58,7 +58,7 @@ Um dieses versteckte Juwel zu finden, gehst du die Via dei Dogi vom Hauptplatz h
 ---
 
 ### Church Santa Maria del Bando
-**Category**: Tripadviser top#1 in Atrani
+**Category**: Top #1
 **Tagline**: Heiliger und wunderschöner Ort
 
 **Short info:**
@@ -84,7 +84,7 @@ Buche deinen Besuch auf ihrer Facebook-Seite: [S S.M. Del Bando](https://www.fac
 Die wesentlichen Wahrzeichen, die Amalfis Geschichte und Alltagsleben definieren.
 
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
-**Category**: Historical Landmark
+**Category**: Landmark
 **Tagline**: Die Ikone von Amalfi
 
 **Short info:**
@@ -225,7 +225,7 @@ An einem der faszinierendsten Orte der Küste gelegen, windet sich der "Pfad der
 Von Familienküchen bis zu legendären Speisesälen am Meer.
 
 ### Le Palme (Atrani)
-**Category**: Family Restaurant/Pizzeria
+**Category**: Family Spot
 **Tagline**: Authentische Gastfreundschaft & Meeresfrüchte
 
 **Short info:**
@@ -245,7 +245,7 @@ Die Atmosphäre ist lebhaft und freundlich. Salvatore verwaltet auch eine Mietvi
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Michelin Restaurant
+**Category**: Michelin
 **Tagline**: Raffinierte Meeresfrüchte-Exzellenz
 
 **Short info:**
@@ -261,7 +261,7 @@ Im Michelin-Guide aufgeführt, ist A'Paranza der Qualität verpflichtet. Trotz s
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Restaurant/Pizzeria with the View
+**Category**: Scenic Dining
 **Tagline**: Der älteste Ort in Atrani mit der Aussicht
 
 **Short info:**
@@ -283,7 +283,7 @@ Bequeme Parkmöglichkeiten stehen für Gäste zur Verfügung. Lo Smeraldino wird
 ---
 
 ### Le Arcate (Atrani)
-**Category**: Seafront Dining
+**Category**: Seafront
 **Tagline**: Die besten Plätze der Stadt
 
 **Short info:**
@@ -299,7 +299,7 @@ Le Arcate ist ein beliebter lokaler Ort für diejenigen, die die besten Plätze 
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Legendary Restaurant
+**Category**: Legendary
 **Tagline**: Vom Garten auf den Tisch mit Aussicht
 
 **Short info:**
@@ -318,7 +318,7 @@ In Vettica (direkt über Amalfi) gelegen, ist Da Ciccio eine Institution. Sie ku
 Kleine Happen, die mehr sagen als eine lange Speisekarte.
 
 ### Apicella Bakery (Amalfi)
-**Category**: Street Food / Breakfast
+**Category**: Breakfast
 **Tagline**: Die geheime Frühstückspizza der Einheimischen
 
 **Short info:**
@@ -387,7 +387,7 @@ Das sachkundige und einladende Personal gibt Expertenempfehlungen zu lokalen Pro
 ---
 
 ### La Grande Mela Supermarket Deco (Amalfi)
-**Category**: Supermarket & Grocery Store
+**Category**: Supermarket
 **Tagline**: Komplettes Lebensmittelangebot mit Qualitätsstandards
 
 **Short info:**
@@ -404,7 +404,7 @@ Das Geschäft ist für bequemes Einkaufen mit organisiertem Layout und regelmä�
 ---
 
 ### DOGI Market (Amalfi)
-**Category**: Supermarket & Alimentari
+**Category**: Alimentari
 **Tagline**: Traditioneller lokaler Markt mit Nachbarschaftscharme
 
 **Short info:**
@@ -421,7 +421,7 @@ Der Laden profitiert von seiner erstklassigen Lage an einem von Amalfis Hauptpl�
 ---
 
 ### La Tramontina Amalfi
-**Category**: Elite Coldcuts and Cheese
+**Category**: Deli
 **Tagline**: Legendärer Büffelmozzarella und handwerkliche Sandwiches
 
 **Short info:**
@@ -500,7 +500,7 @@ An einem Bergpass (Valico di Chiunzi) etwa 900 Meter über dem Meeresspiegel gel
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Beach / Chill
+**Category**: Beach Chill
 **Tagline**: Sonne, Klippen und Spaghetti
 
 **Short info:**

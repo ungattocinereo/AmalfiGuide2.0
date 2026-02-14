@@ -10,7 +10,7 @@ Una selección personalmente curada de los mejores rincones, joyas escondidas y 
 Como pueblo, Atrani demuestra que el tamaño no importa en la Costa Amalfitana. Aquí es donde brilla.
 
 ### Iglesia de Santa María Magdalena
-**Category**: Lugar para Fotos
+**Category**: Foto Spot
 **Tagline**: El corazón auténtico del pueblo
 
 **Info breve:**
@@ -26,7 +26,7 @@ Por todo Atrani, verás señales con prominentes flechas verdes—en realidad so
 ---
 
 ### Playa Castiglione (Lido di Ravello)
-**Category**: Playa Escondida
+**Category**: Playa Secreta
 **Tagline**: Serenidad entre los acantilados
 
 **Info breve:**
@@ -42,7 +42,7 @@ Enclavado entre dos acantilados dramáticos se encuentra este lugar pintoresco, 
 ---
 
 ### Cascada de Atrani
-**Category**: Lugar Escondido
+**Category**: Lugar Secreto
 **Tagline**: Lugar de naturaleza pura
 
 **Info breve:**
@@ -58,7 +58,7 @@ Para encontrar esta joya escondida, camina por Via dei Dogi desde la plaza princ
 ---
 
 ### Iglesia Santa Maria del Bando
-**Category**: Top#1 en Tripadvisor de Atrani
+**Category**: Top #1
 **Tagline**: Lugar sagrado y hermoso
 
 **Info breve:**
@@ -84,7 +84,7 @@ Reserva tu visita en su página de Facebook: [S S.M. Del Bando](https://www.face
 Los lugares emblemáticos que definen la historia y la vida diaria de Amalfi.
 
 ### Duomo di Sant'Andrea (Catedral de Amalfi)
-**Category**: Monumento Histórico
+**Category**: Monumento
 **Tagline**: El ícono de Amalfi
 
 **Info breve:**
@@ -136,7 +136,7 @@ Abierto lunes, miércoles, viernes, sábados y domingos (solo mañanas).
 ---
 
 ### Cascada Secreta (Valle dei Mulini)
-**Category**: Joya Escondida
+**Category**: Joya Oculta
 **Tagline**: Ruinas antiguas y aguas refrescantes
 
 **Info breve:**
@@ -186,7 +186,7 @@ Esta torre vigía se encuentra en la cresta que separa Amalfi y Atrani. La leyen
 ---
 
 ### Sendero de los Dioses (Sentiero degli Dei)
-**Category**: Ruta de Senderismo
+**Category**: Sendero
 **Tagline**: La famosa caminata de lista de deseos mundial
 
 **Info breve:**
@@ -207,7 +207,7 @@ Desde Nocelle, tienes dos opciones para llegar a Positano: tomar el autobús Mob
 ---
 
 ### El Sendero de los Limones (Sentiero dei Limoni)
-**Category**: Ruta de Senderismo
+**Category**: Sendero
 **Tagline**: Un paseo fragante besado por el sol
 
 **Info breve:**
@@ -225,7 +225,7 @@ Situado en uno de los lugares más fascinantes de la costa, el "Sendero de los L
 Desde cocinas familiares hasta legendarios comedores junto al mar.
 
 ### Le Palme (Atrani)
-**Category**: Restaurante Familiar/Pizzería
+**Category**: Familiar
 **Tagline**: Hospitalidad auténtica y mariscos
 
 **Info breve:**
@@ -245,7 +245,7 @@ El ambiente es animado y amigable. Salvatore también gestiona una villa de alqu
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Restaurante Michelin
+**Category**: Michelin
 **Tagline**: Excelencia refinada en mariscos
 
 **Info breve:**
@@ -261,7 +261,7 @@ Incluido en la Guía Michelin, A'Paranza se dedica a la calidad. A pesar de su a
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Restaurante/Pizzería con Vista
+**Category**: Con Vista
 **Tagline**: El lugar más antiguo de Atrani con vista
 
 **Info breve:**
@@ -283,7 +283,7 @@ Hay estacionamiento conveniente disponible para los huéspedes. Lo Smeraldino es
 ---
 
 ### Le Arcate (Atrani)
-**Category**: Comedor Frente al Mar
+**Category**: Frente al Mar
 **Tagline**: Los mejores asientos del pueblo
 
 **Info breve:**
@@ -299,7 +299,7 @@ Le Arcate es un lugar local querido para aquellos que quieren los mejores asient
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Restaurante Legendario
+**Category**: Legendario
 **Tagline**: Del huerto a la mesa con vista
 
 **Info breve:**
@@ -318,7 +318,7 @@ Ubicado en Vettica (justo arriba de Amalfi), Da Ciccio es una institución. Cult
 Bocados pequeños que dicen más que un menú largo.
 
 ### Panadería Apicella (Amalfi)
-**Category**: Comida Callejera / Desayuno
+**Category**: Desayuno
 **Tagline**: La pizza de desayuno secreta de los locales
 
 **Info breve:**
@@ -334,7 +334,7 @@ Escondida a solo 70 metros del Duomo de Amalfi, esta panadería es fácil de pas
 ---
 
 ### La Rua Pizze E Delizie (Amalfi)
-**Category**: Comida Callejera
+**Category**: Street Food
 **Tagline**: Arancini y bocados al horno de leña
 
 **Info breve:**
@@ -350,7 +350,7 @@ Ubicado en el corazón de Amalfi, La Rua ofrece más que solo comida callejera; 
 ---
 
 ### Pizza Express (Amalfi)
-**Category**: Comida Callejera
+**Category**: Street Food
 **Tagline**: Bocado rápido en la calle principal
 
 **Info breve:**
@@ -369,7 +369,7 @@ Pizza Express es una pizzería local directa y sin tonterías ubicada en la part
 Mercados locales y tiendas especializadas donde encontrarás los mejores ingredientes.
 
 ### Mimì & Cocò di Tutto Un Po (Atrani)
-**Category**: Mercado Local
+**Category**: Mercado
 **Tagline**: Una joya de productos auténticos de la Costa Amalfitana
 
 **Info breve:**
@@ -387,7 +387,7 @@ El personal conocedor y acogedor brinda recomendaciones expertas sobre productos
 ---
 
 ### Supermercado La Grande Mela Deco (Amalfi)
-**Category**: Supermercado y Tienda de Comestibles
+**Category**: Supermercado
 **Tagline**: Comestibles completos con estándares de calidad
 
 **Info breve:**
@@ -404,7 +404,7 @@ La tienda está diseñada para compras convenientes con distribución organizada
 ---
 
 ### DOGI Market (Amalfi)
-**Category**: Supermercado y Alimentari
+**Category**: Alimentari
 **Tagline**: Mercado local tradicional con encanto de barrio
 
 **Info breve:**
@@ -421,7 +421,7 @@ La tienda se beneficia de su ubicación privilegiada en una de las plazas princi
 ---
 
 ### La Tramontina Amalfi
-**Category**: Embutidos y Quesos de Élite
+**Category**: Delicatessen
 **Tagline**: Mozzarella de búfala legendaria y sándwiches artesanales
 
 **Info breve:**
@@ -446,7 +446,7 @@ El horario de operación es generalmente de 8:00 AM - 8:00 PM (domingo 7:00 AM -
 Destinos que valen el viaje más allá de los pueblos principales.
 
 ### Ravello - Terraza del Infinito (Villa Cimbrone)
-**Category**: Turismo
+**Category**: Excursión
 **Tagline**: La vista de toda una vida
 
 **Info breve:**
@@ -484,7 +484,7 @@ La experiencia de Salvatore De Riso ha sido ampliamente reconocida, ganándole e
 ---
 
 ### Al Valico di Chiunzi (Tramonti)
-**Category**: Comida de Montaña
+**Category**: Montaña
 **Tagline**: Comida rústica con vista del Vesubio
 
 **Info breve:**
@@ -500,7 +500,7 @@ Ubicado en un paso de montaña (Valico di Chiunzi) a unos 3,000 pies sobre el ni
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Playa / Relax
+**Category**: Playa Relax
 **Tagline**: Sol, acantilados y espaguetis
 
 **Info breve:**
@@ -516,7 +516,7 @@ A diferencia de Positano, Marina di Praia tiene un alma relajada. La playa está
 ---
 
 ### Lido degli Artisti (Amalfi)
-**Category**: Club de Playa
+**Category**: Beach Club
 **Tagline**: Accesible solo en barco o escaleras
 
 **Info breve:**

@@ -10,7 +10,7 @@ Une sélection personnelle des meilleurs endroits, trésors cachés et saveurs a
 En tant que village, Atrani prouve que la taille ne compte pas sur la Côte Amalfitaine. Voici où elle brille.
 
 ### Église de Sainte-Marie-Madeleine
-**Category**: Site Photo
+**Category**: Photo Spot
 **Tagline**: Le cœur authentique du village
 
 **Short info:**
@@ -58,7 +58,7 @@ Pour trouver ce trésor caché, montez la Via dei Dogi depuis la place principal
 ---
 
 ### Église Santa Maria del Bando
-**Category**: Top#1 Tripadviser à Atrani
+**Category**: Top #1
 **Tagline**: Lieu sacré et magnifique
 
 **Short info:**
@@ -84,7 +84,7 @@ Réservez votre visite sur leur page Facebook : [S S.M. Del Bando](https://www.f
 Les monuments essentiels qui définissent l'histoire et la vie quotidienne d'Amalfi.
 
 ### Duomo di Sant'Andrea (Cathédrale d'Amalfi)
-**Category**: Monument Historique
+**Category**: Monument
 **Tagline**: L'icône d'Amalfi
 
 **Short info:**
@@ -102,7 +102,7 @@ Le Duomo est le cœur architectural d'Amalfi, datant du IXe siècle. Ce bâtimen
 ---
 
 ### Belvédère de San Lorenzo
-**Category**: Point de Vue
+**Category**: Panorama
 **Tagline**: Le meilleur panorama sans effort
 
 **Short info:**
@@ -155,7 +155,7 @@ Montez la route principale d'Amalfi (Via Capo di Piazza) jusqu'au bout. Vous ver
 Itinéraires de marche qui révèlent Amalfi au-delà des villes.
 
 ### Valle delle Ferriere
-**Category**: Réserve Naturelle
+**Category**: Réserve Nat.
 **Tagline**: Cascades et histoire ancienne
 
 **Short info:**
@@ -186,7 +186,7 @@ Cette tour de guet se trouve sur la crête séparant Amalfi et Atrani. La légen
 ---
 
 ### Sentier des Dieux (Sentiero degli Dei)
-**Category**: Sentier de Randonnée
+**Category**: Sentier
 **Tagline**: La randonnée légendaire incontournable
 
 **Short info:**
@@ -207,7 +207,7 @@ De Nocelle, vous avez deux options pour rejoindre Positano : prendre le bus Mobi
 ---
 
 ### Le Sentier des Citrons (Sentiero dei Limoni)
-**Category**: Sentier de Randonnée
+**Category**: Sentier
 **Tagline**: Une promenade parfumée embrassée par le soleil
 
 **Short info:**
@@ -225,7 +225,7 @@ Situé dans l'un des endroits les plus fascinants de la côte, le « Sentier des
 Des cuisines familiales aux salles à manger légendaires au bord de la mer.
 
 ### Le Palme (Atrani)
-**Category**: Restaurant Familial/Pizzeria
+**Category**: Familial
 **Tagline**: Hospitalité authentique & fruits de mer
 
 **Short info:**
@@ -245,7 +245,7 @@ L'atmosphère est animée et conviviale. Salvatore gère également une villa de
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Restaurant Michelin
+**Category**: Michelin
 **Tagline**: Excellence raffinée de fruits de mer
 
 **Short info:**
@@ -261,7 +261,7 @@ Inclus dans le Guide Michelin, A'Paranza est dédié à la qualité. Malgré son
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Restaurant/Pizzeria avec Vue
+**Category**: Avec Vue
 **Tagline**: Le plus ancien lieu d'Atrani avec vue
 
 **Short info:**
@@ -283,7 +283,7 @@ Un parking pratique est disponible pour les clients. Lo Smeraldino est fréquemm
 ---
 
 ### Le Arcate (Atrani)
-**Category**: Restaurant en Bord de Mer
+**Category**: Bord de Mer
 **Tagline**: Les meilleures places de la ville
 
 **Short info:**
@@ -299,7 +299,7 @@ Le Arcate est un lieu local bien-aimé pour ceux qui veulent les meilleures plac
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Restaurant Légendaire
+**Category**: Légendaire
 **Tagline**: Du jardin à l'assiette avec vue
 
 **Short info:**
@@ -318,7 +318,7 @@ Situé à Vettica (juste au-dessus d'Amalfi), Da Ciccio est une institution. Ils
 Petites bouchées qui en disent plus qu'un long menu.
 
 ### Boulangerie Apicella (Amalfi)
-**Category**: Street Food / Petit Déjeuner
+**Category**: Petit Déj
 **Tagline**: La pizza du petit-déjeuner secrète des locaux
 
 **Short info:**
@@ -369,7 +369,7 @@ Pizza Express est une pizzeria locale simple et sans chichi située dans la part
 Marchés locaux et magasins spécialisés où vous trouverez les meilleurs ingrédients.
 
 ### Mimì & Cocò di Tutto Un Po (Atrani)
-**Category**: Marché Local
+**Category**: Marché
 **Tagline**: Un trésor de produits authentiques de la Côte Amalfitaine
 
 **Short info:**
@@ -387,7 +387,7 @@ Le personnel compétent et accueillant fournit des recommandations expertes sur 
 ---
 
 ### Supermarché La Grande Mela Deco (Amalfi)
-**Category**: Supermarché & Épicerie
+**Category**: Supermarché
 **Tagline**: Épicerie complète avec standards de qualité
 
 **Short info:**
@@ -404,7 +404,7 @@ Le magasin est conçu pour des courses pratiques avec un agencement organisé et
 ---
 
 ### Marché DOGI (Amalfi)
-**Category**: Supermarché & Alimentari
+**Category**: Alimentari
 **Tagline**: Marché local traditionnel avec charme de quartier
 
 **Short info:**
@@ -421,7 +421,7 @@ La boutique bénéficie de son emplacement privilégié sur l'une des places pri
 ---
 
 ### La Tramontina Amalfi
-**Category**: Charcuterie et Fromages d'Élite
+**Category**: Épicerie Fine
 **Tagline**: Mozzarella de bufflonne légendaire et sandwichs artisanaux
 
 **Short info:**
@@ -446,7 +446,7 @@ Les horaires d'ouverture sont généralement 8h00 - 20h00 (dimanche 7h00 - 16h00
 Destinations valant le voyage au-delà des villes principales.
 
 ### Ravello - Terrasse de l'Infini (Villa Cimbrone)
-**Category**: Visite Touristique
+**Category**: Excursion
 **Tagline**: La vue d'une vie
 
 **Short info:**
@@ -484,7 +484,7 @@ L'expertise de Salvatore De Riso a été largement reconnue, lui valant le titre
 ---
 
 ### Al Valico di Chiunzi (Tramonti)
-**Category**: Cuisine de Montagne
+**Category**: Montagne
 **Tagline**: Cuisine rustique avec vue sur le Vésuve
 
 **Short info:**
@@ -500,7 +500,7 @@ Situé à un col de montagne (Valico di Chiunzi) à environ 1 000 mètres au-des
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Plage / Détente
+**Category**: Plage Détente
 **Tagline**: Soleil, falaises et spaghetti
 
 **Short info:**
@@ -516,7 +516,7 @@ Contrairement à Positano, Marina di Praia a une âme décontractée. La plage e
 ---
 
 ### Lido degli Artisti (Amalfi)
-**Category**: Club de Plage
+**Category**: Beach Club
 **Tagline**: Accessible uniquement par bateau ou escaliers
 
 **Short info:**

@@ -99,6 +99,9 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                     titleLower.includes("experten-guide") ||
                     titleLower.includes("экспертный путеводитель");
 
+    // Intro section always shows fully — never collapses
+
+
     // Check for Gems of Atrani (all languages have "atrani" in title)
     const isGemsOfAtrani = titleLower.includes("atrani") && !isIntro;
 
@@ -109,15 +112,16 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                      titleLower.includes("randonnées") ||
                      titleLower.includes("поход");
 
-    // Intro now collapses with everything else; individually expandable via click
-    const isExpanded = isSectionExpanded(title);
-    const introGridClass = isIntro && isAllExpanded ? "flex flex-col md:flex-row gap-8 items-center" : "";
+    // Intro is always fully expanded; other sections follow global/individual state
+    const isExpanded = isIntro ? true : isSectionExpanded(title);
+    const introGridClass = isIntro ? "flex flex-col md:flex-row gap-8 items-center" : "";
 
-    // Compact mode classes
-    const sectionPadding = isAllExpanded ? "py-10 md:py-20" : "py-3 md:py-4";
-    const headerMargin = isAllExpanded ? "mb-8 md:mb-12" : "mb-0";
-    const titleSize = isAllExpanded ? "text-4xl md:text-6xl" : "text-xl md:text-2xl";
-    const caretSize = isAllExpanded ? "h-6 w-6 md:h-8 md:w-8" : "h-4 w-4 md:h-5 md:w-5";
+    // Compact mode classes — intro always uses expanded styling
+    const effectiveExpanded = isIntro || isAllExpanded;
+    const sectionPadding = effectiveExpanded ? "py-10 md:py-20" : "py-3 md:py-4";
+    const headerMargin = effectiveExpanded ? "mb-8 md:mb-12" : "mb-0";
+    const titleSize = effectiveExpanded ? "text-4xl md:text-6xl" : "text-xl md:text-2xl";
+    const caretSize = effectiveExpanded ? "h-6 w-6 md:h-8 md:w-8" : "h-4 w-4 md:h-5 md:w-5";
 
     // Special layout for Gems of Atrani
     if (isGemsOfAtrani) {
@@ -302,14 +306,14 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
         );
     }
 
-    // Show caret on intro when in compact mode (normally intro has no caret)
-    const showCaret = !isIntro || !isAllExpanded;
+    // Intro never shows the collapse caret since it's always expanded
+    const showCaret = !isIntro;
 
     return (
         <section className={`${sectionPadding} px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
             <div className={introGridClass || `${headerMargin} text-left transition-[margin] duration-300`}>
                 {/* Photo - 1/3 on left for intro (hidden in compact mode) */}
-                {isIntro && isAllExpanded && (
+                {isIntro && (
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -326,7 +330,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                 )}
 
                 {/* Text content - 2/3 on right for intro */}
-                <div className={isIntro && isAllExpanded ? "md:w-2/3 text-center md:text-left" : ""}>
+                <div className={isIntro ? "md:w-2/3 text-center md:text-left" : ""}>
                     <div
                         className={showCaret ? "cursor-pointer group flex items-center gap-3 md:gap-4" : ""}
                         onClick={() => showCaret && toggleSection(title)}
@@ -359,29 +363,19 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         </motion.h2>
                     </div>
                     {isIntro ? (
-                        <AnimatePresence>
-                            {isAllExpanded && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                    className="space-y-4 overflow-hidden"
-                                >
-                                    <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-playfair-display)' }}>
-                                        {t('section.expertGuideText')}
-                                    </p>
-                                    {/* Signature with vertical line */}
-                                    <div className="flex items-center gap-3 mt-6">
-                                        <div className="w-px h-10 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
-                                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                            <User weight="duotone" className="h-5 w-5 text-orange-500" />
-                                            <span className="text-sm font-medium">{t('section.expertGuideSignature')}</span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <div className="space-y-4">
+                            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-playfair-display)' }}>
+                                {t('section.expertGuideText')}
+                            </p>
+                            {/* Signature with vertical line */}
+                            <div className="flex items-center gap-3 mt-6">
+                                <div className="w-px h-10 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
+                                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                    <User weight="duotone" className="h-5 w-5 text-orange-500" />
+                                    <span className="text-sm font-medium">{t('section.expertGuideSignature')}</span>
+                                </div>
+                            </div>
+                        </div>
                     ) : (
                         <AnimatePresence>
                             {description && isAllExpanded && (

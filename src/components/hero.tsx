@@ -12,9 +12,9 @@ const ease = [0.16, 1, 0.3, 1] as const;
 // English defaults so the hero never shows raw translation keys before fetch completes
 const defaults: Record<string, string> = {
     "hero.kicker": "Curated local guide",
-    "hero.headingLine1": "Your",
-    "hero.headingAccent": "Amalfi",
-    "hero.headingLine3a": "in your",
+    "hero.headingLine1": "",
+    "hero.headingAccent": "Amalfi,",
+    "hero.headingLine3a": "Right in Your",
     "hero.headingLine3b": "Pocket",
     "hero.description": "Ready-to-use ideas for walks, swims, moto rides, and food stops — with clear directions, offline maps, and simplified transport timings.",
     "hero.bus": "Bus",
@@ -70,7 +70,7 @@ export function Hero() {
                             style={{ fontFamily: 'var(--font-playfair-display)' }}
                             className="font-bold text-[#FDF6F0] text-lg md:text-xl leading-tight tracking-tight truncate"
                         >
-                            {t('hero.headingLine1')}{" "}
+                            {t('hero.headingLine1') && <>{t('hero.headingLine1')}{" "}</>}
                             <span className="text-[#F43600] italic font-normal">{t('hero.headingAccent')}</span>{" "}
                             <span className="font-normal text-[#FDF6F0]/60">{t('hero.headingLine3a')}</span>{" "}
                             {t('hero.headingLine3b')}
@@ -95,7 +95,7 @@ export function Hero() {
 
     // ===== FULL HERO (expanded) =====
     return (
-        <section className="relative w-full h-dvh min-h-[640px] grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+        <section className="relative w-full h-dvh min-h-[640px] grid grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 overflow-hidden gap-0">
 
             {/* Thin vertical divider between panels (desktop only) */}
             <motion.div
@@ -177,7 +177,7 @@ export function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease, delay: 0.6 }}
                     >
-                        <span className="block">{t('hero.headingLine1')}</span>
+                        {t('hero.headingLine1') && <span className="block">{t('hero.headingLine1')}</span>}
                         <span className="block">
                             <span className="text-[#F43600] italic font-normal">{t('hero.headingAccent')}</span>
                         </span>
@@ -267,7 +267,7 @@ export function Hero() {
 
             {/* ===== RIGHT PANEL — Illustration showcase ===== */}
             <div className={`relative flex items-end justify-center overflow-hidden order-1 md:order-2
-                            h-[42vh] min-h-[280px] md:h-auto transition-colors duration-700 ease-out
+                            md:h-auto transition-colors duration-700 ease-out
                             ${isDark ? "bg-[#0D0604]" : "bg-[#FDF6F0]"}`}>
 
                 {/* Soft warm radial — shifts to ember glow in dark */}
@@ -291,7 +291,7 @@ export function Hero() {
                 {/* Decorative circle */}
                 <motion.div
                     className={`absolute z-[1] rounded-full border pointer-events-none
-                               w-[260px] h-[260px] md:w-[50vw] md:min-w-[600px] md:max-w-[740px] md:aspect-square md:h-auto
+                               w-[85%] aspect-square md:w-[50vw] md:min-w-[600px] md:max-w-[740px] md:aspect-square md:h-auto
                                bottom-[-15%] left-1/2 -translate-x-1/2 transition-colors duration-700
                                ${isDark ? "border-[#F43600]/20" : "border-[#F43600]/10"}`}
                     initial={{ opacity: 0, scale: 0.85 }}
@@ -323,7 +323,7 @@ export function Hero() {
                 {/* Watercolor illustration — deeper shadow in dark mode */}
                 <motion.div
                     className="relative z-[2] flex-shrink-0 -mb-[2px]
-                               w-[clamp(200px,55vw,300px)] md:w-[42vw] md:min-w-[520px] md:max-w-[640px]
+                               w-[70vw] max-w-[340px] md:w-[42vw] md:min-w-[520px] md:max-w-[640px]
                                transition-[filter] duration-700"
                     style={{
                         filter: isDark

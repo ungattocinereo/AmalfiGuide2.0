@@ -10,7 +10,7 @@ Una selezione personalmente curata dei migliori luoghi, gemme nascoste e sapori 
 Come città, Atrani dimostra che le dimensioni non contano sulla Costiera Amalfitana. Ecco dove brilla.
 
 ### Chiesa di Santa Maria Maddalena
-**Category**: Luogo Fotografico
+**Category**: Foto Spot
 **Tagline**: Il cuore autentico del borgo
 
 **Short info:**
@@ -26,7 +26,7 @@ In tutta Atrani, noterai cartelli con prominenti frecce verdi—in realtà sono 
 ---
 
 ### Spiaggia di Castiglione (Lido di Ravello)
-**Category**: Spiaggia Nascosta
+**Category**: Spiaggia Segreta
 **Tagline**: Serenità tra le scogliere
 
 **Short info:**
@@ -42,7 +42,7 @@ Incastonato tra due scogliere drammatiche si trova questo luogo pittoresco, a br
 ---
 
 ### Cascata di Atrani
-**Category**: Luogo Nascosto
+**Category**: Luogo Segreto
 **Tagline**: Angolo di pura natura
 
 **Short info:**
@@ -58,7 +58,7 @@ Per trovare questa gemma nascosta, sali lungo Via dei Dogi dalla piazza principa
 ---
 
 ### Chiesa Santa Maria del Bando
-**Category**: Top#1 su Tripadvisor ad Atrani
+**Category**: Top #1
 **Tagline**: Luogo sacro e bellissimo
 
 **Short info:**
@@ -84,7 +84,7 @@ Prenota la tua visita sulla loro pagina Facebook: [S S.M. Del Bando](https://www
 I monumenti essenziali che definiscono la storia e la vita quotidiana di Amalfi.
 
 ### Duomo di Sant'Andrea (Cattedrale di Amalfi)
-**Category**: Monumento Storico
+**Category**: Monumento
 **Tagline**: L'icona di Amalfi
 
 **Short info:**
@@ -102,7 +102,7 @@ Il Duomo è il cuore architettonico di Amalfi, risalente al IX secolo. Questo ma
 ---
 
 ### Belvedere di San Lorenzo
-**Category**: Punto Panoramico
+**Category**: Panorama
 **Tagline**: Il miglior panorama senza fatica
 
 **Short info:**
@@ -136,7 +136,7 @@ Aperto lunedì, mercoledì, venerdì, sabato e domenica (solo mattina).
 ---
 
 ### Cascata Segreta (Valle dei Mulini)
-**Category**: Gemma Nascosta
+**Category**: Gemma Segreta
 **Tagline**: Rovine antiche e acque rinfrescanti
 
 **Short info:**
@@ -171,7 +171,7 @@ La Valle delle Ferriere è una riserva naturale protetta nascosta tra le montagn
 ---
 
 ### Torre dello Ziro
-**Category**: Vista Migliore
+**Category**: Vista Top
 **Tagline**: Storia e il panorama definitivo
 
 **Short info:**
@@ -186,7 +186,7 @@ Questa torre di avvistamento si trova sulla cresta che separa Amalfi e Atrani. L
 ---
 
 ### Sentiero degli Dei
-**Category**: Sentiero Escursionistico
+**Category**: Sentiero
 **Tagline**: L'escursione famosa nel mondo da fare assolutamente
 
 **Short info:**
@@ -207,7 +207,7 @@ Da Nocelle, hai due opzioni per raggiungere Positano: prendere l'autobus Mobilit
 ---
 
 ### Sentiero dei Limoni
-**Category**: Sentiero Escursionistico
+**Category**: Sentiero
 **Tagline**: Una passeggiata profumata baciata dal sole
 
 **Short info:**
@@ -225,7 +225,7 @@ Situato in uno dei punti più affascinanti della costa, il "Sentiero dei Limoni"
 Dalle cucine di famiglia alle sale da pranzo leggendarie sul mare.
 
 ### Le Palme (Atrani)
-**Category**: Ristorante/Pizzeria Familiare
+**Category**: Locale Familiare
 **Tagline**: Ospitalità autentica e pesce
 
 **Short info:**
@@ -245,7 +245,7 @@ L'atmosfera è vivace e cordiale. Salvatore gestisce anche una villa in affitto,
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Ristorante Michelin
+**Category**: Michelin
 **Tagline**: Eccellenza raffinata di pesce
 
 **Short info:**
@@ -261,7 +261,7 @@ Incluso nella Guida Michelin, A'Paranza è dedicato alla qualità. Nonostante l'
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Ristorante/Pizzeria con Vista
+**Category**: Con Vista
 **Tagline**: Il locale più antico di Atrani con vista
 
 **Short info:**
@@ -299,7 +299,7 @@ Le Arcate è un amato locale per chi vuole i migliori posti ad Atrani. Gestito d
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Ristorante Leggendario
+**Category**: Leggendario
 **Tagline**: Dall'orto alla tavola con vista
 
 **Short info:**
@@ -318,7 +318,7 @@ Situato a Vettica (appena sopra Amalfi), Da Ciccio è un'istituzione. Coltivano 
 Piccoli morsi che dicono più di un lungo menu.
 
 ### Panificio Apicella (Amalfi)
-**Category**: Street Food / Colazione
+**Category**: Colazione
 **Tagline**: La pizza da colazione segreta dei locali
 
 **Short info:**
@@ -369,7 +369,7 @@ Pizza Express è una pizzeria locale semplice e senza fronzoli situata nella par
 Mercati locali e negozi specializzati dove troverai i migliori ingredienti.
 
 ### Mimì & Cocò di Tutto Un Po (Atrani)
-**Category**: Mercato Locale
+**Category**: Mercato
 **Tagline**: Una gemma di prodotti autentici della Costiera Amalfitana
 
 **Short info:**
@@ -387,7 +387,7 @@ Il personale competente e accogliente fornisce raccomandazioni esperte su prodot
 ---
 
 ### Supermercato La Grande Mela Deco (Amalfi)
-**Category**: Supermercato e Alimentari
+**Category**: Supermercato
 **Tagline**: Spesa completa con standard di qualità
 
 **Short info:**
@@ -404,7 +404,7 @@ Il negozio è progettato per una spesa comoda con layout organizzato e rotazione
 ---
 
 ### DOGI Market (Amalfi)
-**Category**: Supermercato e Alimentari
+**Category**: Alimentari
 **Tagline**: Mercato locale tradizionale con fascino di quartiere
 
 **Short info:**
@@ -421,7 +421,7 @@ Il negozio beneficia della sua posizione privilegiata su una delle piazze princi
 ---
 
 ### La Tramontina Amalfi
-**Category**: Salumi e Formaggi d'Elite
+**Category**: Salumeria
 **Tagline**: Mozzarella di bufala leggendaria e panini artigianali
 
 **Short info:**
@@ -446,7 +446,7 @@ L'orario di apertura è generalmente 8:00 - 20:00 (domenica 7:00 - 16:00), rende
 Destinazioni che meritano il viaggio oltre le città principali.
 
 ### Ravello - Terrazza dell'Infinito (Villa Cimbrone)
-**Category**: Turismo
+**Category**: Escursione
 **Tagline**: La vista di una vita
 
 **Short info:**
@@ -462,7 +462,7 @@ Ravello siede alta sulle scogliere, a circa 20 minuti di autobus da Amalfi. Il g
 ---
 
 ### Minori e Sal De Riso
-**Category**: Gemma Gustosa
+**Category**: Gemma Golosa
 **Tagline**: Le migliori pasticcerie del mondo
 
 **Short info:**
@@ -484,7 +484,7 @@ L'expertise di Salvatore De Riso è stata ampiamente riconosciuta, guadagnandogl
 ---
 
 ### Al Valico di Chiunzi (Tramonti)
-**Category**: Cucina di Montagna
+**Category**: Cucina Montana
 **Tagline**: Cibo rustico con vista sul Vesuvio
 
 **Short info:**
@@ -500,7 +500,7 @@ Situato a un passo di montagna (Valico di Chiunzi) a circa 900 metri sul livello
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Spiaggia / Relax
+**Category**: Spiaggia
 **Tagline**: Sole, scogliere e spaghetti
 
 **Short info:**
@@ -516,7 +516,7 @@ A differenza di Positano, Marina di Praia ha un'anima rilassata. La spiaggia si 
 ---
 
 ### Lido degli Artisti (Amalfi)
-**Category**: Stabilimento Balneare
+**Category**: Beach Club
 **Tagline**: Accessibile solo in barca o scale
 
 **Short info:**

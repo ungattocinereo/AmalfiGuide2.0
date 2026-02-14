@@ -10,7 +10,7 @@
 Как город, Atrani доказывает, что размер ничего не значит на побережье Амальфи. Вот где он блистает.
 
 ### Церковь Святой Марии Магдалины
-**Category**: Место для фото
+**Category**: Фото Спот
 **Tagline**: Подлинное сердце деревни
 
 **Short info:**
@@ -26,7 +26,7 @@
 ---
 
 ### Пляж Castiglione (Lido di Ravello)
-**Category**: Скрытый пляж
+**Category**: Тайный Пляж
 **Tagline**: Спокойствие между скалами
 
 **Short info:**
@@ -42,7 +42,7 @@
 ---
 
 ### Водопад Atrani
-**Category**: Скрытое место
+**Category**: Тайное Место
 **Tagline**: Место чистой природы
 
 **Short info:**
@@ -58,7 +58,7 @@
 ---
 
 ### Церковь Santa Maria del Bando
-**Category**: Топ#1 в Atrani по Tripadviser
+**Category**: Топ #1
 **Tagline**: Святое и прекрасное место
 
 **Short info:**
@@ -84,7 +84,7 @@
 Главные достопримечательности, которые определяют историю и повседневную жизнь Amalfi.
 
 ### Duomo di Sant'Andrea (Собор Amalfi)
-**Category**: Историческая достопримечательность
+**Category**: Памятник
 **Tagline**: Икона Amalfi
 
 **Short info:**
@@ -102,7 +102,7 @@ Duomo — это архитектурное сердце Amalfi, восходя�
 ---
 
 ### Бельведер San Lorenzo
-**Category**: Смотровая площадка
+**Category**: Панорама
 **Tagline**: Лучшая панорама без подъёма
 
 **Short info:**
@@ -136,7 +136,7 @@ Duomo — это архитектурное сердце Amalfi, восходя�
 ---
 
 ### Секретный водопад (Valle dei Mulini)
-**Category**: Скрытая жемчужина
+**Category**: Жемчужина
 **Tagline**: Древние руины и прохладные воды
 
 **Short info:**
@@ -155,7 +155,7 @@ Duomo — это архитектурное сердце Amalfi, восходя�
 Пешеходные маршруты, раскрывающие Amalfi за пределами городов.
 
 ### Valle delle Ferriere
-**Category**: Природный заповедник
+**Category**: Заповедник
 **Tagline**: Водопады и древняя история
 
 **Short info:**
@@ -171,7 +171,7 @@ Valle delle Ferriere — это охраняемый природный запо
 ---
 
 ### Torre dello Ziro
-**Category**: Лучший вид
+**Category**: Лучший Вид
 **Tagline**: История и идеальная панорама
 
 **Short info:**
@@ -186,7 +186,7 @@ Valle delle Ferriere — это охраняемый природный запо
 ---
 
 ### Тропа Богов (Sentiero degli Dei)
-**Category**: Пешеходный маршрут
+**Category**: Маршрут
 **Tagline**: Всемирно известный поход из списка желаний
 
 **Short info:**
@@ -207,7 +207,7 @@ Valle delle Ferriere — это охраняемый природный запо
 ---
 
 ### Лимонная тропа (Sentiero dei Limoni)
-**Category**: Пешеходный маршрут
+**Category**: Маршрут
 **Tagline**: Ароматная прогулка, целуемая солнцем
 
 **Short info:**
@@ -225,7 +225,7 @@ Valle delle Ferriere — это охраняемый природный запо
 От семейных кухонь до легендарных залов у моря.
 
 ### Le Palme (Atrani)
-**Category**: Семейный ресторан/пиццерия
+**Category**: Семейное
 **Tagline**: Аутентичное гостеприимство и морепродукты
 
 **Short info:**
@@ -245,7 +245,7 @@ Le Palme — это высоко оценённый ресторан, управ
 ---
 
 ### A'Paranza (Atrani)
-**Category**: Мишленовский ресторан
+**Category**: Мишлен
 **Tagline**: Изысканное мастерство морепродуктов
 
 **Short info:**
@@ -261,7 +261,7 @@ Le Palme — это высоко оценённый ресторан, управ
 ---
 
 ### Lo Smeraldino (Amalfi)
-**Category**: Ресторан/пиццерия с видом
+**Category**: С Видом
 **Tagline**: Самое старое место в Atrani с видом
 
 **Short info:**
@@ -283,7 +283,7 @@ Le Palme — это высоко оценённый ресторан, управ
 ---
 
 ### Le Arcate (Atrani)
-**Category**: Ужин на берегу
+**Category**: У Моря
 **Tagline**: Лучшие места в городе
 
 **Short info:**
@@ -299,7 +299,7 @@ Le Arcate — любимое местное место для тех, кто х�
 ---
 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
-**Category**: Легендарный ресторан
+**Category**: Легендарный
 **Tagline**: Из сада на стол с видом
 
 **Short info:**
@@ -318,7 +318,7 @@ Le Arcate — любимое местное место для тех, кто х�
 Небольшие закуски, говорящие больше, чем длинное меню.
 
 ### Пекарня Apicella (Amalfi)
-**Category**: Уличная еда / Завтрак
+**Category**: Завтрак
 **Tagline**: Секретная завтрачная пицца местных
 
 **Short info:**
@@ -334,7 +334,7 @@ Le Arcate — любимое местное место для тех, кто х�
 ---
 
 ### La Rua Pizze E Delizie (Amalfi)
-**Category**: Уличная еда
+**Category**: Street Food
 **Tagline**: Аранчини и закуски на дровах
 
 **Short info:**
@@ -350,7 +350,7 @@ Le Arcate — любимое местное место для тех, кто х�
 ---
 
 ### Pizza Express (Amalfi)
-**Category**: Уличная еда
+**Category**: Street Food
 **Tagline**: Быстрый перекус на главной улице
 
 **Short info:**
@@ -369,7 +369,7 @@ Pizza Express — это прямолинейная, без лишних зат�
 Местные рынки и специализированные магазины, где ты найдёшь лучшие ингредиенты.
 
 ### Mimì & Cocò di Tutto Un Po (Atrani)
-**Category**: Местный рынок
+**Category**: Рынок
 **Tagline**: Жемчужина аутентичных продуктов побережья Amalfi
 
 **Short info:**
@@ -387,7 +387,7 @@ Mimì & Cocò di Tutto Un Po — это очаровательный проду�
 ---
 
 ### Супермаркет La Grande Mela Deco (Amalfi)
-**Category**: Супермаркет и продуктовый магазин
+**Category**: Супермаркет
 **Tagline**: Полный ассортимент продуктов со стандартами качества
 
 **Short info:**
@@ -404,7 +404,7 @@ La Grande Mela Deco — это современный супермаркет в 
 ---
 
 ### DOGI Market (Amalfi)
-**Category**: Супермаркет и Alimentari
+**Category**: Alimentari
 **Tagline**: Традиционный местный рынок с соседским шармом
 
 **Short info:**
@@ -421,7 +421,7 @@ DOGI SRL — это ориентированный на сообщество р�
 ---
 
 ### La Tramontina Amalfi
-**Category**: Элитные колбасы и сыр
+**Category**: Деликатесы
 **Tagline**: Легендарная моцарелла буффало и ремесленные сэндвичи
 
 **Short info:**
@@ -446,7 +446,7 @@ La Tramontina Amalfi, расположенная на Piazza Dei Dogi 26, зар
 Места, стоящие путешествия за пределами главных городов.
 
 ### Ravello - Терраса Бесконечности (Villa Cimbrone)
-**Category**: Экскурсии
+**Category**: Экскурсия
 **Tagline**: Вид всей жизни
 
 **Short info:**
@@ -462,7 +462,7 @@ Ravello расположен высоко на скалах, примерно в
 ---
 
 ### Minori и Sal De Riso
-**Category**: Вкусная жемчужина
+**Category**: Находка
 **Tagline**: Лучшие пирожные в мире
 
 **Short info:**
@@ -484,7 +484,7 @@ Sal De Riso — это не просто кондитер; он знаменит
 ---
 
 ### Al Valico di Chiunzi (Tramonti)
-**Category**: Горный ужин
+**Category**: В Горах
 **Tagline**: Деревенская еда с видом на Везувий
 
 **Short info:**
@@ -500,7 +500,7 @@ Sal De Riso — это не просто кондитер; он знаменит
 ---
 
 ### Marina di Praia (Praiano)
-**Category**: Пляж / Отдых
+**Category**: Пляж
 **Tagline**: Солнце, скалы и спагетти
 
 **Short info:**
@@ -516,7 +516,7 @@ Sal De Riso — это не просто кондитер; он знаменит
 ---
 
 ### Lido degli Artisti (Amalfi)
-**Category**: Пляжный клуб
+**Category**: Beach Club
 **Tagline**: Доступен только на лодке или по ступенькам
 
 **Short info:**
