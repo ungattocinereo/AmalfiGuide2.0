@@ -19,21 +19,23 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amalfi.day"),
-  title: "Amalfi Guide",
-  description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
+  metadataBase: new URL("https://guide.amalfi.day"),
+  title: "Amalfi Coast Guide — Walks, Hidden Gems & Local Food | AMALFI.DAY",
+  description:
+    "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, cliffside restaurants, and hiking trails — with directions, maps, and transport tips in 6 languages.",
   manifest: "/manifest.json",
   openGraph: {
-    title: "guide. AMALFI.DAY",
-    description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops complete with clear directions, offline-friendly maps, and simplified transport timings so moving around stays effortless.",
-    url: "https://amalfi.day",
-    siteName: "Amalfi Guide",
+    title: "Amalfi Coast Guide — Your Pocket Travel Companion",
+    description:
+      "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast. Offline maps, directions & transport tips in 6 languages.",
+    url: "https://guide.amalfi.day",
+    siteName: "AMALFI.DAY Guide",
     images: [
       {
-        url: "/images/site-preview.webp",
-        width: 1456,
-        height: 816,
-        alt: "Amalfi Coast guide with Italian flag",
+        url: "/images/social.png",
+        width: 2985,
+        height: 1714,
+        alt: "Amalfi Coast travel guide — walks, hidden gems, and local food",
       },
     ],
     locale: "en_US",
@@ -41,15 +43,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "guide. AMALFI.DAY",
-    description: "This is your \"Amalfi in a Pocket\" Plan your perfect Amalfi Coast day with ready-to-use ideas for walks, swims, moto rides, and food stops.",
-    images: ["/images/site-preview.webp"],
+    title: "Amalfi Coast Guide — Walks, Gems & Local Food",
+    description:
+      "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, cliffside restaurants & hiking trails — with offline maps in 6 languages.",
+    images: ["/images/social.png"],
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
