@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Merriweather, Libre_Baskerville } from "next/font/google";
+import { Inter, Merriweather, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
@@ -12,11 +12,10 @@ const merriweather = Merriweather({
   variable: "--font-merriweather"
 });
 
-const libreBaskerville = Libre_Baskerville({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-libre-baskerville"
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-playfair-display",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -69,7 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${merriweather.variable} ${libreBaskerville.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${merriweather.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

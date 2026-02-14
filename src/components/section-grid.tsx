@@ -86,7 +86,7 @@ const getSectionIcon = (title: string) => {
 };
 
 export function SectionGrid({ title, description, items, onItemClick }: SectionGridProps) {
-    const { isSectionExpanded, toggleSection } = useLayout();
+    const { isAllExpanded, isSectionExpanded, toggleSection } = useLayout();
     const { t } = useLanguage();
 
     const titleLower = title.toLowerCase();
@@ -109,15 +109,22 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                      titleLower.includes("randonnées") ||
                      titleLower.includes("поход");
 
-    const isExpanded = isIntro || isSectionExpanded(title);
-    const introGridClass = isIntro ? "flex flex-col md:flex-row gap-8 items-center" : "";
+    // Intro now collapses with everything else; individually expandable via click
+    const isExpanded = isSectionExpanded(title);
+    const introGridClass = isIntro && isAllExpanded ? "flex flex-col md:flex-row gap-8 items-center" : "";
+
+    // Compact mode classes
+    const sectionPadding = isAllExpanded ? "py-10 md:py-20" : "py-3 md:py-4";
+    const headerMargin = isAllExpanded ? "mb-8 md:mb-12" : "mb-0";
+    const titleSize = isAllExpanded ? "text-4xl md:text-6xl" : "text-xl md:text-2xl";
+    const caretSize = isAllExpanded ? "h-6 w-6 md:h-8 md:w-8" : "h-4 w-4 md:h-5 md:w-5";
 
     // Special layout for Gems of Atrani
     if (isGemsOfAtrani) {
         return (
-            <section className="py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0">
+            <section className={`${sectionPadding} px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
                 {/* Standard section header */}
-                <div className="mb-8 md:mb-12 text-left">
+                <div className={`${headerMargin} text-left transition-[margin] duration-300`}>
                     <div
                         className="cursor-pointer group flex items-center gap-3 md:gap-4"
                         onClick={() => toggleSection(title)}
@@ -129,7 +136,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         >
                             <CaretRight
                                 weight="bold"
-                                className="h-6 w-6 md:h-8 md:w-8 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-150"
+                                className={`${caretSize} text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-all duration-300`}
                             />
                         </motion.div>
                         <motion.h2
@@ -137,29 +144,33 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50 tracking-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-150"
+                            style={{ fontFamily: 'var(--font-playfair-display)' }}
+                            className={`${titleSize} font-bold text-gray-900 dark:text-gray-50 tracking-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all duration-300`}
                         >
                             {title}
                         </motion.h2>
                     </div>
-                    {description && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-center gap-3 mt-4 ml-9 md:ml-12"
-                        >
-                            <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
-                            <Diamond weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                            <p
-                                className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
-                                style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                                dangerouslySetInnerHTML={{ __html: description }}
-                            />
-                        </motion.div>
-                    )}
+                    <AnimatePresence>
+                        {description && isAllExpanded && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                className="overflow-hidden"
+                            >
+                                <div className="flex items-center gap-3 mt-4 ml-9 md:ml-12">
+                                    <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
+                                    <Diamond weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />
+                                    <p
+                                        className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
+                                        style={{ fontFamily: 'var(--font-playfair-display)' }}
+                                        dangerouslySetInnerHTML={{ __html: description }}
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
 
                 {/* Content grid with text in first column on desktop */}
@@ -179,7 +190,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                     className="hidden md:flex flex-col justify-center col-span-1 row-span-2 pr-4"
                                 >
                                     <h3
-                                        style={{ fontFamily: 'var(--font-libre-baskerville)' }}
+                                        style={{ fontFamily: 'var(--font-playfair-display)' }}
                                         className="text-3xl lg:text-4xl font-light text-gray-900 dark:text-gray-50 leading-tight mb-6"
                                     >
                                         {t('section.gemsIntroTitle')}
@@ -210,9 +221,9 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
     // Special layout for Hiking & Nature - 2 cols desktop, 1 col mobile, 4:3 aspect
     if (isHiking) {
         return (
-            <section className="py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0">
+            <section className={`${sectionPadding} px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
                 {/* Standard section header */}
-                <div className="mb-8 md:mb-12 text-left">
+                <div className={`${headerMargin} text-left transition-[margin] duration-300`}>
                     <div
                         className="cursor-pointer group flex items-center gap-3 md:gap-4"
                         onClick={() => toggleSection(title)}
@@ -224,7 +235,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         >
                             <CaretRight
                                 weight="bold"
-                                className="h-6 w-6 md:h-8 md:w-8 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-150"
+                                className={`${caretSize} text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-all duration-300`}
                             />
                         </motion.div>
                         <motion.h2
@@ -232,29 +243,33 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50 tracking-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-150"
+                            style={{ fontFamily: 'var(--font-playfair-display)' }}
+                            className={`${titleSize} font-bold text-gray-900 dark:text-gray-50 tracking-tight group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all duration-300`}
                         >
                             {title}
                         </motion.h2>
                     </div>
-                    {description && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-center gap-3 mt-4 ml-9 md:ml-12"
-                        >
-                            <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
-                            <Mountains weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                            <p
-                                className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
-                                style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                                dangerouslySetInnerHTML={{ __html: description }}
-                            />
-                        </motion.div>
-                    )}
+                    <AnimatePresence>
+                        {description && isAllExpanded && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                className="overflow-hidden"
+                            >
+                                <div className="flex items-center gap-3 mt-4 ml-9 md:ml-12">
+                                    <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
+                                    <Mountains weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />
+                                    <p
+                                        className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
+                                        style={{ fontFamily: 'var(--font-playfair-display)' }}
+                                        dangerouslySetInnerHTML={{ __html: description }}
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
 
                 {/* Cards grid: 1 col mobile, 2 cols desktop */}
@@ -275,6 +290,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                             layoutId={item.name}
                                             onClick={() => onItemClick(item)}
                                             aspectRatio="aspect-[4/3]"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
                                         />
                                     </motion.div>
                                 ))}
@@ -286,11 +302,14 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
         );
     }
 
+    // Show caret on intro when in compact mode (normally intro has no caret)
+    const showCaret = !isIntro || !isAllExpanded;
+
     return (
-        <section className="py-10 md:py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0">
-            <div className={introGridClass || "mb-8 md:mb-12 text-left"}>
-                {/* Photo - 1/3 on left for intro */}
-                {isIntro && (
+        <section className={`${sectionPadding} px-4 md:px-8 max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/50 last:border-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+            <div className={introGridClass || `${headerMargin} text-left transition-[margin] duration-300`}>
+                {/* Photo - 1/3 on left for intro (hidden in compact mode) */}
+                {isIntro && isAllExpanded && (
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -307,12 +326,12 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                 )}
 
                 {/* Text content - 2/3 on right for intro */}
-                <div className={isIntro ? "md:w-2/3 text-center md:text-left" : ""}>
+                <div className={isIntro && isAllExpanded ? "md:w-2/3 text-center md:text-left" : ""}>
                     <div
-                        className={!isIntro ? "cursor-pointer group flex items-center gap-3 md:gap-4" : ""}
-                        onClick={() => !isIntro && toggleSection(title)}
+                        className={showCaret ? "cursor-pointer group flex items-center gap-3 md:gap-4" : ""}
+                        onClick={() => showCaret && toggleSection(title)}
                     >
-                        {!isIntro && (
+                        {showCaret && (
                             <motion.div
                                 animate={{ rotate: isExpanded ? 90 : 0 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -320,7 +339,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             >
                                 <CaretRight
                                     weight="bold"
-                                    className="h-6 w-6 md:h-8 md:w-8 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-150"
+                                    className={`${caretSize} text-gray-400 dark:text-gray-500 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-all duration-300`}
                                 />
                             </motion.div>
                         )}
@@ -329,8 +348,8 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                            className={`text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-50 tracking-tight ${!isIntro ? "group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-150" : "mb-4"}`}
+                            style={{ fontFamily: 'var(--font-playfair-display)' }}
+                            className={`${titleSize} font-bold text-gray-900 dark:text-gray-50 tracking-tight transition-all duration-300 ${showCaret ? "group-hover:text-orange-600 dark:group-hover:text-orange-400" : "mb-4"}`}
                         >
                             {isIntro ? (
                                 <span dangerouslySetInnerHTML={{ __html: t('section.expertGuideTitle') }} />
@@ -340,44 +359,54 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                         </motion.h2>
                     </div>
                     {isIntro ? (
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="space-y-4"
-                        >
-                            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-libre-baskerville)' }}>
-                                {t('section.expertGuideText')}
-                            </p>
-                            {/* Signature with vertical line */}
-                            <div className="flex items-center gap-3 mt-6">
-                                <div className="w-px h-10 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
-                                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                    <User weight="duotone" className="h-5 w-5 text-orange-500" />
-                                    <span className="text-sm font-medium">{t('section.expertGuideSignature')}</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ) : description && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-center gap-3 mt-4 ml-9 md:ml-12"
-                        >
-                            <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
-                            {(() => {
-                                const Icon = getSectionIcon(title);
-                                return <Icon weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />;
-                            })()}
-                            <p
-                                className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
-                                style={{ fontFamily: 'var(--font-libre-baskerville)' }}
-                                dangerouslySetInnerHTML={{ __html: description }}
-                            />
-                        </motion.div>
+                        <AnimatePresence>
+                            {isAllExpanded && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                    className="space-y-4 overflow-hidden"
+                                >
+                                    <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic mx-auto md:mx-0" style={{ fontFamily: 'var(--font-playfair-display)' }}>
+                                        {t('section.expertGuideText')}
+                                    </p>
+                                    {/* Signature with vertical line */}
+                                    <div className="flex items-center gap-3 mt-6">
+                                        <div className="w-px h-10 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
+                                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                                            <User weight="duotone" className="h-5 w-5 text-orange-500" />
+                                            <span className="text-sm font-medium">{t('section.expertGuideSignature')}</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    ) : (
+                        <AnimatePresence>
+                            {description && isAllExpanded && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="flex items-center gap-3 mt-4 ml-9 md:ml-12">
+                                        <div className="w-px h-8 bg-gradient-to-b from-orange-400 to-orange-200 dark:from-orange-500 dark:to-orange-700"></div>
+                                        {(() => {
+                                            const Icon = getSectionIcon(title);
+                                            return <Icon weight="duotone" className="h-5 w-5 text-orange-500 flex-shrink-0" />;
+                                        })()}
+                                        <p
+                                            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl italic"
+                                            style={{ fontFamily: 'var(--font-playfair-display)' }}
+                                            dangerouslySetInnerHTML={{ __html: description }}
+                                        />
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     )}
                 </div>
             </div>

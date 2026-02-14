@@ -69,6 +69,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         src={imageUrl}
                         alt={item.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, 60vw"
                         className="object-cover"
                         priority
                     />
@@ -111,7 +112,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
+                            style={{ fontFamily: 'var(--font-playfair-display)' }}
                             className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-3 md:mb-5 leading-tight"
                         >
                             {item.name}
@@ -120,7 +121,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.3 }}
-                            style={{ fontFamily: 'var(--font-libre-baskerville)' }}
+                            style={{ fontFamily: 'var(--font-playfair-display)' }}
                             className="text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 italic leading-relaxed"
                         >
                             {item.tagline}

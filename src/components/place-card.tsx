@@ -11,9 +11,10 @@ interface PlaceCardProps {
     layoutId: string;
     onClick: () => void;
     aspectRatio?: string;
+    sizes?: string;
 }
 
-export function PlaceCard({ item, layoutId, onClick, aspectRatio }: PlaceCardProps) {
+export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: PlaceCardProps) {
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
 
@@ -42,6 +43,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio }: PlaceCardPro
                         src={imageUrl}
                         alt={item.name}
                         fill
+                        sizes={sizes || "(max-width: 768px) 50vw, 33vw"}
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                 )}
@@ -53,7 +55,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio }: PlaceCardPro
 
             {/* Content Below */}
             <div className="flex flex-col gap-1.5 px-1">
-                <motion.h3 style={{ fontFamily: 'var(--font-libre-baskerville)' }} className="text-base md:text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
+                <motion.h3 style={{ fontFamily: 'var(--font-playfair-display)' }} className="text-base md:text-lg font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200">
                     {item.name}
                 </motion.h3>
                 <motion.p className="text-sm text-gray-500 dark:text-gray-400 leading-[1.6]">

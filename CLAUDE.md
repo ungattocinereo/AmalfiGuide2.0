@@ -4,183 +4,126 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Amalfi.Day** is a Next.js 16 Progressive Web App (PWA) showcasing curated travel content for the Amalfi Coast. Built by Gregory Day, the project serves as an expert guide featuring locations, restaurants, hiking trails, and hidden gems in the Atrani/Amalfi area.
+**Amalfi.Day** is a Next.js 16 PWA — a curated travel guide for the Amalfi Coast featuring locations, restaurants, hiking trails, and hidden gems. Built with static generation, 6-language support, and instant client-side language switching.
 
 ## Development Commands
 
 ```bash
-# Start development server with webpack (required)
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run linter
-npm run lint
+npm run dev          # Dev server (requires --webpack flag, already configured)
+npm run build        # Production build — also validates markdown parsing
+npm start            # Start production server
+npm run lint         # ESLint
 ```
 
-**Important**: This project requires the `--webpack` flag (already configured in package.json scripts). Do not modify the webpack flag settings.
+**Critical**: The `--webpack` flag is required. Do not remove it from package.json scripts.
 
-## Architecture & Key Concepts
+## Architecture
 
-### Data Flow Architecture
+### Data Flow (Build-Time Static)
 
-The application follows a **static content-driven architecture**:
-
-1. **Content Source**: All content lives in `src/data/texts.md` as structured markdown
-2. **Parser**: `src/lib/markdown-parser.ts` reads and parses the markdown into typed data structures (`CategorySection[]`)
-3. **Static Generation**: Content is parsed at build time (`dynamic = "force-static"` in `src/app/page.tsx`)
-4. **Client Rendering**: Parsed data is passed to client components for interactive UI
-
-### Content Structure
-
-The markdown file (`src/data/texts.md`) follows a strict format:
-
-```markdown
-# Category Name
-Category description text
-
-### Place Name
-**Category**: Photo Spot
-**Tagline**: Short tagline
-**Short info:**
-Brief description for card view
-**The Details:**
-Full description for detail view
-> [!info] Key Links
-> - **Google Maps**: [View Location](url)
-> - **TripAdvisor**: [Rating | Reviews](url)
----
+```
+src/data/content/texts.{lang}.md  (6 language files)
+  → src/lib/markdown-parser.ts    (parseMarkdownContentForLanguage)
+  → CategorySection[] per language
+  → src/app/page.tsx              (force-static, loads ALL 6 languages)
+  → MainContent                   (client component, switches at runtime)
 ```
 
-Each section has:
-- **CategorySection**: title, description, and items array
-- **PlaceItem**: name, category, tagline, shortInfo, details, and links
+All content is parsed at build time. Language switching is instant — no API calls or page reloads.
 
-### Component Architecture
+### Component Hierarchy
 
-**Layout Hierarchy**:
 ```
 RootLayout (layout.tsx)
-├── ThemeProvider (next-themes)
-├── LayoutProvider (expand/collapse state)
-└── MainContent (client component)
-    ├── Navbar (sticky navigation)
-    ├── Hero (orange background with image)
-    ├── SectionGrid[] (one per category)
-    │   └── PlaceCard[] (grid items)
-    └── PlaceDetails (modal overlay)
+├── ThemeProvider (next-themes, dark mode)
+├── LanguageProvider (language-context.tsx)
+└── LayoutProvider (layout-context.tsx, expand/collapse)
+    └── MainContent (main-content.tsx, modal state)
+        ├── LanguageTransition (full-screen overlay animation)
+        ├── Navbar (fixed, glassmorphic)
+        ├── Hero (100vh orange background)
+        ├── SectionGrid[] (category sections)
+        │   └── PlaceCard[] (grid items)
+        ├── PlaceDetails (modal with browser back support)
+        └── Footer (two-tier)
 ```
 
-**State Management**:
-- `LayoutProvider` (`src/components/layout-context.tsx`): Global expand/collapse toggle and per-section expansion state
-- `MainContent` (`src/components/main-content.tsx`): Selected item state for detail modal
+### Three Context Providers
+
+1. **LanguageContext** (`language-context.tsx`): Current language, `setLanguage()`, `t()` for UI translations, transition animation state. Detection priority: URL param → localStorage → browser locale → English.
+2. **LayoutContext** (`layout-context.tsx`): Global expand/collapse toggle + per-section overrides. Intro section always expanded.
+3. **MainContent state**: Selected place item for detail modal + `history.pushState` integration for browser back button.
+
+### Multilingual System
+
+**6 languages**: EN, IT, ES, FR, DE, RU
+
+Two types of translation files:
+- **Content**: `src/data/content/texts.{lang}.md` — place descriptions, parsed by markdown-parser
+- **UI strings**: `public/translations/ui.{lang}.json` — navbar, footer, buttons, accessed via `t('key')`
+
+Language config and types live in `src/lib/i18n/types.ts`.
 
 ### Image & Map Handling
 
-Images are hardcoded in `src/components/place-card.tsx` using a name-matching function:
+All mappings are in `src/lib/place-images.ts` (not in place-card.tsx):
 
-```typescript
-const getImageForPlace = (name: string): string => {
-  const n = name.toLowerCase();
-  if (n.includes("square")) return "/images/atrani_square.png";
-  // ... more mappings
-  return "/images/hero.webp"; // fallback
-}
-```
+- `getImageForPlace(name)` — hardcoded name-to-image mapping with **multilingual keywords** (e.g., "waterfall" | "cascata" | "cascada" | "водопад"). Images served from `/public/guide-webp/`.
+- `hikingMapUrls` — Google Maps embed URLs for hiking trails (displayed as iframes instead of images).
 
-Hiking trails use embedded Google Maps instead of static images:
-```typescript
-const hikingMapUrls: Record<string, string> = {
-  "valle delle ferriere": "https://www.google.com/maps/embed?pb=...",
-  // ... more hiking maps
-}
-```
+### Section-Specific Layouts
 
-When adding new places, you must update these mappings manually.
-
-### Styling System
-
-- **CSS Framework**: Tailwind CSS v4 (using @tailwindcss/postcss)
-- **Animations**: Framer Motion for transitions and layout animations
-- **Theme**: Light/dark mode via `next-themes` with system preference detection
-- **Fonts**:
-  - Inter (sans-serif, body text)
-  - Merriweather (serif, headings)
-- **Design Pattern**: Mobile-first with responsive breakpoints
-
-### PWA Configuration
-
-PWA is handled by `@ducanh2912/next-pwa`:
-- Service worker generation is **disabled in development**
-- Manifest: `public/manifest.json`
-- Config: `next.config.ts`
-
-## File Organization
-
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout with fonts & providers
-│   ├── page.tsx            # Home page (parses markdown)
-│   └── globals.css         # Global styles & Tailwind imports
-├── components/
-│   ├── hero.tsx            # Hero section with orange background
-│   ├── navbar.tsx          # Sticky navigation bar
-│   ├── main-content.tsx    # Main content wrapper (client component)
-│   ├── section-grid.tsx    # Category section with grid of cards
-│   ├── place-card.tsx      # Individual place card
-│   ├── place-details.tsx   # Modal detail view
-│   ├── layout-context.tsx  # Expand/collapse state provider
-│   ├── theme-provider.tsx  # Theme provider wrapper
-│   ├── logo.tsx            # SVG logo component
-│   └── ui/                 # Radix UI components (Button, DropdownMenu)
-├── lib/
-│   ├── markdown-parser.ts  # Markdown parsing logic
-│   └── utils.ts            # cn() utility for className merging
-└── data/
-    ├── texts.md            # Main content file (all place data)
-    └── structure.md        # Design spec/requirements doc
-```
-
-## Path Aliases
-
-TypeScript is configured with `@/*` mapping to `./src/*`:
-
-```typescript
-import { parseMarkdownContent } from "@/lib/markdown-parser";
-import { Hero } from "@/components/hero";
-```
+`section-grid.tsx` renders categories differently based on type:
+- **Expert Guide** (intro): Always expanded, photo left + text right on desktop
+- **Gems of Atrani**: Desktop shows text intro in first grid column, then cards
+- **Hiking & Nature**: 1-col mobile / 2-col desktop, 4:3 aspect, embedded Google Maps
+- **Standard sections**: 2-col mobile (4:5 aspect) / 3-col desktop (4:3 aspect)
 
 ## Working with Content
 
-### Adding New Places
+### Adding a New Place
 
-1. Edit `src/data/texts.md` following the exact format above
-2. Add image to `public/images/` (or use hiking map embed URL)
-3. Update `getImageForPlace()` or `hikingMapUrls` in `src/components/place-card.tsx`
-4. Run `npm run build` to verify parsing works
+1. Add entry to **all 6** `src/data/content/texts.{lang}.md` files using the exact format:
+   ```markdown
+   ### Place Name
+   **Category**: Category Type
+   **Tagline**: Short tagline
+   **Short info:**
+   Brief description
+   **The Details:**
+   Full description
+   > [!info] Key Links
+   > - **Google Maps**: [View Location](url)
+   ---
+   ```
+2. Add image to `public/guide-webp/`
+3. Update `getImageForPlace()` in `src/lib/place-images.ts` with multilingual keywords
+4. For hiking trails, update `hikingMapUrls` in the same file
+5. `npm run build` to verify parsing
 
-### Adding New Categories
+### Adding UI Strings
 
-Categories are automatically created from H1 headers (`# Category Name`) in `texts.md`. No code changes needed unless you want special styling.
+Add to all 6 `public/translations/ui.{lang}.json` files, use via `t('key')` from `useLanguage()`.
 
-## Design Requirements
+### Adding Categories
 
-See `src/data/structure.md` for detailed UI/UX specifications including:
-- Responsive card layouts (mobile: 2-col 4x5, desktop: 16x9)
-- Expand/collapse functionality
-- Modal detail view behavior
-- Footer content and links
-- Future features (motorbike trails, beach reviews, transport timetables)
+Categories are auto-created from H1 headers (`# Category Name`) in the markdown files. Special layout behavior is controlled by name-matching in `section-grid.tsx`.
 
-## Important Notes
+## Key Tech Details
 
-- **No Git Repo**: This directory is not a git repository
-- **Static Export**: The app uses Next.js static generation (`force-static`)
-- **Image Strategy**: Images are not optimized at build time; they're served from `public/images/`
-- **TypeScript**: Strict mode enabled
-- **Font Loading**: Google Fonts (Inter, Merriweather) loaded via next/font
+- **Next.js 16** with App Router, `force-static` generation
+- **Tailwind CSS v4** via `@tailwindcss/postcss`
+- **Framer Motion** for animations (`layoutId` shared element transitions, staggered grids, spring physics)
+- **Fonts**: Inter (body), Libre Baskerville (headings/taglines) — loaded via `next/font`
+- **Icons**: `@phosphor-icons/react`
+- **PWA**: `@ducanh2912/next-pwa`, disabled in dev. Manifest at `public/manifest.json`
+- **Path alias**: `@/*` maps to `./src/*`
+- **Deployment**: Vercel (config in `vercel.json`)
+
+## Design Patterns
+
+- **Glassmorphism**: `bg-white/70 backdrop-blur-2xl` on navbar and transport bar
+- **Primary color**: Orange `#E54800` (hero, theme-color, accents)
+- **Modal**: Uses `history.pushState` so Android/browser back button closes it instead of navigating away
+- **Language transition**: Full-screen overlay with language name in orange, 300ms total
+- **Dark mode**: System preference auto-detection via `next-themes`, manual toggle in navbar

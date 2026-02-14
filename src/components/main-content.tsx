@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { AnimatePresence, motion } from "framer-motion";
 import type { parseMarkdownContent, PlaceItem } from "@/lib/markdown-parser";
 import { useLanguage } from "@/components/language-context";
+import { useLayout } from "@/components/layout-context";
 import { LanguageTransition } from "@/components/language-transition";
 import type { Language } from "@/lib/i18n/types";
 
@@ -20,6 +21,7 @@ interface MainContentProps {
 
 export function MainContent({ allContent }: MainContentProps) {
     const { language } = useLanguage();
+    const { isAllExpanded } = useLayout();
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
 
@@ -66,10 +68,10 @@ export function MainContent({ allContent }: MainContentProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-20 bg-white dark:bg-black -mt-8 rounded-t-[2rem] pt-12 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.15)]"
+                className={`relative z-20 bg-white dark:bg-black transition-[padding] duration-300 ${isAllExpanded ? "pt-12" : "pt-2"}`}
             >
                 {/* Container for Sections */}
-                <div className="space-y-2">
+                <div className={`transition-[gap] duration-300 ${isAllExpanded ? "space-y-2" : "space-y-0"}`}>
                     {sections.map((section, idx) => (
                         <SectionGrid
                             key={idx}

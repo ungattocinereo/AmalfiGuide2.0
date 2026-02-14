@@ -29,6 +29,10 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         setIsAllExpanded(newGlobalState);
         // Reset all individual overrides to match new global state
         setExpandedSections({});
+        // Scroll to top when collapsing so user sees the compact overview
+        if (!newGlobalState) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     };
 
     const toggleSection = (sectionTitle: string) => {
