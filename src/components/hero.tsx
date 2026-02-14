@@ -342,6 +342,7 @@ export function Hero() {
                         width={640}
                         height={800}
                         priority
+                        sizes="(max-width: 768px) 70vw, 640px"
                         placeholder={heroBlur ? "blur" : "empty"}
                         blurDataURL={heroBlur}
                         className="w-full h-auto block"

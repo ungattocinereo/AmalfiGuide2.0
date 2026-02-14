@@ -86,6 +86,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         e.stopPropagation();
                         onClose();
                     }}
+                    aria-label="Close"
                     className="absolute top-4 right-4 z-50 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md transition-all duration-150 hover:scale-105 active:scale-95"
                 >
                     <X size={20} />

@@ -1,6 +1,9 @@
 {
   "navbar.collapseAll": "Tout Réduire",
   "navbar.expandAll": "Tout Développer",
+  "navbar.language": "Langue",
+  "navbar.lightMode": "Mode clair",
+  "navbar.darkMode": "Mode sombre",
   "hero.kicker": "Guide local sélectionné",
   "hero.headingLine1": "",
   "hero.headingAccent": "Amalfi,",

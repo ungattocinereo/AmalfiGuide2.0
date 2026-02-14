@@ -1,6 +1,9 @@
 {
   "navbar.collapseAll": "Свернуть Всё",
   "navbar.expandAll": "Развернуть Всё",
+  "navbar.language": "Язык",
+  "navbar.lightMode": "Светлая тема",
+  "navbar.darkMode": "Тёмная тема",
   "hero.kicker": "Проверенный местный гид",
   "hero.headingLine1": "",
   "hero.headingAccent": "Амальфи,",

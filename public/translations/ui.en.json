@@ -1,6 +1,9 @@
 {
   "navbar.collapseAll": "Collapse All",
   "navbar.expandAll": "Expand All",
+  "navbar.language": "Language",
+  "navbar.lightMode": "Light mode",
+  "navbar.darkMode": "Dark mode",
   "hero.kicker": "Curated local guide",
   "hero.headingLine1": "",
   "hero.headingAccent": "Amalfi,",

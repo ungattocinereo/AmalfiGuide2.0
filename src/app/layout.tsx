@@ -1,16 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Merriweather, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const merriweather = Merriweather({
-  weight: ["300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-merriweather"
-});
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin", "cyrillic"],
@@ -72,7 +67,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${merriweather.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
+      </head>
+      <body className={`${inter.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

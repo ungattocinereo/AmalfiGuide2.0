@@ -96,6 +96,7 @@ export function Navbar() {
                             onClick={toggleAllExpanded}
                             className={compactBtnClass}
                             title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
+                            aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                         >
                             {isAllExpanded ? (
                                 <ArrowsInSimple weight="bold" className="h-3.5 w-3.5" />
@@ -111,6 +112,7 @@ export function Navbar() {
                                     variant="ghost"
                                     size="sm"
                                     className={`${compactBtnClass} w-auto px-2.5 gap-1.5`}
+                                    aria-label={t("navbar.language")}
                                 >
                                     <span className="text-base leading-none">{LANGUAGES[language].flag}</span>
                                     <CaretDown weight="bold" className="h-2.5 w-2.5 opacity-50" />
@@ -125,6 +127,7 @@ export function Navbar() {
                             size="icon"
                             className={compactBtnClass}
                             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                            aria-label={resolvedTheme === "dark" ? t("navbar.lightMode") : t("navbar.darkMode")}
                         >
                             {mounted && resolvedTheme === "dark" ? (
                                 <Moon weight="fill" className="h-3.5 w-3.5" />
@@ -151,6 +154,7 @@ export function Navbar() {
                     onClick={toggleAllExpanded}
                     className={overlayBtnClass}
                     title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
+                    aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                 >
                     {isAllExpanded ? (
                         <ArrowsInSimple weight="bold" className="h-4 w-4" />
@@ -166,6 +170,7 @@ export function Navbar() {
                             variant="ghost"
                             size="sm"
                             className={`${overlayBtnClass} w-auto px-3 gap-1.5`}
+                            aria-label={t("navbar.language")}
                         >
                             <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
                             <CaretDown weight="bold" className="h-3 w-3 opacity-50" />
@@ -180,6 +185,7 @@ export function Navbar() {
                     size="icon"
                     className={overlayBtnClass}
                     onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                    aria-label={resolvedTheme === "dark" ? t("navbar.lightMode") : t("navbar.darkMode")}
                 >
                     {mounted && resolvedTheme === "dark" ? (
                         <Moon weight="fill" className="h-4 w-4" />

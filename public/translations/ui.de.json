@@ -1,6 +1,9 @@
 {
   "navbar.collapseAll": "Alles Einklappen",
   "navbar.expandAll": "Alles Ausklappen",
+  "navbar.language": "Sprache",
+  "navbar.lightMode": "Heller Modus",
+  "navbar.darkMode": "Dunkler Modus",
   "hero.kicker": "Kuratierter lokaler Reiseführer",
   "hero.headingLine1": "",
   "hero.headingAccent": "Amalfi,",
