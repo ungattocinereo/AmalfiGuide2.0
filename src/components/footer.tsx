@@ -30,28 +30,30 @@ type FooterLink = {
     action?: "bookmark";
 };
 
+const MAIN_SITE = "https://amalfi.day";
+
 const footerLinks: Record<string, FooterLink[]> = {
     transport: [
         { label: "footer.ferryTimetables", href: "https://cnr.pw/ferry", external: true, icon: "download" },
         { label: "footer.busTimetables", href: "https://cnr.pw/bus", external: true, icon: "download" },
-        { label: "footer.airportShuttle", href: "/how-to-get", icon: "airplane" },
-        { label: "footer.allPublicTransport", href: "/timetables", icon: "map" },
+        { label: "footer.airportShuttle", href: `${MAIN_SITE}/how-to-get`, external: true, icon: "airplane" },
+        { label: "footer.allPublicTransport", href: `${MAIN_SITE}/timetables`, external: true, icon: "map" },
     ],
     apartments: [
         { label: "footer.gregsGuide", href: "https://guide.amalfi.day", external: true, icon: "signpost" },
-        { label: "footer.apartmentOverview", href: "/apartments", icon: "house-heart" },
+        { label: "footer.apartmentOverview", href: `${MAIN_SITE}/apartments`, external: true, icon: "house-heart" },
         { label: "footer.booking", href: "https://www.booking.com/hotel/it/cristallpont-amalfi-day.html", external: true, icon: "booking" },
         { label: "footer.airbnb", href: "https://airbnb.com/p/atrani", external: true, icon: "house" },
     ],
     info: [
-        { label: "footer.whatToDo", href: "/experience", icon: "star" },
-        { label: "footer.parkingTips", href: "/parking", icon: "parking" },
-        { label: "footer.beachReview", href: "/beaches", icon: "umbrella" },
-        { label: "footer.motoRoads", href: "/moto", icon: "map" },
+        { label: "footer.whatToDo", href: `${MAIN_SITE}/experience`, external: true, icon: "star" },
+        { label: "footer.parkingTips", href: `${MAIN_SITE}/parking`, external: true, icon: "parking" },
+        { label: "footer.beachReview", href: `${MAIN_SITE}/beaches`, external: true, icon: "umbrella" },
+        { label: "footer.motoRoads", href: `${MAIN_SITE}/moto`, external: true, icon: "map" },
     ],
     blog: [
-        { label: "footer.amalfiNews", href: "/blog", icon: "newspaper" },
-        { label: "footer.contactUs", href: "/contact", icon: "envelope" },
+        { label: "footer.amalfiNews", href: `${MAIN_SITE}/blog`, external: true, icon: "newspaper" },
+        { label: "footer.contactUs", href: `${MAIN_SITE}/contact`, external: true, icon: "envelope" },
         { label: "", href: "#", spacer: true },
         { label: "footer.addToBookmarks", href: "#bookmark", icon: "bookmark", action: "bookmark" as const },
     ],
@@ -197,7 +199,9 @@ export function Footer() {
                         </span>
                         <div className="flex items-center gap-2.5 sm:ml-auto sm:text-right flex-wrap">
                             <a
-                                href="/privacy"
+                                href={`${MAIN_SITE}/privacy`}
+                                target="_blank"
+                                rel="noreferrer"
                                 className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                             >
                                 {t("footer.privacyPolicy")}
