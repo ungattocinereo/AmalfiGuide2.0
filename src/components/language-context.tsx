@@ -14,6 +14,16 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const STORAGE_KEY = "amalfi-language";
 
+// Hash-to-language mapping (lowercase keys)
+const HASH_LANGUAGE_MAP: Record<string, Language> = {
+  // Language codes
+  en: 'en', it: 'it', es: 'es', fr: 'fr', de: 'de', ru: 'ru',
+  // English names
+  english: 'en', italian: 'it', spanish: 'es', french: 'fr', german: 'de', russian: 'ru',
+  // Native names
+  italiano: 'it', español: 'es', français: 'fr', deutsch: 'de', русский: 'ru',
+};
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -21,7 +31,20 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize language on mount
   useEffect(() => {
-    // Priority 1: URL search param
+    // Priority 1: URL hash (e.g. #spanish, #italian, #fr)
+    const hash = window.location.hash.replace('#', '').toLowerCase().trim();
+    if (hash) {
+      const hashLang = HASH_LANGUAGE_MAP[decodeURIComponent(hash)];
+      if (hashLang) {
+        setLanguageState(hashLang);
+        // Clean URL (remove hash)
+        window.history.replaceState({}, '', window.location.pathname + window.location.search);
+        localStorage.setItem(STORAGE_KEY, hashLang);
+        return;
+      }
+    }
+
+    // Priority 2: URL search param
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
     if (langParam && isValidLanguage(langParam)) {
@@ -33,14 +56,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Priority 2: localStorage
+    // Priority 3: localStorage
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored && isValidLanguage(stored)) {
       setLanguageState(stored);
       return;
     }
 
-    // Priority 3: Browser locale
+    // Priority 4: Browser locale
     const browserLang = navigator.language.split('-')[0];
     if (isValidLanguage(browserLang)) {
       setLanguageState(browserLang);
@@ -48,7 +71,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Priority 4: Default (English)
+    // Priority 5: Default (English)
     setLanguageState(DEFAULT_LANGUAGE);
     localStorage.setItem(STORAGE_KEY, DEFAULT_LANGUAGE);
   }, []);
