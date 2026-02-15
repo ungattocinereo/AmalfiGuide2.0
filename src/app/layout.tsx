@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-const playfairDisplay = Playfair_Display({
+const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-playfair-display",
+  weight: ["300", "400", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-merriweather",
   display: "swap",
 });
 
@@ -70,7 +70,7 @@ export default function RootLayout({
       <head>
         <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
       </head>
-      <body className={`${inter.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <body className={`${merriweather.variable} font-serif antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -69,7 +69,7 @@ export function Hero() {
                     {/* Compact heading */}
                     <div className="flex-1 min-w-0">
                         <h1
-                            style={{ fontFamily: 'var(--font-playfair-display)' }}
+                            style={{ fontFamily: 'var(--font-merriweather)' }}
                             className="font-bold text-[#FDF6F0] text-lg md:text-xl leading-tight tracking-tight truncate"
                         >
                             {t('hero.headingLine1') && <>{t('hero.headingLine1')}{" "}</>}
@@ -172,7 +172,7 @@ export function Hero() {
 
                     {/* Heading */}
                     <motion.h1
-                        style={{ fontFamily: 'var(--font-playfair-display)' }}
+                        style={{ fontFamily: 'var(--font-merriweather)' }}
                         className="font-bold text-[#FDF6F0] leading-[1.05] tracking-tight
                                    text-[clamp(1.8rem,8vw,2.6rem)] md:text-[clamp(2.8rem,5.5vw,5rem)] lg:text-[5.2rem]"
                         initial={{ opacity: 0, y: 40 }}

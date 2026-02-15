@@ -5,9 +5,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair-display);
-  --font-heading: var(--font-playfair-display);
+  --font-sans: var(--font-merriweather);
+  --font-serif: var(--font-merriweather);
+  --font-heading: var(--font-merriweather);
 
   /* Modern animation timings - fast & snappy */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -44,9 +44,9 @@
     transition: background-color 200ms ease-out, color 200ms ease-out;
   }
 
-  /* Playfair Display for all headings */
+  /* Merriweather for all headings */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair-display);
+    font-family: var(--font-merriweather);
     font-weight: 700;
   }
 
@@ -131,6 +131,16 @@
   /* Subtle pulse */
   .animate-subtle-pulse {
     animation: subtlePulse 2s ease-in-out infinite;
+  }
+
+  /* Touch-action optimization for interactive elements */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Balanced text wrapping for headings */
+  .text-balance {
+    text-wrap: balance;
   }
 
   /* Map embed styling */

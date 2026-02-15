@@ -68,10 +68,10 @@ export function MainContent({ allContent }: MainContentProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative z-20 bg-white dark:bg-black transition-[padding] duration-300 ${isAllExpanded ? "pt-12" : "pt-2"}`}
+                className={`relative z-20 bg-gray-100/80 dark:bg-black transition-[padding] duration-300 ${isAllExpanded ? "pt-8 md:pt-12" : "pt-1"}`}
             >
                 {/* Container for Sections */}
-                <div className={`transition-[gap] duration-300 ${isAllExpanded ? "space-y-2" : "space-y-0"}`}>
+                <div className={`transition-[gap] duration-300 space-y-0`}>
                     {sections.map((section, idx) => (
                         <SectionGrid
                             key={idx}

@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons/react";
-import { Button } from "@/components/ui/button";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
@@ -48,13 +47,14 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 flex flex-col md:flex-row bg-white/98 dark:bg-gray-950/98 backdrop-blur-xl cursor-zoom-out"
+            className="fixed inset-0 z-50 flex flex-col md:flex-row bg-white dark:bg-gray-950 cursor-zoom-out"
             onClick={onClose}
+            style={{ overscrollBehavior: "contain" }}
         >
-            {/* Visual Section: Mobile Top 1/4, Desktop Right 1/2 */}
+            {/* Visual Section: Mobile Top, Desktop Right Half */}
             <motion.div
                 layoutId={layoutId}
-                className="relative w-full h-[35vh] md:h-full md:w-1/2 md:order-2 cursor-zoom-out overflow-hidden"
+                className="relative w-full h-[45vh] md:h-full md:w-1/2 md:order-2 cursor-zoom-out overflow-hidden flex-shrink-0"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
                 {hikingMapUrl ? (
@@ -78,38 +78,48 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         blurDataURL={blurDataURL}
                     />
                 )}
-                {/* Close Button */}
-                <Button
-                    variant="ghost"
-                    size="icon"
+
+                {/* Gradient overlay for visual flow into content (mobile) */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent md:hidden pointer-events-none" />
+
+                {/* Close Button - proper 48px touch target */}
+                <button
                     onClick={(e) => {
                         e.stopPropagation();
                         onClose();
                     }}
                     aria-label="Close"
-                    className="absolute top-4 right-4 z-50 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md transition-all duration-150 hover:scale-105 active:scale-95"
+                    className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
                 >
-                    <X size={20} />
-                </Button>
+                    <X size={22} weight="bold" />
+                </button>
 
+                {/* Safe area for notch */}
+                <div className="absolute top-0 inset-x-0" style={{ height: 'env(safe-area-inset-top)' }} />
             </motion.div>
 
             {/* Content Section: Scrollable */}
             <motion.div
-                className="flex-1 overflow-y-auto p-6 md:p-12 md:w-1/2 md:order-1 relative cursor-auto"
+                className="flex-1 overflow-y-auto px-6 pt-2 pb-8 md:px-12 md:pt-12 md:pb-12 md:w-1/2 md:order-1 relative cursor-auto"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 onClick={handleContentClick}
+                style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
             >
-                <div className="max-w-xl mx-auto space-y-8 min-h-full flex flex-col justify-center">
+                {/* Pull indicator (mobile only) */}
+                <div className="flex justify-center py-3 md:hidden">
+                    <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                </div>
+
+                <div className="max-w-xl mx-auto space-y-6 md:space-y-8 md:min-h-full md:flex md:flex-col md:justify-center">
                     <div>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.3 }}
-                            className="text-gray-400 font-bold uppercase tracking-wider mb-2 text-xs"
+                            className="text-orange-500 dark:text-orange-400 font-bold uppercase tracking-wider mb-2 text-xs"
                         >
                             {item.category}
                         </motion.p>
@@ -117,8 +127,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ fontFamily: 'var(--font-playfair-display)' }}
-                            className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50 mb-3 md:mb-5 leading-tight"
+                            style={{ fontFamily: 'var(--font-merriweather)', textWrap: 'balance' } as React.CSSProperties}
+                            className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-3 md:mb-5 leading-tight"
                         >
                             {item.name}
                         </motion.h2>
@@ -126,8 +136,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.3 }}
-                            style={{ fontFamily: 'var(--font-playfair-display)' }}
-                            className="text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 italic leading-relaxed"
+                            style={{ fontFamily: 'var(--font-merriweather)' }}
+                            className="text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400 italic leading-relaxed"
                         >
                             {item.tagline}
                         </motion.p>
@@ -137,19 +147,19 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.35, duration: 0.3 }}
-                        className="prose dark:prose-invert prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:font-light prose-p:leading-loose"
+                        className="prose dark:prose-invert prose-base md:prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-[1.8]"
                     >
                         {item.details.split('\n\n').map((paragraph, idx) => (
                             <p key={idx}>{paragraph}</p>
                         ))}
                     </motion.div>
 
-                    {/* Links Section */}
+                    {/* Links Section - larger touch targets */}
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.3 }}
-                        className="pt-6 space-y-4"
+                        className="pt-4 space-y-2"
                     >
                         {item.links.map((link: { label: string; url: string }, i: number) => {
                             // Determine link type
@@ -188,24 +198,24 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group flex items-center gap-5 py-2 hover:translate-x-1 transition-transform duration-200 ease-out"
+                                    className="group flex items-center gap-4 py-3 px-4 -mx-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-200 min-h-[52px] touch-manipulation"
                                 >
-                                    <div className="h-11 w-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-white group-hover:bg-orange-100 dark:group-hover:bg-orange-900/30 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all duration-200">
+                                    <div className="h-12 w-12 flex items-center justify-center rounded-full bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 flex-shrink-0 group-hover:bg-orange-100 dark:group-hover:bg-orange-900/50 transition-colors duration-200">
                                         {isGoogleMaps ? (
-                                            <MapPin size={20} weight="duotone" />
+                                            <MapPin size={22} weight="duotone" />
                                         ) : isTripAdvisor ? (
-                                            <StarHalf size={20} weight="duotone" />
+                                            <StarHalf size={22} weight="duotone" />
                                         ) : isHikeLink ? (
-                                            <MapTrifold size={20} weight="duotone" />
+                                            <MapTrifold size={22} weight="duotone" />
                                         ) : (
-                                            <ArrowSquareOut size={20} weight="duotone" />
+                                            <ArrowSquareOut size={22} weight="duotone" />
                                         )}
                                     </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-orange-500 transition-colors duration-150">
+                                    <div className="flex flex-col min-w-0">
+                                        <span className="text-xs font-bold uppercase tracking-wider text-gray-400 group-hover:text-orange-500 transition-colors duration-150">
                                             {superscriptText}
                                         </span>
-                                        <span className="text-lg font-medium text-gray-900 dark:text-white">
+                                        <span className="text-base font-medium text-gray-900 dark:text-white truncate">
                                             {linkText}
                                         </span>
                                     </div>
