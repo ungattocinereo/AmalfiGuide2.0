@@ -92,9 +92,9 @@ export function Navbar() {
                         {/* Expand/Collapse */}
                         <Button
                             variant="ghost"
-                            size="icon"
+                            size="sm"
                             onClick={toggleAllExpanded}
-                            className={compactBtnClass}
+                            className={`${compactBtnClass} w-auto px-2.5 gap-1.5`}
                             title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                             aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                         >
@@ -103,6 +103,7 @@ export function Navbar() {
                             ) : (
                                 <ArrowsOutSimple weight="bold" className="h-3.5 w-3.5" />
                             )}
+                            <span className="text-xs font-medium">{isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}</span>
                         </Button>
 
                         {/* Language */}
@@ -115,6 +116,7 @@ export function Navbar() {
                                     aria-label={t("navbar.language")}
                                 >
                                     <span className="text-base leading-none">{LANGUAGES[language].flag}</span>
+                                    <span className="text-xs font-medium">{t("navbar.language")}</span>
                                     <CaretDown weight="bold" className="h-2.5 w-2.5 opacity-50" />
                                 </Button>
                             </DropdownMenuTrigger>
@@ -150,9 +152,9 @@ export function Navbar() {
                 {/* Expand/Collapse */}
                 <Button
                     variant="ghost"
-                    size="icon"
+                    size="sm"
                     onClick={toggleAllExpanded}
-                    className={overlayBtnClass}
+                    className={`${overlayBtnClass} w-auto px-3 gap-1.5`}
                     title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                     aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
                 >
@@ -161,6 +163,7 @@ export function Navbar() {
                     ) : (
                         <ArrowsOutSimple weight="bold" className="h-4 w-4" />
                     )}
+                    <span className="text-xs font-medium">{isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}</span>
                 </Button>
 
                 {/* Language */}
@@ -173,6 +176,7 @@ export function Navbar() {
                             aria-label={t("navbar.language")}
                         >
                             <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
+                            <span className="text-sm font-medium">{t("navbar.language")}</span>
                             <CaretDown weight="bold" className="h-3 w-3 opacity-50" />
                         </Button>
                     </DropdownMenuTrigger>
