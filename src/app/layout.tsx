@@ -15,9 +15,9 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://guide.amalfi.day"),
-  title: "Amalfi Coast Guide — Walks, Hidden Gems & Local Food | AMALFI.DAY",
+  title: "Amalfi Coast Guide — Walks, Gems & Local Food",
   description:
-    "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, cliffside restaurants, and hiking trails — with directions, maps, and transport tips in 6 languages.",
+    "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails — with maps and transport tips in 6 languages.",
   manifest: "/manifest.json",
   openGraph: {
     title: "Amalfi Coast Guide — Your Pocket Travel Companion",
@@ -54,6 +54,9 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  alternates: {
+    canonical: "https://guide.amalfi.day",
+  },
 };
 
 export const viewport: Viewport = {
@@ -69,6 +72,56 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "name": "Amalfi Coast Guide",
+                  "url": "https://guide.amalfi.day",
+                  "description": "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails.",
+                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"],
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "CristallPont S.R.L.",
+                    "url": "https://amalfi.day"
+                  }
+                },
+                {
+                  "@type": "TravelGuide",
+                  "name": "Amalfi Coast Guide — Walks, Gems & Local Food",
+                  "url": "https://guide.amalfi.day",
+                  "description": "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast.",
+                  "about": {
+                    "@type": "Place",
+                    "name": "Amalfi Coast",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressRegion": "Campania",
+                      "addressCountry": "IT"
+                    }
+                  },
+                  "author": {
+                    "@type": "Person",
+                    "name": "Gregory Day",
+                    "url": "https://cinereo.it"
+                  },
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "CristallPont S.R.L.",
+                    "url": "https://amalfi.day"
+                  },
+                  "datePublished": "2024-01-01",
+                  "dateModified": "2025-06-01",
+                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"]
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${merriweather.variable} font-serif antialiased`}>
         <ThemeProvider

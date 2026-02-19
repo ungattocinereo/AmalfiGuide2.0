@@ -66,7 +66,6 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
-            aria-label={`View details for ${item.name}`}
         >
             {/* Card container — clean white card with border */}
             <div className="rounded-2xl bg-white dark:bg-gray-900 border border-gray-200/60 dark:border-gray-800 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-gray-700 transition-all duration-300 overflow-hidden">
@@ -76,6 +75,8 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                         <iframe
                             src={hikingMapUrl}
                             className="map-embed"
+                            width={600}
+                            height={450}
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
@@ -84,8 +85,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                     ) : (
                         <Image
                             src={imageUrl}
-                            alt={item.name}
+                            alt=""
                             fill
+                            quality={65}
                             sizes={sizes || "(max-width: 768px) 50vw, 33vw"}
                             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                             placeholder={blurDataURL ? "blur" : "empty"}

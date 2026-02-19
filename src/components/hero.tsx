@@ -62,6 +62,7 @@ export function Hero() {
                             alt="Amalfi.Day"
                             width={40}
                             height={40}
+                            priority
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -144,6 +145,7 @@ export function Hero() {
                             alt="Amalfi.Day"
                             width={48}
                             height={48}
+                            priority
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -152,6 +154,8 @@ export function Hero() {
                         <img
                             src="/images/guide-logo.svg"
                             alt="guide. AMALFI.DAY"
+                            width={120}
+                            height={33}
                             className="h-full w-auto block"
                         />
                     </div>

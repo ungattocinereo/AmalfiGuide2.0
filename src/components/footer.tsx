@@ -83,8 +83,7 @@ function LinkIcon({ icon, className }: { icon: string; className?: string }) {
         case "booking": return (
             <img
                 src="/brand/booking.svg"
-                alt=""
-                aria-hidden="true"
+                alt="Booking.com"
                 className="w-4 h-4 object-contain inline-block dark:invert dark:opacity-70"
                 loading="lazy"
             />
@@ -112,7 +111,7 @@ function FooterColumn({ links }: { links: FooterLink[] }) {
                         key={i}
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noreferrer" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
                         onClick={item.action === "bookmark" ? handleBookmark : undefined}
                         className="group flex items-center gap-2 text-gray-700 dark:text-gray-300 text-[1.1rem] sm:text-[0.95rem] font-medium border-b border-gray-200 dark:border-gray-700/50 pb-2 sm:pb-1.5 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
                     >
@@ -152,12 +151,16 @@ export function Footer() {
                                     className="h-14 sm:h-14 w-auto max-w-[240px] object-contain block dark:hidden"
                                     src="/brand/logo-color-black.svg"
                                     alt="Amalfi.Day"
+                                    width={240}
+                                    height={56}
                                     loading="lazy"
                                 />
                                 <img
                                     className="h-14 sm:h-14 w-auto max-w-[240px] object-contain hidden dark:block"
                                     src="/brand/logo-color-white.svg"
                                     alt="Amalfi.Day"
+                                    width={240}
+                                    height={56}
                                     loading="lazy"
                                 />
                             </div>
@@ -167,7 +170,7 @@ export function Footer() {
                                         key={item.label}
                                         href={item.href}
                                         target="_blank"
-                                        rel="noreferrer"
+                                        rel="noopener noreferrer"
                                         aria-label={item.label}
                                         className={`w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 inline-flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-200 hover:-translate-y-0.5 ${item.hoverClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500`}
                                     >
@@ -201,7 +204,7 @@ export function Footer() {
                             <a
                                 href={`${MAIN_SITE}/privacy`}
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
                                 className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                             >
                                 {t("footer.privacyPolicy")}
@@ -212,7 +215,7 @@ export function Footer() {
                                     className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                                     href="https://cinereo.it"
                                     target="_blank"
-                                    rel="noreferrer"
+                                    rel="noopener noreferrer"
                                 >Cinereo</a>&rsquo; Day
                             </span>
                         </div>

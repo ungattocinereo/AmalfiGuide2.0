@@ -81,6 +81,7 @@ export function Navbar() {
                                 alt="Amalfi.Day"
                                 width={28}
                                 height={28}
+                                priority
                                 className="w-full h-full object-cover"
                             />
                         </div>
@@ -113,7 +114,6 @@ export function Navbar() {
                                     variant="ghost"
                                     size="sm"
                                     className={`${compactBtnClass} w-auto px-2.5 gap-1.5`}
-                                    aria-label={t("navbar.language")}
                                 >
                                     <span className="text-base leading-none">{LANGUAGES[language].flag}</span>
                                     <span className="text-xs font-medium">{t("navbar.language")}</span>
@@ -173,7 +173,6 @@ export function Navbar() {
                             variant="ghost"
                             size="sm"
                             className={`${overlayBtnClass} w-auto px-3 gap-1.5`}
-                            aria-label={t("navbar.language")}
                         >
                             <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
                             <span className="text-sm font-medium">{t("navbar.language")}</span>
