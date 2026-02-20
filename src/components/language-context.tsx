@@ -36,7 +36,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (hash) {
       const hashLang = HASH_LANGUAGE_MAP[decodeURIComponent(hash)];
       if (hashLang) {
-        setLanguageState(hashLang);
+        setLanguageState(hashLang); // eslint-disable-line react-hooks/set-state-in-effect -- reading browser URL on mount
         // Clean URL (remove hash)
         window.history.replaceState({}, '', window.location.pathname + window.location.search);
         localStorage.setItem(STORAGE_KEY, hashLang);

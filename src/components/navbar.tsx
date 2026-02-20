@@ -24,7 +24,7 @@ export function Navbar() {
     const observerRef = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
-        setMounted(true);
+        setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
     }, []);
 
     // Observe the hero section to toggle navbar state

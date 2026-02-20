@@ -12,7 +12,7 @@ export function LanguageTransition() {
 
   // Prevent hydration mismatch
   useEffect(() => {
-    setMounted(true);
+    setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   // Don't render until mounted to avoid hydration issues
