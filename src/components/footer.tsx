@@ -187,48 +187,44 @@ export function Footer() {
                 </div>
             </motion.div>
 
-            {/* Bottom bar — two-column: left legal, right links */}
-            <div className="border-t border-gray-200 dark:border-gray-800">
-                <div className="max-w-6xl mx-auto px-5 sm:px-8 py-4 sm:py-5">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 text-[0.78rem] text-gray-400 dark:text-gray-500">
-                        {/* Left — legal entity */}
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 sm:divide-x sm:divide-gray-300/50 dark:sm:divide-gray-700/50">
-                            <span className="sm:pr-2.5">
-                                © 2014–{new Date().getFullYear()} CristallPont S.R.L.
+            {/* Bottom bar */}
+            <div className="border-t border-gray-200/80 dark:border-gray-800/80">
+                <div className="max-w-6xl mx-auto px-5 sm:px-8 py-4">
+                    <div className="flex flex-col gap-3 text-[0.72rem] text-gray-400 dark:text-gray-500 leading-relaxed">
+                        {/* Top row — legal + policies */}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                            <span>
+                                © 2014–{new Date().getFullYear()} CristallPont S.R.L. · P.IVA 06863730650 · Atrani (SA), Italy
                             </span>
-                            <span className="sm:px-2.5">
-                                P.IVA: 06863730650
-                            </span>
-                            <span className="sm:px-2.5">
-                                Traversa Dragone 2, 84010 Atrani (SA), Italy
-                            </span>
-                            <a
-                                href="mailto:hello@amalfi.day"
-                                className="sm:pl-2.5 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                            >
-                                hello@amalfi.day
-                            </a>
+                            <div className="flex items-center gap-0 flex-wrap">
+                                <a
+                                    href="/privacy"
+                                    className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                                >
+                                    {t("footer.privacyPolicy")}
+                                </a>
+                                <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
+                                <a
+                                    href="/terms"
+                                    className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                                >
+                                    {t("footer.terms")}
+                                </a>
+                                <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
+                                <a
+                                    href="mailto:hello@amalfi.day"
+                                    className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                                >
+                                    hello@amalfi.day
+                                </a>
+                            </div>
                         </div>
 
-                        {/* Right — policy links + credit */}
-                        <div className="flex items-center gap-0 flex-wrap text-gray-400 dark:text-gray-500">
-                            <a
-                                href="/privacy"
-                                className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                            >
-                                {t("footer.privacyPolicy")}
-                            </a>
-                            <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
-                            <a
-                                href="/terms"
-                                className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                            >
-                                {t("footer.terms")}
-                            </a>
-                            <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
-                            <span>
+                        {/* Bottom row — designer credit in monospace */}
+                        <div className="text-center sm:text-left">
+                            <span className="font-mono text-[0.68rem] tracking-wide text-gray-300 dark:text-gray-600">
                                 Design & Development Gregory &lsquo;<a
-                                    className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                                    className="hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
                                     href="https://cinereo.it"
                                     target="_blank"
                                     rel="noopener noreferrer"

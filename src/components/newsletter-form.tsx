@@ -6,12 +6,7 @@ import { useLanguage } from "@/components/language-context";
 
 const SUBSCRIBE_URL = "https://amalfi.day/hooks/subscribe-amalfiday";
 
-interface NewsletterFormProps {
-    /** "dark" renders on the warm dark pre-footer; "light" (default) uses adaptive theme colors */
-    variant?: "dark" | "light";
-}
-
-export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
+export function NewsletterForm() {
     const { t } = useLanguage();
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -19,8 +14,6 @@ export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
     const loadedAt = useRef(0);
     useEffect(() => { loadedAt.current = Date.now(); }, []);
     const hpRef = useRef<HTMLInputElement>(null);
-
-    const isDark = variant === "dark";
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -57,9 +50,7 @@ export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
 
     if (status === "success") {
         return (
-            <div className={`flex items-center gap-2.5 py-3 animate-in fade-in duration-500 ${
-                isDark ? "text-green-400" : "text-green-600 dark:text-green-400"
-            }`}>
+            <div className="flex items-center gap-2.5 py-3 animate-in fade-in duration-500 text-green-700 dark:text-green-400">
                 <CheckCircle size={20} weight="fill" />
                 <span className="text-sm font-medium">{t("newsletter.success")}</span>
             </div>
@@ -77,11 +68,7 @@ export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
                     required
                     autoComplete="email"
                     aria-label="Email"
-                    className={`flex-1 min-w-0 px-4 py-2.5 text-sm rounded-full transition-colors focus:outline-none ${
-                        isDark
-                            ? "bg-white/[0.07] border border-white/[0.1] text-[#FDF6F0] placeholder:text-[#FDF6F0]/30 focus:border-[#F43600]/40 focus:bg-white/[0.09]"
-                            : "bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-500 dark:focus:border-orange-400"
-                    }`}
+                    className="flex-1 min-w-0 px-4 py-2.5 text-sm rounded-full transition-colors focus:outline-none bg-white/80 dark:bg-white/[0.07] border border-[#1A0A00]/10 dark:border-white/[0.1] text-[#1A0A00] dark:text-[#FDF6F0] placeholder:text-[#1A0A00]/35 dark:placeholder:text-[#FDF6F0]/30 focus:border-[#F43600]/40 focus:bg-white dark:focus:bg-white/[0.09]"
                 />
                 {/* Honeypot */}
                 <input
@@ -96,11 +83,7 @@ export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
                 <button
                     type="submit"
                     disabled={status === "loading"}
-                    className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all disabled:opacity-60 shrink-0 flex items-center justify-center gap-2 group ${
-                        isDark
-                            ? "bg-[#F43600] hover:bg-[#FF4D1A] text-white shadow-[0_4px_24px_rgba(244,54,0,0.25)] hover:shadow-[0_6px_32px_rgba(244,54,0,0.35)]"
-                            : "bg-orange-600 hover:bg-orange-700 text-white"
-                    }`}
+                    className="px-5 py-2.5 text-sm font-medium rounded-full transition-all disabled:opacity-60 shrink-0 flex items-center justify-center gap-2 group bg-[#F43600] hover:bg-[#FF4D1A] text-white shadow-[0_2px_12px_rgba(244,54,0,0.15)] hover:shadow-[0_4px_20px_rgba(244,54,0,0.25)] dark:shadow-[0_4px_24px_rgba(244,54,0,0.25)] dark:hover:shadow-[0_6px_32px_rgba(244,54,0,0.35)]"
                 >
                     {status === "loading" ? (
                         <CircleNotch size={16} className="animate-spin" />
@@ -116,9 +99,7 @@ export function NewsletterForm({ variant = "light" }: NewsletterFormProps) {
                 </button>
             </div>
             {status === "error" && errorMsg && (
-                <p className={`mt-2.5 text-xs ${
-                    isDark ? "text-red-400" : "text-red-500 dark:text-red-400"
-                }`} role="alert">
+                <p className="mt-2.5 text-xs text-red-600 dark:text-red-400" role="alert">
                     {errorMsg}
                 </p>
             )}

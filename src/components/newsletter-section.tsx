@@ -11,27 +11,27 @@ export function NewsletterSection() {
     const { t } = useLanguage();
 
     return (
-        <section className="relative bg-[#1A0A00] overflow-hidden">
-            {/* Warm radial gradients — matching the hero aesthetic */}
+        <section className="relative overflow-hidden bg-[#FDF6F0] dark:bg-[#1A0A00] transition-colors duration-500">
+            {/* Warm radial gradients */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none"
+                className="absolute inset-0 z-0 pointer-events-none dark:opacity-100 opacity-60"
                 style={{
                     background:
-                        "radial-gradient(ellipse 70% 60% at 0% 100%, rgba(244,54,0,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 100% 0%, rgba(244,54,0,0.06) 0%, transparent 55%)",
+                        "radial-gradient(ellipse 70% 60% at 0% 100%, rgba(244,54,0,0.08) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 100% 0%, rgba(244,54,0,0.05) 0%, transparent 55%)",
                 }}
             />
 
             {/* Fine grain texture */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.025] dark:opacity-[0.03]"
                 style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
                     backgroundSize: "180px",
                 }}
             />
 
-            {/* Subtle top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F43600]/20 to-transparent" />
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F43600]/15 dark:via-[#F43600]/20 to-transparent" />
 
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
@@ -58,7 +58,7 @@ export function NewsletterSection() {
 
                         <motion.h2
                             style={{ fontFamily: "var(--font-merriweather)" }}
-                            className="text-[#FDF6F0] text-xl sm:text-2xl md:text-[1.7rem] font-bold leading-snug tracking-tight"
+                            className="text-[#1A0A00] dark:text-[#FDF6F0] text-xl sm:text-2xl md:text-[1.7rem] font-bold leading-snug tracking-tight transition-colors duration-500"
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -76,7 +76,7 @@ export function NewsletterSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, ease, delay: 0.35 }}
                     >
-                        <NewsletterForm variant="dark" />
+                        <NewsletterForm />
                     </motion.div>
                 </div>
             </motion.div>
