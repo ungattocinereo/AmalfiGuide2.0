@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
+import { EnvironmentBadge } from "@/components/environment-badge";
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
@@ -136,6 +137,7 @@ export default function RootLayout({
             </LayoutProvider>
           </LanguageProvider>
         </ThemeProvider>
+        <EnvironmentBadge />
       </body>
     </html>
   );

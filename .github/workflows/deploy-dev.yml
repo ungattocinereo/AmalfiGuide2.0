@@ -1,0 +1,123 @@
+# .github/workflows/deploy-dev.yml
+#
+# Deploys feature branches to Vercel preview environments.
+# Creates a new deployment on push, deletes it when branch is deleted.
+#
+# Trigger: push to any branch EXCEPT main
+# Trigger: branch deletion (for cleanup)
+#
+# Deployment URL: auto-generated *.vercel.app
+
+name: Deploy Dev
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+  delete:
+    branches:
+      - '**'
+
+concurrency:
+  group: dev-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    name: Deploy to Dev
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Vercel CLI
+        run: npm i -g vercel
+
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Build project
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          NEXT_PUBLIC_DEPLOY_ENV: development
+
+      - name: Deploy to Vercel (preview)
+        id: deploy
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta branch=${{ github.ref_name }})
+          echo "url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
+          echo "### :rocket: Dev Deployment" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Branch:** \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "**URL:** $DEPLOY_URL" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Comment PR with deploy URL
+        if: github.event_name == 'push'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`,
+              state: 'open'
+            });
+            for (const pr of prs) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: `**:rocket: Dev Preview deployed!**\n\n${{ steps.deploy.outputs.url }}\n\nBranch: \`${{ github.ref_name }}\` | Commit: \`${context.sha.substring(0, 7)}\``
+              });
+            }
+
+  cleanup:
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+    name: Cleanup Dev Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Vercel CLI
+        run: npm i -g vercel
+
+      - name: Remove deployments for deleted branch
+        run: |
+          echo "### :wastebasket: Cleaning up deployments for branch: ${{ github.event.ref }}" >> "$GITHUB_STEP_SUMMARY"
+
+          # List all deployments with this branch metadata
+          DEPLOYMENTS=$(vercel list --token=${{ secrets.VERCEL_TOKEN }} --meta branch=${{ github.event.ref }} 2>/dev/null | grep -E 'https://' | awk '{print $2}' || true)
+
+          if [ -z "$DEPLOYMENTS" ]; then
+            echo "No deployments found for branch ${{ github.event.ref }}"
+            echo "No deployments found to clean up." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          for URL in $DEPLOYMENTS; do
+            echo "Removing deployment: $URL"
+            vercel remove "$URL" --yes --token=${{ secrets.VERCEL_TOKEN }} || true
+            echo "- Removed: $URL" >> "$GITHUB_STEP_SUMMARY"
+          done
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

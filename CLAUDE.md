@@ -118,7 +118,36 @@ Categories are auto-created from H1 headers (`# Category Name`) in the markdown 
 - **Icons**: `@phosphor-icons/react`
 - **PWA**: `@ducanh2912/next-pwa`, disabled in dev. Manifest at `public/manifest.json`
 - **Path alias**: `@/*` maps to `./src/*`
-- **Deployment**: Vercel (config in `vercel.json`)
+- **Deployment**: Vercel via GitHub Actions (see Deployment Pipeline below)
+
+## Deployment Pipeline
+
+Three-tier deployment via GitHub Actions + Vercel CLI:
+
+| Environment | Trigger | Domain | Workflow |
+|-------------|---------|--------|----------|
+| **Dev** | Push to any branch except `main` | Auto-generated `*.vercel.app` | `deploy-dev.yml` |
+| **Stage** | Push to `main` | Auto-generated `*.vercel.app` | `deploy-stage.yml` |
+| **Prod** | GitHub Release published | `guide.amalfi.day` | `deploy-prod.yml` |
+
+### Branch Strategy
+- `feature/*` or any non-main branch → Dev preview deployment
+- `main` → Stage deployment (lint must pass)
+- GitHub Release (tag from main) → Production deployment
+
+### Environment Cleanup
+- Deleting a feature branch automatically removes its Vercel deployment
+- Stage is overwritten on each push to main
+- Production only changes on explicit GitHub Release
+
+### Creating a Release
+```bash
+gh release create v1.x.x --target main --title "Release title" --notes "Release notes"
+```
+
+### Environment Variables
+- `NEXT_PUBLIC_DEPLOY_ENV`: Set per workflow — `development`, `staging`, or `production`
+- Vercel secrets (`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`): In GitHub repo secrets
 
 ## Design Patterns
 
