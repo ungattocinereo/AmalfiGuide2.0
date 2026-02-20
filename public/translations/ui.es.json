@@ -51,5 +51,15 @@
   "section.gemsIntroText": "Un pueblo compacto comprimido en solo 0,2 km², enclavado entre el Monte Aureo y el Monte Civita y abierto directamente al mar. Vivimos aquí, y esta es una introducción cuidada a los lugares que definen la vida cotidiana en Atrani más allá de su tamaño.",
   "section.expertGuideTitle": "Amalfi.Day Expert <span class=\"italic\">Guide</span>",
   "section.expertGuideText": "Una selección personal de los mejores rincones, joyas escondidas y sabores auténticos de la Costa Amalfitana de alguien que se mudó aquí hace años y se enamoró del lugar.",
-  "section.expertGuideSignature": "Gregory, gestor de propiedades en Amalfi"
+  "section.expertGuideSignature": "Gregory, gestor de propiedades en Amalfi",
+  "footer.terms": "Términos y Condiciones",
+  "newsletter.cta": "Suscríbete y mantente al día con las noticias de la Costa Amalfitana y nuestras últimas ofertas",
+  "newsletter.placeholder": "tu@email.com",
+  "newsletter.subscribe": "Suscribirse",
+  "newsletter.success": "¡Gracias por suscribirte!",
+  "newsletter.error": "Algo salió mal. Inténtalo de nuevo.",
+  "cookie.message": "Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra",
+  "cookie.privacyLink": "Política de Privacidad",
+  "cookie.accept": "Aceptar",
+  "cookie.decline": "Rechazar"
 }

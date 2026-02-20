@@ -43,36 +43,30 @@ A Progressive Web App that serves as a pocket travel companion for visitors to t
 
 All content lives in Markdown files and is parsed at build time:
 
-```
-src/data/content/texts.{lang}.md   (6 files, one per language)
-        |
-        v
-src/lib/markdown-parser.ts         (custom parser -> CategorySection[])
-        |
-        v
-src/app/page.tsx                   (static generation, loads all 6 languages)
-        |
-        v
-MainContent (client component)     (instant language switching at runtime)
+```mermaid
+flowchart TD
+    A["src/data/content/texts.{lang}.md\n6 files, one per language"] --> B["src/lib/markdown-parser.ts\ncustom parser → CategorySection[]"]
+    B --> C["src/app/page.tsx\nstatic generation, loads all 6 languages"]
+    C --> D["MainContent (client component)\ninstant language switching at runtime"]
 ```
 
 No database. No API. No server. The entire app is a set of static HTML/JS/CSS files served from a CDN.
 
 ### Component Architecture
 
-```
-RootLayout
-├── ThemeProvider (dark mode via next-themes)
-├── LanguageProvider (language state + UI translations)
-├── LayoutProvider (expand/collapse sections)
-│   └── MainContent
-│       ├── Navbar (glassmorphic, fixed)
-│       ├── Hero (full-viewport, orange branded)
-│       ├── SectionGrid[] (category sections with adaptive layouts)
-│       │   └── PlaceCard[] (image cards with category pills)
-│       ├── PlaceDetails (modal with browser-back support)
-│       └── Footer
-└── EnvironmentBadge (dev/stage indicator)
+```mermaid
+graph TD
+    RootLayout --> ThemeProvider["ThemeProvider\ndark mode via next-themes"]
+    RootLayout --> LanguageProvider["LanguageProvider\nlanguage state + UI translations"]
+    RootLayout --> LayoutProvider["LayoutProvider\nexpand/collapse sections"]
+    LayoutProvider --> MainContent
+    MainContent --> Navbar["Navbar\nglassmorphic, fixed"]
+    MainContent --> Hero["Hero\nfull-viewport, orange branded"]
+    MainContent --> SectionGrid["SectionGrid[]\ncategory sections with adaptive layouts"]
+    SectionGrid --> PlaceCard["PlaceCard[]\nimage cards with category pills"]
+    MainContent --> PlaceDetails["PlaceDetails\nmodal with browser-back support"]
+    MainContent --> Footer
+    RootLayout --> EnvironmentBadge["EnvironmentBadge\ndev/stage indicator"]
 ```
 
 ### Multilingual System
@@ -90,10 +84,11 @@ Language detection priority: URL hash parameter -> localStorage -> browser local
 
 Three-tier deployment via GitHub Actions + Vercel CLI:
 
-```
-feature branch push  ->  Dev preview     (*.vercel.app)
-main push            ->  Stage preview   (*.vercel.app)
-GitHub Release       ->  Production      (guide.amalfi.day)
+```mermaid
+flowchart LR
+    A["feature branch push"] --> B["Dev preview\n*.vercel.app"]
+    C["main push"] --> D["Stage preview\n*.vercel.app"]
+    E["GitHub Release"] --> F["Production\nguide.amalfi.day"]
 ```
 
 | Environment | Trigger | Checks | Domain |

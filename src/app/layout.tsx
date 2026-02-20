@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
 import { EnvironmentBadge } from "@/components/environment-badge";
+import { CookieBanner } from "@/components/cookie-banner";
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
@@ -14,8 +15,10 @@ const merriweather = Merriweather({
   display: "swap",
 });
 
+const SITE_URL = "https://guide.amalfi.day";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://guide.amalfi.day"),
+  metadataBase: new URL(SITE_URL),
   title: "Amalfi Coast Guide — Walks, Gems & Local Food",
   description:
     "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails — with maps and transport tips in 6 languages.",
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
     title: "Amalfi Coast Guide — Your Pocket Travel Companion",
     description:
       "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast. Offline maps, directions & transport tips in 6 languages.",
-    url: "https://guide.amalfi.day",
+    url: SITE_URL,
     siteName: "AMALFI.DAY Guide",
     images: [
       {
@@ -56,7 +59,16 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://guide.amalfi.day",
+    canonical: SITE_URL,
+    languages: {
+      "en": SITE_URL,
+      "it": SITE_URL,
+      "es": SITE_URL,
+      "fr": SITE_URL,
+      "de": SITE_URL,
+      "ru": SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
 };
 
@@ -73,6 +85,25 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
+
+        {/* GTM Consent Mode v2 — default to denied until user consents */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
+
+        {/* Schema.org structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -82,23 +113,39 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   "name": "Amalfi Coast Guide",
-                  "url": "https://guide.amalfi.day",
+                  "url": SITE_URL,
                   "description": "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails.",
                   "inLanguage": ["en", "it", "es", "fr", "de", "ru"],
                   "publisher": {
                     "@type": "Organization",
                     "name": "CristallPont S.R.L.",
-                    "url": "https://amalfi.day"
+                    "url": "https://amalfi.day",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Traversa Dragone 2",
+                      "addressLocality": "Atrani",
+                      "postalCode": "84010",
+                      "addressRegion": "SA",
+                      "addressCountry": "IT"
+                    },
+                    "email": "hello@amalfi.day",
+                    "taxID": "06863730650"
                   }
                 },
                 {
                   "@type": "TravelGuide",
                   "name": "Amalfi Coast Guide — Walks, Gems & Local Food",
-                  "url": "https://guide.amalfi.day",
+                  "url": SITE_URL,
                   "description": "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast.",
                   "about": {
-                    "@type": "Place",
+                    "@type": "TouristDestination",
                     "name": "Amalfi Coast",
+                    "description": "The Amalfi Coast is a stretch of coastline on the southern edge of Italy's Sorrentine Peninsula, in the Campania region.",
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 40.6340,
+                      "longitude": 14.6027
+                    },
                     "address": {
                       "@type": "PostalAddress",
                       "addressRegion": "Campania",
@@ -116,8 +163,35 @@ export default function RootLayout({
                     "url": "https://amalfi.day"
                   },
                   "datePublished": "2024-01-01",
-                  "dateModified": "2025-06-01",
-                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"]
+                  "dateModified": "2026-02-01",
+                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"],
+                  "isAccessibleForFree": true,
+                  "audience": {
+                    "@type": "TouristAudience",
+                    "touristType": ["Cultural tourist", "Beach holiday", "Hiking enthusiast", "Food traveler"]
+                  }
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://amalfi.day/#organization",
+                  "name": "CristallPont S.R.L.",
+                  "url": "https://amalfi.day",
+                  "logo": `${SITE_URL}/brand/logo-color-black.svg`,
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Traversa Dragone 2",
+                    "addressLocality": "Atrani",
+                    "postalCode": "84010",
+                    "addressRegion": "SA",
+                    "addressCountry": "IT"
+                  },
+                  "email": "hello@amalfi.day",
+                  "taxID": "06863730650",
+                  "sameAs": [
+                    "https://instagram.com/amalfi.day",
+                    "https://facebook.com/amalfi.day",
+                    "https://twitter.com/amalfiday"
+                  ]
                 }
               ]
             })
@@ -135,6 +209,7 @@ export default function RootLayout({
             <LayoutProvider>
               {children}
             </LayoutProvider>
+            <CookieBanner />
           </LanguageProvider>
         </ThemeProvider>
         <EnvironmentBadge />

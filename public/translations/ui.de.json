@@ -51,5 +51,15 @@
   "section.gemsIntroText": "Ein kompakter Ort auf nur 0,2 km² zusammengedrängt, eingebettet zwischen Monte Aureo und Monte Civita und direkt aufs Meer hinausgehend. Wir leben hier, und dies ist eine kuratierte Einführung in die Orte, die das tägliche Leben in Atrani jenseits seiner Größe ausmachen.",
   "section.expertGuideTitle": "Amalfi.Day Expert <span class=\"italic\">Guide</span>",
   "section.expertGuideText": "Eine persönliche Auswahl der besten Orte, versteckten Juwelen und authentischen Geschmackserlebnisse an der Amalfiküste von jemandem, der vor Jahren hierher gezogen ist und sich in den Ort verliebt hat.",
-  "section.expertGuideSignature": "Gregory, Immobilienverwalter in Amalfi"
+  "section.expertGuideSignature": "Gregory, Immobilienverwalter in Amalfi",
+  "footer.terms": "Allgemeine Geschäftsbedingungen",
+  "newsletter.cta": "Abonnieren Sie und bleiben Sie über Neuigkeiten von der Amalfiküste und unsere neuesten Angebote informiert",
+  "newsletter.placeholder": "ihre@email.com",
+  "newsletter.subscribe": "Abonnieren",
+  "newsletter.success": "Vielen Dank für Ihre Anmeldung!",
+  "newsletter.error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+  "cookie.message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch weiteres Surfen akzeptieren Sie unsere",
+  "cookie.privacyLink": "Datenschutzerklärung",
+  "cookie.accept": "Akzeptieren",
+  "cookie.decline": "Ablehnen"
 }

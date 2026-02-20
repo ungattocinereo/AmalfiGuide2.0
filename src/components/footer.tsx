@@ -18,7 +18,10 @@ import {
     Newspaper,
     Envelope,
     BookmarkSimple,
+    MapPin,
+    EnvelopeSimple,
 } from "@phosphor-icons/react";
+import { NewsletterForm } from "@/components/newsletter-form";
 import { useLanguage } from "@/components/language-context";
 
 type FooterLink = {
@@ -188,36 +191,73 @@ export function Footer() {
                     </div>
                 </motion.div>
 
+                {/* Newsletter */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.05 }}
+                    className="max-w-6xl mx-auto mt-10 sm:mt-12 pt-8 border-t border-gray-200 dark:border-gray-700/50"
+                >
+                    <div className="max-w-md">
+                        <NewsletterForm />
+                    </div>
+                </motion.div>
+
                 {/* Bottom bar */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: 0.1 }}
-                    className="max-w-6xl mx-auto mt-10 sm:mt-12 py-5 border-t border-gray-200 dark:border-gray-700/50 text-[0.82rem] text-gray-500 dark:text-gray-500"
+                    className="max-w-6xl mx-auto mt-6 sm:mt-8 py-5 border-t border-gray-200 dark:border-gray-700/50 text-[0.82rem] text-gray-500 dark:text-gray-500"
                 >
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 flex-wrap">
-                        <span>
-                            © 2014–{new Date().getFullYear()} CristallPont S.R.L. / P.IVA: 06863730650
-                        </span>
-                        <div className="flex items-center gap-2.5 sm:ml-auto sm:text-right flex-wrap">
-                            <a
-                                href={`${MAIN_SITE}/privacy`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                            >
-                                {t("footer.privacyPolicy")}
-                            </a>
-                            <span className="hidden sm:inline text-gray-400 dark:text-gray-600" aria-hidden="true">•</span>
-                            <span className="font-mono tracking-wide text-[0.82rem] sm:mt-0 mt-2">
-                                Design & Development Gregory &lsquo;<a
-                                    className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                                    href="https://cinereo.it"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >Cinereo</a>&rsquo; Day
+                    <div className="flex flex-col gap-3">
+                        {/* Legal entity info (Italian law compliance) */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-gray-400 dark:text-gray-600">
+                            <span className="font-medium text-gray-500 dark:text-gray-500">CristallPont S.R.L.</span>
+                            <span className="hidden sm:inline" aria-hidden="true">|</span>
+                            <span>P.IVA: 06863730650</span>
+                            <span className="hidden sm:inline" aria-hidden="true">|</span>
+                            <span className="inline-flex items-center gap-1">
+                                <MapPin size={12} weight="regular" className="shrink-0" />
+                                Traversa Dragone 2, 84010 Atrani (SA), Italy
                             </span>
+                            <span className="hidden sm:inline" aria-hidden="true">|</span>
+                            <a href="mailto:hello@amalfi.day" className="inline-flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+                                <EnvelopeSimple size={12} weight="regular" className="shrink-0" />
+                                hello@amalfi.day
+                            </a>
+                        </div>
+                        {/* Copyright + links */}
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 flex-wrap">
+                            <span>
+                                © 2014–{new Date().getFullYear()} CristallPont S.R.L.
+                            </span>
+                            <div className="flex items-center gap-2.5 sm:ml-auto sm:text-right flex-wrap">
+                                <a
+                                    href="/privacy"
+                                    className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                                >
+                                    {t("footer.privacyPolicy")}
+                                </a>
+                                <span className="text-gray-400 dark:text-gray-600" aria-hidden="true">·</span>
+                                <a
+                                    href="/terms"
+                                    className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                                >
+                                    {t("footer.terms")}
+                                </a>
+                                <span className="hidden sm:inline text-gray-400 dark:text-gray-600" aria-hidden="true">·</span>
+                                <span className="font-mono tracking-wide text-[0.82rem] sm:mt-0 mt-2">
+                                    Design & Development Gregory &lsquo;<a
+                                        className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                                        href="https://cinereo.it"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >Cinereo</a>&rsquo; Day
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
