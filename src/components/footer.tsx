@@ -18,10 +18,7 @@ import {
     Newspaper,
     Envelope,
     BookmarkSimple,
-    MapPin,
-    EnvelopeSimple,
 } from "@phosphor-icons/react";
-import { NewsletterForm } from "@/components/newsletter-form";
 import { useLanguage } from "@/components/language-context";
 
 type FooterLink = {
@@ -136,132 +133,111 @@ export function Footer() {
     const { t } = useLanguage();
 
     return (
-        <>
-            {/* Main Footer */}
-            <footer className="pt-12 sm:pt-16 pb-0 px-5 sm:px-8 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-6xl mx-auto"
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(4,1fr)] gap-8 lg:gap-6">
-                        {/* Brand column */}
-                        <div className="flex flex-col items-center sm:items-start">
-                            <div className="mb-5">
-                                <img
-                                    className="h-14 sm:h-14 w-auto max-w-[240px] object-contain block dark:hidden"
-                                    src="/brand/logo-color-black.svg"
-                                    alt="Amalfi.Day"
-                                    width={240}
-                                    height={56}
-                                    loading="lazy"
-                                />
-                                <img
-                                    className="h-14 sm:h-14 w-auto max-w-[240px] object-contain hidden dark:block"
-                                    src="/brand/logo-color-white.svg"
-                                    alt="Amalfi.Day"
-                                    width={240}
-                                    height={56}
-                                    loading="lazy"
-                                />
-                            </div>
-                            <div className="flex gap-2.5">
-                                {socialLinks.map((item) => (
-                                    <a
-                                        key={item.label}
-                                        href={item.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={item.label}
-                                        className={`w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 inline-flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-200 hover:-translate-y-0.5 ${item.hoverClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500`}
-                                    >
-                                        <item.icon size={18} weight="regular" />
-                                    </a>
-                                ))}
-                            </div>
+        <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            {/* Main footer content */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-10 sm:pb-12"
+            >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(4,1fr)] gap-8 lg:gap-6">
+                    {/* Brand column */}
+                    <div className="flex flex-col items-center sm:items-start">
+                        <div className="mb-5">
+                            <img
+                                className="h-14 sm:h-14 w-auto max-w-[240px] object-contain block dark:hidden"
+                                src="/brand/logo-color-black.svg"
+                                alt="Amalfi.Day"
+                                width={240}
+                                height={56}
+                                loading="lazy"
+                            />
+                            <img
+                                className="h-14 sm:h-14 w-auto max-w-[240px] object-contain hidden dark:block"
+                                src="/brand/logo-color-white.svg"
+                                alt="Amalfi.Day"
+                                width={240}
+                                height={56}
+                                loading="lazy"
+                            />
                         </div>
-
-                        {/* Link columns */}
-                        <FooterColumn links={footerLinks.transport} />
-                        <FooterColumn links={footerLinks.apartments} />
-                        <FooterColumn links={footerLinks.info} />
-                        <FooterColumn links={footerLinks.blog} />
+                        <div className="flex gap-2.5">
+                            {socialLinks.map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={item.label}
+                                    className={`w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 inline-flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-200 hover:-translate-y-0.5 ${item.hoverClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500`}
+                                >
+                                    <item.icon size={18} weight="regular" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </motion.div>
 
-                {/* Newsletter */}
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.05 }}
-                    className="max-w-6xl mx-auto mt-10 sm:mt-12 pt-8 border-t border-gray-200 dark:border-gray-700/50"
-                >
-                    <div className="max-w-md">
-                        <NewsletterForm />
-                    </div>
-                </motion.div>
+                    {/* Link columns */}
+                    <FooterColumn links={footerLinks.transport} />
+                    <FooterColumn links={footerLinks.apartments} />
+                    <FooterColumn links={footerLinks.info} />
+                    <FooterColumn links={footerLinks.blog} />
+                </div>
+            </motion.div>
 
-                {/* Bottom bar */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="max-w-6xl mx-auto mt-6 sm:mt-8 py-5 border-t border-gray-200 dark:border-gray-700/50 text-[0.82rem] text-gray-500 dark:text-gray-500"
-                >
-                    <div className="flex flex-col gap-3">
-                        {/* Legal entity info (Italian law compliance) */}
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-gray-400 dark:text-gray-600">
-                            <span className="font-medium text-gray-500 dark:text-gray-500">CristallPont S.R.L.</span>
-                            <span className="hidden sm:inline" aria-hidden="true">|</span>
-                            <span>P.IVA: 06863730650</span>
-                            <span className="hidden sm:inline" aria-hidden="true">|</span>
-                            <span className="inline-flex items-center gap-1">
-                                <MapPin size={12} weight="regular" className="shrink-0" />
+            {/* Bottom bar — two-column: left legal, right links */}
+            <div className="border-t border-gray-200 dark:border-gray-800">
+                <div className="max-w-6xl mx-auto px-5 sm:px-8 py-4 sm:py-5">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 text-[0.78rem] text-gray-400 dark:text-gray-500">
+                        {/* Left — legal entity */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 sm:divide-x sm:divide-gray-300/50 dark:sm:divide-gray-700/50">
+                            <span className="sm:pr-2.5">
+                                © 2014–{new Date().getFullYear()} CristallPont S.R.L.
+                            </span>
+                            <span className="sm:px-2.5">
+                                P.IVA: 06863730650
+                            </span>
+                            <span className="sm:px-2.5">
                                 Traversa Dragone 2, 84010 Atrani (SA), Italy
                             </span>
-                            <span className="hidden sm:inline" aria-hidden="true">|</span>
-                            <a href="mailto:hello@amalfi.day" className="inline-flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-                                <EnvelopeSimple size={12} weight="regular" className="shrink-0" />
+                            <a
+                                href="mailto:hello@amalfi.day"
+                                className="sm:pl-2.5 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                            >
                                 hello@amalfi.day
                             </a>
                         </div>
-                        {/* Copyright + links */}
-                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 flex-wrap">
+
+                        {/* Right — policy links + credit */}
+                        <div className="flex items-center gap-0 flex-wrap text-gray-400 dark:text-gray-500">
+                            <a
+                                href="/privacy"
+                                className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                            >
+                                {t("footer.privacyPolicy")}
+                            </a>
+                            <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
+                            <a
+                                href="/terms"
+                                className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                            >
+                                {t("footer.terms")}
+                            </a>
+                            <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
                             <span>
-                                © 2014–{new Date().getFullYear()} CristallPont S.R.L.
+                                Design & Development Gregory &lsquo;<a
+                                    className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                                    href="https://cinereo.it"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >Cinereo</a>&rsquo; Day
                             </span>
-                            <div className="flex items-center gap-2.5 sm:ml-auto sm:text-right flex-wrap">
-                                <a
-                                    href="/privacy"
-                                    className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                                >
-                                    {t("footer.privacyPolicy")}
-                                </a>
-                                <span className="text-gray-400 dark:text-gray-600" aria-hidden="true">·</span>
-                                <a
-                                    href="/terms"
-                                    className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                                >
-                                    {t("footer.terms")}
-                                </a>
-                                <span className="hidden sm:inline text-gray-400 dark:text-gray-600" aria-hidden="true">·</span>
-                                <span className="font-mono tracking-wide text-[0.82rem] sm:mt-0 mt-2">
-                                    Design & Development Gregory &lsquo;<a
-                                        className="underline underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                                        href="https://cinereo.it"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >Cinereo</a>&rsquo; Day
-                                </span>
-                            </div>
                         </div>
                     </div>
-                </motion.div>
-            </footer>
-        </>
+                </div>
+            </div>
+        </footer>
     );
 }

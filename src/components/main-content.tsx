@@ -6,6 +6,7 @@ import { Hero } from "@/components/hero";
 import { SectionGrid } from "@/components/section-grid";
 import { PlaceDetails } from "@/components/place-details";
 import { Footer } from "@/components/footer";
+import { NewsletterSection } from "@/components/newsletter-section";
 import { AnimatePresence, motion } from "framer-motion";
 import type { parseMarkdownContent, PlaceItem } from "@/lib/markdown-parser";
 import { useLanguage } from "@/components/language-context";
@@ -82,6 +83,9 @@ export function MainContent({ allContent }: MainContentProps) {
                         />
                     ))}
                 </div>
+
+                {/* Newsletter pre-footer */}
+                <NewsletterSection />
 
                 {/* Footer */}
                 <Footer />
