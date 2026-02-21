@@ -6,6 +6,7 @@ import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
 import { EnvironmentBadge } from "@/components/environment-badge";
 import { CookieBanner } from "@/components/cookie-banner";
+import { Analytics } from "@vercel/analytics/react";
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
@@ -213,6 +214,7 @@ export default function RootLayout({
           </LanguageProvider>
         </ThemeProvider>
         <EnvironmentBadge />
+        <Analytics />
       </body>
     </html>
   );
