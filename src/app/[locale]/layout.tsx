@@ -1,12 +1,16 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Merriweather } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
 import { LanguageProvider } from "@/components/language-context";
 import { EnvironmentBadge } from "@/components/environment-badge";
 import { CookieBanner } from "@/components/cookie-banner";
 import { Analytics } from "@vercel/analytics/react";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
@@ -18,72 +22,92 @@ const merriweather = Merriweather({
 
 const SITE_URL = "https://guide.amalfi.day";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Amalfi Coast Guide — Walks, Gems & Local Food",
-  description:
-    "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails — with maps and transport tips in 6 languages.",
-  manifest: "/manifest.json",
-  openGraph: {
-    title: "Amalfi Coast Guide — Your Pocket Travel Companion",
-    description:
-      "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast. Offline maps, directions & transport tips in 6 languages.",
-    url: SITE_URL,
-    siteName: "AMALFI.DAY Guide",
-    images: [
-      {
-        url: "/images/social.png",
-        width: 2985,
-        height: 1714,
-        alt: "Amalfi Coast travel guide — walks, hidden gems, and local food",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Amalfi Coast Guide — Walks, Gems & Local Food",
-    description:
-      "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, cliffside restaurants & hiking trails — with offline maps in 6 languages.",
-    images: ["/images/social.png"],
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      "en": SITE_URL,
-      "it": SITE_URL,
-      "es": SITE_URL,
-      "fr": SITE_URL,
-      "de": SITE_URL,
-      "ru": SITE_URL,
-      "x-default": SITE_URL,
+function getLocaleUrl(locale: string, path: string = "") {
+  if (locale === "en") return `${SITE_URL}${path}`;
+  return `${SITE_URL}/${locale}${path}`;
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  const alternateLanguages: Record<string, string> = {};
+  for (const loc of routing.locales) {
+    alternateLanguages[loc] = getLocaleUrl(loc);
+  }
+  alternateLanguages["x-default"] = SITE_URL;
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: t("title"),
+    description: t("description"),
+    manifest: "/manifest.json",
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      url: getLocaleUrl(locale),
+      siteName: "AMALFI.DAY Guide",
+      images: [
+        {
+          url: "/images/social.png",
+          width: 2985,
+          height: 1714,
+          alt: t("title"),
+        },
+      ],
+      locale: locale === "en" ? "en_US" : `${locale}_${locale.toUpperCase()}`,
+      type: "website",
     },
-  },
-};
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/images/social.png"],
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
+    },
+    alternates: {
+      canonical: getLocaleUrl(locale),
+      languages: alternateLanguages,
+    },
+  };
+}
 
-export const viewport: Viewport = {
-  themeColor: "#E54800",
-};
-
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
 
@@ -116,7 +140,7 @@ export default function RootLayout({
                   "name": "Amalfi Coast Guide",
                   "url": SITE_URL,
                   "description": "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails.",
-                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"],
+                  "inLanguage": locale,
                   "publisher": {
                     "@type": "Organization",
                     "name": "CristallPont S.R.L.",
@@ -135,8 +159,8 @@ export default function RootLayout({
                 },
                 {
                   "@type": "TravelGuide",
-                  "name": "Amalfi Coast Guide — Walks, Gems & Local Food",
-                  "url": SITE_URL,
+                  "name": "Amalfi Coast Guide",
+                  "url": getLocaleUrl(locale),
                   "description": "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast.",
                   "about": {
                     "@type": "TouristDestination",
@@ -164,8 +188,8 @@ export default function RootLayout({
                     "url": "https://amalfi.day"
                   },
                   "datePublished": "2024-01-01",
-                  "dateModified": "2026-02-01",
-                  "inLanguage": ["en", "it", "es", "fr", "de", "ru"],
+                  "dateModified": "2026-02-26",
+                  "inLanguage": locale,
                   "isAccessibleForFree": true,
                   "audience": {
                     "@type": "TouristAudience",
@@ -206,12 +230,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            <LayoutProvider>
-              {children}
-            </LayoutProvider>
-            <CookieBanner />
-          </LanguageProvider>
+          <NextIntlClientProvider messages={messages}>
+            <LanguageProvider>
+              <LayoutProvider>
+                {children}
+              </LayoutProvider>
+              <CookieBanner />
+            </LanguageProvider>
+          </NextIntlClientProvider>
         </ThemeProvider>
         <EnvironmentBadge />
         <Analytics />

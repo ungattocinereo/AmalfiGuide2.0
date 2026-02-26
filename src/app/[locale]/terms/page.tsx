@@ -1,15 +1,49 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions — Amalfi.Day Guide",
-  description: "Terms and conditions for using guide.amalfi.day — disclaimer about information accuracy and transport schedules.",
-  alternates: {
-    canonical: "https://guide.amalfi.day/terms",
-  },
-};
+const SITE_URL = "https://guide.amalfi.day";
 
-export default function TermsPage() {
+function getLocaleUrl(locale: string, path: string) {
+  if (locale === "en") return `${SITE_URL}${path}`;
+  return `${SITE_URL}/${locale}${path}`;
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const alternateLanguages: Record<string, string> = {};
+  for (const loc of routing.locales) {
+    alternateLanguages[loc] = getLocaleUrl(loc, "/terms");
+  }
+
+  return {
+    title: "Terms & Conditions — Amalfi.Day Guide",
+    description: "Terms and conditions for using guide.amalfi.day — disclaimer about information accuracy and transport schedules.",
+    alternates: {
+      canonical: getLocaleUrl(locale, "/terms"),
+      languages: alternateLanguages,
+    },
+  };
+}
+
+export default async function TermsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
       <div className="max-w-3xl mx-auto px-6 py-16 sm:py-24">

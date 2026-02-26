@@ -1,26 +1,35 @@
 import type { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://guide.amalfi.day'
+const baseUrl = 'https://guide.amalfi.day'
+const locales = ['en', 'it', 'es', 'fr', 'de', 'ru'] as const
+const pages = ['', '/privacy', '/terms'] as const
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+function getLocaleUrl(locale: string, path: string = '') {
+  if (locale === 'en') return `${baseUrl}${path}`
+  return `${baseUrl}/${locale}${path}`
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const entries: MetadataRoute.Sitemap = []
+
+  for (const page of pages) {
+    for (const locale of locales) {
+      const alternateLanguages: Record<string, string> = {}
+      for (const loc of locales) {
+        alternateLanguages[loc] = getLocaleUrl(loc, page)
+      }
+
+      entries.push({
+        url: getLocaleUrl(locale, page),
+        lastModified: new Date(),
+        changeFrequency: page === '' ? 'weekly' : 'yearly',
+        priority: page === '' ? 1 : 0.3,
+        alternates: {
+          languages: alternateLanguages,
+        },
+      })
+    }
+  }
+
+  return entries
 }

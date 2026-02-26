@@ -223,3 +223,10 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+/* View Transitions for language switching */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+}

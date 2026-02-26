@@ -8,26 +8,17 @@ import { PlaceDetails } from "@/components/place-details";
 import { Footer } from "@/components/footer";
 import { NewsletterSection } from "@/components/newsletter-section";
 import { AnimatePresence, motion } from "framer-motion";
-import type { parseMarkdownContent, PlaceItem } from "@/lib/markdown-parser";
-import { useLanguage } from "@/components/language-context";
+import type { PlaceItem, CategorySection } from "@/lib/markdown-parser";
 import { useLayout } from "@/components/layout-context";
-import { LanguageTransition } from "@/components/language-transition";
-import type { Language } from "@/lib/i18n/types";
-
-type CategorySection = ReturnType<typeof parseMarkdownContent>[number];
 
 interface MainContentProps {
-    allContent: Record<Language, CategorySection[]>;
+    content: CategorySection[];
 }
 
-export function MainContent({ allContent }: MainContentProps) {
-    const { language } = useLanguage();
+export function MainContent({ content }: MainContentProps) {
     const { isAllExpanded } = useLayout();
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
-
-    // Select sections for current language
-    const sections = allContent[language] || allContent.en;
 
     // Push history state when modal opens (with guard against double-push in strict mode)
     useEffect(() => {
@@ -61,7 +52,6 @@ export function MainContent({ allContent }: MainContentProps) {
 
     return (
         <main className="min-h-screen bg-white dark:bg-black transition-colors duration-200">
-            <LanguageTransition />
             <Navbar />
             <Hero />
 
@@ -73,7 +63,7 @@ export function MainContent({ allContent }: MainContentProps) {
             >
                 {/* Container for Sections */}
                 <div className={`transition-[gap] duration-300 space-y-0`}>
-                    {sections.map((section, idx) => (
+                    {content.map((section, idx) => (
                         <SectionGrid
                             key={idx}
                             title={section.title}

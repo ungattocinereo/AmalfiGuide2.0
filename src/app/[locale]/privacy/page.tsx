@@ -1,15 +1,49 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — Amalfi.Day Guide",
-  description: "Privacy Policy for guide.amalfi.day — how we collect, use, and protect your data.",
-  alternates: {
-    canonical: "https://guide.amalfi.day/privacy",
-  },
-};
+const SITE_URL = "https://guide.amalfi.day";
 
-export default function PrivacyPage() {
+function getLocaleUrl(locale: string, path: string) {
+  if (locale === "en") return `${SITE_URL}${path}`;
+  return `${SITE_URL}/${locale}${path}`;
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const alternateLanguages: Record<string, string> = {};
+  for (const loc of routing.locales) {
+    alternateLanguages[loc] = getLocaleUrl(loc, "/privacy");
+  }
+
+  return {
+    title: "Privacy Policy — Amalfi.Day Guide",
+    description: "Privacy Policy for guide.amalfi.day — how we collect, use, and protect your data.",
+    alternates: {
+      canonical: getLocaleUrl(locale, "/privacy"),
+      languages: alternateLanguages,
+    },
+  };
+}
+
+export default async function PrivacyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
       <div className="max-w-3xl mx-auto px-6 py-16 sm:py-24">
