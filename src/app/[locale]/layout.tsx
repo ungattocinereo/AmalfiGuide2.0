@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Merriweather } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -26,6 +26,13 @@ function getLocaleUrl(locale: string, path: string = "") {
   if (locale === "en") return `${SITE_URL}${path}`;
   return `${SITE_URL}/${locale}${path}`;
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#1A0A00" },
+    { media: "(prefers-color-scheme: dark)", color: "#1A0A00" },
+  ],
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
