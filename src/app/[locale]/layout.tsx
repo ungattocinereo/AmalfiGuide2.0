@@ -28,10 +28,7 @@ function getLocaleUrl(locale: string, path: string = "") {
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1A0A00" },
-    { media: "(prefers-color-scheme: dark)", color: "#1A0A00" },
-  ],
+  themeColor: "#1A0A00",
 };
 
 export function generateStaticParams() {
