@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { CheckCircle, CircleNotch, ArrowRight } from "@phosphor-icons/react";
 import { useLanguage } from "@/components/language-context";
 
-const SUBSCRIBE_URL = "https://amalfi.day/hooks/subscribe-amalfiday";
+const SUBSCRIBE_URL = "/api/subscribe";
 
 export function NewsletterForm() {
     const { t } = useLanguage();
