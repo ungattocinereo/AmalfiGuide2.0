@@ -57,8 +57,6 @@ export function Navbar() {
         "bg-white/[0.07] border border-white/[0.08] text-[#FDF6F0]/70 " +
         "hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D]";
 
-    const btnClass = scrolled ? compactBtnClass : overlayBtnClass;
-
     // In compact mode, always show the compact bar (not overlay buttons)
     const showCompactBar = scrolled || !isAllExpanded;
 

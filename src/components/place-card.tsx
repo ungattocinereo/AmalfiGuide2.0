@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
     Camera, Umbrella, MapPin, Star, Church, Binoculars,
-    Diamond, Tree, Mountains, Path, Users, ForkKnife,
+    Diamond, Tree, Path, Users, ForkKnife,
     Sun, Storefront, Cookie, ShoppingBag, Basket,
     Compass, Coffee, UmbrellaSimple
 } from "@phosphor-icons/react";

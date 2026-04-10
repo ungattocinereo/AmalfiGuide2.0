@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
     InstagramLogo,
@@ -81,11 +82,13 @@ function LinkIcon({ icon, className }: { icon: string; className?: string }) {
         case "envelope": return <Envelope {...props} />;
         case "bookmark": return <BookmarkSimple {...props} />;
         case "booking": return (
-            <img
+            <Image
                 src="/brand/booking.svg"
                 alt="Booking.com"
+                width={16}
+                height={16}
+                unoptimized
                 className="w-4 h-4 object-contain inline-block dark:invert dark:opacity-70"
-                loading="lazy"
             />
         );
         default: return null;
@@ -97,7 +100,7 @@ function FooterColumn({ links }: { links: FooterLink[] }) {
 
     const handleBookmark = (e: React.MouseEvent) => {
         e.preventDefault();
-        alert("Press Ctrl+D (Windows) or \u2318+D (Mac) to bookmark this page.");
+        alert(t("footer.bookmarkHint"));
     };
 
     return (
@@ -146,21 +149,21 @@ export function Footer() {
                     {/* Brand column */}
                     <div className="flex flex-col items-center sm:items-start">
                         <div className="mb-5">
-                            <img
+                            <Image
                                 className="h-14 sm:h-14 w-auto max-w-[240px] object-contain block dark:hidden"
                                 src="/brand/logo-color-black.svg"
                                 alt="Amalfi.Day"
                                 width={240}
                                 height={56}
-                                loading="lazy"
+                                unoptimized
                             />
-                            <img
+                            <Image
                                 className="h-14 sm:h-14 w-auto max-w-[240px] object-contain hidden dark:block"
                                 src="/brand/logo-color-white.svg"
                                 alt="Amalfi.Day"
                                 width={240}
                                 height={56}
-                                loading="lazy"
+                                unoptimized
                             />
                         </div>
                         <div className="flex gap-2.5">
@@ -198,14 +201,18 @@ export function Footer() {
                             </span>
                             <div className="flex items-center gap-0 flex-wrap">
                                 <a
-                                    href="/privacy"
+                                    href={`${MAIN_SITE}/privacy`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                                 >
                                     {t("footer.privacyPolicy")}
                                 </a>
                                 <span className="mx-1.5 text-gray-300 dark:text-gray-700" aria-hidden="true">&middot;</span>
                                 <a
-                                    href="/terms"
+                                    href={`${MAIN_SITE}/terms`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                                 >
                                     {t("footer.terms")}

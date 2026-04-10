@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-context";
 import { useLayout } from "@/components/layout-context";
 import { useTheme } from "next-themes";

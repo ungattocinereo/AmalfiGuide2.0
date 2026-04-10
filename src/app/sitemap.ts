@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 const baseUrl = 'https://guide.amalfi.day'
 const locales = ['en', 'it', 'es', 'fr', 'de', 'ru'] as const
-const pages = ['', '/privacy', '/terms'] as const
+const pages = [''] as const
 
 function getLocaleUrl(locale: string, path: string = '') {
   if (locale === 'en') return `${baseUrl}${path}`

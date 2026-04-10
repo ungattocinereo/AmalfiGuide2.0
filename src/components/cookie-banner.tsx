@@ -73,7 +73,9 @@ export function CookieBanner() {
                 <p className="text-sm text-gray-600 dark:text-gray-300 flex-1 leading-relaxed">
                     {t("cookie.message")}{" "}
                     <a
-                        href="/privacy"
+                        href="https://amalfi.day/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-orange-600 dark:text-orange-400 underline underline-offset-2"
                     >
                         {t("cookie.privacyLink")}
