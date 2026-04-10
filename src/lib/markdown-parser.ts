@@ -1,21 +1,34 @@
 import fs from "fs";
 import path from "path";
+import { marked } from "marked";
 import { Language } from "./i18n/types";
+
+marked.setOptions({ gfm: false, breaks: false });
 
 export type PlaceItem = {
     name: string;
     category: string;
     tagline: string;
+    taglineHtml: string;
     shortInfo: string;
+    shortInfoHtml: string;
     details: string;
+    detailsHtml: string;
     links: { label: string; url: string }[];
 };
 
 export type CategorySection = {
     title: string;
     description: string;
+    descriptionHtml: string;
     items: PlaceItem[];
 };
+
+const renderInline = (text: string): string =>
+    text ? (marked.parseInline(text) as string) : "";
+
+const renderBlock = (text: string): string =>
+    text ? (marked.parse(text) as string) : "";
 
 export function parseMarkdownContent(filePath: string): CategorySection[] {
     const content = fs.readFileSync(filePath, "utf-8");
@@ -49,6 +62,7 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
             currentSection = {
                 title: line.replace("# ", "").trim(),
                 description: "",
+                descriptionHtml: "",
                 items: []
             };
             sections.push(currentSection);
@@ -70,8 +84,11 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
                 name: line.replace("### ", "").trim(),
                 category: "",
                 tagline: "",
+                taglineHtml: "",
                 shortInfo: "",
+                shortInfoHtml: "",
                 details: "",
+                detailsHtml: "",
                 links: []
             };
             if (currentSection) currentSection.items.push(currentItem);
@@ -128,6 +145,16 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
     }
 
     if (currentItem) flushBuffer();
+
+    // Populate HTML variants after parsing
+    for (const section of sections) {
+        section.descriptionHtml = renderInline(section.description);
+        for (const item of section.items) {
+            item.taglineHtml = renderInline(item.tagline);
+            item.shortInfoHtml = renderInline(item.shortInfo);
+            item.detailsHtml = renderBlock(item.details);
+        }
+    }
 
     return sections;
 }

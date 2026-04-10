@@ -31,7 +31,7 @@ export const getImageForPlace = (name: string): string => {
     if ((n.includes("church") || n.includes("chiesa") || n.includes("iglesia") ||
          n.includes("église") || n.includes("kirche") || n.includes("церковь")) &&
         (n.includes("mary magdalene") || n.includes("maria maddalena") || n.includes("maría magdalena") ||
-         n.includes("marie-madeleine") || n.includes("магдалины"))) return "/guide-webp/square_in_atrani.webp";
+         n.includes("maria magdalena") || n.includes("marie-madeleine") || n.includes("магдалины"))) return "/guide-webp/square_in_atrani.webp";
 
     if (n.includes("castiglione")) return "/guide-webp/castiglione.webp";
 

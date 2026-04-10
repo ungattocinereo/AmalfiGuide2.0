@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "title": "Guide de la Côte Amalfitaine — Balades, Trésors et Cuisine Locale",
+    "description": "Votre guide de poche de la Côte Amalfitaine. Balades sélectionnées, plages secrètes, restaurants et sentiers de randonnée — avec cartes et conseils de transport en 6 langues.",
+    "ogTitle": "Guide de la Côte Amalfitaine — Votre Compagnon de Voyage de Poche",
+    "ogDescription": "Balades sélectionnées, plages cachées, restaurants authentiques et sentiers de randonnée panoramiques le long de la Côte Amalfitaine. Cartes hors ligne, itinéraires et conseils de transport en 6 langues."
+  },
+  "navbar": {
+    "collapseAll": "Tout Réduire",
+    "expandAll": "Tout Développer",
+    "language": "Langue",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre"
+  },
+  "hero": {
+    "kicker": "Guide local sélectionné",
+    "headingLine1": "",
+    "headingAccent": "Amalfi,",
+    "headingLine3a": "Toujours dans Votre",
+    "headingLine3b": "Poche",
+    "description": "Des idées prêtes à l'emploi pour des balades, baignades, virées en scooter et arrêts gourmands — avec des directions claires, des cartes hors ligne et des horaires de transport simplifiés.",
+    "bus": "Bus",
+    "ferry": "Ferry",
+    "airport": "Aéroport",
+    "explore": "Découvrir",
+    "locationBadge": "Atrani, Côte Amalfitaine",
+    "verticalText": "Côte Amalfitaine, Italie"
+  },
+  "footer": {
+    "tagline": "Votre site ami sur la Côte Amalfitaine by Greg",
+    "explore": "Explorer",
+    "connect": "Se Connecter",
+    "airportShuttle": "Navette Aéroport",
+    "motoBikeTrails": "Parcours Moto",
+    "beachReview": "Avis sur les Plages",
+    "publicTransport": "Transports Publics",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "addToHomescreen": "Ajouter à l'Écran d'Accueil",
+    "copyright": "© 2014-2026 Gregory Day // Amalfi.Day. Tous droits réservés.",
+    "ferryTimetables": "Horaires des ferries",
+    "busTimetables": "Horaires des bus",
+    "allPublicTransport": "Tous les transports publics",
+    "gregsGuide": "Guide de Greg",
+    "apartmentOverview": "Aperçu des appartements",
+    "booking": "Booking.com",
+    "airbnb": "AirBnb.com",
+    "whatToDo": "Que faire",
+    "parkingTips": "Conseils parking",
+    "motoRoads": "Routes en moto",
+    "amalfiNews": "Actualités Amalfi",
+    "contactUs": "Nous contacter",
+    "addToBookmarks": "Ajouter aux favoris",
+    "bookmarkHint": "Appuyez sur Ctrl+D (Windows) ou ⌘+D (Mac) pour ajouter cette page aux favoris.",
+    "privacyPolicy": "Politique de Confidentialité",
+    "terms": "Conditions Générales"
+  },
+  "placeDetails": {
+    "viewLocation": "Voir l'emplacement",
+    "googleMaps": "Google Maps",
+    "tripAdvisor": "TripAdvisor",
+    "viewOnTripAdvisor": "Voir sur TripAdvisor",
+    "viewHikeMap": "Voir la carte de randonnée",
+    "view": "Voir"
+  },
+  "section": {
+    "gemsIntroTitle": "Atrani : 0,2 km² Entre les Montagnes et la Mer",
+    "gemsIntroText": "Un village compact niché dans seulement 0,2 km², coincé entre le Monte Aureo et le Monte Civita et ouvert directement sur la mer. Nous vivons ici, et voici une introduction soignée aux endroits qui définissent la vie quotidienne à Atrani au-delà de sa taille.",
+    "expertGuideTitle": "Amalfi.Day Expert <span class=\"italic\">Guide</span>",
+    "expertGuideText": "Une sélection personnelle des meilleurs endroits, pépites cachées et saveurs authentiques de la Côte Amalfitaine par quelqu'un qui s'y est installé il y a des années et est tombé amoureux du lieu.",
+    "expertGuideSignature": "Gregory, gestionnaire immobilier à Amalfi"
+  },
+  "newsletter": {
+    "cta": "Abonnez-vous et restez informé des nouvelles de la Côte Amalfitaine et de nos dernières offres",
+    "placeholder": "votre@email.com",
+    "subscribe": "S'abonner",
+    "success": "Merci pour votre inscription !",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "cookie": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre",
+    "privacyLink": "Politique de Confidentialité",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  }
+}

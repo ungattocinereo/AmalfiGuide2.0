@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "title": "Guía de la Costa Amalfitana — Paseos, Joyas y Comida Local",
+    "description": "Tu guía de bolsillo de la Costa Amalfitana. Paseos seleccionados, playas secretas, restaurantes y rutas de senderismo — con mapas y consejos de transporte en 6 idiomas.",
+    "ogTitle": "Guía de la Costa Amalfitana — Tu Compañero de Viaje de Bolsillo",
+    "ogDescription": "Paseos seleccionados, playas escondidas, restaurantes auténticos y rutas de senderismo panorámicas a lo largo de la Costa Amalfitana. Mapas sin conexión, indicaciones y consejos de transporte en 6 idiomas."
+  },
+  "navbar": {
+    "collapseAll": "Contraer Todo",
+    "expandAll": "Expandir Todo",
+    "language": "Idioma",
+    "lightMode": "Modo claro",
+    "darkMode": "Modo oscuro"
+  },
+  "hero": {
+    "kicker": "Guía local seleccionada",
+    "headingLine1": "",
+    "headingAccent": "Amalfi,",
+    "headingLine3a": "Siempre en Tu",
+    "headingLine3b": "Bolsillo",
+    "description": "Ideas listas para usar: paseos, baños, viajes en moto y paradas gastronómicas — con indicaciones claras, mapas sin conexión y horarios de transporte simplificados.",
+    "bus": "Autobús",
+    "ferry": "Ferry",
+    "airport": "Aeropuerto",
+    "explore": "Explorar",
+    "locationBadge": "Atrani, Costa de Amalfi",
+    "verticalText": "Costa de Amalfi, Italia"
+  },
+  "footer": {
+    "tagline": "Tu web amiga en la Costa Amalfitana by Greg",
+    "explore": "Explora",
+    "connect": "Conecta",
+    "airportShuttle": "Shuttle al Aeropuerto",
+    "motoBikeTrails": "Rutas en Moto",
+    "beachReview": "Reseñas de Playas",
+    "publicTransport": "Transporte Público",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "addToHomescreen": "Añadir a Pantalla de Inicio",
+    "copyright": "© 2014-2026 Gregory Day // Amalfi.Day. Todos los derechos reservados.",
+    "ferryTimetables": "Horarios de ferry",
+    "busTimetables": "Horarios de autobús",
+    "allPublicTransport": "Todo el transporte público",
+    "gregsGuide": "Guía de Greg",
+    "apartmentOverview": "Vista general de apartamentos",
+    "booking": "Booking.com",
+    "airbnb": "AirBnb.com",
+    "whatToDo": "Qué hacer",
+    "parkingTips": "Consejos de aparcamiento",
+    "motoRoads": "Rutas en moto",
+    "amalfiNews": "Noticias de Amalfi",
+    "contactUs": "Contáctenos",
+    "addToBookmarks": "Añadir a marcadores",
+    "bookmarkHint": "Pulsa Ctrl+D (Windows) o ⌘+D (Mac) para añadir esta página a marcadores.",
+    "privacyPolicy": "Política de Privacidad",
+    "terms": "Términos y Condiciones"
+  },
+  "placeDetails": {
+    "viewLocation": "Ver ubicación",
+    "googleMaps": "Google Maps",
+    "tripAdvisor": "TripAdvisor",
+    "viewOnTripAdvisor": "Ver en TripAdvisor",
+    "viewHikeMap": "Ver mapa de ruta",
+    "view": "Ver"
+  },
+  "section": {
+    "gemsIntroTitle": "Atrani: 0,2 km² Entre las Montañas y el Mar",
+    "gemsIntroText": "Un pueblo compacto comprimido en solo 0,2 km², enclavado entre el Monte Aureo y el Monte Civita y abierto directamente al mar. Vivimos aquí, y esta es una introducción cuidada a los lugares que definen la vida cotidiana en Atrani más allá de su tamaño.",
+    "expertGuideTitle": "Amalfi.Day Expert <span class=\"italic\">Guide</span>",
+    "expertGuideText": "Una selección personal de los mejores rincones, joyas escondidas y sabores auténticos de la Costa Amalfitana de alguien que se mudó aquí hace años y se enamoró del lugar.",
+    "expertGuideSignature": "Gregory, gestor de propiedades en Amalfi"
+  },
+  "newsletter": {
+    "cta": "Suscríbete y mantente al día con las noticias de la Costa Amalfitana y nuestras últimas ofertas",
+    "placeholder": "tu@email.com",
+    "subscribe": "Suscribirse",
+    "success": "¡Gracias por suscribirte!",
+    "error": "Algo salió mal. Inténtalo de nuevo."
+  },
+  "cookie": {
+    "message": "Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra",
+    "privacyLink": "Política de Privacidad",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  }
+}
