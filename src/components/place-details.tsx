@@ -138,9 +138,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             transition={{ delay: 0.3, duration: 0.3 }}
                             style={{ fontFamily: 'var(--font-merriweather)' }}
                             className="text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400 italic leading-relaxed"
-                        >
-                            {item.tagline}
-                        </motion.p>
+                            dangerouslySetInnerHTML={{ __html: item.taglineHtml }}
+                        />
                     </div>
 
                     <motion.div
@@ -148,11 +147,8 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.35, duration: 0.3 }}
                         className="prose dark:prose-invert prose-base md:prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-[1.8]"
-                    >
-                        {item.details.split('\n\n').map((paragraph, idx) => (
-                            <p key={idx}>{paragraph}</p>
-                        ))}
-                    </motion.div>
+                        dangerouslySetInnerHTML={{ __html: item.detailsHtml }}
+                    />
 
                     {/* Links Section - larger touch targets */}
                     <motion.div

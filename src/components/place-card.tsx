@@ -131,9 +131,10 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                     </h3>
 
                     {/* Short description */}
-                    <p className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
-                        {item.shortInfo}
-                    </p>
+                    <p
+                        className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: item.shortInfoHtml }}
+                    />
                 </div>
             </div>
         </motion.div>

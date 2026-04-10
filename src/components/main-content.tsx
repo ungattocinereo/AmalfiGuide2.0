@@ -67,7 +67,7 @@ export function MainContent({ content }: MainContentProps) {
                         <SectionGrid
                             key={idx}
                             title={section.title}
-                            description={section.description}
+                            description={section.descriptionHtml}
                             items={section.items}
                             onItemClick={setSelectedItem}
                         />
