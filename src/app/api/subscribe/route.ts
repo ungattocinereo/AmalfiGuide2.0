@@ -3,11 +3,25 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const GHOST_URL = process.env.GHOST_URL ?? "https://amalfi.day/blog";
+const GHOST_NEWSLETTER = process.env.GHOST_NEWSLETTER ?? "Amalfi Day News";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_FORM_DWELL_MS = 1500;
 const RATE_LIMIT_WINDOW_MS = 10_000;
 
 const rateLimitMap = new Map<string, number>();
+
+async function fetchIntegrityToken(): Promise<string | null> {
+    try {
+        const res = await fetch(`${GHOST_URL}/members/api/integrity-token/`, {
+            headers: { Accept: "text/plain" },
+        });
+        if (!res.ok) return null;
+        const text = (await res.text()).trim();
+        return text || null;
+    } catch {
+        return null;
+    }
+}
 
 function getClientIp(req: Request): string {
     const forwarded = req.headers.get("x-forwarded-for");
@@ -54,15 +68,21 @@ export async function POST(req: Request) {
     }
 
     try {
+        const integrityToken = await fetchIntegrityToken();
+
+        const ghostPayload: Record<string, unknown> = {
+            email,
+            emailType: "signup",
+            labels: [],
+            name: "",
+            newsletters: [{ name: GHOST_NEWSLETTER }],
+        };
+        if (integrityToken) ghostPayload.integrityToken = integrityToken;
+
         const ghostRes = await fetch(`${GHOST_URL}/members/api/send-magic-link/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email,
-                emailType: "signup",
-                labels: [],
-                name: "",
-            }),
+            body: JSON.stringify(ghostPayload),
         });
 
         if (ghostRes.ok) {
