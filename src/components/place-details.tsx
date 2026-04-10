@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons/react";
@@ -20,19 +20,50 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
     const blurDataURL = getBlurDataURL(imageUrl);
+    const modalRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-    // Lock body scroll and handle Escape key
+    // Lock body scroll, manage focus, and handle keyboard (Escape + Tab trap)
     useEffect(() => {
         document.body.style.overflow = "hidden";
+        const previouslyFocused = document.activeElement as HTMLElement | null;
+        closeButtonRef.current?.focus();
+
+        const getFocusable = (): HTMLElement[] => {
+            if (!modalRef.current) return [];
+            return Array.from(
+                modalRef.current.querySelectorAll<HTMLElement>(
+                    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )
+            ).filter((el) => !el.hasAttribute("aria-hidden"));
+        };
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") onClose();
+            if (e.key === "Escape") {
+                onClose();
+                return;
+            }
+            if (e.key === "Tab") {
+                const focusable = getFocusable();
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                const active = document.activeElement as HTMLElement | null;
+                if (e.shiftKey && active === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && active === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         };
         window.addEventListener("keydown", handleKeyDown);
 
         return () => {
             document.body.style.overflow = "";
             window.removeEventListener("keydown", handleKeyDown);
+            previouslyFocused?.focus?.();
         };
     }, [onClose]);
 
@@ -43,6 +74,10 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
 
     return (
         <motion.div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="place-details-title"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -84,6 +119,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
 
                 {/* Close Button - proper 48px touch target */}
                 <button
+                    ref={closeButtonRef}
                     onClick={(e) => {
                         e.stopPropagation();
                         onClose();
@@ -124,6 +160,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             {item.category}
                         </motion.p>
                         <motion.h2
+                            id="place-details-title"
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
