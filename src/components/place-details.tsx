@@ -183,7 +183,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.35, duration: 0.3 }}
-                        className="prose dark:prose-invert prose-base md:prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-[1.8]"
+                        className="prose dark:prose-invert prose-base md:prose-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-[1.8] prose-p:my-6 md:prose-p:my-7 prose-p:first:mt-0 prose-p:last:mb-0"
                         dangerouslySetInnerHTML={{ __html: item.detailsHtml }}
                     />
 
