@@ -11,6 +11,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { SITE_URL, getLocaleUrl } from "@/lib/site-config";
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
@@ -19,13 +20,6 @@ const merriweather = Merriweather({
   variable: "--font-merriweather",
   display: "swap",
 });
-
-const SITE_URL = "https://guide.amalfi.day";
-
-function getLocaleUrl(locale: string, path: string = "") {
-  if (locale === "en") return `${SITE_URL}${path}`;
-  return `${SITE_URL}/${locale}${path}`;
-}
 
 export const viewport: Viewport = {
   themeColor: "#1A0A00",
