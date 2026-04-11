@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
+import { getCanonicalSlugs } from '@/lib/markdown-parser'
 
 const baseUrl = 'https://guide.amalfi.day'
 const locales = ['en', 'it', 'es', 'fr', 'de', 'ru'] as const
-const pages = [''] as const
 
 function getLocaleUrl(locale: string, path: string = '') {
   if (locale === 'en') return `${baseUrl}${path}`
@@ -11,22 +11,37 @@ function getLocaleUrl(locale: string, path: string = '') {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
+  const now = new Date()
 
-  for (const page of pages) {
+  // Home page per locale
+  for (const locale of locales) {
+    const alternateLanguages: Record<string, string> = {}
+    for (const loc of locales) {
+      alternateLanguages[loc] = getLocaleUrl(loc)
+    }
+    entries.push({
+      url: getLocaleUrl(locale),
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 1,
+      alternates: { languages: alternateLanguages },
+    })
+  }
+
+  // Per-place pages — one URL per locale × slug, each with full hreflang alternates
+  const slugs = getCanonicalSlugs()
+  for (const slug of slugs) {
     for (const locale of locales) {
       const alternateLanguages: Record<string, string> = {}
       for (const loc of locales) {
-        alternateLanguages[loc] = getLocaleUrl(loc, page)
+        alternateLanguages[loc] = getLocaleUrl(loc, `/place/${slug}`)
       }
-
       entries.push({
-        url: getLocaleUrl(locale, page),
-        lastModified: new Date(),
-        changeFrequency: page === '' ? 'weekly' : 'yearly',
-        priority: page === '' ? 1 : 0.3,
-        alternates: {
-          languages: alternateLanguages,
-        },
+        url: getLocaleUrl(locale, `/place/${slug}`),
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: { languages: alternateLanguages },
       })
     }
   }

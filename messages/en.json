@@ -61,7 +61,12 @@
     "tripAdvisor": "TripAdvisor",
     "viewOnTripAdvisor": "View on TripAdvisor",
     "viewHikeMap": "View hike map",
-    "view": "View"
+    "view": "View",
+    "close": "Close",
+    "backToGuide": "Back to guide",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0.2 km² Between the Mountains and the Sea",

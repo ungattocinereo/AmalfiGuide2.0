@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
-import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, Receipt, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, Receipt, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight, ArrowLeft, ShareNetwork } from "@phosphor-icons/react";
+import { Link } from "@/i18n/navigation";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
@@ -14,7 +15,10 @@ import { getPlaceGallery } from "@/lib/place-gallery";
 interface PlaceDetailsProps {
     item: PlaceItem;
     layoutId: string;
-    onClose: () => void;
+    /** Called when the user dismisses a modal. Ignored in page mode. */
+    onClose?: () => void;
+    /** "modal" = fixed overlay with drag-to-close (default); "page" = normal page block. */
+    mode?: "modal" | "page";
 }
 
 const translateLookup = (t: (key: string) => string, namespace: string, raw: string): string => {
@@ -23,7 +27,8 @@ const translateLookup = (t: (key: string) => string, namespace: string, raw: str
     return translated === key ? raw : translated;
 };
 
-export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
+export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceDetailsProps) {
+    const isModal = mode === "modal";
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
@@ -42,6 +47,32 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const goPrev = () => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
     const goNext = () => setGalleryIndex((i) => (i + 1) % galleryImages.length);
 
+    const [shareToast, setShareToast] = useState<string | null>(null);
+    const handleShare = useCallback(async () => {
+        if (typeof window === "undefined") return;
+        const shareUrl = window.location.href;
+        const shareData: ShareData = {
+            title: item.name,
+            text: item.tagline || item.shortInfo,
+            url: shareUrl,
+        };
+        if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+            try {
+                await navigator.share(shareData);
+                return;
+            } catch {
+                // User cancelled or share failed — fall through to copy-to-clipboard fallback.
+            }
+        }
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            setShareToast(t("placeDetails.linkCopied"));
+            setTimeout(() => setShareToast(null), 2200);
+        } catch {
+            // Clipboard also failed — silently skip; user can copy from URL bar.
+        }
+    }, [item.name, item.tagline, item.shortInfo, t]);
+
     const metaItems: Array<{ icon: typeof Clock; label: string; value: string; tone?: "positive" | "muted" }> = [];
     if (item.hours) {
         metaItems.push({
@@ -57,8 +88,10 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     if (item.distance) metaItems.push({ icon: Ruler, label: t("meta.distanceLabel"), value: item.distance });
     if (item.bestTime) metaItems.push({ icon: Sun, label: t("meta.bestTimeLabel"), value: translateLookup(t, "meta.bestTime", item.bestTime) });
 
-    // Lock body scroll, manage focus, and handle keyboard (Escape + Tab trap)
+    // Modal-only concerns: body scroll lock, focus management, keyboard (Escape + Tab trap).
+    // In page mode none of this applies — the user is on a real page.
     useEffect(() => {
+        if (!isModal) return;
         document.body.style.overflow = "hidden";
         const previouslyFocused = document.activeElement as HTMLElement | null;
         closeButtonRef.current?.focus();
@@ -74,7 +107,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
 
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") {
-                onClose();
+                onClose?.();
                 return;
             }
             if (e.key === "Tab") {
@@ -99,39 +132,48 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
             window.removeEventListener("keydown", handleKeyDown);
             previouslyFocused?.focus?.();
         };
-    }, [onClose]);
+    }, [onClose, isModal]);
 
-    // Stop propagation on content to allow backdrop click to close
+    // Stop propagation on content to allow backdrop click to close (modal only).
     const handleContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
+        if (isModal) e.stopPropagation();
     };
+
+    const rootProps = isModal
+        ? {
+            role: "dialog" as const,
+            "aria-modal": true,
+            "aria-labelledby": "place-details-title",
+            initial: prefersReducedMotion ? false : { opacity: 0 },
+            animate: { opacity: 1, y: 0 },
+            exit: prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 32 },
+            transition: { duration: prefersReducedMotion ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] as const },
+            drag: prefersReducedMotion ? (false as const) : ("y" as const),
+            dragListener: false,
+            dragControls,
+            dragConstraints: { top: 0, bottom: 600 },
+            dragElastic: { top: 0, bottom: 0.35 },
+            onDragEnd: (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
+                if (info.offset.y > 120 || info.velocity.y > 500) onClose?.();
+            },
+            className: "fixed inset-0 z-50 flex flex-col md:flex-row bg-white dark:bg-gray-950 cursor-zoom-out",
+            onClick: onClose,
+            style: { overscrollBehavior: "contain" as const, touchAction: "pan-y" as const },
+        }
+        : {
+            "aria-labelledby": "place-details-title",
+            className: "relative w-full flex flex-col md:flex-row bg-white dark:bg-gray-950 md:min-h-[calc(100dvh-88px)]",
+        };
 
     return (
         <motion.div
             ref={modalRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="place-details-title"
-            initial={prefersReducedMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 32 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
-            drag={prefersReducedMotion ? false : "y"}
-            dragListener={false}
-            dragControls={dragControls}
-            dragConstraints={{ top: 0, bottom: 600 }}
-            dragElastic={{ top: 0, bottom: 0.35 }}
-            onDragEnd={(_, info) => {
-                if (info.offset.y > 120 || info.velocity.y > 500) onClose();
-            }}
-            className="fixed inset-0 z-50 flex flex-col md:flex-row bg-white dark:bg-gray-950 cursor-zoom-out"
-            onClick={onClose}
-            style={{ overscrollBehavior: "contain", touchAction: "pan-y" }}
+            {...rootProps}
         >
             {/* Visual Section: Mobile Top, Desktop Right Half */}
             <motion.div
-                layoutId={layoutId}
-                className="relative w-full h-[45vh] md:h-full md:w-1/2 md:order-2 cursor-zoom-out overflow-hidden flex-shrink-0"
+                layoutId={isModal ? layoutId : undefined}
+                className={`relative w-full ${isModal ? "h-[45vh]" : "h-[50vh]"} md:h-auto md:w-1/2 md:order-2 ${isModal ? "cursor-zoom-out" : ""} overflow-hidden flex-shrink-0 md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]`}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
                 {hikingMapUrl ? (
@@ -204,46 +246,87 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                 {/* Gradient overlay for visual flow into content (mobile) */}
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent md:hidden pointer-events-none" />
 
-                {/* Close Button - proper 48px touch target */}
+                {/* Close / Back button */}
+                {isModal ? (
+                    <button
+                        ref={closeButtonRef}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClose?.();
+                        }}
+                        aria-label={t("placeDetails.close")}
+                        className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                    >
+                        <X size={22} weight="bold" />
+                    </button>
+                ) : (
+                    <Link
+                        href="/"
+                        aria-label={t("placeDetails.backToGuide")}
+                        className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-all duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
+                    >
+                        <ArrowLeft size={18} weight="bold" />
+                        <span>{t("placeDetails.backToGuide")}</span>
+                    </Link>
+                )}
+
+                {/* Share button — top-right of image (in page mode) or left of close (in modal) */}
                 <button
-                    ref={closeButtonRef}
+                    type="button"
                     onClick={(e) => {
                         e.stopPropagation();
-                        onClose();
+                        handleShare();
                     }}
-                    aria-label="Close"
-                    className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                    aria-label={t("placeDetails.share")}
+                    className={`absolute z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation ${isModal ? "top-4 right-[4.5rem]" : "top-4 right-4"}`}
                 >
-                    <X size={22} weight="bold" />
+                    <ShareNetwork size={20} weight="bold" />
                 </button>
+
+                {/* Toast for clipboard fallback */}
+                {shareToast && (
+                    <div
+                        role="status"
+                        aria-live="polite"
+                        className="absolute top-[4.75rem] right-4 z-50 px-4 py-2 rounded-full bg-black/80 text-white text-xs font-semibold tracking-wide backdrop-blur-md shadow-lg"
+                    >
+                        {shareToast}
+                    </div>
+                )}
 
                 {/* Safe area for notch */}
                 <div className="absolute top-0 inset-x-0" style={{ height: 'env(safe-area-inset-top)' }} />
             </motion.div>
 
-            {/* Content Section: Scrollable */}
+            {/* Content Section: Scrollable in modal, normal block in page mode */}
             <motion.div
-                className="flex-1 overflow-y-auto px-6 pt-2 pb-8 md:px-12 md:pt-12 md:pb-12 md:w-1/2 md:order-1 relative cursor-auto"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex-1 px-6 pt-2 pb-8 md:px-12 md:pt-12 md:pb-12 md:w-1/2 md:order-1 relative cursor-auto ${isModal ? "overflow-y-auto" : ""}`}
+                initial={isModal ? { opacity: 0, x: -30 } : false}
+                animate={isModal ? { opacity: 1, x: 0 } : undefined}
+                exit={isModal ? { opacity: 0, x: -20 } : undefined}
+                transition={isModal ? { duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] } : undefined}
                 onClick={handleContentClick}
-                style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+                style={
+                    isModal
+                        ? ({ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } as React.CSSProperties)
+                        : undefined
+                }
             >
-                {/* Pull indicator — drag handle to close on mobile */}
-                <div
-                    className="flex justify-center py-3 md:hidden cursor-grab active:cursor-grabbing touch-none"
-                    onPointerDown={(e) => {
-                        if (prefersReducedMotion) return;
-                        dragControls.start(e);
-                    }}
-                    role="button"
-                    tabIndex={-1}
-                    aria-label={t("meta.swipeToClose")}
-                >
-                    <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                </div>
+                {/* Pull indicator — drag handle to close on mobile (modal only) */}
+                {isModal && (
+                    <div
+                        className="flex justify-center py-3 md:hidden cursor-grab active:cursor-grabbing touch-none"
+                        onPointerDown={(e) => {
+                            if (prefersReducedMotion) return;
+                            dragControls.start(e);
+                        }}
+                        role="button"
+                        tabIndex={-1}
+                        aria-label={t("meta.swipeToClose")}
+                    >
+                        <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                    </div>
+                )}
 
                 <div className="max-w-xl mx-auto space-y-6 md:space-y-8 md:min-h-full md:flex md:flex-col md:justify-center">
                     <div>

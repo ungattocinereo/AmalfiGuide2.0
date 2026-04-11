@@ -61,7 +61,12 @@
     "tripAdvisor": "TripAdvisor",
     "viewOnTripAdvisor": "Auf TripAdvisor ansehen",
     "viewHikeMap": "Wanderkarte anzeigen",
-    "view": "Anzeigen"
+    "view": "Anzeigen",
+    "close": "Schließen",
+    "backToGuide": "Zurück zum Guide",
+    "share": "Teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² Zwischen den Bergen und dem Meer",

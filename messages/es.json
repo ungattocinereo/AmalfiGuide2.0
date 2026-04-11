@@ -61,7 +61,12 @@
     "tripAdvisor": "TripAdvisor",
     "viewOnTripAdvisor": "Ver en TripAdvisor",
     "viewHikeMap": "Ver mapa de ruta",
-    "view": "Ver"
+    "view": "Ver",
+    "close": "Cerrar",
+    "backToGuide": "Volver a la guía",
+    "share": "Compartir",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "Enlace copiado"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² Entre las Montañas y el Mar",

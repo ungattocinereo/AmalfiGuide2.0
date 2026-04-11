@@ -61,7 +61,12 @@
     "tripAdvisor": "TripAdvisor",
     "viewOnTripAdvisor": "Посмотреть на TripAdvisor",
     "viewHikeMap": "Посмотреть карту маршрута",
-    "view": "Посмотреть"
+    "view": "Посмотреть",
+    "close": "Закрыть",
+    "backToGuide": "Вернуться в гид",
+    "share": "Поделиться",
+    "copyLink": "Скопировать ссылку",
+    "linkCopied": "Ссылка скопирована"
   },
   "section": {
     "gemsIntroTitle": "Атрани: 0,2 км² Между Горами и Морем",
