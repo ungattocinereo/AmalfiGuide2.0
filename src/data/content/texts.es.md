@@ -237,7 +237,7 @@ Desde cocinas familiares hasta legendarios comedores junto al mar.
 ### Le Palme (Atrani)
 **Category**: Familiar
 **Tagline**: Hospitalidad auténtica y mariscos
-**Hours**: Mon-Sun 12:00-23:00
+**Hours**: Mon-Sun 12:00-23:00, Closed Thu
 **Price**: €€
 
 **Info breve:**
@@ -259,6 +259,8 @@ El ambiente es animado y amigable. Salvatore también gestiona una villa de alqu
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Excelencia refinada en mariscos
+**Hours**: Mon-Sun 12:30-14:30, 19:00-22:00, Closed Tue
+**Price**: €€€
 
 **Info breve:**
 Una joya seleccionada por Michelin que permanece humilde. Si eres un amante de la comida o un instagramer buscando el risotto perfecto, este es tu lugar.
@@ -297,6 +299,8 @@ Hay estacionamiento conveniente disponible para los huéspedes. Lo Smeraldino es
 ### Le Arcate (Atrani)
 **Category**: Frente al Mar
 **Tagline**: Los mejores asientos del pueblo
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
 
 **Info breve:**
 Ubicación, ubicación, ubicación. Si quieres comer justo al borde del agua en Atrani, reserva una mesa aquí. Un favorito de celebridades como Edward Norton por su privacidad y vista.
@@ -313,6 +317,8 @@ Le Arcate es un lugar local querido para aquellos que quieren los mejores asient
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
 **Category**: Legendario
 **Tagline**: Del huerto a la mesa con vista
+**Hours**: Mon-Sun 12:30-15:00, 19:30-22:30
+**Price**: €€€€
 
 **Info breve:**
 Un histórico lugar familiar desde 1931 con increíble hospitalidad. Usa su servicio de shuttle gratuito desde Amalfi—hace que la logística sea sin esfuerzo.
@@ -332,6 +338,8 @@ Bocados pequeños que dicen más que un menú largo.
 ### Panadería Apicella (Amalfi)
 **Category**: Desayuno
 **Tagline**: La pizza de desayuno secreta de los locales
+**Hours**: Mon-Sun 07:00-14:00
+**Price**: €
 
 **Info breve:**
 Sáltate el desayuno del hotel. Haz como los locales y toma una porción de pizza roja aquí. Es modesto, barato y absolutamente delicioso.
@@ -348,6 +356,8 @@ Escondida a solo 70 metros del Duomo de Amalfi, esta panadería es fácil de pas
 ### La Rua Pizze E Delizie (Amalfi)
 **Category**: Street Food
 **Tagline**: Arancini y bocados al horno de leña
+**Hours**: Mon-Sun 09:30-22:00, Closed Mon
+**Price**: €
 
 **Info breve:**
 El lugar perfecto para un bocado rápido mientras exploras los callejones. Sus arancini son perfección crujiente.
@@ -364,6 +374,8 @@ Ubicado en el corazón de Amalfi, La Rua ofrece más que solo comida callejera; 
 ### Pizza Express (Amalfi)
 **Category**: Street Food
 **Tagline**: Bocado rápido en la calle principal
+**Hours**: Mon-Sun 10:30-22:00
+**Price**: €
 
 **Info breve:**
 Un pequeño lugar confiable en la avenida principal de Amalfi. Perfecto para una porción de pizza rápida y amigable con el bolsillo cuando necesitas recargar energías sin el alboroto de sentarte.
@@ -383,6 +395,7 @@ Mercados locales y tiendas especializadas donde encontrarás los mejores ingredi
 ### Mimì & Cocò di Tutto Un Po (Atrani)
 **Category**: Mercado
 **Tagline**: Una joya de productos auténticos de la Costa Amalfitana
+**Hours**: Mon-Sun 08:00-12:00, 16:00-20:00
 
 **Info breve:**
 Mimì & Cocò di Tutto Un Po es una encantadora tienda de comestibles de barrio en el corazón de Atrani, que ofrece una selección ecléctica de productos regionales. Esta querida tienda local es el lugar perfecto para descubrir ingredientes de calidad y especialidades italianas genuinas.
@@ -401,6 +414,7 @@ El personal conocedor y acogedor brinda recomendaciones expertas sobre productos
 ### Supermercado La Grande Mela Deco (Amalfi)
 **Category**: Supermercado
 **Tagline**: Comestibles completos con estándares de calidad
+**Hours**: Mon-Sun 07:30-13:30, 16:30-21:00
 
 **Info breve:**
 La Grande Mela Deco es un supermercado moderno en el centro de Amalfi, que ofrece una selección completa de comestibles y artículos especiales. Esta tienda bien organizada proporciona tanto esenciales cotidianos como productos gourmet para visitantes y residentes por igual.
@@ -418,6 +432,7 @@ La tienda está diseñada para compras convenientes con distribución organizada
 ### DOGI Market (Amalfi)
 **Category**: Alimentari
 **Tagline**: Mercado local tradicional con encanto de barrio
+**Hours**: Mon-Sun 07:30-13:30, 16:30-20:00
 
 **Info breve:**
 DOGI SRL es un mercado orientado a la comunidad en la histórica Piazza dei Dogi de Amalfi, que sirve a locales y visitantes con una selección de comestibles de calidad y alimentos preparados. Este alimentari tradicional ofrece tanto necesidades cotidianas como productos locales especiales.
@@ -435,6 +450,7 @@ La tienda se beneficia de su ubicación privilegiada en una de las plazas princi
 ### La Tramontina Amalfi
 **Category**: Delicatessen
 **Tagline**: Mozzarella de búfala legendaria y sándwiches artesanales
+**Hours**: Mon-Sun 08:00-20:00
 
 **Info breve:**
 La Tramontina es un aclamado mercado de alimentos especiales y bistró famoso por la excepcional mozzarella de búfala y sándwiches hechos a mano con ingredientes locales premium. Un favorito de los visitantes para comidas rápidas y de alta calidad y productos gourmet en la Costa Amalfitana.
