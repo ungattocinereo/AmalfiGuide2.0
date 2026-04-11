@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useLocale } from "next-intl";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { SectionGrid } from "@/components/section-grid";
@@ -15,38 +16,46 @@ interface MainContentProps {
     content: CategorySection[];
 }
 
+// Build a locale-aware URL for a place. EN omits the prefix, others use /{locale}.
+function placePath(locale: string, slug: string): string {
+    return locale === "en" ? `/place/${slug}` : `/${locale}/place/${slug}`;
+}
+
 export function MainContent({ content }: MainContentProps) {
     const { isAllExpanded } = useLayout();
+    const locale = useLocale();
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
+    const previousUrl = useRef<string | null>(null);
 
-    // Push history state when modal opens (with guard against double-push in strict mode)
+    // When the modal opens, push a shallow history entry with the canonical
+    // /place/{slug} URL so the user can share or reload straight into the
+    // same place (the static [slug]/page.tsx takes over on a hard hit).
     useEffect(() => {
         if (selectedItem && !modalHistoryPushed.current) {
-            history.pushState({ modal: true }, '');
+            previousUrl.current = window.location.pathname + window.location.search;
+            history.pushState({ modal: true }, "", placePath(locale, selectedItem.slug));
             modalHistoryPushed.current = true;
         }
-    }, [selectedItem]);
+    }, [selectedItem, locale]);
 
-    // Handle browser back button - closes modal when back is pressed
+    // Browser back button (or history.back()) closes the modal
     useEffect(() => {
         const handlePopState = () => {
-            // Back button was pressed (or history.back() called), close the modal
             if (modalHistoryPushed.current) {
                 modalHistoryPushed.current = false;
+                previousUrl.current = null;
                 setSelectedItem(null);
             }
         };
-
-        window.addEventListener('popstate', handlePopState);
-        return () => window.removeEventListener('popstate', handlePopState);
+        window.addEventListener("popstate", handlePopState);
+        return () => window.removeEventListener("popstate", handlePopState);
     }, []);
 
-    // Universal close handler for X button, backdrop, Escape
-    // Calls history.back() which triggers popstate → setSelectedItem(null)
+    // Universal close handler for X button, backdrop, Escape, drag-to-close
     const handleCloseModal = useCallback(() => {
         if (selectedItem && modalHistoryPushed.current) {
-            history.back(); // This triggers popstate, which closes modal
+            history.back(); // triggers popstate → setSelectedItem(null)
         }
     }, [selectedItem]);
 

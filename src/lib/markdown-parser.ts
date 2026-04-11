@@ -2,11 +2,13 @@ import fs from "fs";
 import path from "path";
 import { marked } from "marked";
 import { Language } from "./i18n/types";
+import { slugify } from "./slugify";
 
 marked.setOptions({ gfm: false, breaks: false });
 
 export type PlaceItem = {
     name: string;
+    slug: string;
     category: string;
     tagline: string;
     taglineHtml: string;
@@ -88,6 +90,7 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
 
             currentItem = {
                 name: line.replace("### ", "").trim(),
+                slug: "",
                 category: "",
                 tagline: "",
                 taglineHtml: "",
@@ -194,12 +197,65 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
 /**
  * Parses markdown content for a specific language.
  * Looks for language-specific content files in src/data/content/texts.{lang}.md
+ *
+ * Slugs are derived from the EN canonical names so a single /place/{slug} URL
+ * resolves the same place in every locale. The EN file is parsed once and
+ * cached at module level — the content files are only ~540 lines each.
  */
 export function parseMarkdownContentForLanguage(language: Language): CategorySection[] {
     const filePath = path.join(
         process.cwd(),
         "src/data/content",
-        `texts.${language}.md`
+        `texts.${language}.md`,
     );
-    return parseMarkdownContent(filePath);
+    const sections = parseMarkdownContent(filePath);
+    const canonicalSlugs = getCanonicalSlugs();
+    let index = 0;
+    for (const section of sections) {
+        for (const item of section.items) {
+            item.slug = canonicalSlugs[index] ?? slugify(item.name);
+            index++;
+        }
+    }
+    return sections;
+}
+
+let canonicalSlugsCache: string[] | null = null;
+
+/**
+ * Returns the ordered list of canonical slugs derived from the EN content file.
+ * Since all language files are parallel (same place order and count), a place's
+ * position in this list is its stable identity across locales.
+ */
+export function getCanonicalSlugs(): string[] {
+    if (canonicalSlugsCache) return canonicalSlugsCache;
+    const enPath = path.join(process.cwd(), "src/data/content", "texts.en.md");
+    const enSections = parseMarkdownContent(enPath);
+    const slugs: string[] = [];
+    const seen = new Set<string>();
+    for (const section of enSections) {
+        for (const item of section.items) {
+            let slug = slugify(item.name);
+            // Guard against accidental slug collision by suffixing.
+            let suffix = 2;
+            const base = slug;
+            while (seen.has(slug)) {
+                slug = `${base}-${suffix++}`;
+            }
+            seen.add(slug);
+            slugs.push(slug);
+        }
+    }
+    canonicalSlugsCache = slugs;
+    return slugs;
+}
+
+/** Flat list of all places for a locale, with slugs assigned. */
+export function getAllPlacesForLanguage(language: Language): PlaceItem[] {
+    return parseMarkdownContentForLanguage(language).flatMap((s) => s.items);
+}
+
+/** Find a single place by slug in a specific locale. */
+export function findPlaceBySlug(language: Language, slug: string): PlaceItem | null {
+    return getAllPlacesForLanguage(language).find((p) => p.slug === slug) ?? null;
 }
