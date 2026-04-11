@@ -1,23 +1,15 @@
 import { ImageResponse } from "next/og";
-import { findPlaceBySlug, getCanonicalSlugs } from "@/lib/markdown-parser";
+import { findPlaceBySlug } from "@/lib/markdown-parser";
 import type { Language } from "@/lib/i18n/types";
-import { routing } from "@/i18n/routing";
 
 export const runtime = "nodejs";
 export const alt = "Amalfi.Day place card";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export function generateStaticParams() {
-    const slugs = getCanonicalSlugs();
-    const params: { locale: string; slug: string }[] = [];
-    for (const locale of routing.locales) {
-        for (const slug of slugs) {
-            params.push({ locale, slug });
-        }
-    }
-    return params;
-}
+// Intentionally no generateStaticParams — the OG cards are rendered on demand
+// and cached at the edge. Pre-rendering 168 PNGs per build blew past Vercel's
+// free-tier upload quota; dynamic generation is both lighter and fresher.
 
 /**
  * Editorial OG card: brand-colored gradient background + category kicker +
