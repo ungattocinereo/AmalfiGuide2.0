@@ -9,7 +9,7 @@ import {
     Diamond, Tree, Path, Users, ForkKnife,
     Sun, Storefront, Cookie, ShoppingBag, Basket,
     Compass, Coffee, UmbrellaSimple,
-    Clock, Timer, CurrencyEur, Mountains as MountainIcon
+    Clock, Timer, Receipt, Mountains as MountainIcon
 } from "@phosphor-icons/react";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
@@ -83,7 +83,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
         if (item.duration) badges.push({ icon: Timer, label: item.duration, tone: "neutral" });
         if (item.difficulty) badges.push({ icon: MountainIcon, label: formatDifficulty(item.difficulty, t), tone: "neutral" });
     } else {
-        if (item.price) badges.push({ icon: CurrencyEur, label: item.price, tone: "neutral" });
+        if (item.price) badges.push({ icon: Receipt, label: item.price, tone: "neutral" });
         if (openNow !== null) {
             badges.push({
                 icon: Clock,

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
-import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, CurrencyEur, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, Receipt, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
@@ -51,7 +51,7 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
             tone: openNow === true ? "positive" : openNow === false ? "muted" : undefined,
         });
     }
-    if (item.price) metaItems.push({ icon: CurrencyEur, label: t("meta.priceLabel"), value: item.price });
+    if (item.price) metaItems.push({ icon: Receipt, label: t("meta.priceLabel"), value: item.price });
     if (item.duration) metaItems.push({ icon: Timer, label: t("meta.durationLabel"), value: item.duration });
     if (item.difficulty) metaItems.push({ icon: MountainIcon, label: t("meta.difficultyLabel"), value: translateLookup(t, "meta.difficulty", item.difficulty) });
     if (item.distance) metaItems.push({ icon: Ruler, label: t("meta.distanceLabel"), value: item.distance });
