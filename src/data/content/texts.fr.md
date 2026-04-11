@@ -277,6 +277,8 @@ Inclus dans le Guide Michelin, A'Paranza est dédié à la qualité. Malgré son
 ### Lo Smeraldino (Amalfi)
 **Category**: Avec Vue
 **Tagline**: Le plus ancien lieu d'Atrani avec vue
+**Hours**: Mon-Sun 12:00-22:30
+**Price**: €€
 
 **Short info:**
 Vous pouvez trouver Lo Smeraldino au Port d'Amalfi, entouré de yachts de luxe. C'est l'une des destinations gastronomiques les plus enchanteresses de la Côte Amalfitaine, où l'excellence culinaire rencontre des vues panoramiques à couper le souffle sur la mer.

@@ -277,6 +277,8 @@ Im Michelin-Guide aufgeführt, ist A'Paranza der Qualität verpflichtet. Trotz s
 ### Lo Smeraldino (Amalfi)
 **Category**: Scenic Dining
 **Tagline**: Der älteste Ort in Atrani mit der Aussicht
+**Hours**: Mon-Sun 12:00-22:30
+**Price**: €€
 
 **Short info:**
 Du findest Lo Smeraldino am Seehafen von Amalfi, umgeben von Luxusyachten. Es ist eines der bezauberndsten Speiseziele an der Amalfiküste, wo kulinarische Exzellenz auf atemberaubende panoramische Meeresblicke trifft.

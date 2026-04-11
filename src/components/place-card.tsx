@@ -45,16 +45,6 @@ const getCategoryIcon = (category: string): PhosphorIcon => {
     return MapPin;
 };
 
-type PlaceKind = "restaurant" | "trail" | "viewpoint" | "other";
-
-const classifyPlace = (category: string): PlaceKind => {
-    const c = category.toLowerCase();
-    if (/hiking|trail|sentier|sendero|escursion|wandern|поход|тропа|маршрут/.test(c)) return "trail";
-    if (/restaurant|ristorante|ресторан|michelin|dining|street food|locale familiare|family spot|locale|bakery|panif|boulang|panad|пекарн|pizza/.test(c)) return "restaurant";
-    if (/view|vista|панорам|vue|aussicht|belvedere|belvédère|mirador|panorama|photo|foto/.test(c)) return "viewpoint";
-    return "other";
-};
-
 const formatBestTime = (raw: string, t: (key: string) => string): string => {
     const key = raw.trim().toLowerCase();
     const lookup = t(`meta.bestTime.${key}`);
@@ -82,14 +72,17 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
     const blurDataURL = getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
-    const kind = classifyPlace(item.category);
 
+    // Data-driven badge selection (no category regex). If a place has trail
+    // fields (duration/difficulty) we show those; otherwise we surface the two
+    // most useful facts from whatever is populated — price, open-now, best time.
     type Badge = { icon: PhosphorIcon; label: string; tone: "neutral" | "positive" | "muted" };
     const badges: Badge[] = [];
-    if (kind === "trail") {
+    const isTrailish = Boolean(item.duration || item.difficulty);
+    if (isTrailish) {
         if (item.duration) badges.push({ icon: Timer, label: item.duration, tone: "neutral" });
         if (item.difficulty) badges.push({ icon: MountainIcon, label: formatDifficulty(item.difficulty, t), tone: "neutral" });
-    } else if (kind === "restaurant") {
+    } else {
         if (item.price) badges.push({ icon: CurrencyEur, label: item.price, tone: "neutral" });
         if (openNow !== null) {
             badges.push({
@@ -98,17 +91,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                 tone: openNow ? "positive" : "muted",
             });
         }
-    } else if (kind === "viewpoint") {
-        if (item.bestTime) badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
-    } else {
-        if (openNow !== null) {
-            badges.push({
-                icon: Clock,
-                label: openNow ? t("meta.openNow") : t("meta.closed"),
-                tone: openNow ? "positive" : "muted",
-            });
+        if (item.bestTime && badges.length < 2) {
+            badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
         }
-        if (item.bestTime) badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
     }
     const visibleBadges = badges.slice(0, 2);
 
