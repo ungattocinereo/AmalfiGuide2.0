@@ -82,5 +82,37 @@
     "privacyLink": "Политику конфиденциальности",
     "accept": "Принять",
     "decline": "Отклонить"
+  },
+  "meta": {
+    "openNow": "Сейчас открыто",
+    "closed": "Закрыто",
+    "hoursLabel": "Часы работы",
+    "priceLabel": "Цена",
+    "durationLabel": "Длительность",
+    "difficultyLabel": "Сложность",
+    "distanceLabel": "Дистанция",
+    "bestTimeLabel": "Лучшее время",
+    "sectionLabel": "Детали места",
+    "swipeToClose": "Свайп вниз, чтобы закрыть",
+    "difficulty": {
+      "easy": "Лёгкий",
+      "moderate": "Средний",
+      "hard": "Сложный"
+    },
+    "bestTime": {
+      "morning": "Утро",
+      "sunset": "Закат",
+      "evening": "Вечер"
+    }
+  },
+  "contextWidget": {
+    "label": "Локальный контекст",
+    "sunset": "Закат",
+    "goodForHiking": "Хороший день для похода"
+  },
+  "gallery": {
+    "previous": "Предыдущее фото",
+    "next": "Следующее фото",
+    "goTo": "Перейти к фото"
   }
 }

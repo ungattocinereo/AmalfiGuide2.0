@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-context";
 import { useLayout } from "@/components/layout-context";
 import { useTheme } from "next-themes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
+import { ContextWidget } from "@/components/context-widget";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -202,6 +203,16 @@ export function Hero() {
                     >
                         {t('hero.description')}
                     </motion.p>
+
+                    {/* Real-time context — sunset, weather, hiking suitability */}
+                    <motion.div
+                        className="mt-4 md:mt-5"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, ease, delay: 1.0 }}
+                    >
+                        <ContextWidget />
+                    </motion.div>
                 </div>
 
                 {/* Bottom row: Transport pills + scroll CTA */}

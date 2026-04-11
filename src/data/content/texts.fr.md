@@ -86,6 +86,9 @@ Les monuments essentiels qui définissent l'histoire et la vie quotidienne d'Ama
 ### Duomo di Sant'Andrea (Cathédrale d'Amalfi)
 **Category**: Monument
 **Tagline**: L'icône d'Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 Vous ne pouvez pas visiter Amalfi sans voir le Duomo. Son escalier de 62 marches est légendaire, mais la vraie magie se trouve dans le paisible Cloître du Paradis à l'intérieur. Il y a un musée au 2e étage et une crypte en sous-sol.
@@ -104,6 +107,7 @@ Le Duomo est le cœur architectural d'Amalfi, datant du IXe siècle. Ce bâtimen
 ### Belvédère de San Lorenzo
 **Category**: Panorama
 **Tagline**: Le meilleur panorama sans effort
+**Best time**: sunset
 
 **Short info:**
 Vous voulez la meilleure vue à vol d'oiseau d'Amalfi sans transpirer ? Oubliez les escaliers et empruntez ce tunnel secret jusqu'au niveau du cimetière. (Oui, c'est le chemin vers le Cimetière d'Amalfi).
@@ -188,6 +192,9 @@ Cette tour de guet se trouve sur la crête séparant Amalfi et Atrani. La légen
 ### Sentier des Dieux (Sentiero degli Dei)
 **Category**: Sentier
 **Tagline**: La randonnée légendaire incontournable
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 C'est touristique pour une bonne raison - les vues sont inégalées. Mon conseil : Commencez à Bomerano et marchez en *descendant* vers Nocelle pour garder les meilleures vues devant vous.
@@ -209,6 +216,9 @@ De Nocelle, vous avez deux options pour rejoindre Positano : prendre le bus Mobi
 ### Le Sentier des Citrons (Sentiero dei Limoni)
 **Category**: Sentier
 **Tagline**: Une promenade parfumée embrassée par le soleil
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 Une alternative plus facile aux randonnées de montagne. Ce sentier relie Maiori et Minori et vous emmène au cœur de la culture citronnière de la région.
@@ -227,6 +237,8 @@ Des cuisines familiales aux salles à manger légendaires au bord de la mer.
 ### Le Palme (Atrani)
 **Category**: Familial
 **Tagline**: Hospitalité authentique & fruits de mer
+**Hours**: Mon-Sun 12:00-23:00
+**Price**: €€
 
 **Short info:**
 Tenu par les frères Armando et Salvatore depuis 1990, cet endroit vous fait sentir comme à la maison. C'est mon premier choix pour un repas fiable et délicieux où le service est aussi bon que la nourriture.

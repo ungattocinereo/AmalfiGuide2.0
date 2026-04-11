@@ -86,6 +86,9 @@ Los lugares emblemáticos que definen la historia y la vida diaria de Amalfi.
 ### Duomo di Sant'Andrea (Catedral de Amalfi)
 **Category**: Monumento
 **Tagline**: El ícono de Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Info breve:**
 No puedes visitar Amalfi sin ver el Duomo. Su escalinata de 62 escalones es legendaria, pero la verdadera magia es el pacífico Claustro del Paraíso en el interior. Hay un museo en el segundo piso y una cripta bajo tierra.
@@ -104,6 +107,7 @@ El Duomo es el corazón arquitectónico de Amalfi, que data del siglo IX. Este m
 ### Belvedere de San Lorenzo
 **Category**: Mirador
 **Tagline**: El mejor panorama sin la caminata
+**Best time**: sunset
 
 **Info breve:**
 ¿Quieres la mejor vista panorámica de Amalfi sin sudar? Sáltate las escaleras y toma este túnel secreto hasta el nivel del cementerio. (Sí, este es el camino al Cementerio de Amalfi).
@@ -188,6 +192,9 @@ Esta torre vigía se encuentra en la cresta que separa Amalfi y Atrani. La leyen
 ### Sendero de los Dioses (Sentiero degli Dei)
 **Category**: Sendero
 **Tagline**: La famosa caminata de lista de deseos mundial
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Info breve:**
 Es turístico por una razón—las vistas son inigualables. Mi consejo: Comienza en Bomerano y camina *bajando* hacia Nocelle para mantener las mejores vistas frente a ti.
@@ -209,6 +216,9 @@ Desde Nocelle, tienes dos opciones para llegar a Positano: tomar el autobús Mob
 ### El Sendero de los Limones (Sentiero dei Limoni)
 **Category**: Sendero
 **Tagline**: Un paseo fragante besado por el sol
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Info breve:**
 Una alternativa más fácil a las caminatas de montaña. Este sendero conecta Maiori y Minori y te lleva justo al corazón de la cultura del cultivo de limón de la región.
@@ -227,6 +237,8 @@ Desde cocinas familiares hasta legendarios comedores junto al mar.
 ### Le Palme (Atrani)
 **Category**: Familiar
 **Tagline**: Hospitalidad auténtica y mariscos
+**Hours**: Mon-Sun 12:00-23:00
+**Price**: €€
 
 **Info breve:**
 Dirigido por los hermanos Armando y Salvatore desde 1990, este lugar se siente como el hogar. Es mi primera opción para una comida confiable y deliciosa donde el servicio es tan bueno como la comida.

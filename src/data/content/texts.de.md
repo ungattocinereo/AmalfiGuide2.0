@@ -86,6 +86,9 @@ Die wesentlichen Wahrzeichen, die Amalfis Geschichte und Alltagsleben definieren
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
 **Category**: Landmark
 **Tagline**: Die Ikone von Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 Du kannst Amalfi nicht besuchen, ohne den Duomo gesehen zu haben. Seine 62-stufige Treppe ist legendär, aber die wahre Magie ist der friedliche Kreuzgang des Paradieses im Inneren. Es gibt ein Museum im 2. Stock und eine Krypta unter der Erde.
@@ -104,6 +107,7 @@ Der Duomo ist das architektonische Herz von Amalfi und stammt aus dem 9. Jahrhun
 ### Belvedere of San Lorenzo
 **Category**: Viewpoint
 **Tagline**: Das beste Panorama ohne die Wanderung
+**Best time**: sunset
 
 **Short info:**
 Willst du die beste Vogelperspektive auf Amalfi, ohne ins Schwitzen zu kommen? Überspringe die Treppen und nimm diesen geheimen Tunnel zur Friedhofsebene. (Ja, das ist der Weg zu Amalfis Friedhof).
@@ -188,6 +192,9 @@ Dieser Wachturm thront auf dem Bergrücken, der Amalfi und Atrani trennt. Die Le
 ### Path of the Gods (Sentiero degli Dei)
 **Category**: Hiking Trail
 **Tagline**: Die weltberühmte Bucket-List-Wanderung
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 Es ist aus gutem Grund touristisch – die Aussichten sind unübertroffen. Mein Rat: Starte in Bomerano und laufe *bergab* Richtung Nocelle, um die besten Aussichten vor dir zu haben.
@@ -209,6 +216,9 @@ Von Nocelle hast du zwei Möglichkeiten, um Positano zu erreichen: Nimm den Bus 
 ### The Lemon Path (Sentiero dei Limoni)
 **Category**: Hiking Trail
 **Tagline**: Ein duftender Spaziergang, von der Sonne geküsst
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 Eine einfachere Alternative zu den Bergwanderungen. Dieser Pfad verbindet Maiori und Minori und führt dich direkt ins Herz der Zitronen-Anbaukultur der Region.
@@ -227,6 +237,8 @@ Von Familienküchen bis zu legendären Speisesälen am Meer.
 ### Le Palme (Atrani)
 **Category**: Family Spot
 **Tagline**: Authentische Gastfreundschaft & Meeresfrüchte
+**Hours**: Mon-Sun 12:00-23:00
+**Price**: €€
 
 **Short info:**
 Geführt von den Brüdern Armando und Salvatore seit 1990, fühlt sich dieser Ort wie Zuhause an. Es ist meine erste Wahl für ein verlässliches, köstliches Essen, bei dem der Service so gut ist wie das Essen.

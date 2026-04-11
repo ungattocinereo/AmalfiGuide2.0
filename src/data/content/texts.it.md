@@ -86,6 +86,9 @@ I monumenti essenziali che definiscono la storia e la vita quotidiana di Amalfi.
 ### Duomo di Sant'Andrea (Cattedrale di Amalfi)
 **Category**: Monumento
 **Tagline**: L'icona di Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 Non puoi visitare Amalfi senza vedere il Duomo. La sua scalinata di 62 gradini è leggendaria, ma la vera magia è il tranquillo Chiostro del Paradiso all'interno. C'è un museo al secondo piano e la cripta sotterranea.
@@ -104,6 +107,7 @@ Il Duomo è il cuore architettonico di Amalfi, risalente al IX secolo. Questo ma
 ### Belvedere di San Lorenzo
 **Category**: Panorama
 **Tagline**: Il miglior panorama senza fatica
+**Best time**: sunset
 
 **Short info:**
 Vuoi la migliore vista dall'alto su Amalfi senza stancarti? Salta le scale e prendi questo tunnel segreto fino al livello del cimitero. (Sì, è la via per il Cimitero di Amalfi).
@@ -188,6 +192,9 @@ Questa torre di avvistamento si trova sulla cresta che separa Amalfi e Atrani. L
 ### Sentiero degli Dei
 **Category**: Sentiero
 **Tagline**: L'escursione famosa nel mondo da fare assolutamente
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 È turistica per una ragione—le viste sono impareggiabili. Il mio consiglio: Parti da Bomerano e cammina *in discesa* verso Nocelle per mantenere le migliori viste di fronte a te.
@@ -209,6 +216,9 @@ Da Nocelle, hai due opzioni per raggiungere Positano: prendere l'autobus Mobilit
 ### Sentiero dei Limoni
 **Category**: Sentiero
 **Tagline**: Una passeggiata profumata baciata dal sole
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 Un'alternativa più facile alle escursioni in montagna. Questo sentiero collega Maiori e Minori e ti porta proprio nel cuore della cultura della coltivazione dei limoni della regione.
@@ -227,6 +237,8 @@ Dalle cucine di famiglia alle sale da pranzo leggendarie sul mare.
 ### Le Palme (Atrani)
 **Category**: Locale Familiare
 **Tagline**: Ospitalità autentica e pesce
+**Hours**: Mon-Sun 12:00-23:00
+**Price**: €€
 
 **Short info:**
 Gestito dai fratelli Armando e Salvatore dal 1990, questo posto si sente come casa. È la mia prima scelta per un pasto affidabile e delizioso dove il servizio è buono quanto il cibo.

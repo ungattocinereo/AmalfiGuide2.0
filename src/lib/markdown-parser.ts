@@ -15,6 +15,12 @@ export type PlaceItem = {
     details: string;
     detailsHtml: string;
     links: { label: string; url: string }[];
+    hours?: string;
+    price?: string;
+    duration?: string;
+    difficulty?: string;
+    distance?: string;
+    bestTime?: string;
 };
 
 export type CategorySection = {
@@ -91,6 +97,8 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
                 detailsHtml: "",
                 links: []
             };
+            // Optional meta fields (hours, price, duration, difficulty, distance, bestTime)
+            // stay undefined until their lines are encountered.
             if (currentSection) currentSection.items.push(currentItem);
             continue;
         }
@@ -104,6 +112,30 @@ export function parseMarkdownContent(filePath: string): CategorySection[] {
         }
         if (line.startsWith("**Tagline**:")) {
             currentItem.tagline = line.split("**Tagline**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Hours**:")) {
+            currentItem.hours = line.split("**Hours**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Price**:")) {
+            currentItem.price = line.split("**Price**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Duration**:")) {
+            currentItem.duration = line.split("**Duration**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Difficulty**:")) {
+            currentItem.difficulty = line.split("**Difficulty**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Distance**:")) {
+            currentItem.distance = line.split("**Distance**:")[1].trim();
+            continue;
+        }
+        if (line.startsWith("**Best time**:")) {
+            currentItem.bestTime = line.split("**Best time**:")[1].trim();
             continue;
         }
 

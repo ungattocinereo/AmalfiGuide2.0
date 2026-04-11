@@ -82,5 +82,37 @@
     "privacyLink": "Datenschutzerklärung",
     "accept": "Akzeptieren",
     "decline": "Ablehnen"
+  },
+  "meta": {
+    "openNow": "Jetzt geöffnet",
+    "closed": "Geschlossen",
+    "hoursLabel": "Öffnungszeiten",
+    "priceLabel": "Preis",
+    "durationLabel": "Dauer",
+    "difficultyLabel": "Schwierigkeit",
+    "distanceLabel": "Entfernung",
+    "bestTimeLabel": "Beste Zeit",
+    "sectionLabel": "Details zum Ort",
+    "swipeToClose": "Nach unten wischen zum Schließen",
+    "difficulty": {
+      "easy": "Leicht",
+      "moderate": "Mittel",
+      "hard": "Schwer"
+    },
+    "bestTime": {
+      "morning": "Morgen",
+      "sunset": "Sonnenuntergang",
+      "evening": "Abend"
+    }
+  },
+  "contextWidget": {
+    "label": "Lokaler Kontext",
+    "sunset": "Sonnenuntergang",
+    "goodForHiking": "Gut zum Wandern"
+  },
+  "gallery": {
+    "previous": "Vorheriges Foto",
+    "next": "Nächstes Foto",
+    "goTo": "Zum Foto springen"
   }
 }

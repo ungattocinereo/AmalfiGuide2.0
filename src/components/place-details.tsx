@@ -1,19 +1,27 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold } from "@phosphor-icons/react";
+import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
+import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, CurrencyEur, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { useLanguage } from "@/components/language-context";
+import { useIsOpenNow } from "@/hooks/use-is-open-now";
+import { getPlaceGallery } from "@/lib/place-gallery";
 
 interface PlaceDetailsProps {
     item: PlaceItem;
     layoutId: string;
     onClose: () => void;
 }
+
+const translateLookup = (t: (key: string) => string, namespace: string, raw: string): string => {
+    const key = `${namespace}.${raw.trim().toLowerCase()}`;
+    const translated = t(key);
+    return translated === key ? raw : translated;
+};
 
 export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const { t } = useLanguage();
@@ -22,6 +30,32 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
     const blurDataURL = getBlurDataURL(imageUrl);
     const modalRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const openNow = useIsOpenNow(item.hours);
+    const prefersReducedMotion = useReducedMotion();
+    const dragControls = useDragControls();
+
+    const gallery = getPlaceGallery(item.name);
+    const galleryImages = gallery.length > 1 ? gallery : [imageUrl];
+    const [galleryIndex, setGalleryIndex] = useState(0);
+    const hasMultiPhoto = galleryImages.length > 1;
+    const currentImage = galleryImages[galleryIndex] ?? imageUrl;
+    const goPrev = () => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+    const goNext = () => setGalleryIndex((i) => (i + 1) % galleryImages.length);
+
+    const metaItems: Array<{ icon: typeof Clock; label: string; value: string; tone?: "positive" | "muted" }> = [];
+    if (item.hours) {
+        metaItems.push({
+            icon: Clock,
+            label: openNow === true ? t("meta.openNow") : openNow === false ? t("meta.closed") : t("meta.hoursLabel"),
+            value: item.hours,
+            tone: openNow === true ? "positive" : openNow === false ? "muted" : undefined,
+        });
+    }
+    if (item.price) metaItems.push({ icon: CurrencyEur, label: t("meta.priceLabel"), value: item.price });
+    if (item.duration) metaItems.push({ icon: Timer, label: t("meta.durationLabel"), value: item.duration });
+    if (item.difficulty) metaItems.push({ icon: MountainIcon, label: t("meta.difficultyLabel"), value: translateLookup(t, "meta.difficulty", item.difficulty) });
+    if (item.distance) metaItems.push({ icon: Ruler, label: t("meta.distanceLabel"), value: item.distance });
+    if (item.bestTime) metaItems.push({ icon: Sun, label: t("meta.bestTimeLabel"), value: translateLookup(t, "meta.bestTime", item.bestTime) });
 
     // Lock body scroll, manage focus, and handle keyboard (Escape + Tab trap)
     useEffect(() => {
@@ -78,13 +112,21 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="place-details-title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 32 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
+            drag={prefersReducedMotion ? false : "y"}
+            dragListener={false}
+            dragControls={dragControls}
+            dragConstraints={{ top: 0, bottom: 600 }}
+            dragElastic={{ top: 0, bottom: 0.35 }}
+            onDragEnd={(_, info) => {
+                if (info.offset.y > 120 || info.velocity.y > 500) onClose();
+            }}
             className="fixed inset-0 z-50 flex flex-col md:flex-row bg-white dark:bg-gray-950 cursor-zoom-out"
             onClick={onClose}
-            style={{ overscrollBehavior: "contain" }}
+            style={{ overscrollBehavior: "contain", touchAction: "pan-y" }}
         >
             {/* Visual Section: Mobile Top, Desktop Right Half */}
             <motion.div
@@ -102,16 +144,61 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                         title={`Map of ${item.name}`}
                     />
                 ) : (
-                    <Image
-                        src={imageUrl}
-                        alt={item.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                        priority
-                        placeholder={blurDataURL ? "blur" : "empty"}
-                        blurDataURL={blurDataURL}
-                    />
+                    <>
+                        <AnimatePresence mode="wait" initial={false}>
+                            <motion.div
+                                key={currentImage}
+                                initial={prefersReducedMotion ? false : { opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                                transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
+                                className="absolute inset-0"
+                            >
+                                <Image
+                                    src={currentImage}
+                                    alt={item.name}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    className="object-cover"
+                                    priority={galleryIndex === 0}
+                                    placeholder={galleryIndex === 0 && blurDataURL ? "blur" : "empty"}
+                                    blurDataURL={galleryIndex === 0 ? blurDataURL : undefined}
+                                />
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {hasMultiPhoto && (
+                            <>
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                                    aria-label={t("gallery.previous")}
+                                    className="absolute top-1/2 left-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
+                                >
+                                    <CaretLeft size={20} weight="bold" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); goNext(); }}
+                                    aria-label={t("gallery.next")}
+                                    className="absolute top-1/2 right-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
+                                >
+                                    <CaretRight size={20} weight="bold" />
+                                </button>
+                                <div className="absolute bottom-3 inset-x-0 z-40 flex items-center justify-center gap-1.5">
+                                    {galleryImages.map((_, i) => (
+                                        <button
+                                            key={i}
+                                            type="button"
+                                            onClick={(e) => { e.stopPropagation(); setGalleryIndex(i); }}
+                                            aria-label={t("gallery.goTo") + ` ${i + 1}`}
+                                            className={`h-1.5 rounded-full transition-all ${i === galleryIndex ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}`}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                    </>
                 )}
 
                 {/* Gradient overlay for visual flow into content (mobile) */}
@@ -144,8 +231,17 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                 onClick={handleContentClick}
                 style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
             >
-                {/* Pull indicator (mobile only) */}
-                <div className="flex justify-center py-3 md:hidden">
+                {/* Pull indicator — drag handle to close on mobile */}
+                <div
+                    className="flex justify-center py-3 md:hidden cursor-grab active:cursor-grabbing touch-none"
+                    onPointerDown={(e) => {
+                        if (prefersReducedMotion) return;
+                        dragControls.start(e);
+                    }}
+                    role="button"
+                    tabIndex={-1}
+                    aria-label={t("meta.swipeToClose")}
+                >
                     <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
                 </div>
 
@@ -178,6 +274,41 @@ export function PlaceDetails({ item, layoutId, onClose }: PlaceDetailsProps) {
                             dangerouslySetInnerHTML={{ __html: item.taglineHtml }}
                         />
                     </div>
+
+                    {metaItems.length > 0 && (
+                        <motion.ul
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.32, duration: 0.3 }}
+                            className="grid grid-cols-2 gap-x-4 gap-y-3 -mt-2"
+                            aria-label={t("meta.sectionLabel")}
+                        >
+                            {metaItems.map((meta, i) => {
+                                const Icon = meta.icon;
+                                const toneRing =
+                                    meta.tone === "positive"
+                                        ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                                        : meta.tone === "muted"
+                                            ? "bg-gray-100 text-gray-500 dark:bg-gray-800/60 dark:text-gray-400"
+                                            : "bg-orange-50 text-orange-700 dark:bg-orange-950/30 dark:text-orange-400";
+                                return (
+                                    <li key={i} className="flex items-center gap-3">
+                                        <span className={`h-9 w-9 flex items-center justify-center rounded-full flex-shrink-0 ${toneRing}`}>
+                                            <Icon size={18} weight="duotone" />
+                                        </span>
+                                        <span className="flex flex-col min-w-0">
+                                            <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+                                                {meta.label}
+                                            </span>
+                                            <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">
+                                                {meta.value}
+                                            </span>
+                                        </span>
+                                    </li>
+                                );
+                            })}
+                        </motion.ul>
+                    )}
 
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}

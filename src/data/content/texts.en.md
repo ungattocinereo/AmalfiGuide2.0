@@ -86,6 +86,9 @@ The essential landmarks that define Amalfi's history and daily life.
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
 **Category**: Landmark
 **Tagline**: The icon of Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 You can't visit Amalfi without seeing the Duomo. Its 62-step staircase is legendary, but the real magic is the peaceful Cloister of Paradise inside. There is a museum on the 2nd floor and crypt below ground.
@@ -104,6 +107,7 @@ The Duomo is the architectural heart of Amalfi, dating back to the 9th century. 
 ### Belvedere of San Lorenzo
 **Category**: Viewpoint
 **Tagline**: The best panorama without the hike
+**Best time**: sunset
 
 **Short info:**
 Want the best bird's-eye view of Amalfi without breaking a sweat? Skip the stairs and take this secret tunnel to the cemetery level. (Yes, this is the way to Amalfi's Cemetery).
@@ -188,6 +192,9 @@ This watchtower sits on the ridge separating Amalfi and Atrani. Legend says the 
 ### Path of the Gods (Sentiero degli Dei)
 **Category**: Hiking Trail
 **Tagline**: The world-famous bucket list hike
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 It's touristy for a reason—the views are unmatched. My advice: Start in Bomerano and walk *down* towards Nocelle to keep the best views in front of you.
@@ -209,6 +216,9 @@ From Nocelle, you have two options to reach Positano: take the Mobility Amalfi C
 ### The Lemon Path (Sentiero dei Limoni)
 **Category**: Hiking Trail
 **Tagline**: A fragrant walk kissed by the sun
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 An easier alternative to the mountain hikes. This path connects Maiori and Minori and takes you right through the heart of the region's lemon farming culture.
@@ -227,6 +237,8 @@ From family kitchens to legendary dining rooms by the sea.
 ### Le Palme (Atrani)
 **Category**: Family Spot
 **Tagline**: Authentic hospitality & seafood
+**Hours**: Mon-Sun 12:00-23:00
+**Price**: €€
 
 **Short info:**
 Run by brothers Armando and Salvatore since 1990, this place feels like home. It's my top pick for a reliable, delicious meal where the service is as good as the food.

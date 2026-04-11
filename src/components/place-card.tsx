@@ -8,12 +8,15 @@ import {
     Camera, Umbrella, MapPin, Star, Church, Binoculars,
     Diamond, Tree, Path, Users, ForkKnife,
     Sun, Storefront, Cookie, ShoppingBag, Basket,
-    Compass, Coffee, UmbrellaSimple
+    Compass, Coffee, UmbrellaSimple,
+    Clock, Timer, CurrencyEur, Mountains as MountainIcon
 } from "@phosphor-icons/react";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
+import { useLanguage } from "@/components/language-context";
+import { useIsOpenNow } from "@/hooks/use-is-open-now";
 
 const getCategoryIcon = (category: string): PhosphorIcon => {
     const c = category.toLowerCase();
@@ -42,6 +45,28 @@ const getCategoryIcon = (category: string): PhosphorIcon => {
     return MapPin;
 };
 
+type PlaceKind = "restaurant" | "trail" | "viewpoint" | "other";
+
+const classifyPlace = (category: string): PlaceKind => {
+    const c = category.toLowerCase();
+    if (/hiking|trail|sentier|sendero|escursion|wandern|поход|тропа|маршрут/.test(c)) return "trail";
+    if (/restaurant|ristorante|ресторан|michelin|dining|street food|locale familiare|family spot|locale|bakery|panif|boulang|panad|пекарн|pizza/.test(c)) return "restaurant";
+    if (/view|vista|панорам|vue|aussicht|belvedere|belvédère|mirador|panorama|photo|foto/.test(c)) return "viewpoint";
+    return "other";
+};
+
+const formatBestTime = (raw: string, t: (key: string) => string): string => {
+    const key = raw.trim().toLowerCase();
+    const lookup = t(`meta.bestTime.${key}`);
+    return lookup === `meta.bestTime.${key}` ? raw : lookup;
+};
+
+const formatDifficulty = (raw: string, t: (key: string) => string): string => {
+    const key = raw.trim().toLowerCase();
+    const lookup = t(`meta.difficulty.${key}`);
+    return lookup === `meta.difficulty.${key}` ? raw : lookup;
+};
+
 interface PlaceCardProps {
     item: PlaceItem;
     layoutId: string;
@@ -51,10 +76,41 @@ interface PlaceCardProps {
 }
 
 export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: PlaceCardProps) {
+    const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
     const blurDataURL = getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
+    const openNow = useIsOpenNow(item.hours);
+    const kind = classifyPlace(item.category);
+
+    type Badge = { icon: PhosphorIcon; label: string; tone: "neutral" | "positive" | "muted" };
+    const badges: Badge[] = [];
+    if (kind === "trail") {
+        if (item.duration) badges.push({ icon: Timer, label: item.duration, tone: "neutral" });
+        if (item.difficulty) badges.push({ icon: MountainIcon, label: formatDifficulty(item.difficulty, t), tone: "neutral" });
+    } else if (kind === "restaurant") {
+        if (item.price) badges.push({ icon: CurrencyEur, label: item.price, tone: "neutral" });
+        if (openNow !== null) {
+            badges.push({
+                icon: Clock,
+                label: openNow ? t("meta.openNow") : t("meta.closed"),
+                tone: openNow ? "positive" : "muted",
+            });
+        }
+    } else if (kind === "viewpoint") {
+        if (item.bestTime) badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
+    } else {
+        if (openNow !== null) {
+            badges.push({
+                icon: Clock,
+                label: openNow ? t("meta.openNow") : t("meta.closed"),
+                tone: openNow ? "positive" : "muted",
+            });
+        }
+        if (item.bestTime) badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
+    }
+    const visibleBadges = badges.slice(0, 2);
 
     return (
         <motion.div
@@ -68,10 +124,10 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
-            {/* Card container — clean white card with border */}
-            <div className="rounded-2xl bg-white dark:bg-gray-900 border border-gray-200/60 dark:border-gray-800 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-gray-700 transition-all duration-300 overflow-hidden">
+            {/* Card container — clean white card with border; warm espresso surface in dark mode */}
+            <div className="rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden">
                 {/* Image container */}
-                <div className={`relative ${aspectRatio || "aspect-[3/4] md:aspect-[4/3]"} w-full overflow-hidden bg-gray-100 dark:bg-gray-800`}>
+                <div className={`relative ${aspectRatio || "aspect-[3/4] md:aspect-[4/3]"} w-full overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft`}>
                     {hikingMapUrl ? (
                         <iframe
                             src={hikingMapUrl}
@@ -96,9 +152,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                         />
                     )}
 
-                    {/* Category pill — top-right over image */}
-                    <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 flex items-center gap-1.5 bg-white/90 dark:bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] uppercase font-bold tracking-wider text-gray-800 dark:text-white border border-black/5 dark:border-white/10 shadow-sm">
-                        <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-500 flex-shrink-0" />
+                    {/* Category pill — top-right over image. Orange-700 on light for WCAG AA; warm glow in dark. */}
+                    <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 flex items-center gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                        <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                         {item.category}
                     </div>
 
@@ -135,6 +191,30 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                         className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2"
                         dangerouslySetInnerHTML={{ __html: item.shortInfoHtml }}
                     />
+
+                    {/* Meta badges — price, open-now, trail duration/difficulty, best time */}
+                    {visibleBadges.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                            {visibleBadges.map((badge, i) => {
+                                const Icon = badge.icon;
+                                const toneClasses =
+                                    badge.tone === "positive"
+                                        ? "bg-emerald-50 text-emerald-700 border-emerald-200/70 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/60"
+                                        : badge.tone === "muted"
+                                            ? "bg-gray-100 text-gray-500 border-gray-200/70 dark:bg-gray-800/60 dark:text-gray-400 dark:border-gray-700/60"
+                                            : "bg-orange-50 text-orange-700 border-orange-200/70 dark:bg-orange-950/30 dark:text-orange-300 dark:border-orange-900/50";
+                                return (
+                                    <span
+                                        key={i}
+                                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border ${toneClasses}`}
+                                    >
+                                        <Icon weight="duotone" className="h-3 w-3 flex-shrink-0" />
+                                        <span className="leading-none">{badge.label}</span>
+                                    </span>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>
