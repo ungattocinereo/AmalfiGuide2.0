@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "prebuild": "npm run generate:blur",
+    "prebuild": "npm run generate:blur && npm run generate:gallery",
     "generate:blur": "tsx scripts/generate-blur-data.mts",
+    "generate:gallery": "tsx scripts/generate-place-gallery.mts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -15,6 +16,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-slot": "^1.2.4",
+    "@types/suncalc": "^1.9.2",
     "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -24,6 +26,7 @@
     "next-themes": "^0.4.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "suncalc": "^1.9.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

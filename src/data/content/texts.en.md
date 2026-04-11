@@ -86,6 +86,9 @@ The essential landmarks that define Amalfi's history and daily life.
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
 **Category**: Landmark
 **Tagline**: The icon of Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 You can't visit Amalfi without seeing the Duomo. Its 62-step staircase is legendary, but the real magic is the peaceful Cloister of Paradise inside. There is a museum on the 2nd floor and crypt below ground.
@@ -104,6 +107,7 @@ The Duomo is the architectural heart of Amalfi, dating back to the 9th century. 
 ### Belvedere of San Lorenzo
 **Category**: Viewpoint
 **Tagline**: The best panorama without the hike
+**Best time**: sunset
 
 **Short info:**
 Want the best bird's-eye view of Amalfi without breaking a sweat? Skip the stairs and take this secret tunnel to the cemetery level. (Yes, this is the way to Amalfi's Cemetery).
@@ -157,6 +161,8 @@ Walking routes that reveal Amalfi beyond the towns.
 ### Valle delle Ferriere
 **Category**: Nature Reserve
 **Tagline**: Waterfalls and ancient history
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Escape the heat into a lush, Jurassic-like reserve. This easy trek takes you through lemon groves and past industrial ruins to magical waterfalls.
@@ -173,6 +179,8 @@ Valle delle Ferriere is a protected nature reserve hidden in the mountains betwe
 ### Torre dello Ziro
 **Category**: Best View
 **Tagline**: History and the ultimate panorama
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 If you want that one specific shot looking straight down onto the rooftops of Atrani and Amalfi, this is it. Quiet, hauntingly beautiful, and far less crowded than Path of the Gods.
@@ -188,6 +196,9 @@ This watchtower sits on the ridge separating Amalfi and Atrani. Legend says the 
 ### Path of the Gods (Sentiero degli Dei)
 **Category**: Hiking Trail
 **Tagline**: The world-famous bucket list hike
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 It's touristy for a reason—the views are unmatched. My advice: Start in Bomerano and walk *down* towards Nocelle to keep the best views in front of you.
@@ -209,6 +220,9 @@ From Nocelle, you have two options to reach Positano: take the Mobility Amalfi C
 ### The Lemon Path (Sentiero dei Limoni)
 **Category**: Hiking Trail
 **Tagline**: A fragrant walk kissed by the sun
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 An easier alternative to the mountain hikes. This path connects Maiori and Minori and takes you right through the heart of the region's lemon farming culture.
@@ -227,6 +241,8 @@ From family kitchens to legendary dining rooms by the sea.
 ### Le Palme (Atrani)
 **Category**: Family Spot
 **Tagline**: Authentic hospitality & seafood
+**Hours**: Mon-Sun 12:00-23:00, Closed Thu
+**Price**: €€
 
 **Short info:**
 Run by brothers Armando and Salvatore since 1990, this place feels like home. It's my top pick for a reliable, delicious meal where the service is as good as the food.
@@ -247,6 +263,8 @@ The atmosphere is lively and friendly. Salvatore also manages a rental villa, st
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Refined seafood excellence
+**Hours**: Mon-Sun 12:30-14:30, 19:00-22:00, Closed Tue
+**Price**: €€€
 
 **Short info:**
 A Michelin-selected gem that remains humble. If you are a foodie or an Instagrammer looking for the perfect risotto, this is your spot.
@@ -263,6 +281,8 @@ Included in the Michelin Guide, A'Paranza is dedicated to quality. Despite its u
 ### Lo Smeraldino (Amalfi)
 **Category**: Scenic Dining
 **Tagline**: The oldest place in Atrani with the view
+**Hours**: Mon-Sun 12:00-22:30
+**Price**: €€
 
 **Short info:**
 You can find Lo Smeraldino at the Seaport of Amalfi, surrounded by luxury yachts. It is one of the most enchanting dining destinations on the Amalfi Coast, where culinary excellence meets breathtaking panoramic sea views.
@@ -285,6 +305,8 @@ Convenient parking is available for guests. Lo Smeraldino is frequently recommen
 ### Le Arcate (Atrani)
 **Category**: Seafront
 **Tagline**: The best seats in town
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
 
 **Short info:**
 Location, location, location. If you want to eat right by the water's edge in Atrani, book a table here. A favorite of celebrities like Edward Norton for its privacy and view.
@@ -301,6 +323,8 @@ Le Arcate is a beloved local spot for those who want the best seats in Atrani. M
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
 **Category**: Legendary
 **Tagline**: Garden-to-table with a view
+**Hours**: Mon-Sun 12:30-15:00, 19:30-22:30
+**Price**: €€€€
 
 **Short info:**
 A historic family-run spot since 1931 with incredible hospitality. Use their free shuttle service from Amalfi—it makes the logistics effortless.
@@ -320,6 +344,8 @@ Small bites that say more than a long menu.
 ### Apicella Bakery (Amalfi)
 **Category**: Breakfast
 **Tagline**: The local's secret breakfast pizza
+**Hours**: Mon-Sun 07:00-14:00
+**Price**: €
 
 **Short info:**
 Skip the hotel breakfast. Do as the locals do and grab a slice of red pizza here. It's unassuming, cheap, and absolutely delicious.
@@ -336,6 +362,8 @@ Tucked away just 70 meters from the Amalfi Duomo, this bakery is easy to miss bu
 ### La Rua Pizze E Delizie (Amalfi)
 **Category**: Street Food
 **Tagline**: Arancini & wood-fired snacks
+**Hours**: Mon-Sun 09:30-22:00, Closed Mon
+**Price**: €
 
 **Short info:**
 The perfect spot for a quick bite while exploring the alleys. Their arancini are crispy perfection.
@@ -352,6 +380,8 @@ Located in the heart of Amalfi, La Rua offers more than just street food; they s
 ### Pizza Express (Amalfi)
 **Category**: Street Food
 **Tagline**: Quick bite on the main street
+**Hours**: Mon-Sun 10:30-22:00
+**Price**: €
 
 **Short info:**
 A reliable little spot on the main drag of Amalfi. Perfect for a fast, wallet-friendly pizza slice when you need to refuel without the sit-down fuss.
@@ -371,6 +401,7 @@ Local markets and specialty stores where you'll find the best ingredients.
 ### Mimì & Cocò di Tutto Un Po (Atrani)
 **Category**: Local Market
 **Tagline**: A gem of authentic Amalfi Coast products
+**Hours**: Mon-Sun 08:00-12:00, 16:00-20:00
 
 **Short info:**
 Mimì & Cocò di Tutto Un Po is a charming neighborhood grocery store in the heart of Atrani, offering an eclectic selection of regional products. This beloved local shop is the perfect place to discover quality ingredients and genuine Italian specialties.
@@ -389,6 +420,7 @@ The knowledgeable and welcoming staff provide expert recommendations on local pr
 ### La Grande Mela Supermarket Deco (Amalfi)
 **Category**: Supermarket
 **Tagline**: Complete groceries with quality standards
+**Hours**: Mon-Sun 07:30-13:30, 16:30-21:00
 
 **Short info:**
 La Grande Mela Deco is a modern supermarket in central Amalfi, offering a comprehensive selection of groceries and specialty items. This well-organized store provides both everyday essentials and gourmet products for visitors and residents alike.
@@ -406,6 +438,7 @@ The store is designed for convenient shopping with organized layout and regular 
 ### DOGI Market (Amalfi)
 **Category**: Alimentari
 **Tagline**: Traditional local market with neighborhood charm
+**Hours**: Mon-Sun 07:30-13:30, 16:30-20:00
 
 **Short info:**
 DOGI SRL is a community-oriented market in Amalfi's historic Piazza dei Dogi, serving locals and visitors with a selection of quality groceries and prepared foods. This traditional alimentari offers both everyday necessities and specialty local products.
@@ -423,6 +456,7 @@ The shop benefits from its prime location on one of Amalfi's main squares, makin
 ### La Tramontina Amalfi
 **Category**: Deli
 **Tagline**: Legendary buffalo mozzarella and artisanal sandwiches
+**Hours**: Mon-Sun 08:00-20:00
 
 **Short info:**
 La Tramontina is an acclaimed specialty food market and bistro famous for exceptional buffalo mozzarella and handcrafted sandwiches made from premium local ingredients. A visitor favorite for quick, high-quality meals and gourmet products on the Amalfi Coast.

@@ -86,6 +86,9 @@ Die wesentlichen Wahrzeichen, die Amalfis Geschichte und Alltagsleben definieren
 ### Duomo di Sant'Andrea (Amalfi Cathedral)
 **Category**: Landmark
 **Tagline**: Die Ikone von Amalfi
+**Hours**: Mon-Sun 09:00-19:00
+**Price**: €
+**Best time**: morning
 
 **Short info:**
 Du kannst Amalfi nicht besuchen, ohne den Duomo gesehen zu haben. Seine 62-stufige Treppe ist legendär, aber die wahre Magie ist der friedliche Kreuzgang des Paradieses im Inneren. Es gibt ein Museum im 2. Stock und eine Krypta unter der Erde.
@@ -104,6 +107,7 @@ Der Duomo ist das architektonische Herz von Amalfi und stammt aus dem 9. Jahrhun
 ### Belvedere of San Lorenzo
 **Category**: Viewpoint
 **Tagline**: Das beste Panorama ohne die Wanderung
+**Best time**: sunset
 
 **Short info:**
 Willst du die beste Vogelperspektive auf Amalfi, ohne ins Schwitzen zu kommen? Überspringe die Treppen und nimm diesen geheimen Tunnel zur Friedhofsebene. (Ja, das ist der Weg zu Amalfis Friedhof).
@@ -157,6 +161,8 @@ Wanderrouten, die Amalfi jenseits der Städte offenbaren.
 ### Valle delle Ferriere
 **Category**: Nature Reserve
 **Tagline**: Wasserfälle und antike Geschichte
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Entfliehe der Hitze in ein üppiges, Jura-ähnliches Reservat. Diese einfache Wanderung führt dich durch Zitronenhaine und vorbei an Industrieruinen zu magischen Wasserfällen.
@@ -173,6 +179,8 @@ Valle delle Ferriere ist ein geschütztes Naturreservat, versteckt in den Bergen
 ### Torre dello Ziro
 **Category**: Best View
 **Tagline**: Geschichte und das ultimative Panorama
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 Wenn du genau diese eine Aufnahme willst, die direkt auf die Dächer von Atrani und Amalfi hinabblickt, ist dies der richtige Ort. Ruhig, von gespenstischer Schönheit und weit weniger überlaufen als der Pfad der Götter.
@@ -188,6 +196,9 @@ Dieser Wachturm thront auf dem Bergrücken, der Amalfi und Atrani trennt. Die Le
 ### Path of the Gods (Sentiero degli Dei)
 **Category**: Hiking Trail
 **Tagline**: Die weltberühmte Bucket-List-Wanderung
+**Duration**: 3h
+**Difficulty**: Moderate
+**Distance**: 7.8km
 
 **Short info:**
 Es ist aus gutem Grund touristisch – die Aussichten sind unübertroffen. Mein Rat: Starte in Bomerano und laufe *bergab* Richtung Nocelle, um die besten Aussichten vor dir zu haben.
@@ -209,6 +220,9 @@ Von Nocelle hast du zwei Möglichkeiten, um Positano zu erreichen: Nimm den Bus 
 ### The Lemon Path (Sentiero dei Limoni)
 **Category**: Hiking Trail
 **Tagline**: Ein duftender Spaziergang, von der Sonne geküsst
+**Duration**: 1.5h
+**Difficulty**: Easy
+**Distance**: 3km
 
 **Short info:**
 Eine einfachere Alternative zu den Bergwanderungen. Dieser Pfad verbindet Maiori und Minori und führt dich direkt ins Herz der Zitronen-Anbaukultur der Region.
@@ -227,6 +241,8 @@ Von Familienküchen bis zu legendären Speisesälen am Meer.
 ### Le Palme (Atrani)
 **Category**: Family Spot
 **Tagline**: Authentische Gastfreundschaft & Meeresfrüchte
+**Hours**: Mon-Sun 12:00-23:00, Closed Thu
+**Price**: €€
 
 **Short info:**
 Geführt von den Brüdern Armando und Salvatore seit 1990, fühlt sich dieser Ort wie Zuhause an. Es ist meine erste Wahl für ein verlässliches, köstliches Essen, bei dem der Service so gut ist wie das Essen.
@@ -247,6 +263,8 @@ Die Atmosphäre ist lebhaft und freundlich. Salvatore verwaltet auch eine Mietvi
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Raffinierte Meeresfrüchte-Exzellenz
+**Hours**: Mon-Sun 12:30-14:30, 19:00-22:00, Closed Tue
+**Price**: €€€
 
 **Short info:**
 Ein von Michelin ausgezeichnetes Juwel, das bescheiden bleibt. Wenn du ein Feinschmecker oder Instagrammer bist und nach dem perfekten Risotto suchst, ist dies dein Ort.
@@ -263,6 +281,8 @@ Im Michelin-Guide aufgeführt, ist A'Paranza der Qualität verpflichtet. Trotz s
 ### Lo Smeraldino (Amalfi)
 **Category**: Scenic Dining
 **Tagline**: Der älteste Ort in Atrani mit der Aussicht
+**Hours**: Mon-Sun 12:00-22:30
+**Price**: €€
 
 **Short info:**
 Du findest Lo Smeraldino am Seehafen von Amalfi, umgeben von Luxusyachten. Es ist eines der bezauberndsten Speiseziele an der Amalfiküste, wo kulinarische Exzellenz auf atemberaubende panoramische Meeresblicke trifft.
@@ -285,6 +305,8 @@ Bequeme Parkmöglichkeiten stehen für Gäste zur Verfügung. Lo Smeraldino wird
 ### Le Arcate (Atrani)
 **Category**: Seafront
 **Tagline**: Die besten Plätze der Stadt
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
 
 **Short info:**
 Lage, Lage, Lage. Wenn du direkt am Wasser in Atrani essen möchtest, reserviere hier einen Tisch. Ein Favorit von Prominenten wie Edward Norton wegen seiner Privatsphäre und Aussicht.
@@ -301,6 +323,8 @@ Le Arcate ist ein beliebter lokaler Ort für diejenigen, die die besten Plätze 
 ### Da Ciccio Cielo Mare Terra (Vettica/Amalfi)
 **Category**: Legendary
 **Tagline**: Vom Garten auf den Tisch mit Aussicht
+**Hours**: Mon-Sun 12:30-15:00, 19:30-22:30
+**Price**: €€€€
 
 **Short info:**
 Ein historischer familiengeführter Ort seit 1931 mit unglaublicher Gastfreundschaft. Nutze ihren kostenlosen Shuttle-Service von Amalfi – er macht die Logistik mühelos.
@@ -320,6 +344,8 @@ Kleine Happen, die mehr sagen als eine lange Speisekarte.
 ### Apicella Bakery (Amalfi)
 **Category**: Breakfast
 **Tagline**: Die geheime Frühstückspizza der Einheimischen
+**Hours**: Mon-Sun 07:00-14:00
+**Price**: €
 
 **Short info:**
 Überspringe das Hotelfrühstück. Mach es wie die Einheimischen und hol dir hier ein Stück rote Pizza. Es ist unscheinbar, günstig und absolut köstlich.
@@ -336,6 +362,8 @@ Nur 70 Meter vom Duomo von Amalfi entfernt versteckt, ist diese Bäckerei leicht
 ### La Rua Pizze E Delizie (Amalfi)
 **Category**: Street Food
 **Tagline**: Arancini & Snacks aus dem Holzofen
+**Hours**: Mon-Sun 09:30-22:00, Closed Mon
+**Price**: €
 
 **Short info:**
 Der perfekte Ort für einen schnellen Happen während du die Gassen erkundest. Ihre Arancini sind knusprige Perfektion.
@@ -352,6 +380,8 @@ Im Herzen von Amalfi gelegen, bietet La Rua mehr als nur Street Food; sie servie
 ### Pizza Express (Amalfi)
 **Category**: Street Food
 **Tagline**: Schneller Happen auf der Hauptstraße
+**Hours**: Mon-Sun 10:30-22:00
+**Price**: €
 
 **Short info:**
 Ein verlässlicher kleiner Ort an der Hauptstraße von Amalfi. Perfekt für ein schnelles, geldbeutelfreundliches Pizza-Stück, wenn du ohne Sitz-Aufwand auftanken musst.
@@ -371,6 +401,7 @@ Lokale Märkte und Fachgeschäfte, wo du die besten Zutaten findest.
 ### Mimì & Cocò di Tutto Un Po (Atrani)
 **Category**: Local Market
 **Tagline**: Ein Juwel authentischer Amalfiküsten-Produkte
+**Hours**: Mon-Sun 08:00-12:00, 16:00-20:00
 
 **Short info:**
 Mimì & Cocò di Tutto Un Po ist ein charmanter Nachbarschaftsladen im Herzen von Atrani, der eine vielseitige Auswahl regionaler Produkte bietet. Dieser beliebte lokale Laden ist der perfekte Ort, um Qualitätszutaten und echte italienische Spezialitäten zu entdecken.
@@ -389,6 +420,7 @@ Das sachkundige und einladende Personal gibt Expertenempfehlungen zu lokalen Pro
 ### La Grande Mela Supermarket Deco (Amalfi)
 **Category**: Supermarket
 **Tagline**: Komplettes Lebensmittelangebot mit Qualitätsstandards
+**Hours**: Mon-Sun 07:30-13:30, 16:30-21:00
 
 **Short info:**
 La Grande Mela Deco ist ein moderner Supermarkt im Zentrum von Amalfi, der eine umfassende Auswahl an Lebensmitteln und Spezialitäten bietet. Dieses gut organisierte Geschäft bietet sowohl alltägliche Notwendigkeiten als auch Gourmetprodukte für Besucher und Bewohner gleichermaßen.
@@ -406,6 +438,7 @@ Das Geschäft ist für bequemes Einkaufen mit organisiertem Layout und regelmä�
 ### DOGI Market (Amalfi)
 **Category**: Alimentari
 **Tagline**: Traditioneller lokaler Markt mit Nachbarschaftscharme
+**Hours**: Mon-Sun 07:30-13:30, 16:30-20:00
 
 **Short info:**
 DOGI SRL ist ein gemeinschaftsorientierter Markt in Amalfis historischer Piazza dei Dogi, der Einheimische und Besucher mit einer Auswahl hochwertiger Lebensmittel und zubereiteter Speisen bedient. Dieser traditionelle Alimentari bietet sowohl alltägliche Notwendigkeiten als auch spezielle lokale Produkte.
@@ -423,6 +456,7 @@ Der Laden profitiert von seiner erstklassigen Lage an einem von Amalfis Hauptpl�
 ### La Tramontina Amalfi
 **Category**: Deli
 **Tagline**: Legendärer Büffelmozzarella und handwerkliche Sandwiches
+**Hours**: Mon-Sun 08:00-20:00
 
 **Short info:**
 La Tramontina ist ein anerkannter Spezialitäten-Markt und Bistro, berühmt für außergewöhnlichen Büffelmozzarella und handgefertigte Sandwiches aus erstklassigen lokalen Zutaten. Ein Besucherfavorit für schnelle, hochwertige Mahlzeiten und Gourmetprodukte an der Amalfiküste.

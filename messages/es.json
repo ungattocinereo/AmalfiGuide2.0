@@ -82,5 +82,38 @@
     "privacyLink": "Política de Privacidad",
     "accept": "Aceptar",
     "decline": "Rechazar"
+  },
+  "meta": {
+    "openNow": "Abierto ahora",
+    "closed": "Cerrado",
+    "hoursLabel": "Horario",
+    "priceLabel": "Precio",
+    "durationLabel": "Duración",
+    "difficultyLabel": "Dificultad",
+    "distanceLabel": "Distancia",
+    "bestTimeLabel": "Mejor hora",
+    "sectionLabel": "Detalles del lugar",
+    "swipeToClose": "Desliza hacia abajo para cerrar",
+    "difficulty": {
+      "easy": "Fácil",
+      "moderate": "Media",
+      "advanced": "Avanzado",
+      "hard": "Difícil"
+    },
+    "bestTime": {
+      "morning": "Mañana",
+      "sunset": "Atardecer",
+      "evening": "Tarde"
+    }
+  },
+  "contextWidget": {
+    "label": "Contexto local",
+    "sunset": "Atardecer",
+    "goodForHiking": "Buen día para caminar"
+  },
+  "gallery": {
+    "previous": "Foto anterior",
+    "next": "Foto siguiente",
+    "goTo": "Ir a la foto"
   }
 }
