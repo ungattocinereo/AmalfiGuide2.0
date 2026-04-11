@@ -63,9 +63,10 @@ interface PlaceCardProps {
     onClick: () => void;
     aspectRatio?: string;
     sizes?: string;
+    hideBadges?: boolean;
 }
 
-export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: PlaceCardProps) {
+export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBadges = false }: PlaceCardProps) {
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const hikingMapUrl = getHikingMapUrl(item.name);
@@ -178,7 +179,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes }: Place
                     />
 
                     {/* Meta badges — price, open-now, trail duration/difficulty, best time */}
-                    {visibleBadges.length > 0 && (
+                    {!hideBadges && visibleBadges.length > 0 && (
                         <div className="flex flex-wrap items-center gap-1.5 pt-1">
                             {visibleBadges.map((badge, i) => {
                                 const Icon = badge.icon;

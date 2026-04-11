@@ -161,6 +161,8 @@ Rutas de caminata que revelan Amalfi más allá de los pueblos.
 ### Valle delle Ferriere
 **Category**: Reserva Natural
 **Tagline**: Cascadas e historia antigua
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Info breve:**
 Escapa del calor hacia una reserva exuberante, tipo jurásico. Este trek fácil te lleva a través de limonares y más allá de ruinas industriales hasta cascadas mágicas.
@@ -177,6 +179,8 @@ Valle delle Ferriere es una reserva natural protegida escondida en las montañas
 ### Torre dello Ziro
 **Category**: Mejor Vista
 **Tagline**: Historia y el panorama definitivo
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Info breve:**
 Si quieres esa foto específica mirando directamente hacia abajo sobre los tejados de Atrani y Amalfi, este es el lugar. Tranquilo, inquietantemente hermoso y mucho menos concurrido que el Sendero de los Dioses.

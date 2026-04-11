@@ -97,6 +97,7 @@
     "difficulty": {
       "easy": "Лёгкий",
       "moderate": "Средний",
+      "advanced": "Продвинутый",
       "hard": "Сложный"
     },
     "bestTime": {

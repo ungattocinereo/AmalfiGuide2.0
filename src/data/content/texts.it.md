@@ -161,6 +161,8 @@ Percorsi a piedi che rivelano Amalfi oltre le città.
 ### Valle delle Ferriere
 **Category**: Riserva Naturale
 **Tagline**: Cascate e storia antica
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Fuggi dal caldo in una riserva lussureggiante simile al Giurassico. Questa facile escursione ti porta attraverso limoneti e oltre rovine industriali fino a cascate magiche.
@@ -177,6 +179,8 @@ La Valle delle Ferriere è una riserva naturale protetta nascosta tra le montagn
 ### Torre dello Ziro
 **Category**: Vista Top
 **Tagline**: Storia e il panorama definitivo
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 Se vuoi quella specifica foto guardando direttamente i tetti di Atrani e Amalfi, è questa. Tranquilla, struggentemente bella e molto meno affollata del Sentiero degli Dei.

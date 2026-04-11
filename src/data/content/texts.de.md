@@ -161,6 +161,8 @@ Wanderrouten, die Amalfi jenseits der Städte offenbaren.
 ### Valle delle Ferriere
 **Category**: Nature Reserve
 **Tagline**: Wasserfälle und antike Geschichte
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Entfliehe der Hitze in ein üppiges, Jura-ähnliches Reservat. Diese einfache Wanderung führt dich durch Zitronenhaine und vorbei an Industrieruinen zu magischen Wasserfällen.
@@ -177,6 +179,8 @@ Valle delle Ferriere ist ein geschütztes Naturreservat, versteckt in den Bergen
 ### Torre dello Ziro
 **Category**: Best View
 **Tagline**: Geschichte und das ultimative Panorama
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 Wenn du genau diese eine Aufnahme willst, die direkt auf die Dächer von Atrani und Amalfi hinabblickt, ist dies der richtige Ort. Ruhig, von gespenstischer Schönheit und weit weniger überlaufen als der Pfad der Götter.

@@ -161,6 +161,8 @@ Itinéraires de marche qui révèlent Amalfi au-delà des villes.
 ### Valle delle Ferriere
 **Category**: Réserve Nat.
 **Tagline**: Cascades et histoire ancienne
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Échappez à la chaleur dans une réserve luxuriante digne du Jurassique. Cette randonnée facile vous emmène à travers des citronniers et des ruines industrielles jusqu'à des cascades magiques.
@@ -177,6 +179,8 @@ Valle delle Ferriere est une réserve naturelle protégée cachée dans les mont
 ### Torre dello Ziro
 **Category**: Meilleure Vue
 **Tagline**: Histoire et panorama ultime
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 Si vous voulez cette photo précise regardant directement sur les toits d'Atrani et Amalfi, c'est ici. Calme, d'une beauté envoûtante, et bien moins fréquenté que le Sentier des Dieux.

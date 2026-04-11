@@ -161,6 +161,8 @@ Walking routes that reveal Amalfi beyond the towns.
 ### Valle delle Ferriere
 **Category**: Nature Reserve
 **Tagline**: Waterfalls and ancient history
+**Duration**: 2h
+**Difficulty**: Advanced
 
 **Short info:**
 Escape the heat into a lush, Jurassic-like reserve. This easy trek takes you through lemon groves and past industrial ruins to magical waterfalls.
@@ -177,6 +179,8 @@ Valle delle Ferriere is a protected nature reserve hidden in the mountains betwe
 ### Torre dello Ziro
 **Category**: Best View
 **Tagline**: History and the ultimate panorama
+**Duration**: 1h
+**Difficulty**: Moderate
 
 **Short info:**
 If you want that one specific shot looking straight down onto the rooftops of Atrani and Amalfi, this is it. Quiet, hauntingly beautiful, and far less crowded than Path of the Gods.

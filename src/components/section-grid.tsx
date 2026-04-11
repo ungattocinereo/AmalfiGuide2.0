@@ -248,6 +248,14 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                      titleLower.includes("randonnées") ||
                      titleLower.includes("поход");
 
+    // "Must Visit" sections show monuments/landmarks — prices and sunset times
+    // don't fit the editorial tone, so cards in this section hide all meta badges.
+    const isMustVisit = titleLower.includes("must visit") ||
+                        titleLower.includes("da vedere") ||
+                        titleLower.includes("imprescindibles") ||
+                        titleLower.includes("incontournables") ||
+                        titleLower.includes("обязательно");
+
     const isExpanded = isIntro ? true : isSectionExpanded(title);
     const effectiveExpanded = isIntro || isAllExpanded;
     const showCaret = !isIntro;
@@ -281,6 +289,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                             onClick={() => onItemClick(item)}
                                             aspectRatio={isHiking ? "aspect-[4/3]" : undefined}
                                             sizes={isHiking ? "(max-width: 768px) 100vw, 50vw" : undefined}
+                                            hideBadges={isMustVisit}
                                         />
                                     </motion.div>
                                 ))}
@@ -336,6 +345,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                             item={item}
                                             layoutId={item.name}
                                             onClick={() => onItemClick(item)}
+                                            hideBadges={isMustVisit}
                                         />
                                     </motion.div>
                                 ))}
@@ -377,6 +387,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                             onClick={() => onItemClick(item)}
                                             aspectRatio="aspect-[4/3]"
                                             sizes="(max-width: 768px) 100vw, 50vw"
+                                            hideBadges={isMustVisit}
                                         />
                                     </motion.div>
                                 ))}
@@ -475,6 +486,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                             item={item}
                                             layoutId={item.name}
                                             onClick={() => onItemClick(item)}
+                                            hideBadges={isMustVisit}
                                         />
                                     </motion.div>
                                 ))}
@@ -513,6 +525,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                                         item={item}
                                         layoutId={item.name}
                                         onClick={() => onItemClick(item)}
+                                        hideBadges={isMustVisit}
                                     />
                                 </motion.div>
                             ))}

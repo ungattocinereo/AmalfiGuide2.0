@@ -97,6 +97,7 @@
     "difficulty": {
       "easy": "Fácil",
       "moderate": "Media",
+      "advanced": "Avanzado",
       "hard": "Difícil"
     },
     "bestTime": {
