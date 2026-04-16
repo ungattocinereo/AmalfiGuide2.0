@@ -156,121 +156,105 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
             onDragEnd: (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
                 if (info.offset.y > 120 || info.velocity.y > 500) onClose?.();
             },
-            className: "fixed inset-0 z-50 flex flex-col md:flex-row bg-white dark:bg-gray-950 cursor-zoom-out",
-            onClick: onClose,
-            style: { overscrollBehavior: "contain" as const, touchAction: "pan-y" as const },
+            className: "fixed inset-0 z-50 bg-white dark:bg-gray-950",
+            style: { touchAction: "pan-y" as const },
         }
         : {
             "aria-labelledby": "place-details-title",
             className: "relative w-full flex flex-col md:flex-row bg-white dark:bg-gray-950 md:min-h-[calc(100dvh-88px)]",
         };
 
-    return (
+    const visualSection = (
         <motion.div
-            ref={modalRef}
-            {...rootProps}
+            layoutId={isModal ? layoutId : undefined}
+            className={`relative w-full ${isModal ? "h-[60dvh] md:h-screen md:sticky md:top-0 md:self-start cursor-zoom-out" : "h-[50vh] md:h-auto md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]"} md:w-1/2 md:order-2 overflow-hidden flex-shrink-0`}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            onClick={isModal ? onClose : undefined}
         >
-            {/* Visual Section: Mobile Top, Desktop Right Half */}
-            <motion.div
-                layoutId={isModal ? layoutId : undefined}
-                className={`relative w-full ${isModal ? "h-[45vh]" : "h-[50vh]"} md:h-auto md:w-1/2 md:order-2 ${isModal ? "cursor-zoom-out" : ""} overflow-hidden flex-shrink-0 md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]`}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-                {hikingMapUrl ? (
-                    <iframe
-                        src={hikingMapUrl}
-                        className="absolute inset-0 w-full h-full border-0 hiking-map"
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title={`Map of ${item.name}`}
-                    />
-                ) : (
-                    <>
-                        <AnimatePresence mode="wait" initial={false}>
-                            <motion.div
-                                key={currentImage}
-                                initial={prefersReducedMotion ? false : { opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
-                                transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
-                                className="absolute inset-0"
+            {hikingMapUrl ? (
+                <iframe
+                    src={hikingMapUrl}
+                    className="absolute inset-0 w-full h-full border-0 hiking-map"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Map of ${item.name}`}
+                />
+            ) : (
+                <>
+                    <AnimatePresence mode="wait" initial={false}>
+                        <motion.div
+                            key={currentImage}
+                            initial={prefersReducedMotion ? false : { opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+                            transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
+                            className="absolute inset-0"
+                        >
+                            <Image
+                                src={currentImage}
+                                alt={item.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover"
+                                priority={galleryIndex === 0}
+                                placeholder={galleryIndex === 0 && blurDataURL ? "blur" : "empty"}
+                                blurDataURL={galleryIndex === 0 ? blurDataURL : undefined}
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+
+                    {hasMultiPhoto && (
+                        <>
+                            <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                                aria-label={t("gallery.previous")}
+                                className="absolute top-1/2 left-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
                             >
-                                <Image
-                                    src={currentImage}
-                                    alt={item.name}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    className="object-cover"
-                                    priority={galleryIndex === 0}
-                                    placeholder={galleryIndex === 0 && blurDataURL ? "blur" : "empty"}
-                                    blurDataURL={galleryIndex === 0 ? blurDataURL : undefined}
-                                />
-                            </motion.div>
-                        </AnimatePresence>
+                                <CaretLeft size={20} weight="bold" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); goNext(); }}
+                                aria-label={t("gallery.next")}
+                                className="absolute top-1/2 right-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
+                            >
+                                <CaretRight size={20} weight="bold" />
+                            </button>
+                            <div className="absolute bottom-3 inset-x-0 z-40 flex items-center justify-center gap-1.5">
+                                {galleryImages.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        type="button"
+                                        onClick={(e) => { e.stopPropagation(); setGalleryIndex(i); }}
+                                        aria-label={t("gallery.goTo") + ` ${i + 1}`}
+                                        className={`h-1.5 rounded-full transition-all ${i === galleryIndex ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}`}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </>
+            )}
 
-                        {hasMultiPhoto && (
-                            <>
-                                <button
-                                    type="button"
-                                    onClick={(e) => { e.stopPropagation(); goPrev(); }}
-                                    aria-label={t("gallery.previous")}
-                                    className="absolute top-1/2 left-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
-                                >
-                                    <CaretLeft size={20} weight="bold" />
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={(e) => { e.stopPropagation(); goNext(); }}
-                                    aria-label={t("gallery.next")}
-                                    className="absolute top-1/2 right-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
-                                >
-                                    <CaretRight size={20} weight="bold" />
-                                </button>
-                                <div className="absolute bottom-3 inset-x-0 z-40 flex items-center justify-center gap-1.5">
-                                    {galleryImages.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            type="button"
-                                            onClick={(e) => { e.stopPropagation(); setGalleryIndex(i); }}
-                                            aria-label={t("gallery.goTo") + ` ${i + 1}`}
-                                            className={`h-1.5 rounded-full transition-all ${i === galleryIndex ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}`}
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                    </>
-                )}
+            {/* Gradient overlay for visual flow into content (mobile) */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent md:hidden pointer-events-none" />
 
-                {/* Gradient overlay for visual flow into content (mobile) */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent md:hidden pointer-events-none" />
+            {/* Back button for page mode (inside image, top-left) */}
+            {!isModal && (
+                <Link
+                    href="/"
+                    aria-label={t("placeDetails.backToGuide")}
+                    className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-all duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
+                >
+                    <ArrowLeft size={18} weight="bold" />
+                    <span>{t("placeDetails.backToGuide")}</span>
+                </Link>
+            )}
 
-                {/* Close / Back button */}
-                {isModal ? (
-                    <button
-                        ref={closeButtonRef}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onClose?.();
-                        }}
-                        aria-label={t("placeDetails.close")}
-                        className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
-                    >
-                        <X size={22} weight="bold" />
-                    </button>
-                ) : (
-                    <Link
-                        href="/"
-                        aria-label={t("placeDetails.backToGuide")}
-                        className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-all duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
-                    >
-                        <ArrowLeft size={18} weight="bold" />
-                        <span>{t("placeDetails.backToGuide")}</span>
-                    </Link>
-                )}
-
-                {/* Share button — top-right of image (in page mode) or left of close (in modal) */}
+            {/* Share button for page mode (inside image) */}
+            {!isModal && (
                 <button
                     type="button"
                     onClick={(e) => {
@@ -278,57 +262,51 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         handleShare();
                     }}
                     aria-label={t("placeDetails.share")}
-                    className={`absolute z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation ${isModal ? "top-4 right-[4.5rem]" : "top-4 right-4"}`}
+                    className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
                 >
                     <ShareNetwork size={20} weight="bold" />
                 </button>
+            )}
 
-                {/* Toast for clipboard fallback */}
-                {shareToast && (
-                    <div
-                        role="status"
-                        aria-live="polite"
-                        className="absolute top-[4.75rem] right-4 z-50 px-4 py-2 rounded-full bg-black/80 text-white text-xs font-semibold tracking-wide backdrop-blur-md shadow-lg"
-                    >
-                        {shareToast}
-                    </div>
-                )}
+            {/* Toast for clipboard fallback (page mode) */}
+            {!isModal && shareToast && (
+                <div
+                    role="status"
+                    aria-live="polite"
+                    className="absolute top-[4.75rem] right-4 z-50 px-4 py-2 rounded-full bg-black/80 text-white text-xs font-semibold tracking-wide backdrop-blur-md shadow-lg"
+                >
+                    {shareToast}
+                </div>
+            )}
+        </motion.div>
+    );
 
-                {/* Safe area for notch */}
-                <div className="absolute top-0 inset-x-0" style={{ height: 'env(safe-area-inset-top)' }} />
-            </motion.div>
+    const contentSection = (
+        <motion.div
+            className={`relative w-full flex-1 flex flex-col px-6 pt-2 pb-8 md:px-12 md:pt-12 md:pb-12 md:w-1/2 md:order-1 cursor-auto ${isModal ? "pb-[max(2rem,env(safe-area-inset-bottom))]" : ""}`}
+            initial={isModal ? { opacity: 0, x: -30 } : false}
+            animate={isModal ? { opacity: 1, x: 0 } : undefined}
+            exit={isModal ? { opacity: 0, x: -20 } : undefined}
+            transition={isModal ? { duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] } : undefined}
+            onClick={handleContentClick}
+        >
+            {/* Pull indicator — drag handle to close on mobile (modal only) */}
+            {isModal && (
+                <div
+                    className="flex justify-center py-3 md:hidden cursor-grab active:cursor-grabbing touch-none"
+                    onPointerDown={(e) => {
+                        if (prefersReducedMotion) return;
+                        dragControls.start(e);
+                    }}
+                    role="button"
+                    tabIndex={-1}
+                    aria-label={t("meta.swipeToClose")}
+                >
+                    <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                </div>
+            )}
 
-            {/* Content Section: Scrollable in modal, normal block in page mode */}
-            <motion.div
-                className={`flex-1 px-6 pt-2 pb-8 md:px-12 md:pt-12 md:pb-12 md:w-1/2 md:order-1 relative cursor-auto ${isModal ? "overflow-y-auto" : ""}`}
-                initial={isModal ? { opacity: 0, x: -30 } : false}
-                animate={isModal ? { opacity: 1, x: 0 } : undefined}
-                exit={isModal ? { opacity: 0, x: -20 } : undefined}
-                transition={isModal ? { duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] } : undefined}
-                onClick={handleContentClick}
-                style={
-                    isModal
-                        ? ({ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" } as React.CSSProperties)
-                        : undefined
-                }
-            >
-                {/* Pull indicator — drag handle to close on mobile (modal only) */}
-                {isModal && (
-                    <div
-                        className="flex justify-center py-3 md:hidden cursor-grab active:cursor-grabbing touch-none"
-                        onPointerDown={(e) => {
-                            if (prefersReducedMotion) return;
-                            dragControls.start(e);
-                        }}
-                        role="button"
-                        tabIndex={-1}
-                        aria-label={t("meta.swipeToClose")}
-                    >
-                        <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                    </div>
-                )}
-
-                <div className="max-w-xl mx-auto space-y-6 md:space-y-8 md:min-h-full md:flex md:flex-col md:justify-center">
+            <div className="max-w-xl mx-auto w-full space-y-6 md:space-y-8">
                     <div>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
@@ -471,7 +449,71 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         })}
                     </motion.div>
                 </div>
+        </motion.div>
+    );
+
+    if (!isModal) {
+        return (
+            <motion.div ref={modalRef} {...rootProps}>
+                {visualSection}
+                {contentSection}
             </motion.div>
+        );
+    }
+
+    return (
+        <motion.div ref={modalRef} {...rootProps}>
+            {/* Scroll container — single overflow-y-auto wraps both columns so image scrolls with content on mobile */}
+            <div
+                className="absolute inset-0 overflow-y-auto overscroll-contain flex flex-col md:flex-row md:min-h-screen"
+                style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+            >
+                {visualSection}
+                {contentSection}
+            </div>
+
+            {/* Safe-area spacer for notch (fixed, independent of scroll) */}
+            <div className="fixed top-0 inset-x-0 z-[55] pointer-events-none" style={{ height: 'env(safe-area-inset-top)' }} />
+
+            {/* Close button — fixed, always visible after scrolling past image */}
+            <button
+                ref={closeButtonRef}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onClose?.();
+                }}
+                aria-label={t("placeDetails.close")}
+                className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
+            >
+                <X size={22} weight="bold" />
+            </button>
+
+            {/* Share button — fixed, to the left of close */}
+            <button
+                type="button"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    handleShare();
+                }}
+                aria-label={t("placeDetails.share")}
+                className="fixed top-4 right-[4.5rem] z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
+            >
+                <ShareNetwork size={20} weight="bold" />
+            </button>
+
+            {/* Toast for clipboard fallback */}
+            {shareToast && (
+                <div
+                    role="status"
+                    aria-live="polite"
+                    className="fixed top-[4.75rem] right-4 z-[60] px-4 py-2 rounded-full bg-black/80 text-white text-xs font-semibold tracking-wide backdrop-blur-md shadow-lg"
+                    style={{ top: 'calc(max(1rem, env(safe-area-inset-top)) + 3.75rem)' } as React.CSSProperties}
+                >
+                    {shareToast}
+                </div>
+            )}
         </motion.div>
     );
 }
