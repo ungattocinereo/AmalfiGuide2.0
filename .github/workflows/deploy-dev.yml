@@ -63,7 +63,7 @@ jobs:
       - name: Deploy to Vercel (preview)
         id: deploy
         run: |
-          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta branch=${{ github.ref_name }})
+          DEPLOY_URL=$(vercel deploy --prebuilt --archive=tgz --token=${{ secrets.VERCEL_TOKEN }} --meta branch=${{ github.ref_name }})
           echo "url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
           echo "### :rocket: Dev Deployment" >> "$GITHUB_STEP_SUMMARY"
           echo "**Branch:** \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"

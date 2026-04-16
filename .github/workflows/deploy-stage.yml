@@ -76,7 +76,7 @@ jobs:
       - name: Deploy to Vercel (preview as stage)
         id: deploy
         run: |
-          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta branch=main --meta environment=staging)
+          DEPLOY_URL=$(vercel deploy --prebuilt --archive=tgz --token=${{ secrets.VERCEL_TOKEN }} --meta branch=main --meta environment=staging)
           echo "url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
           echo "### :white_check_mark: Stage Deployment" >> "$GITHUB_STEP_SUMMARY"
           echo "**Branch:** \`main\`" >> "$GITHUB_STEP_SUMMARY"
