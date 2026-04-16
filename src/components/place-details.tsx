@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
 import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, Receipt, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight, ArrowLeft, ShareNetwork } from "@phosphor-icons/react";
@@ -88,11 +88,20 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
     if (item.distance) metaItems.push({ icon: Ruler, label: t("meta.distanceLabel"), value: item.distance });
     if (item.bestTime) metaItems.push({ icon: Sun, label: t("meta.bestTimeLabel"), value: translateLookup(t, "meta.bestTime", item.bestTime) });
 
-    // Modal-only concerns: body scroll lock, focus management, keyboard (Escape + Tab trap).
+    // Body scroll lock — synchronous (before paint) to prevent a flash of the
+    // page scrollbar behind the modal as it mounts.
+    useLayoutEffect(() => {
+        if (!isModal || typeof document === "undefined") return;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isModal]);
+
+    // Modal-only concerns: focus management, keyboard (Escape + Tab trap).
     // In page mode none of this applies — the user is on a real page.
     useEffect(() => {
         if (!isModal) return;
-        document.body.style.overflow = "hidden";
         const previouslyFocused = document.activeElement as HTMLElement | null;
         closeButtonRef.current?.focus();
 
@@ -128,7 +137,6 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
         window.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            document.body.style.overflow = "";
             window.removeEventListener("keydown", handleKeyDown);
             previouslyFocused?.focus?.();
         };
@@ -156,7 +164,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
             onDragEnd: (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
                 if (info.offset.y > 120 || info.velocity.y > 500) onClose?.();
             },
-            className: "fixed inset-0 z-50 bg-white dark:bg-gray-950",
+            className: "fixed inset-0 z-50 bg-white dark:bg-gray-950 overflow-hidden",
             style: { touchAction: "pan-y" as const },
         }
         : {
@@ -465,7 +473,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
         <motion.div ref={modalRef} {...rootProps}>
             {/* Scroll container — single overflow-y-auto wraps both columns so image scrolls with content on mobile */}
             <div
-                className="absolute inset-0 overflow-y-auto overscroll-contain flex flex-col md:flex-row md:min-h-screen"
+                className="absolute inset-0 overflow-x-hidden overflow-y-auto overscroll-contain flex flex-col md:flex-row md:min-h-screen"
                 style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
             >
                 {visualSection}
