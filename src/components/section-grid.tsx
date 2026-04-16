@@ -183,16 +183,12 @@ function ExpandedSectionHeader({ title, description, isExpanded, onToggle, showC
                     <Icon weight="duotone" className="h-5 w-5 md:h-6 md:w-6 text-orange-500 dark:text-orange-400" />
                 </motion.div>
 
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                <h2
                     style={{ fontFamily: 'var(--font-merriweather)', textWrap: 'balance' } as React.CSSProperties}
-                    className={`text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 tracking-tight transition-all duration-300 ${showCaret ? "group-hover:text-orange-600 dark:group-hover:text-orange-400" : ""}`}
+                    className={`text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 tracking-tight transition-colors duration-200 ${showCaret ? "group-hover:text-orange-600 dark:group-hover:text-orange-400" : ""}`}
                 >
                     {title}
-                </motion.h2>
+                </h2>
                 {showCaret && (
                     <motion.div
                         animate={{ rotate: isExpanded ? 90 : 0 }}
