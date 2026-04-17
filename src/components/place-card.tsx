@@ -171,9 +171,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         {item.name}
                     </h3>
 
-                    {/* Short description */}
+                    {/* Short description — fixed 3-line box so card rows align */}
                     <p
-                        className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2"
+                        className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3 min-h-[4.875em]"
                         dangerouslySetInnerHTML={{ __html: item.shortInfoHtml }}
                     />
 
