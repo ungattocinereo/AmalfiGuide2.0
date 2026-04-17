@@ -42,7 +42,8 @@ export function Hero() {
     if (!isAllExpanded) {
         return (
             <motion.section
-                className="relative w-full bg-[#1A0A00] overflow-hidden pt-11"
+                className="relative w-full bg-[#1A0A00] overflow-hidden
+                           pt-[max(4.5rem,calc(env(safe-area-inset-top)+3.75rem))]"
                 initial={false}
                 animate={{ height: "auto" }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -116,7 +117,9 @@ export function Hero() {
 
             {/* ===== LEFT PANEL — Dark editorial ===== */}
             <div className="relative bg-[#1A0A00] flex flex-col justify-between overflow-hidden z-[1] order-2 md:order-1
-                            px-[clamp(1.5rem,4vw,4rem)] pt-[clamp(1.5rem,5vh,5rem)] pb-[clamp(1.2rem,4vw,4rem)]">
+                            px-[clamp(1.5rem,4vw,4rem)]
+                            pt-[max(4.5rem,calc(env(safe-area-inset-top)+3.75rem),clamp(4.5rem,5vh,5rem))]
+                            pb-[clamp(1.2rem,4vw,4rem)]">
 
                 {/* Warm gradient overlays */}
                 <div className="absolute inset-0 z-0 pointer-events-none"
