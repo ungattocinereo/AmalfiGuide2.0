@@ -43,11 +43,12 @@ const getSectionIcon = (title: string): PhosphorIcon => {
 };
 
 // ─── Shared compact strip header — same outer shape for every non-intro section ───
-function SectionHeaderStrip({ title, items, isExpanded, onToggle }: {
+function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }: {
     title: string;
     items: PlaceItem[];
     isExpanded: boolean;
     onToggle: () => void;
+    hidePreviews?: boolean;
 }) {
     const Icon = getSectionIcon(title);
 
@@ -59,8 +60,8 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle }: {
             className="w-full flex items-center gap-3 md:gap-4 px-4 md:px-8 py-4 md:py-5
                        text-left cursor-pointer group touch-manipulation
                        transition-colors duration-200
-                       hover:bg-gray-50/60 dark:hover:bg-gray-900/40
-                       focus-visible:outline-none focus-visible:bg-gray-50/60 dark:focus-visible:bg-gray-900/40"
+                       hover:bg-orange-50/70 dark:hover:bg-gray-900/40
+                       focus-visible:outline-none focus-visible:bg-orange-50/70 dark:focus-visible:bg-gray-900/40"
         >
             <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full
                             bg-orange-50 dark:bg-orange-950/30
@@ -82,7 +83,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle }: {
                 </p>
             </div>
 
-            {items.length > 0 && (
+            {items.length > 0 && !hidePreviews && (
                 <div className="hidden sm:flex -space-x-2 flex-shrink-0">
                     {items.slice(0, 4).map((item, idx) => {
                         const imgUrl = getImageForPlace(item.name);
@@ -266,6 +267,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                     items={items}
                     isExpanded={isExpanded}
                     onToggle={() => toggleSection(title)}
+                    hidePreviews={isHiking}
                 />
             )}
 

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ArrowsInSimple, ArrowsOutSimple, CaretDown } from "@phosphor-icons/react";
+import { ArrowsInSimple, ArrowsOutSimple, CaretDown, Moon, Sun } from "@phosphor-icons/react";
+import { useTheme } from "next-themes";
 import { useLayout } from "@/components/layout-context";
 import { useLanguage, LANGUAGES } from "@/components/language-context";
 import Image from "next/image";
@@ -26,9 +27,15 @@ const pillBase =
 export function Navbar() {
     const { isAllExpanded, toggleAllExpanded } = useLayout();
     const { language, setLanguage, t } = useLanguage();
+    const { setTheme, resolvedTheme } = useTheme();
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => { setMounted(true); }, []);
+    const isDark = mounted && resolvedTheme === "dark";
 
     const expandLabel = isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll");
+    const themeLabel = isDark ? t("navbar.lightMode") : t("navbar.darkMode");
     const textPill = `${pillBase} gap-2 px-3 md:px-4`;
+    const iconPill = `${pillBase} w-11 md:w-12 justify-center`;
 
     return (
         <div
@@ -82,6 +89,21 @@ export function Navbar() {
                         <ArrowsOutSimple weight="bold" className="h-4 w-4" />
                     )}
                     <span className="hidden md:inline text-sm font-medium whitespace-nowrap">{expandLabel}</span>
+                </button>
+
+                {/* Theme toggle pill */}
+                <button
+                    type="button"
+                    onClick={() => setTheme(isDark ? "light" : "dark")}
+                    className={iconPill}
+                    aria-label={themeLabel}
+                    title={themeLabel}
+                >
+                    {isDark ? (
+                        <Sun weight="fill" className="h-4 w-4" />
+                    ) : (
+                        <Moon weight="fill" className="h-4 w-4" />
+                    )}
                 </button>
             </div>
         </div>

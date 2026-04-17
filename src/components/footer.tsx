@@ -19,10 +19,7 @@ import {
     Newspaper,
     Envelope,
     BookmarkSimple,
-    Moon,
-    Sun,
 } from "@phosphor-icons/react";
-import { useTheme } from "next-themes";
 import { useLanguage } from "@/components/language-context";
 
 type FooterLink = {
@@ -137,11 +134,6 @@ function FooterColumn({ links }: { links: FooterLink[] }) {
 
 export function Footer() {
     const { t } = useLanguage();
-    const { setTheme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => { setMounted(true); }, []);
-    const isDark = mounted && resolvedTheme === "dark";
-    const themeLabel = isDark ? t("navbar.lightMode") : t("navbar.darkMode");
 
     return (
         <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -187,19 +179,6 @@ export function Footer() {
                                     <item.icon size={18} weight="regular" />
                                 </a>
                             ))}
-                            <button
-                                type="button"
-                                onClick={() => setTheme(isDark ? "light" : "dark")}
-                                aria-label={themeLabel}
-                                title={themeLabel}
-                                className="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 inline-flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-                            >
-                                {isDark ? (
-                                    <Sun size={18} weight="fill" />
-                                ) : (
-                                    <Moon size={18} weight="fill" />
-                                )}
-                            </button>
                         </div>
                     </div>
 
