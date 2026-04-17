@@ -103,7 +103,6 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
             layoutId={layoutId}
             onClick={onClick}
             className="group relative w-full cursor-pointer flex flex-col touch-manipulation"
-            whileHover={{ y: -4 }}
             whileTap={{ scale: 0.985 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
             role="button"
