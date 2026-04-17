@@ -73,7 +73,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }
             <div className="flex-1 min-w-0">
                 <h2
                     style={{ fontFamily: 'var(--font-merriweather)' }}
-                    className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-50 tracking-tight truncate
+                    className="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-gray-50 tracking-tight truncate
                                group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200"
                 >
                     {title}
