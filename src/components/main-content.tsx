@@ -10,7 +10,6 @@ import { Footer } from "@/components/footer";
 import { NewsletterSection } from "@/components/newsletter-section";
 import { AnimatePresence, motion } from "framer-motion";
 import type { PlaceItem, CategorySection } from "@/lib/markdown-parser";
-import { useLayout } from "@/components/layout-context";
 
 interface MainContentProps {
     content: CategorySection[];
@@ -22,7 +21,6 @@ function placePath(locale: string, slug: string): string {
 }
 
 export function MainContent({ content }: MainContentProps) {
-    const { isAllExpanded } = useLayout();
     const locale = useLocale();
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
@@ -68,10 +66,9 @@ export function MainContent({ content }: MainContentProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative z-20 bg-gray-100/80 dark:bg-black transition-[padding] duration-300 ${isAllExpanded ? "pt-8 md:pt-12" : "pt-1"}`}
+                className="relative z-20 bg-gray-100/80 dark:bg-black"
             >
-                {/* Container for Sections */}
-                <div className={`transition-[gap] duration-300 space-y-0`}>
+                <div>
                     {content.map((section, idx) => (
                         <SectionGrid
                             key={idx}

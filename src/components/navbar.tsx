@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
+import { ArrowsInSimple, ArrowsOutSimple, CaretDown, Moon, Sun } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, ArrowsInSimple, ArrowsOutSimple, CaretDown } from "@phosphor-icons/react";
 import { useLayout } from "@/components/layout-context";
 import { useLanguage, LANGUAGES } from "@/components/language-context";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import {
     DropdownMenu,
@@ -15,208 +14,107 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const pillBase =
+    "pointer-events-auto h-11 md:h-12 rounded-full " +
+    "bg-white/75 dark:bg-[#1A0A00]/70 backdrop-blur-xl " +
+    "border border-white/60 dark:border-white/10 " +
+    "shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.35)] " +
+    "flex items-center text-gray-900 dark:text-[#FDF6F0]/85 " +
+    "active:scale-95 transition-[transform,background,border-color] duration-150 " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F43600]/50 " +
+    "hover:bg-white/85 dark:hover:bg-[#1A0A00]/80";
+
 export function Navbar() {
-    const { setTheme, resolvedTheme } = useTheme();
     const { isAllExpanded, toggleAllExpanded } = useLayout();
     const { language, setLanguage, t } = useLanguage();
+    const { setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const observerRef = useRef<IntersectionObserver | null>(null);
+    React.useEffect(() => { setMounted(true); }, []);
+    const isDark = mounted && resolvedTheme === "dark";
 
-    useEffect(() => {
-        setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
-    }, []);
-
-    // Observe the hero section to toggle navbar state
-    useEffect(() => {
-        const heroEl = document.querySelector("section");
-        if (!heroEl) return;
-
-        observerRef.current = new IntersectionObserver(
-            ([entry]) => {
-                // When hero is NOT intersecting (scrolled past), show compact bar
-                setScrolled(!entry.isIntersecting);
-            },
-            { threshold: 0, rootMargin: "-80px 0px 0px 0px" }
-        );
-
-        observerRef.current.observe(heroEl);
-        return () => observerRef.current?.disconnect();
-    }, [isAllExpanded]);
-
-    // Shared button styles
-    const overlayBtnClass =
-        "rounded-full h-9 w-9 backdrop-blur-md border transition-all duration-200 ease-out active:scale-90 " +
-        (resolvedTheme === "dark"
-            ? "bg-white/[0.07] border-white/[0.1] text-[#FDF6F0]/70 hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] shadow-[0_2px_12px_rgba(0,0,0,0.2)]"
-            : "bg-white/15 border-white/20 text-[#3D2415]/80 hover:bg-white/30 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
-        );
-
-    const compactBtnClass =
-        "rounded-full h-8 w-8 transition-all duration-200 ease-out active:scale-90 " +
-        "bg-white/[0.07] border border-white/[0.08] text-[#FDF6F0]/70 " +
-        "hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D]";
-
-    // In compact mode, always show the compact bar (not overlay buttons)
-    const showCompactBar = scrolled || !isAllExpanded;
+    const expandLabel = isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll");
+    const themeLabel = isDark ? t("navbar.lightMode") : t("navbar.darkMode");
+    const textPill = `${pillBase} gap-2 px-3 md:px-4`;
+    const iconPill = `${pillBase} w-11 md:w-12 justify-center`;
 
     return (
-        <>
-            {/* ===== COMPACT BAR — appears on scroll OR in compact mode ===== */}
-            <div
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    showCompactBar
-                        ? "translate-y-0 opacity-100"
-                        : "-translate-y-full opacity-0 pointer-events-none"
-                }`}
-            >
-                <nav className="w-full px-4 sm:px-6 h-11 bg-[#1A0A00]/92 backdrop-blur-xl border-b border-[#F43600]/15 flex items-center justify-between">
-                    {/* App icon + Logo */}
-                    <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-[7px] overflow-hidden flex-shrink-0 shadow-[0_2px_10px_rgba(244,54,0,0.25)]">
-                            <Image
-                                src="/images/icon-512x512.png"
-                                alt="Amalfi.Day"
-                                width={28}
-                                height={28}
-                                priority
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <Logo className="h-[17px] w-auto flex-shrink-0 text-[#FDF6F0]/80" />
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex items-center gap-2">
-                        {/* Expand/Collapse */}
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={toggleAllExpanded}
-                            className={`${compactBtnClass} w-auto px-2.5 gap-1.5`}
-                            title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
-                            aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
-                        >
-                            {isAllExpanded ? (
-                                <ArrowsInSimple weight="bold" className="h-3.5 w-3.5" />
-                            ) : (
-                                <ArrowsOutSimple weight="bold" className="h-3.5 w-3.5" />
-                            )}
-                            <span className="text-xs font-medium">{isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}</span>
-                        </Button>
-
-                        {/* Language */}
-                        <DropdownMenu modal={false}>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className={`${compactBtnClass} w-auto px-2.5 gap-1.5`}
-                                >
-                                    <span className="text-base leading-none">{LANGUAGES[language].flag}</span>
-                                    <span className="text-xs font-medium">{t("navbar.language")}</span>
-                                    <CaretDown weight="bold" className="h-2.5 w-2.5 opacity-50" />
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <LanguageDropdownContent setLanguage={setLanguage} variant="dark" />
-                        </DropdownMenu>
-
-                        {/* Theme */}
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className={compactBtnClass}
-                            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                            aria-label={resolvedTheme === "dark" ? t("navbar.lightMode") : t("navbar.darkMode")}
-                        >
-                            {mounted && resolvedTheme === "dark" ? (
-                                <Moon weight="fill" className="h-3.5 w-3.5" />
-                            ) : (
-                                <Sun weight="fill" className="h-3.5 w-3.5" />
-                            )}
-                        </Button>
-                    </div>
-                </nav>
+        <div
+            className="fixed inset-x-0 top-0 z-50 pointer-events-none
+                       pt-[max(0.75rem,env(safe-area-inset-top))]
+                       px-3 md:px-6
+                       flex items-center justify-between gap-2"
+        >
+            {/* Logo pill */}
+            <div className={`${pillBase} pl-1.5 pr-3 md:pr-4 gap-2`}>
+                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 shadow-[0_2px_8px_rgba(244,54,0,0.2)]">
+                    <Image
+                        src="/images/icon-512x512.png"
+                        alt="Amalfi.Day"
+                        width={32}
+                        height={32}
+                        priority
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <Logo className="h-[15px] md:h-[17px] w-auto flex-shrink-0 hidden min-[380px]:block text-gray-900 dark:text-[#FDF6F0]/85" />
             </div>
 
-            {/* ===== OVERLAY BUTTONS — visible on hero only in expanded mode ===== */}
-            <div
-                className={`fixed top-0 right-0 z-50 p-4 flex items-center gap-2 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    showCompactBar
-                        ? "opacity-0 pointer-events-none -translate-y-4"
-                        : "opacity-100 translate-y-0"
-                }`}
-            >
-                {/* Expand/Collapse */}
-                <Button
-                    variant="ghost"
-                    size="sm"
+            {/* Actions cluster */}
+            <div className="flex items-center gap-2 pointer-events-auto">
+                {/* Language pill */}
+                <DropdownMenu modal={false}>
+                    <DropdownMenuTrigger asChild>
+                        <button type="button" className={textPill} aria-label={t("navbar.language")}>
+                            <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
+                            <span className="hidden md:inline text-sm font-medium uppercase tracking-wide">
+                                {language}
+                            </span>
+                            <CaretDown weight="bold" className="h-3 w-3 opacity-50" />
+                        </button>
+                    </DropdownMenuTrigger>
+                    <LanguageDropdownContent setLanguage={setLanguage} />
+                </DropdownMenu>
+
+                {/* Expand / collapse pill */}
+                <button
+                    type="button"
                     onClick={toggleAllExpanded}
-                    className={`${overlayBtnClass} w-auto px-3 gap-1.5`}
-                    title={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
-                    aria-label={isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}
+                    className={textPill}
+                    aria-label={expandLabel}
+                    title={expandLabel}
                 >
                     {isAllExpanded ? (
                         <ArrowsInSimple weight="bold" className="h-4 w-4" />
                     ) : (
                         <ArrowsOutSimple weight="bold" className="h-4 w-4" />
                     )}
-                    <span className="text-xs font-medium">{isAllExpanded ? t("navbar.collapseAll") : t("navbar.expandAll")}</span>
-                </Button>
+                    <span className="hidden md:inline text-sm font-medium whitespace-nowrap">{expandLabel}</span>
+                </button>
 
-                {/* Language */}
-                <DropdownMenu modal={false}>
-                    <DropdownMenuTrigger asChild>
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            className={`${overlayBtnClass} w-auto px-3 gap-1.5`}
-                        >
-                            <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
-                            <span className="text-sm font-medium">{t("navbar.language")}</span>
-                            <CaretDown weight="bold" className="h-3 w-3 opacity-50" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <LanguageDropdownContent setLanguage={setLanguage} variant="light" />
-                </DropdownMenu>
-
-                {/* Theme */}
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className={overlayBtnClass}
-                    onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                    aria-label={resolvedTheme === "dark" ? t("navbar.lightMode") : t("navbar.darkMode")}
+                {/* Theme toggle pill */}
+                <button
+                    type="button"
+                    onClick={() => setTheme(isDark ? "light" : "dark")}
+                    className={iconPill}
+                    aria-label={themeLabel}
+                    title={themeLabel}
                 >
-                    {mounted && resolvedTheme === "dark" ? (
-                        <Moon weight="fill" className="h-4 w-4" />
-                    ) : (
+                    {isDark ? (
                         <Sun weight="fill" className="h-4 w-4" />
+                    ) : (
+                        <Moon weight="fill" className="h-4 w-4" />
                     )}
-                </Button>
+                </button>
             </div>
-        </>
+        </div>
     );
 }
 
-// Extracted dropdown content to avoid duplication
 function LanguageDropdownContent({
     setLanguage,
-    variant,
 }: {
     setLanguage: (lang: "en" | "it" | "es" | "fr" | "de" | "ru") => void;
-    variant: "dark" | "light";
 }) {
-    const bgClass =
-        variant === "dark"
-            ? "bg-[#1A0A00]/95 backdrop-blur-xl border-[#F43600]/15"
-            : "bg-white/80 backdrop-blur-2xl border-white/30";
-
-    const itemClass =
-        variant === "dark"
-            ? "text-[#FDF6F0]/80 hover:bg-[#F43600]/15 hover:text-[#FF6B3D]"
-            : "text-[#3D2415] hover:bg-[#F43600]/10 hover:text-[#E54800]";
-
     const langs = [
         { code: "en" as const, flag: "\u{1F1EC}\u{1F1E7}", name: "English" },
         { code: "it" as const, flag: "\u{1F1EE}\u{1F1F9}", name: "Italiano" },
@@ -230,13 +128,21 @@ function LanguageDropdownContent({
         <DropdownMenuContent
             align="end"
             sideOffset={8}
-            className={`rounded-2xl min-w-[160px] p-1.5 border shadow-[0_16px_48px_rgba(0,0,0,0.25)] animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200 ${bgClass}`}
+            className="rounded-2xl min-w-[180px] p-1.5 border shadow-[0_16px_48px_rgba(0,0,0,0.18)]
+                       bg-white/95 dark:bg-[#1A0A00]/95 backdrop-blur-2xl
+                       border-white/60 dark:border-white/10
+                       animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200"
         >
             {langs.map((l) => (
                 <DropdownMenuItem
                     key={l.code}
                     onClick={() => setLanguage(l.code)}
-                    className={`gap-3 cursor-pointer rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150 ${itemClass}`}
+                    className="gap-3 cursor-pointer rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150
+                               text-gray-800 dark:text-[#FDF6F0]/85
+                               hover:bg-[#F43600]/10 hover:text-[#E54800]
+                               dark:hover:bg-[#F43600]/15 dark:hover:text-[#FF6B3D]
+                               focus:bg-[#F43600]/10 focus:text-[#E54800]
+                               dark:focus:bg-[#F43600]/15 dark:focus:text-[#FF6B3D]"
                 >
                     <span className="text-lg">{l.flag}</span>
                     <span>{l.name}</span>
