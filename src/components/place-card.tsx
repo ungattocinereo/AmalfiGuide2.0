@@ -141,19 +141,27 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         />
                     )}
 
-                    {/* Category pill — top-right over image */}
-                    <div className="absolute top-1.5 right-1.5 md:top-3 md:right-3 flex items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                    {/* Category pill — on image: desktop always, mobile only for hiking */}
+                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)] ${hikingMapUrl ? "flex" : "hidden md:flex"}`}>
                         <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                         <span className="truncate max-w-[80px] md:max-w-none">{item.category}</span>
                     </div>
                 </div>
 
                 {/* Content area inside card */}
-                <div className="flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
+                <div className="relative flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
+                    {/* Category pill — mobile only, top-right of content (non-hiking cards) */}
+                    {!hikingMapUrl && (
+                        <div className="md:hidden absolute top-2 right-2 flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                            <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
+                            <span className="truncate max-w-[80px]">{item.category}</span>
+                        </div>
+                    )}
+
                     {/* Title — always visible */}
                     <h3
                         style={{ fontFamily: 'var(--font-merriweather)' }}
-                        className="text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200 line-clamp-2"
+                        className="text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200 line-clamp-2 pr-24 md:pr-0"
                     >
                         {item.name}
                     </h3>
