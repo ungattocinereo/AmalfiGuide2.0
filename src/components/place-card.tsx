@@ -150,18 +150,20 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
 
                 {/* Content area inside card */}
                 <div className="relative flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
-                    {/* Category pill — mobile only, top-right of content (non-hiking cards) */}
+                    {/* Category pill — mobile only, own row at top (non-hiking cards) */}
                     {!hikingMapUrl && (
-                        <div className="md:hidden absolute top-2 right-2 flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
-                            <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
-                            <span className="truncate max-w-[80px]">{item.category}</span>
+                        <div className="md:hidden flex justify-end">
+                            <span className="inline-flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                                <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
+                                <span className="truncate max-w-[80px]">{item.category}</span>
+                            </span>
                         </div>
                     )}
 
                     {/* Title — always visible */}
                     <h3
                         style={{ fontFamily: 'var(--font-merriweather)' }}
-                        className="text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200 line-clamp-2 pr-24 md:pr-0"
+                        className="text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200 line-clamp-2"
                     >
                         {item.name}
                     </h3>
