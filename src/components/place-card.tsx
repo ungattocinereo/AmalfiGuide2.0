@@ -142,9 +142,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                     )}
 
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
-                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)] ${hikingMapUrl ? "flex" : "hidden md:flex"}`}>
+                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${hikingMapUrl ? "flex" : "hidden md:flex"}`}>
                         <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
-                        <span className="truncate max-w-[80px] md:max-w-none">{item.category}</span>
+                        <span>{item.category}</span>
                     </div>
                 </div>
 
@@ -153,9 +153,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                     {/* Category pill — mobile only, own row at top (non-hiking cards) */}
                     {!hikingMapUrl && (
                         <div className="md:hidden flex justify-end">
-                            <span className="inline-flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                            <span className="inline-flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30">
                                 <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
-                                <span className="truncate max-w-[80px]">{item.category}</span>
+                                <span>{item.category}</span>
                             </span>
                         </div>
                     )}
