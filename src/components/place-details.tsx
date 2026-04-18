@@ -349,7 +349,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.32, duration: 0.3 }}
-                            className="grid grid-cols-2 gap-x-4 gap-y-3 -mt-2"
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 -mt-2"
                             aria-label={t("meta.sectionLabel")}
                         >
                             {metaItems.map((meta, i) => {
@@ -369,7 +369,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                             <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">
                                                 {meta.label}
                                             </span>
-                                            <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">
+                                            <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 break-words">
                                                 {meta.value}
                                             </span>
                                         </span>

@@ -10,15 +10,11 @@ import {
     Airplane,
     MapTrifold,
     Download,
-    HouseLine,
-    House,
-    Signpost,
     Star,
     Car,
     Umbrella,
     Newspaper,
     Envelope,
-    BookmarkSimple,
 } from "@phosphor-icons/react";
 import { useLanguage } from "@/components/language-context";
 
@@ -27,8 +23,6 @@ type FooterLink = {
     href: string;
     external?: boolean;
     icon?: string;
-    spacer?: boolean;
-    action?: "bookmark";
 };
 
 const MAIN_SITE = "https://amalfi.day";
@@ -40,12 +34,6 @@ const footerLinks: Record<string, FooterLink[]> = {
         { label: "footer.airportShuttle", href: `${MAIN_SITE}/how-to-get`, external: true, icon: "airplane" },
         { label: "footer.allPublicTransport", href: `${MAIN_SITE}/timetables`, external: true, icon: "map" },
     ],
-    apartments: [
-        { label: "footer.gregsGuide", href: "https://guide.amalfi.day", external: true, icon: "signpost" },
-        { label: "footer.apartmentOverview", href: `${MAIN_SITE}/apartments`, external: true, icon: "house-heart" },
-        { label: "footer.booking", href: "https://www.booking.com/hotel/it/cristallpont-amalfi-day.html", external: true, icon: "booking" },
-        { label: "footer.airbnb", href: "https://airbnb.com/p/atrani", external: true, icon: "house" },
-    ],
     info: [
         { label: "footer.whatToDo", href: `${MAIN_SITE}/experience`, external: true, icon: "star" },
         { label: "footer.parkingTips", href: `${MAIN_SITE}/parking`, external: true, icon: "parking" },
@@ -55,8 +43,6 @@ const footerLinks: Record<string, FooterLink[]> = {
     blog: [
         { label: "footer.amalfiNews", href: `${MAIN_SITE}/blog`, external: true, icon: "newspaper" },
         { label: "footer.contactUs", href: `${MAIN_SITE}/contact`, external: true, icon: "envelope" },
-        { label: "", href: "#", spacer: true },
-        { label: "footer.addToBookmarks", href: "#bookmark", icon: "bookmark", action: "bookmark" as const },
     ],
 };
 
@@ -67,30 +53,16 @@ const socialLinks = [
 ];
 
 function LinkIcon({ icon, className }: { icon: string; className?: string }) {
-    const props = { size: 16, weight: "regular" as const, className };
+    const props = { size: 18, weight: "regular" as const, className };
     switch (icon) {
         case "download": return <Download {...props} />;
         case "airplane": return <Airplane {...props} />;
         case "map": return <MapTrifold {...props} />;
-        case "signpost": return <Signpost {...props} />;
-        case "house-heart": return <HouseLine {...props} />;
-        case "house": return <House {...props} />;
         case "star": return <Star {...props} />;
         case "parking": return <Car {...props} />;
         case "umbrella": return <Umbrella {...props} />;
         case "newspaper": return <Newspaper {...props} />;
         case "envelope": return <Envelope {...props} />;
-        case "bookmark": return <BookmarkSimple {...props} />;
-        case "booking": return (
-            <Image
-                src="/brand/booking.svg"
-                alt="Booking.com"
-                width={16}
-                height={16}
-                unoptimized
-                className="w-4 h-4 object-contain inline-block dark:invert dark:opacity-70"
-            />
-        );
         default: return null;
     }
 }
@@ -98,36 +70,25 @@ function LinkIcon({ icon, className }: { icon: string; className?: string }) {
 function FooterColumn({ links }: { links: FooterLink[] }) {
     const { t } = useLanguage();
 
-    const handleBookmark = (e: React.MouseEvent) => {
-        e.preventDefault();
-        alert(t("footer.bookmarkHint"));
-    };
-
     return (
-        <div className="flex flex-col gap-3 sm:gap-2">
-            {links.map((item, i) => {
-                if ("spacer" in item && item.spacer) {
-                    return <span key={i} className="h-2" aria-hidden="true" />;
-                }
-                return (
-                    <a
-                        key={i}
-                        href={item.href}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
-                        onClick={item.action === "bookmark" ? handleBookmark : undefined}
-                        className="group flex items-center gap-2 text-gray-700 dark:text-gray-300 text-[1.1rem] sm:text-[0.95rem] font-medium border-b border-gray-200 dark:border-gray-700/50 pb-2 sm:pb-1.5 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150"
-                    >
-                        {item.icon && (
-                            <LinkIcon
-                                icon={item.icon}
-                                className="text-gray-400 dark:text-gray-500 shrink-0"
-                            />
-                        )}
-                        <span>{t(item.label)}</span>
-                    </a>
-                );
-            })}
+        <div className="flex flex-col gap-1 sm:gap-1.5">
+            {links.map((item, i) => (
+                <a
+                    key={i}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                    className="group flex items-center gap-3 text-gray-700 dark:text-gray-300 text-[1.05rem] sm:text-base font-medium border-b border-gray-200 dark:border-gray-700/50 py-3 sm:py-2.5 min-h-[44px] hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-150 touch-manipulation"
+                >
+                    {item.icon && (
+                        <LinkIcon
+                            icon={item.icon}
+                            className="text-gray-400 dark:text-gray-500 shrink-0 group-hover:text-orange-500 transition-colors duration-150"
+                        />
+                    )}
+                    <span>{t(item.label)}</span>
+                </a>
+            ))}
         </div>
     );
 }
@@ -145,7 +106,7 @@ export function Footer() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-10 sm:pb-12"
             >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(4,1fr)] gap-8 lg:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(3,1fr)] gap-8 lg:gap-6">
                     {/* Brand column */}
                     <div className="flex flex-col items-center sm:items-start">
                         <div className="mb-5">
@@ -184,7 +145,6 @@ export function Footer() {
 
                     {/* Link columns */}
                     <FooterColumn links={footerLinks.transport} />
-                    <FooterColumn links={footerLinks.apartments} />
                     <FooterColumn links={footerLinks.info} />
                     <FooterColumn links={footerLinks.blog} />
                 </div>
