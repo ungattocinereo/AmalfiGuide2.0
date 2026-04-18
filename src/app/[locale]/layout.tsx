@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Merriweather } from "next/font/google";
+import Script from "next/script";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
@@ -125,6 +126,18 @@ export default async function LocaleLayout({
             `,
           }}
         />
+
+        {/* Google Analytics (gtag.js) — G-RTY4017R05 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RTY4017R05"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            gtag('js', new Date());
+            gtag('config', 'G-RTY4017R05');
+          `}
+        </Script>
 
         {/* Schema.org structured data */}
         <script

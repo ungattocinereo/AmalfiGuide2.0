@@ -14,7 +14,7 @@ En tant que village, Atrani prouve que la taille ne compte pas sur la Côte Amal
 **Tagline**: Le cœur authentique du village
 
 **Short info:**
-Suivez les flèches vertes à travers le village pour découvrir cette place cinématographique. C'est l'endroit idéal pour échapper à la foule d'Amalfi et capturer la véritable âme de la côte.
+Une petite place au cœur d'Atrani, accessible en suivant les flèches vertes à travers le village.
 
 **The Details:**
 Dans tout Atrani, vous remarquerez des panneaux avec des flèches vertes bien visibles - ce sont en fait des marqueurs d'évacuation en cas d'inondation, mais pour nous, ce sont des guides vers la beauté. En les suivant, vous arrivez à la charmante Piazzetta Umberto I, juste devant l'église San Salvatore de' Birecto. Elle est intime, entourée de maisons traditionnelles, et sert de salon pour les habitants. Prenez un café ici et regardez le monde passer ; c'est un spectacle emblématique qui incarne l'essence d'Atrani.
@@ -30,7 +30,7 @@ Dans tout Atrani, vous remarquerez des panneaux avec des flèches vertes bien vi
 **Tagline**: La sérénité entre les falaises
 
 **Short info:**
-Un secret pittoresque niché entre des falaises imposantes, à quelques pas d'Atrani. Il faut un peu d'effort pour y accéder, ce qui éloigne les grandes foules.
+Petite plage de galets entre les falaises, accessible par une descente de 200 marches juste après Atrani.
 
 **The Details:**
 Nichée entre deux falaises spectaculaires se trouve cet endroit pittoresque, à courte distance au-delà de la place d'Atrani. Pour atteindre ce lieu idyllique, continuez sur la route principale vers Ravello/Minori et cherchez l'entrée avec un escalier sur la droite. Préparez-vous : c'est une descente d'environ 200 marches pour atteindre l'eau. La plage reçoit le soleil principalement le matin (jusqu'à environ 13h00), alors arrivez tôt. La mer cristalline et la vue sur l'église de Maddalena d'en bas valent chaque marche.
@@ -46,7 +46,7 @@ Nichée entre deux falaises spectaculaires se trouve cet endroit pittoresque, à
 **Tagline**: Havre de pure nature
 
 **Short info:**
-Un lieu naturel serein caché à quelques minutes du centre du village. À visiter de préférence après la pluie, il offre une évasion fraîche et verdoyante des rues pavées.
+Une cascade saisonnière nichée dans les rochers au-dessus d'Atrani. Plus impressionnante après la pluie.
 
 **The Details:**
 Pour trouver ce trésor caché, montez la Via dei Dogi depuis la place principale jusqu'à ce que la route se termine. Un petit chemin de gravier vous mène plus haut dans la vallée. Ici, nichée entre les falaises abruptes du Monte Civita et du Monte Aureo, vous trouverez la cascade. C'est une merveille saisonnière - souvent un filet d'eau pendant les chaleurs estivales, mais se transformant en cascade majestueuse après les pluies. C'est un rappel paisible de la nature qui entoure cette ville ancienne.
@@ -62,7 +62,7 @@ Pour trouver ce trésor caché, montez la Via dei Dogi depuis la place principal
 **Tagline**: Lieu sacré et magnifique
 
 **Short info:**
-L'Église Santa Maria del Bando et la Grotte Masaniello sont un sanctuaire historique sur le Monte Aureo à Atrani, documenté pour la première fois en 1187. Y accéder nécessite de monter 750 marches.
+Sanctuaire du XIIe siècle au-dessus d'Atrani, accessible en gravissant 750 marches de pierre. Réservation requise.
 
 **The Details:**
 L'Église Santa Maria del Bando se dresse comme un sanctuaire spirituellement significatif niché sur les pentes du Monte Aureo à Atrani, offrant un lien profond avec des siècles de foi et d'héritage méditerranéen. Documentée pour la première fois en 1187, cette église médiévale représente une fusion remarquable de dévotion religieuse et d'histoire architecturale s'étendant sur près d'un millénaire.
@@ -91,7 +91,7 @@ Les monuments essentiels qui définissent l'histoire et la vie quotidienne d'Ama
 **Best time**: morning
 
 **Short info:**
-Vous ne pouvez pas visiter Amalfi sans voir le Duomo. Son escalier de 62 marches est légendaire, mais la vraie magie se trouve dans le paisible Cloître du Paradis à l'intérieur. Il y a un musée au 2e étage et une crypte en sous-sol.
+La cathédrale du IXe siècle d'Amalfi avec son célèbre escalier de 62 marches et le Cloître du Paradis.
 
 **The Details:**
 Le Duomo est le cœur architectural d'Amalfi, datant du IXe siècle. Ce bâtiment majestueux présente un escalier spectaculaire, une façade arabo-normande saisissante et d'imposantes portes en bronze coulées à Constantinople. À l'intérieur reposent les reliques de Saint André, le saint patron. Le complexe comprend la Basilique du Crucifix et le Cloître du Paradis.
@@ -110,7 +110,7 @@ Le Duomo est le cœur architectural d'Amalfi, datant du IXe siècle. Ce bâtimen
 **Best time**: sunset
 
 **Short info:**
-Vous voulez la meilleure vue à vol d'oiseau d'Amalfi sans transpirer ? Oubliez les escaliers et empruntez ce tunnel secret jusqu'au niveau du cimetière. (Oui, c'est le chemin vers le Cimetière d'Amalfi).
+La meilleure vue aérienne d'Amalfi, accessible par un tunnel piéton et un ascenseur public à 3 € — sans escaliers.
 
 **The Details:**
 Cet endroit offre la meilleure vue incontestée d'Amalfi d'en haut. Depuis Atrani, marchez vers Amalfi. Près du parking « Luna Rossa », vous trouverez un tunnel piéton. Traversez-le, tournez à droite à la fin et trouvez la porte d'un second tunnel menant à l'ascenseur public. Il vous emmène jusqu'au niveau du cimetière monumental. Le silence là-haut, combiné à la vue sur le port et la cathédrale, est à couper le souffle.
@@ -144,7 +144,7 @@ Ouvert les lundis, mercredis, vendredis, samedis et dimanches (matinées uniquem
 **Tagline**: Ruines anciennes et eaux rafraîchissantes
 
 **Short info:**
-Un véritable endroit caché derrière les villas privées où peu de touristes s'aventurent. On a l'impression d'entrer dans une scène du « Livre de la Jungle » en plein Amalfi.
+Une cascade cachée, une grotte et des moulins médiévaux au bout de la Via Capo di Piazza à Amalfi.
 
 **The Details:**
 Montez la route principale d'Amalfi (Via Capo di Piazza) jusqu'au bout. Vous verrez une villa privée et un portail fermé. Tournez à gauche et montez les marches. Face à la villa, au bout du chemin, vous découvrirez de vieux moulins en ruine, une grande grotte et une belle cascade qui coule en contrebas. C'est frais, verdoyant et complètement silencieux comparé à la piazza animée.
@@ -165,7 +165,7 @@ Itinéraires de marche qui révèlent Amalfi au-delà des villes.
 **Difficulty**: Advanced
 
 **Short info:**
-Échappez à la chaleur dans une réserve luxuriante digne du Jurassique. Cette randonnée facile vous emmène à travers des citronniers et des ruines industrielles jusqu'à des cascades magiques.
+Réserve naturelle protégée entre Scala et Amalfi. Une balade ombragée de 2–3 heures parmi les fougères et les cascades.
 
 **The Details:**
 Valle delle Ferriere est une réserve naturelle protégée cachée dans les montagnes entre Scala et Amalfi. Le nom vient des forges médiévales qui fonctionnaient autrefois ici. Aujourd'hui, c'est un sanctuaire de fougères rares et d'eaux vives. La randonnée est faisable (2-3 heures) et offre une rare retraite ombragée pendant l'été. Vous verrez les ruines des anciennes papeteries qui ont rendu Amalfi célèbre. Portez des chaussures antidérapantes !
@@ -183,7 +183,7 @@ Valle delle Ferriere est une réserve naturelle protégée cachée dans les mont
 **Difficulty**: Moderate
 
 **Short info:**
-Si vous voulez cette photo précise regardant directement sur les toits d'Atrani et Amalfi, c'est ici. Calme, d'une beauté envoûtante, et bien moins fréquenté que le Sentier des Dieux.
+Tour médiévale sur la crête au-dessus d'Amalfi et d'Atrani, avec le plus beau panorama de toute la côte.
 
 **The Details:**
 Cette tour de guet se trouve sur la crête séparant Amalfi et Atrani. La légende dit que la Duchesse Giovanna d'Aragona y fut emprisonnée pour son aventure scandaleuse. Le point de départ le plus facile est Pontone (accessible en bus depuis Amalfi). Depuis la place de Pontone, la randonnée est une boucle facile à modérée de 4-5 km (environ 2-3 heures) à travers des forêts de pins offrant beaucoup d'ombre. La vue depuis la plateforme à côté de la tour est sans doute la meilleure de toute la côte.
@@ -201,7 +201,7 @@ Cette tour de guet se trouve sur la crête séparant Amalfi et Atrani. La légen
 **Distance**: 7.8km
 
 **Short info:**
-C'est touristique pour une bonne raison - les vues sont inégalées. Mon conseil : Commencez à Bomerano et marchez en *descendant* vers Nocelle pour garder les meilleures vues devant vous.
+Le sentier le plus célèbre de la côte — 7 km le long des crêtes. Départ à Bomerano, arrivée à Nocelle.
 
 **The Details:**
 C'est le sentier de randonnée le plus célèbre de la Côte Amalfitaine (environ 7km). Il longe les crêtes montagneuses au-dessus de la mer.
@@ -225,7 +225,7 @@ De Nocelle, vous avez deux options pour rejoindre Positano : prendre le bus Mobi
 **Distance**: 3km
 
 **Short info:**
-Une alternative plus facile aux randonnées de montagne. Ce sentier relie Maiori et Minori et vous emmène au cœur de la culture citronnière de la région.
+Une promenade facile de 3 km entre Maiori et Minori à travers les citronniers en terrasses de l'Amalfitain.
 
 **The Details:**
 Situé dans l'un des endroits les plus fascinants de la côte, le « Sentier des Citrons » serpente à travers des jardins en terrasses. C'est une promenade facile à modérée (environ 1 heure) qui offre des vues magnifiques sur la mer et les villes en contrebas. En saison, vous pourriez voir des agriculteurs porter de lourds paniers de citrons « Sfusato Amalfitano » sur leur dos. Arrêtez-vous pour une limonade fraîche ou un granité au citron (*granita*) aux petits stands le long du chemin !
@@ -245,7 +245,7 @@ Des cuisines familiales aux salles à manger légendaires au bord de la mer.
 **Price**: €€
 
 **Short info:**
-Tenu par les frères Armando et Salvatore depuis 1990, cet endroit vous fait sentir comme à la maison. C'est mon premier choix pour un repas fiable et délicieux où le service est aussi bon que la nourriture.
+Trattoria familiale à Atrani, ouverte depuis 1990. Connue pour les fruits de mer grillés et les pâtes au pesto de pistache.
 
 **The Details:**
 Le Palme est un restaurant très réputé tenu par deux frères, le Chef Armando et le Maître de Salle Salvatore. Pendant la haute saison touristique et les vacances scolaires, les enfants de Salvatore donnent un coup de main dans la salle. Depuis 1990, ces frères se consacrent à conquérir chaque client avec leur service impeccable et leur cuisine délicieuse.
@@ -267,7 +267,7 @@ L'atmosphère est animée et conviviale. Salvatore gère également une villa de
 **Price**: €€€
 
 **Short info:**
-Un joyau sélectionné par Michelin qui reste humble. Si vous êtes un gastronome ou un Instagrammeur cherchant le risotto parfait, c'est votre endroit.
+Restaurant de fruits de mer référencé au Guide Michelin à Atrani. Spécialité : risotto con crema di scampi.
 
 **The Details:**
 Inclus dans le Guide Michelin, A'Paranza est dédié à la qualité. Malgré son apparence modeste, chaque détail est soigné, des couverts aux citrons locaux utilisés dans la sauce. Leur *Risotto con crema di scampi* signature est légendaire. Situé à seulement 200 mètres de l'eau, ils ne servent que les prises les plus fraîches. La carte des vins est étendue, et le personnel est expert en accords.
@@ -285,7 +285,7 @@ Inclus dans le Guide Michelin, A'Paranza est dédié à la qualité. Malgré son
 **Price**: €€
 
 **Short info:**
-Vous pouvez trouver Lo Smeraldino au Port d'Amalfi, entouré de yachts de luxe. C'est l'une des destinations gastronomiques les plus enchanteresses de la Côte Amalfitaine, où l'excellence culinaire rencontre des vues panoramiques à couper le souffle sur la mer.
+Restaurant de fruits de mer sur le port d'Amalfi avec terrasse panoramique — particulièrement beau au coucher du soleil.
 
 **The Details:**
 Les fruits de mer sont la vedette du menu de Lo Smeraldino. Les visiteurs s'enthousiasment pour la qualité exceptionnelle de plats rarement trouvés ailleurs, particulièrement les pâtes aux fruits de mer (scialatielli) que les clients décrivent comme de classe mondiale. Des portions généreuses de moules et palourdes, du bar frais préparé en croûte de sel, des pâtes au homard et de la pizza aux fruits de mer démontrent l'expertise de la cuisine.
@@ -309,7 +309,7 @@ Un parking pratique est disponible pour les clients. Lo Smeraldino est fréquemm
 **Price**: €€
 
 **Short info:**
-Emplacement, emplacement, emplacement. Si vous voulez manger au bord de l'eau à Atrani, réservez une table ici. Un favori de célébrités comme Edward Norton pour son intimité et sa vue.
+Restaurant en bord de mer à Atrani, tenu par la même famille depuis 1965.
 
 **The Details:**
 Le Arcate est un lieu local bien-aimé pour ceux qui veulent les meilleures places à Atrani. Géré par une famille soudée, le menu est resté largement inchangé depuis 1965, se concentrant sur une tradition simple et de haute qualité. Comme le dit le chef : « Je ne fais que saler et poivrer le poisson. Je ne l'améliore pas, je le prépare comme il se doit. » Note : Depuis 2024, ils se concentrent sur le service restaurant et peuvent ne pas servir de pizza.
@@ -327,7 +327,7 @@ Le Arcate est un lieu local bien-aimé pour ceux qui veulent les meilleures plac
 **Price**: €€€€
 
 **Short info:**
-Un lieu historique familial depuis 1931 avec une hospitalité incroyable. Utilisez leur service de navette gratuit depuis Amalfi - ça facilite la logistique.
+Restaurant familial à Vettica au-dessus d'Amalfi, ouvert depuis 1931. Navette gratuite depuis Amalfi.
 
 **The Details:**
 Situé à Vettica (juste au-dessus d'Amalfi), Da Ciccio est une institution. Ils cultivent leur propre potager, ce qui signifie que les produits dans votre assiette sont à kilomètre zéro. Ils servent peut-être le meilleur carpaccio de poisson de la côte. Mais le véritable point fort est la chaleur de la gestion familiale ; vous êtes traité comme un vieil ami.
@@ -348,7 +348,7 @@ Petites bouchées qui en disent plus qu'un long menu.
 **Price**: €
 
 **Short info:**
-Oubliez le petit-déjeuner de l'hôtel. Faites comme les locaux et prenez une part de pizza rouge ici. C'est discret, bon marché et absolument délicieux.
+Boulangerie à emporter à 70 m du Duomo d'Amalfi. Pizza rouge et pain frais, uniquement le matin.
 
 **The Details:**
 Nichée à seulement 70 mètres du Duomo d'Amalfi, cette boulangerie est facile à manquer mais impossible à oublier. C'est un endroit à emporter uniquement, ouvert principalement le matin. C'est l'arrêt incontournable des écoliers et travailleurs. Il n'y a pas de places assises, mais la saveur de leur pain et parts de pizza est la plus authentique que vous trouverez dans le centre-ville.
@@ -366,7 +366,7 @@ Nichée à seulement 70 mètres du Duomo d'Amalfi, cette boulangerie est facile 
 **Price**: €
 
 **Short info:**
-L'endroit parfait pour une bouchée rapide en explorant les ruelles. Leurs arancini sont d'une perfection croustillante.
+Un petit spot à Amalfi pour la pizza au feu de bois, les arancini et les snacks frits traditionnels.
 
 **The Details:**
 Situé au cœur d'Amalfi, La Rua offre plus que de la simple street food ; ils servent des pizzas au feu de bois exceptionnelles préparées avec précision. L'arôme de la pâte fraîchement cuite vous attire. C'est aussi un excellent endroit pour essayer des snacks frits traditionnels comme les *crocche* (croquettes de pomme de terre) et les *arancini*. Un joyau culinaire caché pour un déjeuner décontracté.
@@ -384,7 +384,7 @@ Situé au cœur d'Amalfi, La Rua offre plus que de la simple street food ; ils s
 **Price**: €
 
 **Short info:**
-Un petit endroit fiable sur l'artère principale d'Amalfi. Parfait pour une part de pizza rapide et économique quand vous avez besoin de refaire le plein sans le formalisme d'un restaurant.
+Pizzeria locale sur la Via Pietro Capuano à Amalfi. Parts autour de 5–8 €.
 
 **The Details:**
 Pizza Express est une pizzeria locale simple et sans chichi située dans la partie la plus animée d'Amalfi (Via Pietro Capuano). Contrairement à la chaîne internationale, c'est un endroit local distinct apprécié pour son prix abordable (pizzas autour de 5-8€) et son service amical. Il offre une bonne variété, y compris des options de pizza végane sans fromage (artichaut, champignon, etc.), des sandwichs et des calzones. C'est idéal pour prendre une boîte chaude à emporter et manger près du port.
@@ -404,7 +404,7 @@ Marchés locaux et magasins spécialisés où vous trouverez les meilleurs ingr�
 **Hours**: Mon-Sun 08:00-12:00, 16:00-20:00
 
 **Short info:**
-Mimì & Cocò di Tutto Un Po est une charmante épicerie de quartier au cœur d'Atrani, offrant une sélection éclectique de produits régionaux. Cette boutique locale bien-aimée est l'endroit parfait pour découvrir des ingrédients de qualité et des spécialités italiennes authentiques.
+Épicerie familiale Via dei Dogi à Atrani, ouverte depuis 2007. Fromages, charcuteries, pâtes, huile d'olive.
 
 **The Details:**
 En activité depuis 2007, ce marché familial est devenu un incontournable pour les locaux et les visiteurs cherchant des produits authentiques de la Côte Amalfitaine. La boutique propose une variété impressionnante incluant de la mozzarella de bufflonne DOP premium de Campanie, des charcuteries et pancetta artisanales, des pâtes fraîches en plusieurs variétés y compris des options sans gluten, des yaourts et produits laitiers, des fruits et légumes frais, des conserves, de l'huile d'olive de haute qualité, des boissons et des épices spéciales.
@@ -423,7 +423,7 @@ Le personnel compétent et accueillant fournit des recommandations expertes sur 
 **Hours**: Mon-Sun 07:30-13:30, 16:30-21:00
 
 **Short info:**
-La Grande Mela Deco est un supermarché moderne dans le centre d'Amalfi, offrant une sélection complète d'épicerie et produits spécialisés. Ce magasin bien organisé fournit à la fois l'essentiel quotidien et des produits gourmets pour les visiteurs et résidents.
+Supermarché moderne de la chaîne Decò en centre d'Amalfi. Pratique si vous préparez vos propres repas.
 
 **The Details:**
 Situé Via dei Curiali à Amalfi, La Grande Mela Supermarché Deco fait partie de la chaîne Decò connue pour maintenir des standards de qualité à travers l'Italie. Le supermarché propose une gamme étendue de produits dans plusieurs départements : rayon fruits et légumes frais de saison, comptoir charcuterie avec produits et fromages premium, viande et fruits de mer frais, vaste sélection de pâtes et produits de base italiens, produits laitiers, surgelés, produits de garde-manger, boissons incluant vins et spiritueux, et produits gourmets spécialisés.
@@ -441,7 +441,7 @@ Le magasin est conçu pour des courses pratiques avec un agencement organisé et
 **Hours**: Mon-Sun 07:30-13:30, 16:30-20:00
 
 **Short info:**
-DOGI SRL est un marché orienté communauté dans la Piazza dei Dogi historique d'Amalfi, servant locaux et visiteurs avec une sélection d'épicerie de qualité et plats préparés. Cette alimentari traditionnelle offre à la fois les nécessités quotidiennes et produits locaux spécialisés.
+Alimentari de quartier sur la Piazza dei Dogi d'Amalfi. Produits italiens, fromages, charcuteries, vins.
 
 **The Details:**
 Situé Piazza dei Dogi, 29, le Marché DOGI est un établissement de quartier bien-aimé devenu un pilier de la vie commerciale d'Amalfi. Le marché propose une sélection soigneusement organisée de produits incluant épicerie fraîche et emballée, produits de base italiens, fromages et charcuteries de qualité de producteurs régionaux, fruits et légumes frais en saison, pâtes et produits secs, vins et boissons, et articles spécialisés qui plaisent tant aux touristes qu'aux résidents locaux.
@@ -459,7 +459,7 @@ La boutique bénéficie de son emplacement privilégié sur l'une des places pri
 **Hours**: Mon-Sun 08:00-20:00
 
 **Short info:**
-La Tramontina est un marché alimentaire spécialisé et bistrot réputé pour sa mozzarella de bufflonne exceptionnelle et ses sandwichs artisanaux faits d'ingrédients locaux premium. Un favori des visiteurs pour des repas rapides et de haute qualité et produits gourmets sur la Côte Amalfitaine.
+Épicerie fine et bistrot sur la Piazza dei Dogi, célèbre pour les sandwichs à la mozzarella de bufflonne.
 
 **The Details:**
 La Tramontina Amalfi, située Piazza Dei Dogi 26, s'est forgé une réputation stellaire comme vitrine de mozzarella de bufflonne de qualité et de créativité culinaire. Fonctionnant comme une combinaison de boutique de produits et bistrot, elle sert des sandwichs préparés sur place, panini et plats préparés utilisant uniquement des ingrédients premium.
@@ -484,7 +484,7 @@ Destinations valant le voyage au-delà des villes principales.
 **Tagline**: La vue d'une vie
 
 **Short info:**
-Ravello est le balcon du monde. La Terrasse de l'Infini est sans doute l'endroit le plus photographié de la côte - vous vous sentirez comme si vous flottiez entre mer et ciel.
+La Terrazza dell'Infinito de la Villa Cimbrone à Ravello, à 20 minutes de bus depuis Amalfi.
 
 **The Details:**
 Ravello se trouve haut sur les falaises, à environ 20 minutes en bus d'Amalfi. Le joyau de la couronne est la Villa Cimbrone et sa « Terrazza dell'Infinito ». Bordée de bustes en marbre et surplombant la mer Tyrrhénienne, elle offre un panorama qui a inspiré écrivains et cinéastes (vue dans *Tenet* et *Wonder Woman*). C'est une visite incontournable rien que pour les jardins.
@@ -500,7 +500,7 @@ Ravello se trouve haut sur les falaises, à environ 20 minutes en bus d'Amalfi. 
 **Tagline**: Les meilleures pâtisseries du monde
 
 **Short info:**
-Sal De Riso n'est pas juste un pâtissier ; c'est une célébrité. Vous ne pouvez pas quitter la côte sans goûter sa « Delizia al Limone » ou le gâteau « Ricotta e Pere ».
+Célèbre pâtisserie à Minori du maître Salvatore De Riso. À ne pas manquer : la Delizia al Limone.
 
 **The Details:**
 Situé à Minori (un court trajet en ferry ou bus depuis Amalfi), c'est un temple de la douceur. Le Maître Pâtissier Sal De Riso a plus de 30 ans d'expérience. La boutique est vibrante et animée, offrant une sélection massive de gâteaux, gelato et pâtisseries faits avec des ingrédients locaux comme les noisettes de Giffoni et les citrons d'Amalfi. C'est aussi un excellent endroit pour un aperitivo. Les prix sont plus élevés que la moyenne, mais la qualité correspond à la réputation.
@@ -522,7 +522,7 @@ L'expertise de Salvatore De Riso a été largement reconnue, lui valant le titre
 **Tagline**: Cuisine rustique avec vue sur le Vésuve
 
 **Short info:**
-Vous voulez voir où les locaux mangent le dimanche ? Montez dans les montagnes. L'air est plus frais, et les pizzas font littéralement un mètre de long. L'endroit où vous pouvez aller en voiture ou en moto.
+Restaurant de montagne au col de Chiunzi à Tramonti. Célèbre pour la pizza al metro.
 
 **The Details:**
 Situé à un col de montagne (Valico di Chiunzi) à environ 1 000 mètres au-dessus du niveau de la mer, cet endroit offre une vue panoramique qui s'étend au loin. Le restaurant est célèbre pour sa « Pizza a Metro » (pizza d'un mètre de long) et ses plats de viande copieux. C'est un arrêt populaire pour les randonneurs et ceux voulant échapper à l'humidité côtière. Accessible en bus SITA (ligne Maiori-Tramonti-Nocera), mais une voiture est recommandée pour plus de flexibilité.
@@ -538,7 +538,7 @@ Situé à un col de montagne (Valico di Chiunzi) à environ 1 000 mètres au-des
 **Tagline**: Soleil, falaises et spaghetti
 
 **Short info:**
-Souvent cité par les voyageurs expérimentés comme le meilleur endroit « détente ». Pas de glamour, juste une petite plage coincée entre des falaises massives avec de la bonne nourriture directement sur les galets.
+Petite plage de galets coincée entre les falaises à l'embouchure d'une gorge de Praiano.
 
 **The Details:**
 Contrairement à Positano, Marina di Praia a une âme décontractée. La plage est située à l'embouchure d'une gorge à Praiano. Elle est accessible en voiture (parking payant à proximité) ou en bus SITA (arrêt « Marina di Praia »). Le soleil part tôt ici en raison des falaises (généralement en début d'après-midi), c'est donc parfait pour une baignade matinale suivie d'un long déjeuner tranquille dans l'une des trattorias au bord de la plage (comme Bar Mare Petit).
@@ -554,7 +554,7 @@ Contrairement à Positano, Marina di Praia a une âme décontractée. La plage e
 **Tagline**: Accessible uniquement par bateau ou escaliers
 
 **Short info:**
-Un club de plage exclusif niché dans la pittoresque crique de Duoglio, à seulement un kilomètre du centre d'Amalfi. Eaux cristallines émeraude, galets blancs et falaises couronnées de cactus créent l'atmosphère parfaite.
+Club de plage exclusif dans la crique de Duoglio — accessible en bateau gratuit depuis Amalfi ou par 400 marches.
 
 **The Details:**
 Club de plage exclusif situé sur la magnifique crique de Duoglio, à environ un kilomètre du cœur d'Amalfi. Cette destination légendaire captive les visiteurs avec sa beauté naturelle époustouflante : eaux émeraude cristallines, galets blancs, falaises majestueuses couronnées de cactus, et une atmosphère qui ressemble à un sanctuaire paisible loin des masses touristiques bondées de la Côte Amalfitaine.
