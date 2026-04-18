@@ -115,7 +115,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                 <div className={`relative overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft ${
                     hikingMapUrl
                         ? `${aspectRatio || "aspect-[4/3]"} w-full`
-                        : "shrink-0 w-32 min-h-[8rem] md:w-full md:min-h-0 md:aspect-[4/3]"
+                        : "shrink-0 w-1/3 min-h-[9rem] md:w-full md:min-h-0 md:aspect-[4/3]"
                 }`}>
                     {hikingMapUrl ? (
                         <iframe
@@ -134,7 +134,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             alt=""
                             fill
                             quality={65}
-                            sizes={sizes || "(max-width: 768px) 128px, 33vw"}
+                            sizes={sizes || "(max-width: 768px) 33vw, 33vw"}
                             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}

@@ -186,7 +186,7 @@ function SectionContent({
         ? "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start"
         : "grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 items-start";
     const itemAspect = isHiking ? "aspect-[4/3]" : undefined;
-    const itemSizes = isHiking ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 128px, 33vw";
+    const itemSizes = isHiking ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 33vw, 33vw";
 
     return (
         <div className="px-2 md:px-8 pt-4 md:pt-6 pb-8 md:pb-12">
