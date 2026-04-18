@@ -109,10 +109,14 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
-            {/* Card container — clean white card with border; warm espresso surface in dark mode */}
-            <div className="rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden">
-                {/* Image container */}
-                <div className={`relative ${aspectRatio || "aspect-[3/4] md:aspect-[4/3]"} w-full overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft`}>
+            {/* Card container — horizontal on mobile (non-hiking), vertical on desktop and hiking */}
+            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden ${hikingMapUrl ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
+                {/* Image container — fixed width on mobile for horizontal layout, full width on desktop */}
+                <div className={`relative overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft ${
+                    hikingMapUrl
+                        ? `${aspectRatio || "aspect-[4/3]"} w-full`
+                        : "shrink-0 w-32 min-h-[8rem] md:w-full md:min-h-0 md:aspect-[4/3]"
+                }`}>
                     {hikingMapUrl ? (
                         <iframe
                             src={hikingMapUrl}
@@ -130,50 +134,33 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             alt=""
                             fill
                             quality={65}
-                            sizes={sizes || "(max-width: 768px) 50vw, 33vw"}
+                            sizes={sizes || "(max-width: 768px) 128px, 33vw"}
                             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
                         />
                     )}
 
-                    {/* Category pill — top-right over image. Orange-700 on light for WCAG AA; warm glow in dark. */}
-                    <div className="absolute top-2.5 right-2.5 md:top-3 md:right-3 flex items-center gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
+                    {/* Category pill — top-right over image */}
+                    <div className="absolute top-1.5 right-1.5 md:top-3 md:right-3 flex items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 shadow-sm dark:shadow-[0_0_12px_rgba(245,54,0,0.22)]">
                         <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
-                        {item.category}
+                        <span className="truncate max-w-[80px] md:max-w-none">{item.category}</span>
                     </div>
-
-                    {/* Bottom gradient overlay for text legibility on mobile */}
-                    {!hikingMapUrl && (
-                        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/25 to-transparent pointer-events-none md:hidden" />
-                    )}
-
-                    {/* Title overlaid on image - mobile only */}
-                    {!hikingMapUrl && (
-                        <div className="absolute bottom-0 inset-x-0 p-4 md:hidden">
-                            <h3
-                                style={{ fontFamily: 'var(--font-merriweather)' }}
-                                className="text-lg font-bold leading-snug text-white drop-shadow-md"
-                            >
-                                {item.name}
-                            </h3>
-                        </div>
-                    )}
                 </div>
 
                 {/* Content area inside card */}
-                <div className="flex flex-col gap-2 p-4 md:p-5">
-                    {/* Title - visible on mobile for maps, always visible on desktop */}
+                <div className="flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
+                    {/* Title — always visible */}
                     <h3
                         style={{ fontFamily: 'var(--font-merriweather)' }}
-                        className={`${hikingMapUrl ? 'block' : 'hidden md:block'} text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200`}
+                        className="text-base lg:text-[1.05rem] font-bold leading-tight text-gray-900 dark:text-gray-50 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200 line-clamp-2"
                     >
                         {item.name}
                     </h3>
 
-                    {/* Short description — fixed 3-line box so card rows align */}
+                    {/* Short description — 3-line box so rows align */}
                     <p
-                        className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3 min-h-[4.875em]"
+                        className="text-[13px] md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3"
                         dangerouslySetInnerHTML={{ __html: item.shortInfoHtml }}
                     />
 

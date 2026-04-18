@@ -184,12 +184,12 @@ function SectionContent({
 }) {
     const gridClass = isHiking
         ? "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start"
-        : "grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 items-start";
+        : "grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 items-start";
     const itemAspect = isHiking ? "aspect-[4/3]" : undefined;
-    const itemSizes = isHiking ? "(max-width: 768px) 100vw, 50vw" : undefined;
+    const itemSizes = isHiking ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 128px, 33vw";
 
     return (
-        <div className="px-4 md:px-8 pt-4 md:pt-6 pb-8 md:pb-12">
+        <div className="px-2 md:px-8 pt-4 md:pt-6 pb-8 md:pb-12">
             {description && !isIntro && (
                 <p
                     className="mb-6 md:mb-8 text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed"
