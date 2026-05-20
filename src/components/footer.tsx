@@ -6,17 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
     faBed,
-    faCamera,
-    faCar,
     faDownload,
     faEnvelope,
     faHouse,
     faMap,
     faNewspaper,
-    faPlane,
+    faRoute,
     faSignHanging,
+    faSquareParking,
     faStar,
-    faUmbrellaBeach,
+    faTicket,
+    faUmbrella,
     faWater,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -26,15 +26,15 @@ import { OPEN_COOKIE_BANNER_EVENT } from "@/components/cookie-banner";
 type FooterIcon =
     | "waves"
     | "download"
-    | "airplane"
+    | "ticket"
+    | "route"
     | "map"
     | "signpost"
     | "bed"
     | "house"
     | "star"
-    | "car"
+    | "parking"
     | "umbrella"
-    | "camera"
     | "newspaper"
     | "envelope";
 
@@ -42,7 +42,7 @@ type FooterLink = {
     label: string;
     href: string;
     external?: boolean;
-    icon: FooterIcon;
+    icon?: FooterIcon;
     nowrapOnMobile?: boolean;
 };
 
@@ -53,11 +53,12 @@ const footerLinks: Record<"transport" | "apartments" | "info" | "blog", FooterLi
     transport: [
         { label: "footer.ferryTimetables", href: `${MAIN_SITE}/ferry-timetables`, icon: "waves" },
         { label: "footer.busTimetables", href: "https://cnr.pw/bus", external: true, icon: "download" },
-        { label: "footer.naplesAirportTransfer", href: `${MAIN_SITE}/how-to-get`, icon: "airplane" },
+        { label: "footer.bookAirportShuttle", href: "https://shuttlebus.pintourbus.com", external: true, icon: "ticket" },
+        { label: "footer.naplesToAmalfi", href: `${MAIN_SITE}/how-to-get`, icon: "route" },
         { label: "footer.allPublicTransport", href: `${MAIN_SITE}/timetables`, icon: "map" },
     ],
     apartments: [
-        { label: "footer.gregsGuide", href: GUIDE_SITE, icon: "signpost", nowrapOnMobile: true },
+        { label: "footer.gregsGuide", href: GUIDE_SITE, external: true, icon: "signpost", nowrapOnMobile: true },
         { label: "footer.apartmentOverview", href: `${MAIN_SITE}/apartments`, icon: "house" },
         {
             label: "footer.booking",
@@ -69,8 +70,8 @@ const footerLinks: Record<"transport" | "apartments" | "info" | "blog", FooterLi
     ],
     info: [
         { label: "footer.whatToDo", href: `${MAIN_SITE}/experience`, icon: "star" },
-        { label: "footer.photoSpots", href: `${MAIN_SITE}/photolocations`, icon: "camera" },
-        { label: "footer.parkingTips", href: `${MAIN_SITE}/parking`, icon: "car" },
+        { label: "footer.photoSpots", href: `${MAIN_SITE}/photolocations` },
+        { label: "footer.parkingTips", href: `${MAIN_SITE}/parking`, icon: "parking" },
         { label: "footer.beachReviews", href: `${MAIN_SITE}/beaches`, icon: "umbrella" },
         { label: "footer.motoRoads", href: `${MAIN_SITE}/moto`, icon: "map" },
     ],
@@ -83,15 +84,15 @@ const footerLinks: Record<"transport" | "apartments" | "info" | "blog", FooterLi
 const footerIcons: Record<FooterIcon, IconDefinition> = {
     waves: faWater,
     download: faDownload,
-    airplane: faPlane,
+    ticket: faTicket,
+    route: faRoute,
     map: faMap,
     signpost: faSignHanging,
     bed: faBed,
     house: faHouse,
     star: faStar,
-    car: faCar,
-    umbrella: faUmbrellaBeach,
-    camera: faCamera,
+    parking: faSquareParking,
+    umbrella: faUmbrella,
     newspaper: faNewspaper,
     envelope: faEnvelope,
 };
@@ -141,7 +142,7 @@ function FooterColumn({ links }: { links: FooterLink[] }) {
                         item.nowrapOnMobile ? "max-[720px]:whitespace-nowrap" : ""
                     }`}
                 >
-                    <LinkIcon icon={item.icon} />
+                    {item.icon && <LinkIcon icon={item.icon} />}
                     {t(item.label)}
                 </a>
             ))}

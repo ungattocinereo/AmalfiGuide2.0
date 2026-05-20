@@ -74,10 +74,10 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }
                        hover:!bg-white dark:hover:!bg-gray-900/40
                        focus-visible:outline-none focus-visible:!bg-white dark:focus-visible:!bg-gray-900/40"
         >
-            <div className="flex-shrink-0 flex items-center justify-center h-[50.6px] w-[50.6px] rounded-[18px]
-                            bg-[#FF6900]
+            <div className="flex-shrink-0 flex items-center justify-center h-[50.6px] w-[50.6px] rounded-[12px]
+                            border-2 border-[#FF6900] bg-transparent
                             transition-transform duration-200 group-hover:scale-[1.02]">
-                <FontAwesomeIcon icon={Icon} className="text-[23px] leading-none text-white dark:text-black" />
+                <FontAwesomeIcon icon={Icon} className="text-[23px] leading-none text-[#FF6900]" />
             </div>
 
             <div className="flex-1 min-w-0">
