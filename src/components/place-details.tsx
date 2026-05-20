@@ -13,10 +13,14 @@ import {
     faChevronRight,
     faClock,
     faDownload,
+    faFileLines,
+    faFileZipper,
     faLocationDot,
     faMap,
+    faMapLocationDot,
     faMountain,
     faReceipt,
+    faRoute,
     faRuler,
     faShareNodes,
     faStarHalfStroke,
@@ -208,7 +212,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
     const visualSection = (
         <motion.div
             layoutId={isModal ? layoutId : undefined}
-            className={`relative w-full ${isModal ? "h-[60dvh] md:h-screen md:sticky md:top-0 md:self-start cursor-zoom-out" : "h-[50vh] md:h-auto md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]"} md:w-1/2 md:order-2 overflow-hidden flex-shrink-0`}
+            className={`relative w-full ${isModal ? "h-[60dvh] md:h-screen md:sticky md:top-0 md:self-start cursor-zoom-out" : "h-[50vh] md:h-[calc(100dvh-88px)] md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]"} md:w-1/2 md:order-2 overflow-hidden flex-shrink-0`}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             onClick={isModal && !route ? onClose : undefined}
         >
@@ -435,16 +439,17 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                             </div>
                             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                                 {[
-                                    { label: "KML", url: route.kmlUrl },
-                                    { label: "KMZ", url: route.kmzUrl },
-                                    { label: "GPX", url: route.gpxUrl },
+                                    { label: "KML", url: route.kmlUrl, icon: faFileLines },
+                                    { label: "KMZ", url: route.kmzUrl, icon: faFileZipper },
+                                    { label: "GPX", url: route.gpxUrl, icon: faRoute },
                                 ].map((download) => (
                                     <a
                                         key={download.label}
                                         href={download.url}
                                         download
-                                        className="flex h-11 items-center justify-center rounded-lg border border-orange-200 bg-white text-sm font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100 dark:border-orange-900/60 dark:bg-gray-950/40 dark:text-orange-300 dark:hover:bg-orange-950/50"
+                                        className="flex h-11 items-center justify-center gap-2 rounded-lg border border-orange-200 bg-white px-3 text-sm font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100 dark:border-orange-900/60 dark:bg-gray-950/40 dark:text-orange-300 dark:hover:bg-orange-950/50"
                                     >
+                                        <FontAwesomeIcon icon={download.icon} className="h-4 w-4 flex-shrink-0" />
                                         {download.label}
                                     </a>
                                 ))}
@@ -452,10 +457,10 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                     href={route.fallbackUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex h-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-2 text-sm font-bold text-gray-800 transition hover:border-orange-300 hover:bg-orange-50 dark:border-gray-800 dark:bg-gray-950/40 dark:text-gray-100 dark:hover:bg-orange-950/30"
+                                    className="flex h-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-bold text-gray-800 transition hover:border-orange-300 hover:bg-orange-50 dark:border-gray-800 dark:bg-gray-950/40 dark:text-gray-100 dark:hover:bg-orange-950/30"
                                 >
-                                    <FontAwesomeIcon icon={faMap} className="h-4 w-4 text-orange-600 dark:text-orange-400" />
-                                    <span>{t("routeMap.openGoogle")}</span>
+                                    <FontAwesomeIcon icon={faMapLocationDot} className="h-4 w-4 flex-shrink-0 text-orange-600 dark:text-orange-400" />
+                                    <span className="whitespace-nowrap">{t("routeMap.openGoogle")}</span>
                                 </a>
                             </div>
                         </motion.div>

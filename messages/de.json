@@ -77,7 +77,7 @@
   },
   "routeMap": {
     "downloadTitle": "Route herunterladen",
-    "openGoogle": "Google Maps",
+    "openGoogle": "Google",
     "loading": "Route wird geladen",
     "previewOnly": "Kartenvorschau",
     "mapUnavailable": "Karte nicht verfügbar"

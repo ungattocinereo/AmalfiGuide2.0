@@ -77,7 +77,7 @@
   },
   "routeMap": {
     "downloadTitle": "Скачать маршрут",
-    "openGoogle": "Google Maps",
+    "openGoogle": "Google",
     "loading": "Загружаем маршрут",
     "previewOnly": "Превью карты",
     "mapUnavailable": "Карта недоступна"

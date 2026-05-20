@@ -37,6 +37,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
 
         let cancelled = false;
         const controller = new AbortController();
+        let resizeTimer: number | null = null;
 
         async function loadMap() {
             try {
@@ -65,11 +66,14 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
                     attributionControl: false,
                 });
                 mapRef.current = map;
+                requestAnimationFrame(() => map.resize());
+                resizeTimer = window.setTimeout(() => map.resize(), 250);
                 map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "bottom-right");
                 map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
 
                 map.on("load", () => {
                     if (cancelled) return;
+                    map.resize();
                     map.addSource("route", {
                         type: "geojson",
                         data: geoJson,
@@ -118,6 +122,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
         return () => {
             cancelled = true;
             controller.abort();
+            if (resizeTimer !== null) window.clearTimeout(resizeTimer);
             mapRef.current?.remove();
             mapRef.current = null;
         };
@@ -142,7 +147,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
             />
             <div
                 ref={containerRef}
-                className={`absolute inset-0 transition-opacity duration-300 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
+                className={`h-full w-full transition-opacity duration-300 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
                 aria-label={route.title}
             />
             {status !== "ready" && (
