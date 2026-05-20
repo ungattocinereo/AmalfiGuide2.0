@@ -68,5 +68,10 @@
   "cookie.message": "Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra",
   "cookie.privacyLink": "Política de Privacidad",
   "cookie.accept": "Aceptar",
-  "cookie.decline": "Rechazar"
+  "cookie.decline": "Rechazar",
+  "routeMap.downloadTitle": "Descargar ruta",
+  "routeMap.openGoogle": "Google Maps",
+  "routeMap.loading": "Cargando ruta",
+  "routeMap.previewOnly": "Vista previa del mapa",
+  "routeMap.mapUnavailable": "Mapa no disponible"
 }

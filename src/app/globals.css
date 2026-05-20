@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "mapbox-gl/dist/mapbox-gl.css";
 
 @plugin "tailwindcss-animate";
 
@@ -159,17 +160,6 @@
     text-wrap: balance;
   }
 
-  /* Map embed styling */
-  .map-embed {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: inherit;
-  }
-
-  .dark .map-embed {
-    filter: grayscale(100%);
-  }
 }
 
 /* Keyframe Animations */

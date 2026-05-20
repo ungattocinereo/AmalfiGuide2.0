@@ -68,5 +68,10 @@
   "cookie.message": "We use cookies to improve your experience. By continuing to browse, you accept our",
   "cookie.privacyLink": "Privacy Policy",
   "cookie.accept": "Accept",
-  "cookie.decline": "Decline"
+  "cookie.decline": "Decline",
+  "routeMap.downloadTitle": "Download route",
+  "routeMap.openGoogle": "Google Maps",
+  "routeMap.loading": "Loading route",
+  "routeMap.previewOnly": "Map preview",
+  "routeMap.mapUnavailable": "Map unavailable"
 }

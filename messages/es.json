@@ -75,6 +75,13 @@
     "copyLink": "Copiar enlace",
     "linkCopied": "Enlace copiado"
   },
+  "routeMap": {
+    "downloadTitle": "Descargar ruta",
+    "openGoogle": "Google Maps",
+    "loading": "Cargando ruta",
+    "previewOnly": "Vista previa del mapa",
+    "mapUnavailable": "Mapa no disponible"
+  },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² Entre las Montañas y el Mar",
     "gemsIntroText": "Un pueblo compacto comprimido en solo 0,2 km², enclavado entre el Monte Aureo y el Monte Civita y abierto directamente al mar. Vivimos aquí, y esta es una introducción cuidada a los lugares que definen la vida cotidiana en Atrani más allá de su tamaño.",

@@ -68,5 +68,10 @@
   "cookie.message": "Nous utilisons des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre",
   "cookie.privacyLink": "Politique de Confidentialité",
   "cookie.accept": "Accepter",
-  "cookie.decline": "Refuser"
+  "cookie.decline": "Refuser",
+  "routeMap.downloadTitle": "Télécharger l’itinéraire",
+  "routeMap.openGoogle": "Google Maps",
+  "routeMap.loading": "Chargement de l’itinéraire",
+  "routeMap.previewOnly": "Aperçu de la carte",
+  "routeMap.mapUnavailable": "Carte indisponible"
 }
