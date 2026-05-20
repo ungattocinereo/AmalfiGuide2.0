@@ -71,8 +71,8 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }
             className="w-full flex items-center gap-3 md:gap-4 px-4 md:px-8 py-4 md:py-5
                        text-left cursor-pointer group touch-manipulation
                        transition-colors duration-200
-                       hover:bg-orange-50/70 dark:hover:bg-gray-900/40
-                       focus-visible:outline-none focus-visible:bg-orange-50/70 dark:focus-visible:bg-gray-900/40"
+                       hover:!bg-white dark:hover:!bg-gray-900/40
+                       focus-visible:outline-none focus-visible:!bg-white dark:focus-visible:!bg-gray-900/40"
         >
             <div className="flex-shrink-0 flex items-center justify-center h-[50.6px] w-[50.6px] rounded-[18px]
                             bg-[#FF6900]
@@ -268,7 +268,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
     const isExpanded = isIntro ? true : isSectionExpanded(title);
 
     return (
-        <section className="max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/60 last:border-0">
+        <section className="relative max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/60 last:border-0 before:pointer-events-none before:absolute before:top-0 before:left-4 before:right-4 before:h-px before:bg-[#2f2f2f]/12 dark:before:hidden md:before:left-8 md:before:right-8">
             {isIntro ? (
                 <IntroWelcomeBlock t={t} />
             ) : (
