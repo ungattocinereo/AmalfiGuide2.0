@@ -31,7 +31,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
-import { getRouteForPlace } from "@/lib/place-routes";
+import { getMapboxStaticPreviewUrl, getRouteForPlace } from "@/lib/place-routes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
@@ -88,10 +88,16 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
-    const visualUrl = route?.previewImageUrl ?? imageUrl;
-    const blurDataURL = getBlurDataURL(visualUrl);
+    const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
+    const mapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route) : null;
+    const visualUrl = mapboxPreviewUrl ?? route?.previewImageUrl ?? imageUrl;
+    const blurDataURL = getBlurDataURL(route?.previewImageUrl ?? imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
+
+    React.useEffect(() => {
+        setRoutePreviewFailed(false);
+    }, [route?.slug]);
 
     // Data-driven badge selection (no category regex). If a place has trail
     // fields (duration/difficulty) we show those; otherwise we surface the two
@@ -145,6 +151,10 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                         placeholder={blurDataURL ? "blur" : "empty"}
                         blurDataURL={blurDataURL}
+                        unoptimized={Boolean(mapboxPreviewUrl)}
+                        loading={route ? "eager" : "lazy"}
+                        fetchPriority={route ? "high" : "auto"}
+                        onError={mapboxPreviewUrl ? () => setRoutePreviewFailed(true) : undefined}
                     />
 
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
