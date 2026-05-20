@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { CheckCircle, CircleNotch, ArrowRight } from "@phosphor-icons/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faCheckCircle, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/components/language-context";
 
 const SUBSCRIBE_URL = "/api/subscribe";
@@ -51,7 +52,7 @@ export function NewsletterForm() {
     if (status === "success") {
         return (
             <div className="flex items-center gap-2.5 py-3 animate-in fade-in duration-500 text-green-700 dark:text-green-400">
-                <CheckCircle size={20} weight="fill" />
+                <FontAwesomeIcon icon={faCheckCircle} className="h-5 w-5" />
                 <span className="text-sm font-medium">{t("newsletter.success")}</span>
             </div>
         );
@@ -86,14 +87,13 @@ export function NewsletterForm() {
                     className="px-5 py-2.5 text-sm font-medium rounded-full transition-all disabled:opacity-60 shrink-0 flex items-center justify-center gap-2 group bg-[#F43600] hover:bg-[#FF4D1A] text-white shadow-[0_2px_12px_rgba(244,54,0,0.15)] hover:shadow-[0_4px_20px_rgba(244,54,0,0.25)] dark:shadow-[0_4px_24px_rgba(244,54,0,0.25)] dark:hover:shadow-[0_6px_32px_rgba(244,54,0,0.35)]"
                 >
                     {status === "loading" ? (
-                        <CircleNotch size={16} className="animate-spin" />
+                        <FontAwesomeIcon icon={faCircleNotch} className="h-4 w-4 animate-spin" />
                     ) : null}
                     {t("newsletter.subscribe")}
                     {status !== "loading" && (
-                        <ArrowRight
-                            size={14}
-                            weight="bold"
-                            className="transition-transform duration-200 group-hover:translate-x-0.5"
+                        <FontAwesomeIcon
+                            icon={faArrowRight}
+                            className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                         />
                     )}
                 </button>

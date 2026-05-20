@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import SunCalc from "suncalc";
-import { Sun, Thermometer, Path as PathIcon } from "@phosphor-icons/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonHiking, faSun, faTemperatureHalf } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/components/language-context";
 
 // Atrani coordinates — the heart of the guide.
@@ -75,19 +76,19 @@ export function ContextWidget() {
             aria-label={t("contextWidget.label")}
         >
             <span className="inline-flex items-center gap-1.5">
-                <Sun weight="duotone" size={14} className="text-[#F43600]" />
+                <FontAwesomeIcon icon={faSun} className="h-3.5 w-3.5 text-[#F43600]" />
                 <span className="uppercase text-[#FDF6F0]/50 tracking-[0.12em]">{t("contextWidget.sunset")}</span>
                 <span className="text-[#FDF6F0]">{formatTime(sunset, language)}</span>
             </span>
             {weather && (
                 <span className="inline-flex items-center gap-1.5">
-                    <Thermometer weight="duotone" size={14} className="text-[#F43600]" />
+                    <FontAwesomeIcon icon={faTemperatureHalf} className="h-3.5 w-3.5 text-[#F43600]" />
                     <span className="text-[#FDF6F0]">{weather.temperatureC}°C</span>
                 </span>
             )}
             {goodForHiking && (
                 <span className="inline-flex items-center gap-1.5 py-[3px] px-2 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-200">
-                    <PathIcon weight="duotone" size={12} />
+                    <FontAwesomeIcon icon={faPersonHiking} className="h-3 w-3" />
                     <span className="uppercase tracking-[0.08em] text-[0.62rem]">{t("contextWidget.goodForHiking")}</span>
                 </span>
             )}

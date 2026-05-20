@@ -260,6 +260,24 @@ The atmosphere is lively and friendly. Salvatore also manages a rental villa, st
 
 ---
 
+### Le Arcate (Atrani)
+**Category**: Seafront
+**Tagline**: The best seats in town
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
+
+**Short info:**
+A seafront restaurant at the water's edge in Atrani, run by the same family since 1965.
+
+**The Details:**
+Le Arcate is a beloved local spot for those who want the best seats in Atrani. Managed by a close-knit family, the menu has remained largely unchanged since 1965, focusing on simple, high-quality tradition. As the chef says: "I just salt and pepper the fish. I don't make it better, I make it the way it should be." Note: As of 2024, they focus on restaurant service and may not serve pizza.
+
+> [!info] Key Links
+> - **Google Maps**: [View Location](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
+> - **TripAdvisor**: [4.5/5 | 700+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
+
+---
+
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Refined seafood excellence
@@ -299,24 +317,6 @@ Convenient parking is available for guests. Lo Smeraldino is frequently recommen
 > [!info] Key Links
 > - **Google Maps**: [View Location](https://www.google.com/maps/place/Lo+Smeraldino/@40.632208,14.5984562,18.77z/data=!4m6!3m5!1s0x133b95b3029b1e4f:0x744a8d05cd4de599!8m2!3d40.6320431!4d14.5978507!16s%2Fg%2F1vgrcjq6!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D)
 > - **TripAdvisor**: [4.1/5 | 2,000+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g187780-d1034455-Reviews-Lo_Smeraldino-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
-
----
-
-### Le Arcate (Atrani)
-**Category**: Seafront
-**Tagline**: The best seats in town
-**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
-**Price**: €€
-
-**Short info:**
-A seafront restaurant at the water's edge in Atrani, run by the same family since 1965.
-
-**The Details:**
-Le Arcate is a beloved local spot for those who want the best seats in Atrani. Managed by a close-knit family, the menu has remained largely unchanged since 1965, focusing on simple, high-quality tradition. As the chef says: "I just salt and pepper the fish. I don't make it better, I make it the way it should be." Note: As of 2024, they focus on restaurant service and may not serve pizza.
-
-> [!info] Key Links
-> - **Google Maps**: [View Location](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
-> - **TripAdvisor**: [4.5/5 | 700+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
 

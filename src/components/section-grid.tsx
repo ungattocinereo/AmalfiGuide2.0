@@ -1,10 +1,21 @@
-/* eslint-disable react-hooks/static-components */
 "use client";
 
 import React from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { CaretRight, User, Diamond, Church, Mountains, ForkKnife, Cookie, Storefront, Compass, type Icon as PhosphorIcon } from "@phosphor-icons/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+    faChevronRight,
+    faChurch,
+    faCompass,
+    faCookieBite,
+    faGem,
+    faMountain,
+    faStore,
+    faUser,
+    faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
 import { useLayout } from "@/components/layout-context";
 import { useLanguage } from "@/components/language-context";
 import { PlaceCard } from "@/components/place-card";
@@ -20,26 +31,26 @@ interface SectionGridProps {
 
 const CONTENT_EASE = [0.16, 1, 0.3, 1] as const;
 
-const getSectionIcon = (title: string): PhosphorIcon => {
+const getSectionIcon = (title: string): IconDefinition => {
     const t = title.toLowerCase();
     if (t.includes("gems") || t.includes("gemme") || t.includes("joyas") ||
         t.includes("joyaux") || t.includes("perlen") || t.includes("жемчужины") ||
-        t.includes("atrani")) return Diamond;
+        t.includes("atrani")) return faGem;
     if (t.includes("must visit") || t.includes("da vedere") || t.includes("imprescindibles") ||
-        t.includes("incontournables") || t.includes("обязательно")) return Church;
+        t.includes("incontournables") || t.includes("обязательно")) return faChurch;
     if (t.includes("hiking") || t.includes("nature") || t.includes("escursioni") ||
         t.includes("natura") || t.includes("senderismo") || t.includes("naturaleza") ||
         t.includes("randonnées") || t.includes("wandern") || t.includes("поход") ||
-        t.includes("природа")) return Mountains;
+        t.includes("природа")) return faMountain;
     if (t.includes("restaurant") || t.includes("ristoranti") || t.includes("restaurantes") ||
-        t.includes("рестораны")) return ForkKnife;
+        t.includes("рестораны")) return faUtensils;
     if (t.includes("street food") || t.includes("cibo di strada") || t.includes("comida callejera") ||
-        t.includes("уличная еда")) return Cookie;
+        t.includes("уличная еда")) return faCookieBite;
     if (t.includes("shop") || t.includes("negozi") || t.includes("tiendas") ||
-        t.includes("boutiques") || t.includes("магазины")) return Storefront;
+        t.includes("boutiques") || t.includes("магазины")) return faStore;
     if (t.includes("wider") || t.includes("not only") || t.includes("non solo") ||
-        t.includes("más allá") || t.includes("au-delà") || t.includes("не только")) return Compass;
-    return Diamond;
+        t.includes("más allá") || t.includes("au-delà") || t.includes("не только")) return faCompass;
+    return faGem;
 };
 
 // ─── Shared compact strip header — same outer shape for every non-intro section ───
@@ -67,7 +78,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }
                             bg-orange-50 dark:bg-orange-950/30
                             group-hover:bg-orange-100 dark:group-hover:bg-orange-900/40
                             transition-colors duration-200">
-                <Icon weight="duotone" className="h-5 w-5 text-orange-500 dark:text-orange-400" />
+                <FontAwesomeIcon icon={Icon} className="h-5 w-5 text-orange-500 dark:text-orange-400" />
             </div>
 
             <div className="flex-1 min-w-0">
@@ -106,8 +117,8 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }
                 transition={{ duration: 0.2, ease: CONTENT_EASE }}
                 className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full"
             >
-                <CaretRight
-                    weight="bold"
+                <FontAwesomeIcon
+                    icon={faChevronRight}
                     className="h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 transition-colors duration-200"
                 />
             </motion.div>
@@ -151,7 +162,7 @@ function IntroWelcomeBlock({ t }: { t: (key: string) => string }) {
                         <div className="flex items-center gap-2.5 mt-3 md:mt-4 justify-center md:justify-start">
                             <div className="w-6 h-0.5 rounded-full bg-orange-400 dark:bg-orange-500" />
                             <div className="flex items-center gap-1.5 text-gray-400 dark:text-gray-500">
-                                <User weight="duotone" className="h-4 w-4 text-orange-500" />
+                                <FontAwesomeIcon icon={faUser} className="h-4 w-4 text-orange-500" />
                                 <span className="text-xs font-semibold uppercase tracking-wider">{t('section.expertGuideSignature')}</span>
                             </div>
                         </div>

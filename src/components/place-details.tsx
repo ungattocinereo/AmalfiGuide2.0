@@ -3,7 +3,25 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
-import { X, MapPin, ArrowSquareOut, StarHalf, MapTrifold, Clock, Timer, Receipt, Mountains as MountainIcon, Sun, Ruler, CaretLeft, CaretRight, ArrowLeft, ShareNetwork } from "@phosphor-icons/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+    faArrowLeft,
+    faArrowUpRightFromSquare,
+    faChevronLeft,
+    faChevronRight,
+    faClock,
+    faLocationDot,
+    faMap,
+    faMountain,
+    faReceipt,
+    faRuler,
+    faShareNodes,
+    faStarHalfStroke,
+    faStopwatch,
+    faSun,
+    faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/navigation";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
@@ -73,20 +91,20 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
         }
     }, [item.name, item.tagline, item.shortInfo, t]);
 
-    const metaItems: Array<{ icon: typeof Clock; label: string; value: string; tone?: "positive" | "muted" }> = [];
+    const metaItems: Array<{ icon: IconDefinition; label: string; value: string; tone?: "positive" | "muted" }> = [];
     if (item.hours) {
         metaItems.push({
-            icon: Clock,
+            icon: faClock,
             label: openNow === true ? t("meta.openNow") : openNow === false ? t("meta.closed") : t("meta.hoursLabel"),
             value: item.hours,
             tone: openNow === true ? "positive" : openNow === false ? "muted" : undefined,
         });
     }
-    if (item.price) metaItems.push({ icon: Receipt, label: t("meta.priceLabel"), value: item.price });
-    if (item.duration) metaItems.push({ icon: Timer, label: t("meta.durationLabel"), value: item.duration });
-    if (item.difficulty) metaItems.push({ icon: MountainIcon, label: t("meta.difficultyLabel"), value: translateLookup(t, "meta.difficulty", item.difficulty) });
-    if (item.distance) metaItems.push({ icon: Ruler, label: t("meta.distanceLabel"), value: item.distance });
-    if (item.bestTime) metaItems.push({ icon: Sun, label: t("meta.bestTimeLabel"), value: translateLookup(t, "meta.bestTime", item.bestTime) });
+    if (item.price) metaItems.push({ icon: faReceipt, label: t("meta.priceLabel"), value: item.price });
+    if (item.duration) metaItems.push({ icon: faStopwatch, label: t("meta.durationLabel"), value: item.duration });
+    if (item.difficulty) metaItems.push({ icon: faMountain, label: t("meta.difficultyLabel"), value: translateLookup(t, "meta.difficulty", item.difficulty) });
+    if (item.distance) metaItems.push({ icon: faRuler, label: t("meta.distanceLabel"), value: item.distance });
+    if (item.bestTime) metaItems.push({ icon: faSun, label: t("meta.bestTimeLabel"), value: translateLookup(t, "meta.bestTime", item.bestTime) });
 
     // Body scroll lock — synchronous (before paint) to prevent a flash of the
     // page scrollbar behind the modal as it mounts.
@@ -220,7 +238,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 aria-label={t("gallery.previous")}
                                 className="absolute top-1/2 left-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
                             >
-                                <CaretLeft size={20} weight="bold" />
+                                <FontAwesomeIcon icon={faChevronLeft} className="h-5 w-5" />
                             </button>
                             <button
                                 type="button"
@@ -228,7 +246,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 aria-label={t("gallery.next")}
                                 className="absolute top-1/2 right-3 -translate-y-1/2 z-40 w-11 h-11 flex items-center justify-center rounded-full bg-black/35 hover:bg-black/55 text-white backdrop-blur-md transition active:scale-90"
                             >
-                                <CaretRight size={20} weight="bold" />
+                                <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5" />
                             </button>
                             <div className="absolute bottom-3 inset-x-0 z-40 flex items-center justify-center gap-1.5">
                                 {galleryImages.map((_, i) => (
@@ -256,7 +274,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                     aria-label={t("placeDetails.backToGuide")}
                     className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-all duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
                 >
-                    <ArrowLeft size={18} weight="bold" />
+                    <FontAwesomeIcon icon={faArrowLeft} className="h-[18px] w-[18px]" />
                     <span>{t("placeDetails.backToGuide")}</span>
                 </Link>
             )}
@@ -272,7 +290,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                     aria-label={t("placeDetails.share")}
                     className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
                 >
-                    <ShareNetwork size={20} weight="bold" />
+                    <FontAwesomeIcon icon={faShareNodes} className="h-5 w-5" />
                 </button>
             )}
 
@@ -363,7 +381,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 return (
                                     <li key={i} className="flex items-center gap-3">
                                         <span className={`h-9 w-9 flex items-center justify-center rounded-full flex-shrink-0 ${toneRing}`}>
-                                            <Icon size={18} weight="duotone" />
+                                            <FontAwesomeIcon icon={Icon} className="h-[18px] w-[18px]" />
                                         </span>
                                         <span className="flex flex-col min-w-0">
                                             <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">
@@ -435,13 +453,13 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 >
                                     <div className="h-12 w-12 flex items-center justify-center rounded-full bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 flex-shrink-0 group-hover:bg-orange-100 dark:group-hover:bg-orange-900/50 transition-colors duration-200">
                                         {isGoogleMaps ? (
-                                            <MapPin size={22} weight="duotone" />
+                                            <FontAwesomeIcon icon={faLocationDot} className="h-[22px] w-[22px]" />
                                         ) : isTripAdvisor ? (
-                                            <StarHalf size={22} weight="duotone" />
+                                            <FontAwesomeIcon icon={faStarHalfStroke} className="h-[22px] w-[22px]" />
                                         ) : isHikeLink ? (
-                                            <MapTrifold size={22} weight="duotone" />
+                                            <FontAwesomeIcon icon={faMap} className="h-[22px] w-[22px]" />
                                         ) : (
-                                            <ArrowSquareOut size={22} weight="duotone" />
+                                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-[22px] w-[22px]" />
                                         )}
                                     </div>
                                     <div className="flex flex-col min-w-0">
@@ -494,7 +512,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                 className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
                 style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
             >
-                <X size={22} weight="bold" />
+                <FontAwesomeIcon icon={faXmark} className="h-[22px] w-[22px]" />
             </button>
 
             {/* Share button — fixed, to the left of close */}
@@ -508,7 +526,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                 className="fixed top-4 right-[4.5rem] z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
                 style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
             >
-                <ShareNetwork size={20} weight="bold" />
+                <FontAwesomeIcon icon={faShareNodes} className="h-5 w-5" />
             </button>
 
             {/* Toast for clipboard fallback */}

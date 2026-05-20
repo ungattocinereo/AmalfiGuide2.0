@@ -260,6 +260,24 @@ Le Palme — это высоко оценённый ресторан, управ
 
 ---
 
+### Le Arcate (Atrani)
+**Category**: У Моря
+**Tagline**: Лучшие места в городе
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
+
+**Short info:**
+Ресторан прямо у воды в Атрани, которым одна и та же семья владеет с 1965 года.
+
+**The Details:**
+Le Arcate — любимое местное место для тех, кто хочет лучшие места в Atrani. Управляемое сплочённой семьёй, меню практически не изменилось с 1965 года, фокусируясь на простых традициях высокого качества. Как говорит шеф-повар: «Я просто солю и перчу рыбу. Я не делаю её лучше, я готовлю её так, как она должна быть». Примечание: с 2024 года они сосредоточены на ресторанном сервисе и могут не подавать пиццу.
+
+> [!info] Key Links
+> - **Google Maps**: [View Location](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
+> - **TripAdvisor**: [4.5/5 | 700+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
+
+---
+
 ### A'Paranza (Atrani)
 **Category**: Мишлен
 **Tagline**: Изысканное мастерство морепродуктов
@@ -299,24 +317,6 @@ Le Palme — это высоко оценённый ресторан, управ
 > [!info] Key Links
 > - **Google Maps**: [View Location](https://www.google.com/maps/place/Lo+Smeraldino/@40.632208,14.5984562,18.77z/data=!4m6!3m5!1s0x133b95b3029b1e4f:0x744a8d05cd4de599!8m2!3d40.6320431!4d14.5978507!16s%2Fg%2F1vgrcjq6!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D)
 > - **TripAdvisor**: [4.1/5 | 2,000+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g187780-d1034455-Reviews-Lo_Smeraldino-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
-
----
-
-### Le Arcate (Atrani)
-**Category**: У Моря
-**Tagline**: Лучшие места в городе
-**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
-**Price**: €€
-
-**Short info:**
-Ресторан прямо у воды в Атрани, которым одна и та же семья владеет с 1965 года.
-
-**The Details:**
-Le Arcate — любимое местное место для тех, кто хочет лучшие места в Atrani. Управляемое сплочённой семьёй, меню практически не изменилось с 1965 года, фокусируясь на простых традициях высокого качества. Как говорит шеф-повар: «Я просто солю и перчу рыбу. Я не делаю её лучше, я готовлю её так, как она должна быть». Примечание: с 2024 года они сосредоточены на ресторанном сервисе и могут не подавать пиццу.
-
-> [!info] Key Links
-> - **Google Maps**: [View Location](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
-> - **TripAdvisor**: [4.5/5 | 700+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
 

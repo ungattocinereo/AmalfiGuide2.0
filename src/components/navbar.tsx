@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { ArrowsInSimple, ArrowsOutSimple, CaretDown, Moon, Sun } from "@phosphor-icons/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faChevronDown,
+    faDownLeftAndUpRightToCenter,
+    faMoon,
+    faSun,
+    faUpRightAndDownLeftFromCenter,
+} from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "next-themes";
 import { useLayout } from "@/components/layout-context";
 import { useLanguage, LANGUAGES } from "@/components/language-context";
@@ -69,7 +76,7 @@ export function Navbar() {
                             <span className="hidden md:inline text-sm font-medium uppercase tracking-wide">
                                 {language}
                             </span>
-                            <CaretDown weight="bold" className="h-3 w-3 opacity-50" />
+                            <FontAwesomeIcon icon={faChevronDown} className="h-3 w-3 opacity-50" />
                         </button>
                     </DropdownMenuTrigger>
                     <LanguageDropdownContent setLanguage={setLanguage} />
@@ -84,9 +91,9 @@ export function Navbar() {
                     title={expandLabel}
                 >
                     {isAllExpanded ? (
-                        <ArrowsInSimple weight="bold" className="h-4 w-4" />
+                        <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} className="h-4 w-4" />
                     ) : (
-                        <ArrowsOutSimple weight="bold" className="h-4 w-4" />
+                        <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} className="h-4 w-4" />
                     )}
                     <span className="hidden md:inline text-sm font-medium whitespace-nowrap">{expandLabel}</span>
                 </button>
@@ -100,9 +107,9 @@ export function Navbar() {
                     title={themeLabel}
                 >
                     {isDark ? (
-                        <Sun weight="fill" className="h-4 w-4" />
+                        <FontAwesomeIcon icon={faSun} className="h-4 w-4" />
                     ) : (
-                        <Moon weight="fill" className="h-4 w-4" />
+                        <FontAwesomeIcon icon={faMoon} className="h-4 w-4" />
                     )}
                 </button>
             </div>

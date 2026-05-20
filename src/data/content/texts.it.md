@@ -260,6 +260,24 @@ L'atmosfera è vivace e cordiale. Salvatore gestisce anche una villa in affitto,
 
 ---
 
+### Le Arcate (Atrani)
+**Category**: Sul Mare
+**Tagline**: I migliori posti in città
+**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
+**Price**: €€
+
+**Short info:**
+Ristorante sul mare ad Atrani, gestito dalla stessa famiglia dal 1965.
+
+**The Details:**
+Le Arcate è un amato locale per chi vuole i migliori posti ad Atrani. Gestito da una famiglia unita, il menu è rimasto in gran parte invariato dal 1965, concentrandosi su tradizione semplice e di alta qualità. Come dice lo chef: "Metto solo sale e pepe al pesce. Non lo rendo migliore, lo faccio come deve essere." Nota: Dal 2024, si concentrano sul servizio ristorante e potrebbero non servire pizza.
+
+> [!info] Link Chiave
+> - **Google Maps**: [Visualizza Posizione](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
+> - **TripAdvisor**: [4.5/5 | 700+ Recensioni](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
+
+---
+
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Eccellenza raffinata di pesce
@@ -299,24 +317,6 @@ La terrazza panoramica con vista sul mare è la caratteristica principale del ri
 > [!info] Link Chiave
 > - **Google Maps**: [Visualizza Posizione](https://www.google.com/maps/place/Lo+Smeraldino/@40.632208,14.5984562,18.77z/data=!4m6!3m5!1s0x133b95b3029b1e4f:0x744a8d05cd4de599!8m2!3d40.6320431!4d14.5978507!16s%2Fg%2F1vgrcjq6!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D)
 > - **TripAdvisor**: [4.1/5 | 2.000+ Recensioni](https://www.tripadvisor.com/Restaurant_Review-g187780-d1034455-Reviews-Lo_Smeraldino-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
-
----
-
-### Le Arcate (Atrani)
-**Category**: Sul Mare
-**Tagline**: I migliori posti in città
-**Hours**: Mon-Sun 12:00-15:00, 19:00-22:30
-**Price**: €€
-
-**Short info:**
-Ristorante sul mare ad Atrani, gestito dalla stessa famiglia dal 1965.
-
-**The Details:**
-Le Arcate è un amato locale per chi vuole i migliori posti ad Atrani. Gestito da una famiglia unita, il menu è rimasto in gran parte invariato dal 1965, concentrandosi su tradizione semplice e di alta qualità. Come dice lo chef: "Metto solo sale e pepe al pesce. Non lo rendo migliore, lo faccio come deve essere." Nota: Dal 2024, si concentrano sul servizio ristorante e potrebbero non servire pizza.
-
-> [!info] Link Chiave
-> - **Google Maps**: [Visualizza Posizione](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
-> - **TripAdvisor**: [4.5/5 | 700+ Recensioni](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
 

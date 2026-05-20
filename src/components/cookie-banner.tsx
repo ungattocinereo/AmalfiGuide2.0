@@ -4,6 +4,7 @@ import React, { useEffect, useCallback, useSyncExternalStore } from "react";
 import { useLanguage } from "@/components/language-context";
 
 const CONSENT_KEY = "cookie-consent";
+export const OPEN_COOKIE_BANNER_EVENT = "amalfi-day:open-cookie-banner";
 
 type ConsentValue = "accepted" | "declined";
 
@@ -28,7 +29,8 @@ function subscribe(callback: () => void) {
 export function CookieBanner() {
     const { t } = useLanguage();
     const storedConsent = useSyncExternalStore(subscribe, getStoredConsent, () => null);
-    const visible = storedConsent === null;
+    const [forceVisible, setForceVisible] = React.useState(false);
+    const visible = storedConsent === null || forceVisible;
 
     const updateConsent = useCallback((value: ConsentValue) => {
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -48,9 +50,19 @@ export function CookieBanner() {
         }
     }, [storedConsent, updateConsent]);
 
+    useEffect(() => {
+        function openCookieBanner() {
+            setForceVisible(true);
+        }
+
+        window.addEventListener(OPEN_COOKIE_BANNER_EVENT, openCookieBanner);
+        return () => window.removeEventListener(OPEN_COOKIE_BANNER_EVENT, openCookieBanner);
+    }, []);
+
     function handleAccept() {
         localStorage.setItem(CONSENT_KEY, "accepted");
         updateConsent("accepted");
+        setForceVisible(false);
         // Force re-render via storage event
         window.dispatchEvent(new Event("storage"));
     }
@@ -58,6 +70,7 @@ export function CookieBanner() {
     function handleDecline() {
         localStorage.setItem(CONSENT_KEY, "declined");
         updateConsent("declined");
+        setForceVisible(false);
         window.dispatchEvent(new Event("storage"));
     }
 

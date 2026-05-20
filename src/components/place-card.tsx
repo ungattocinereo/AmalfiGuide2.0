@@ -1,48 +1,65 @@
-/* eslint-disable react-hooks/static-components */
 "use client";
 
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-    Camera, Umbrella, MapPin, Star, Church, Binoculars,
-    Diamond, Tree, Path, Users, ForkKnife,
-    Sun, Storefront, Cookie, ShoppingBag, Basket,
-    Compass, Coffee, UmbrellaSimple,
-    Clock, Timer, Receipt, Mountains as MountainIcon
-} from "@phosphor-icons/react";
+    faBagShopping,
+    faBasketShopping,
+    faBinoculars,
+    faCamera,
+    faChurch,
+    faClock,
+    faCoffee,
+    faCompass,
+    faCookieBite,
+    faGem,
+    faLocationDot,
+    faMountain,
+    faReceipt,
+    faRoute,
+    faStar,
+    faStopwatch,
+    faStore,
+    faSun,
+    faTree,
+    faUmbrellaBeach,
+    faUsers,
+    faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
-import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 
-const getCategoryIcon = (category: string): PhosphorIcon => {
+const getCategoryIcon = (category: string): IconDefinition => {
     const c = category.toLowerCase();
-    if (c.includes("photo") || c.includes("foto")) return Camera;
-    if (c.includes("view") || c.includes("vista") || c.includes("панорам") || c.includes("vue") || c.includes("aussicht")) return Binoculars;
-    if (c.includes("beach") || c.includes("spiaggia") || c.includes("playa") || c.includes("plage") || c.includes("strand") || c.includes("пляж") || c.includes("seafront") || c.includes("beach chill") || c.includes("beach club")) return UmbrellaSimple;
-    if (c.includes("hidden") || c.includes("nascost") || c.includes("secret") || c.includes("скрыт") || c.includes("caché") || c.includes("versteckt")) return Diamond;
-    if (c.includes("gem") || c.includes("gemma") || c.includes("joya") || c.includes("perle") || c.includes("жемчуж")) return Diamond;
-    if (c.includes("top") || c.includes("#1") || c.includes("best") || c.includes("лучш") || c.includes("meilleur") || c.includes("mejor") || c.includes("migliore")) return Star;
-    if (c.includes("landmark") || c.includes("monument") || c.includes("достоприм")) return Church;
-    if (c.includes("sightseeing") || c.includes("visite")) return Compass;
-    if (c.includes("nature") || c.includes("natura") || c.includes("природ") || c.includes("natur")) return Tree;
-    if (c.includes("hiking") || c.includes("trail") || c.includes("sentier") || c.includes("sendero") || c.includes("escursion") || c.includes("wandern") || c.includes("поход") || c.includes("тропа")) return Path;
-    if (c.includes("family") || c.includes("famigl") || c.includes("familia") || c.includes("famille") || c.includes("семей")) return Users;
-    if (c.includes("michelin") || c.includes("restaurant") || c.includes("ristorante") || c.includes("dining") || c.includes("ресторан")) return ForkKnife;
-    if (c.includes("scenic") || c.includes("panoram") || c.includes("mountain dining")) return ForkKnife;
-    if (c.includes("legendary") || c.includes("legendar") || c.includes("легенд")) return Star;
-    if (c.includes("breakfast") || c.includes("colazione") || c.includes("desayuno") || c.includes("завтрак") || c.includes("café") || c.includes("frühstück")) return Coffee;
-    if (c.includes("street food") || c.includes("cibo di strada") || c.includes("comida callejera") || c.includes("уличная еда")) return Cookie;
-    if (c.includes("market") || c.includes("mercato") || c.includes("mercado") || c.includes("marché") || c.includes("markt") || c.includes("рынок")) return Basket;
-    if (c.includes("supermarket") || c.includes("supermercato") || c.includes("супермаркет")) return ShoppingBag;
-    if (c.includes("shop") || c.includes("negozio") || c.includes("tienda") || c.includes("boutique") || c.includes("магазин")) return Storefront;
-    if (c.includes("alimentari") || c.includes("deli") || c.includes("гастроном")) return Storefront;
-    if (c.includes("sun") || c.includes("sole") || c.includes("sol")) return Sun;
-    if (c.includes("umbrella")) return Umbrella;
-    return MapPin;
+    if (c.includes("photo") || c.includes("foto")) return faCamera;
+    if (c.includes("view") || c.includes("vista") || c.includes("панорам") || c.includes("vue") || c.includes("aussicht")) return faBinoculars;
+    if (c.includes("beach") || c.includes("spiaggia") || c.includes("playa") || c.includes("plage") || c.includes("strand") || c.includes("пляж") || c.includes("seafront") || c.includes("beach chill") || c.includes("beach club")) return faUmbrellaBeach;
+    if (c.includes("hidden") || c.includes("nascost") || c.includes("secret") || c.includes("скрыт") || c.includes("caché") || c.includes("versteckt")) return faGem;
+    if (c.includes("gem") || c.includes("gemma") || c.includes("joya") || c.includes("perle") || c.includes("жемчуж")) return faGem;
+    if (c.includes("top") || c.includes("#1") || c.includes("best") || c.includes("лучш") || c.includes("meilleur") || c.includes("mejor") || c.includes("migliore")) return faStar;
+    if (c.includes("landmark") || c.includes("monument") || c.includes("достоприм")) return faChurch;
+    if (c.includes("sightseeing") || c.includes("visite")) return faCompass;
+    if (c.includes("nature") || c.includes("natura") || c.includes("природ") || c.includes("natur")) return faTree;
+    if (c.includes("hiking") || c.includes("trail") || c.includes("sentier") || c.includes("sendero") || c.includes("escursion") || c.includes("wandern") || c.includes("поход") || c.includes("тропа")) return faRoute;
+    if (c.includes("family") || c.includes("famigl") || c.includes("familia") || c.includes("famille") || c.includes("семей")) return faUsers;
+    if (c.includes("michelin") || c.includes("restaurant") || c.includes("ristorante") || c.includes("dining") || c.includes("ресторан")) return faUtensils;
+    if (c.includes("scenic") || c.includes("panoram") || c.includes("mountain dining")) return faUtensils;
+    if (c.includes("legendary") || c.includes("legendar") || c.includes("легенд")) return faStar;
+    if (c.includes("breakfast") || c.includes("colazione") || c.includes("desayuno") || c.includes("завтрак") || c.includes("café") || c.includes("frühstück")) return faCoffee;
+    if (c.includes("street food") || c.includes("cibo di strada") || c.includes("comida callejera") || c.includes("уличная еда")) return faCookieBite;
+    if (c.includes("market") || c.includes("mercato") || c.includes("mercado") || c.includes("marché") || c.includes("markt") || c.includes("рынок")) return faBasketShopping;
+    if (c.includes("supermarket") || c.includes("supermercato") || c.includes("супермаркет")) return faBagShopping;
+    if (c.includes("shop") || c.includes("negozio") || c.includes("tienda") || c.includes("boutique") || c.includes("магазин")) return faStore;
+    if (c.includes("alimentari") || c.includes("deli") || c.includes("гастроном")) return faStore;
+    if (c.includes("sun") || c.includes("sole") || c.includes("sol")) return faSun;
+    if (c.includes("umbrella")) return faUmbrellaBeach;
+    return faLocationDot;
 };
 
 const formatBestTime = (raw: string, t: (key: string) => string): string => {
@@ -77,23 +94,23 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     // Data-driven badge selection (no category regex). If a place has trail
     // fields (duration/difficulty) we show those; otherwise we surface the two
     // most useful facts from whatever is populated — price, open-now, best time.
-    type Badge = { icon: PhosphorIcon; label: string; tone: "neutral" | "positive" | "muted" };
+    type Badge = { icon: IconDefinition; label: string; tone: "neutral" | "positive" | "muted" };
     const badges: Badge[] = [];
     const isTrailish = Boolean(item.duration || item.difficulty);
     if (isTrailish) {
-        if (item.duration) badges.push({ icon: Timer, label: item.duration, tone: "neutral" });
-        if (item.difficulty) badges.push({ icon: MountainIcon, label: formatDifficulty(item.difficulty, t), tone: "neutral" });
+        if (item.duration) badges.push({ icon: faStopwatch, label: item.duration, tone: "neutral" });
+        if (item.difficulty) badges.push({ icon: faMountain, label: formatDifficulty(item.difficulty, t), tone: "neutral" });
     } else {
-        if (item.price) badges.push({ icon: Receipt, label: item.price, tone: "neutral" });
+        if (item.price) badges.push({ icon: faReceipt, label: item.price, tone: "neutral" });
         if (openNow !== null) {
             badges.push({
-                icon: Clock,
+                icon: faClock,
                 label: openNow ? t("meta.openNow") : t("meta.closed"),
                 tone: openNow ? "positive" : "muted",
             });
         }
         if (item.bestTime && badges.length < 2) {
-            badges.push({ icon: Sun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
+            badges.push({ icon: faSun, label: formatBestTime(item.bestTime, t), tone: "neutral" });
         }
     }
     const visibleBadges = badges.slice(0, 2);
@@ -143,7 +160,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
 
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
                     <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${hikingMapUrl ? "flex" : "hidden md:flex"}`}>
-                        <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
+                        <FontAwesomeIcon icon={CategoryIcon} className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                         <span>{item.category}</span>
                     </div>
                 </div>
@@ -154,7 +171,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                     {!hikingMapUrl && (
                         <div className="md:hidden flex justify-end">
                             <span className="inline-flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30">
-                                <CategoryIcon weight="duotone" className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
+                                <FontAwesomeIcon icon={CategoryIcon} className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                                 <span>{item.category}</span>
                             </span>
                         </div>
@@ -190,7 +207,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                                         key={i}
                                         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold tracking-wide border ${toneClasses}`}
                                     >
-                                        <Icon weight="duotone" className="h-3 w-3 flex-shrink-0" />
+                                        <FontAwesomeIcon icon={Icon} className="h-3 w-3 flex-shrink-0" />
                                         <span className="leading-none">{badge.label}</span>
                                     </span>
                                 );
