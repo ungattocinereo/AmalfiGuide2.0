@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import type { Map as MapboxMap } from "mapbox-gl";
 import type { RouteAsset } from "@/lib/place-routes";
 import { useLanguage } from "@/components/language-context";
@@ -130,21 +129,19 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
 
     const fallbackLabel =
         status === "missing-token"
-            ? t("routeMap.previewOnly")
+            ? t("routeMap.mapUnavailable")
             : status === "error"
                 ? t("routeMap.mapUnavailable")
                 : t("routeMap.loading");
 
     return (
         <div className="absolute inset-0 overflow-hidden bg-stone-100 dark:bg-amalfi-espresso-soft">
-            <Image
-                src={route.previewImageUrl}
-                alt=""
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={`object-cover transition-opacity duration-300 ${status === "ready" ? "opacity-0" : "opacity-100"}`}
-                aria-hidden="true"
-            />
+            {status !== "ready" && (
+                <div
+                    className="absolute inset-0 bg-[linear-gradient(135deg,rgba(251,146,60,0.12)_0%,rgba(255,255,255,0.92)_42%,rgba(20,83,45,0.13)_100%)] dark:bg-[linear-gradient(135deg,rgba(124,45,18,0.55)_0%,rgba(28,16,10,0.92)_48%,rgba(20,83,45,0.38)_100%)]"
+                    aria-hidden="true"
+                />
+            )}
             <div
                 ref={containerRef}
                 className={`h-full w-full transition-opacity duration-300 ${status === "ready" ? "opacity-100" : "opacity-0"}`}

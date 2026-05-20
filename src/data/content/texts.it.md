@@ -231,7 +231,7 @@ Una facile passeggiata di 3 km tra Maiori e Minori attraverso i terrazzati limon
 Situato in uno dei punti più affascinanti della costa, il "Sentiero dei Limoni" si snoda attraverso giardini terrazzati. È una passeggiata facile-moderata (circa 1 ora) che offre viste mozzafiato sul mare e sulle città sottostanti. In stagione, potresti vedere contadini che trasportano pesanti ceste di limoni "Sfusato Amalfitano" sulle spalle. Fermati per una fresca limonata o granita al limone nelle piccole bancarelle lungo il cammino!
 
 > [!info] Link Chiave
-> - **L'Escursione**: [Mappa del percorso](https://maps.app.goo.gl/J5qA9CQYrSiF1y5F7)
+> - **L'Escursione**: [Mappa del percorso](https://www.google.com/maps/dir/Insigne+Collegiata+Santuario+Parrocchia+S.+Maria+a+Mare,+Piazzale+Mons.+Milo+Nicola+Prevosto,+84010+Maiori+SA/Sentiero+dei+Limoni,+Via+Torre,+Minori,+SA/Via+Vescovado,+84010+Minori+SA/@40.6508666,14.6241806,15z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x133b9544093c35a3:0x35b98a06ca815918!2m2!1d14.6412516!2d40.6500664!1m5!1m1!1s0x133b956bebcba8a7:0x5aa8b541228b1cfc!2m2!1d14.6308877!2d40.6495665!1m5!1m1!1s0x133b956c24ec6179:0x88e2537289534845!2m2!1d14.627709!2d40.6504393!3e2!5m1!1e1?entry=tts&g_ep=EgoyMDI2MDEwNy4wKgosMTAwNzkyMDcxSAFQAw%3D%3D&skid=07007853-918a-4ec0-8afa-25659f00d8ca)
 
 ---
 

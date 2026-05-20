@@ -90,8 +90,8 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     const route = getRouteForPlace(item.name);
     const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
     const mapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route) : null;
-    const visualUrl = mapboxPreviewUrl ?? route?.previewImageUrl ?? imageUrl;
-    const blurDataURL = getBlurDataURL(route?.previewImageUrl ?? imageUrl);
+    const visualUrl = route ? mapboxPreviewUrl : imageUrl;
+    const blurDataURL = route ? undefined : getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
 
@@ -142,20 +142,26 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         ? `${aspectRatio || "aspect-[4/3]"} w-full`
                         : "shrink-0 w-1/3 min-h-[9rem] md:w-full md:min-h-0 md:aspect-[4/3]"
                 }`}>
-                    <Image
-                        src={visualUrl}
-                        alt=""
-                        fill
-                        quality={route ? 80 : 65}
-                        sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                        placeholder={blurDataURL ? "blur" : "empty"}
-                        blurDataURL={blurDataURL}
-                        unoptimized={Boolean(mapboxPreviewUrl)}
-                        loading={route ? "eager" : "lazy"}
-                        fetchPriority={route ? "high" : "auto"}
-                        onError={mapboxPreviewUrl ? () => setRoutePreviewFailed(true) : undefined}
-                    />
+                    {visualUrl ? (
+                        <Image
+                            src={visualUrl}
+                            alt=""
+                            fill
+                            quality={route ? 80 : 65}
+                            sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
+                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                            placeholder={blurDataURL ? "blur" : "empty"}
+                            blurDataURL={blurDataURL}
+                            unoptimized={Boolean(mapboxPreviewUrl)}
+                            loading={route ? "eager" : "lazy"}
+                            fetchPriority={route ? "high" : "auto"}
+                            onError={mapboxPreviewUrl ? () => setRoutePreviewFailed(true) : undefined}
+                        />
+                    ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-stone-100 text-orange-700 dark:bg-amalfi-espresso-soft dark:text-orange-300">
+                            <FontAwesomeIcon icon={faRoute} className="h-8 w-8 opacity-70" aria-hidden="true" />
+                        </div>
+                    )}
 
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
                     <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${route ? "flex" : "hidden md:flex"}`}>

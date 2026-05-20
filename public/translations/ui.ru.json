@@ -72,6 +72,6 @@
   "routeMap.downloadTitle": "Скачать маршрут",
   "routeMap.openGoogle": "Google",
   "routeMap.loading": "Загружаем маршрут",
-  "routeMap.previewOnly": "Превью карты",
+  "routeMap.previewOnly": "Карта недоступна",
   "routeMap.mapUnavailable": "Карта недоступна"
 }

@@ -72,6 +72,6 @@
   "routeMap.downloadTitle": "Télécharger l’itinéraire",
   "routeMap.openGoogle": "Google",
   "routeMap.loading": "Chargement de l’itinéraire",
-  "routeMap.previewOnly": "Aperçu de la carte",
+  "routeMap.previewOnly": "Carte indisponible",
   "routeMap.mapUnavailable": "Carte indisponible"
 }

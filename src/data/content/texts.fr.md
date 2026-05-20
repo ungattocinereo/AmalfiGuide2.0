@@ -231,7 +231,7 @@ Une promenade facile de 3 km entre Maiori et Minori à travers les citronniers e
 Situé dans l'un des endroits les plus fascinants de la côte, le « Sentier des Citrons » serpente à travers des jardins en terrasses. C'est une promenade facile à modérée (environ 1 heure) qui offre des vues magnifiques sur la mer et les villes en contrebas. En saison, vous pourriez voir des agriculteurs porter de lourds paniers de citrons « Sfusato Amalfitano » sur leur dos. Arrêtez-vous pour une limonade fraîche ou un granité au citron (*granita*) aux petits stands le long du chemin !
 
 > [!info] Liens Utiles
-> - **La Randonnée**: [Carte de randonnée](https://maps.app.goo.gl/J5qA9CQYrSiF1y5F7)
+> - **La Randonnée**: [Carte de randonnée](https://www.google.com/maps/dir/Insigne+Collegiata+Santuario+Parrocchia+S.+Maria+a+Mare,+Piazzale+Mons.+Milo+Nicola+Prevosto,+84010+Maiori+SA/Sentiero+dei+Limoni,+Via+Torre,+Minori,+SA/Via+Vescovado,+84010+Minori+SA/@40.6508666,14.6241806,15z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x133b9544093c35a3:0x35b98a06ca815918!2m2!1d14.6412516!2d40.6500664!1m5!1m1!1s0x133b956bebcba8a7:0x5aa8b541228b1cfc!2m2!1d14.6308877!2d40.6495665!1m5!1m1!1s0x133b956c24ec6179:0x88e2537289534845!2m2!1d14.627709!2d40.6504393!3e2!5m1!1e1?entry=tts&g_ep=EgoyMDI2MDEwNy4wKgosMTAwNzkyMDcxSAFQAw%3D%3D&skid=07007853-918a-4ec0-8afa-25659f00d8ca)
 
 ---
 

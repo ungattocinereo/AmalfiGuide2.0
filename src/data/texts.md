@@ -217,7 +217,7 @@ An easier alternative to the mountain hikes. This path connects Maiori and Minor
 Set in one of the most fascinating spots of the coast, the "Path of Lemons" winds through terraced gardens. It's an easy-to-moderate walk (about 1 hour) that offers stunning views over the sea and the towns below. In season, you might see farmers carrying heavy baskets of "Sfusato Amalfitano" lemons on their backs. Stop for a fresh lemonade or lemon slush (*granita*) at the small stalls along the way!
 
 > [!info] Key Links
-> - **The Hike**: [Hike map](https://maps.app.goo.gl/J5qA9CQYrSiF1y5F7)
+> - **The Hike**: [Hike map](https://www.google.com/maps/dir/Insigne+Collegiata+Santuario+Parrocchia+S.+Maria+a+Mare,+Piazzale+Mons.+Milo+Nicola+Prevosto,+84010+Maiori+SA/Sentiero+dei+Limoni,+Via+Torre,+Minori,+SA/Via+Vescovado,+84010+Minori+SA/@40.6508666,14.6241806,15z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x133b9544093c35a3:0x35b98a06ca815918!2m2!1d14.6412516!2d40.6500664!1m5!1m1!1s0x133b956bebcba8a7:0x5aa8b541228b1cfc!2m2!1d14.6308877!2d40.6495665!1m5!1m1!1s0x133b956c24ec6179:0x88e2537289534845!2m2!1d14.627709!2d40.6504393!3e2!5m1!1e1?entry=tts&g_ep=EgoyMDI2MDEwNy4wKgosMTAwNzkyMDcxSAFQAw%3D%3D&skid=07007853-918a-4ec0-8afa-25659f00d8ca)
 
 ---
 

@@ -72,6 +72,6 @@
   "routeMap.downloadTitle": "Download route",
   "routeMap.openGoogle": "Google",
   "routeMap.loading": "Loading route",
-  "routeMap.previewOnly": "Map preview",
+  "routeMap.previewOnly": "Map unavailable",
   "routeMap.mapUnavailable": "Map unavailable"
 }
