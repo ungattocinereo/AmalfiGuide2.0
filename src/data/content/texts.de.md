@@ -285,7 +285,7 @@ Le Arcate ist ein beliebter lokaler Ort für diejenigen, die die besten Plätze 
 **Price**: €€
 
 **Short info:**
-Bar, Restaurant und Pizzeria in Atrani für den ganzen Tag: Frühstück, Pasta mit Meeresfrüchten, Pizza, Cocktails und spätes Mittagessen, wenn fast alles andere geschlossen ist.
+Ganztägiger Ort in Atrani für Frühstück, Pasta mit Meeresfrüchten, Pizza und Cocktails.
 
 **The Details:**
 Der vollständige Name lautet Bar Ristorante Pizzeria Il Birecto, und er beschreibt den Ort ziemlich gut: In Atrani ist es eines dieser Lokale, auf die man sich fast immer verlassen kann, wenn man gut essen möchte.

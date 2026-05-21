@@ -285,7 +285,7 @@ Le Arcate è un amato locale per chi vuole i migliori posti ad Atrani. Gestito d
 **Price**: €€
 
 **Short info:**
-Bar, ristorante e pizzeria ad Atrani per tutta la giornata: colazione, pasta ai frutti di mare, pizza, cocktail e pranzo tardi quando quasi tutto il resto è chiuso.
+Locale per tutta la giornata ad Atrani: colazione, pasta ai frutti di mare, pizza e cocktail.
 
 **The Details:**
 Il nome completo è Bar Ristorante Pizzeria Il Birecto, e racconta bene il posto: ad Atrani è uno di quei locali su cui puoi contare quasi sempre, quando hai voglia di mangiare bene.
