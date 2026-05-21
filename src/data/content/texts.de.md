@@ -278,6 +278,29 @@ Le Arcate ist ein beliebter lokaler Ort für diejenigen, die die besten Plätze 
 
 ---
 
+### Il Birecto (Atrani)
+**Category**: Den Ganzen Tag
+**Tagline**: Hier bekommst du immer gutes Essen
+**Hours**: Mon-Sun 08:00-23:00
+**Price**: €€
+
+**Short info:**
+Bar, Restaurant und Pizzeria in Atrani für den ganzen Tag: Frühstück, Pasta mit Meeresfrüchten, Pizza, Cocktails und spätes Mittagessen, wenn fast alles andere geschlossen ist.
+
+**The Details:**
+Der vollständige Name lautet BAR RISTORANTE PIZZERIA IL BIRECTO, und er beschreibt den Ort ziemlich gut: In Atrani ist es eines dieser Lokale, auf die man sich fast immer verlassen kann, wenn man gut essen möchte.
+
+Ab 8:00 Uhr morgens gibt es hier den klassischen *pasticciotto atranese*, der direkt vor Ort gebacken wird, und ausgezeichnete Croissants mit verschiedenen Füllungen von einem lokalen Konditor. Wenn du gut frühstücken möchtest, komm früh: Die Croissants sind schnell weg, denn hier beginnt das ganze Dorf seinen Tag.
+
+Ab mittags wird Il Birecto zum Restaurant. Du bekommst gute Pasta, Pizza und Gerichte mit frischen lokalen Meeresfrüchten. Der Besitzer ist meistens irgendwo in der Nähe, und das merkt man: Küche, Bar und Service werden aufmerksam geführt. Auch die Cocktails sind sehr gut. Und wenn du um 16:00 Uhr ein Mittagessen suchst, während die meisten Küchen schon geschlossen sind, bist du hier genau richtig.
+
+> [!info] Key Links
+> - **Google Maps**: [View Location](https://maps.app.goo.gl/UDgwYSSJf1gP4iZc6)
+> - **Menu**: [View Menu](https://birecto.menu.band)
+> - **TripAdvisor**: [TripAdvisor](https://www.tripadvisor.it/Restaurant_Review-g635619-d1510580-Reviews-Bistrot_Il_Birecto_Di_Domenico_Lagrotta-Atrani_Amalfi_Coast_Province_of_Salerno_C.html)
+
+---
+
 ### A'Paranza (Atrani)
 **Category**: Michelin
 **Tagline**: Raffinierte Meeresfrüchte-Exzellenz

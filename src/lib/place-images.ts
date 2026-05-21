@@ -36,6 +36,7 @@ export const getImageForPlace = (name: string): string => {
     if (n.includes("paranza")) return "/guide-webp/A-Paranza.webp";
     if (n.includes("smeraldino")) return "/guide-webp/Lo-Smeraldino.webp";
     if (n.includes("arcate")) return "/guide-webp/Le-Arcate.webp";
+    if (n.includes("birecto")) return "/guide-webp/Il-Birecto.webp";
     if (n.includes("ciccio")) return "/guide-webp/Da-Ciccio-Cielo-Mare-Terra.webp";
 
     // Street Food
