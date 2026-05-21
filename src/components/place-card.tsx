@@ -149,7 +149,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             fill
                             quality={route ? 80 : 65}
                             sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
-                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                            className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-105 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
                             unoptimized={Boolean(mapboxPreviewUrl)}

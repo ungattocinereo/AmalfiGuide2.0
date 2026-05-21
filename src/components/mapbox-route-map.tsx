@@ -144,7 +144,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
             )}
             <div
                 ref={containerRef}
-                className={`h-full w-full transition-opacity duration-300 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
+                className={`h-full w-full transition-[filter,opacity] duration-300 dark:grayscale dark:saturate-0 dark:contrast-125 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
                 aria-label={route.title}
             />
             {status !== "ready" && (
