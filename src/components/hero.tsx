@@ -31,7 +31,9 @@ export function Hero() {
     const { t: _t } = useLanguage();
     const { isAllExpanded } = useLayout();
     const { resolvedTheme } = useTheme();
-    const isDark = resolvedTheme === "dark";
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => { setMounted(true); }, []);
+    const isDark = mounted && resolvedTheme === "dark";
     const heroBlur = getBlurDataURL("/images/hero.webp");
     const t = (key: string) => {
         const val = _t(key);

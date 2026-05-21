@@ -129,13 +129,13 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
             onClick={onClick}
             className="group relative w-full cursor-pointer flex flex-col touch-manipulation"
             whileTap={{ scale: 0.985 }}
-            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
             {/* Card container — horizontal on mobile (non-hiking), vertical on desktop and hiking */}
-            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
+            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-[border-color,box-shadow,background-color] duration-500 ease-out overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
                 {/* Image container — fixed width on mobile for horizontal layout, full width on desktop */}
                 <div className={`relative overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft ${
                     route
@@ -149,7 +149,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             fill
                             quality={route ? 80 : 65}
                             sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
-                            className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-105 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
+                            className={`object-cover scale-100 transition-[filter,scale] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[filter,scale] group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
                             unoptimized={Boolean(mapboxPreviewUrl)}
