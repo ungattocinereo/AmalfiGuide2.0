@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Amalfi.Day" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>The Lemon Path</name>
+    <desc>Google Maps waypoints with OpenStreetMap path segment</desc>
+  </metadata>
+  <trk>
+    <name>The Lemon Path</name>
+    <trkseg>
+      <trkpt lat="40.6500664" lon="14.6412516" />
+      <trkpt lat="40.6501880" lon="14.6410400" />
+      <trkpt lat="40.6503500" lon="14.6408200" />
+      <trkpt lat="40.6506207" lon="14.6405590" />
+      <trkpt lat="40.6507593" lon="14.6404125" />
+      <trkpt lat="40.6508025" lon="14.6403698" />
+      <trkpt lat="40.6507074" lon="14.6400277" />
+      <trkpt lat="40.6507367" lon="14.6399847" />
+      <trkpt lat="40.6507516" lon="14.6399596" />
+      <trkpt lat="40.6508573" lon="14.6397505" />
+      <trkpt lat="40.6510256" lon="14.6393707" />
+      <trkpt lat="40.6510236" lon="14.6391857" />
+      <trkpt lat="40.6510297" lon="14.6390462" />
+      <trkpt lat="40.6510480" lon="14.6388263" />
+      <trkpt lat="40.6510419" lon="14.6387243" />
+      <trkpt lat="40.6510144" lon="14.6386197" />
+      <trkpt lat="40.6510256" lon="14.6384159" />
+      <trkpt lat="40.6510409" lon="14.6382523" />
+      <trkpt lat="40.6510989" lon="14.6380672" />
+      <trkpt lat="40.6511304" lon="14.6378473" />
+      <trkpt lat="40.6511041" lon="14.6377238" />
+      <trkpt lat="40.6510785" lon="14.6376166" />
+      <trkpt lat="40.6509422" lon="14.6373697" />
+      <trkpt lat="40.6509157" lon="14.6372706" />
+      <trkpt lat="40.6508669" lon="14.6371767" />
+      <trkpt lat="40.6508405" lon="14.6370373" />
+      <trkpt lat="40.6508649" lon="14.6369299" />
+      <trkpt lat="40.6509758" lon="14.6367609" />
+      <trkpt lat="40.6509880" lon="14.6366604" />
+      <trkpt lat="40.6510176" lon="14.6363960" />
+      <trkpt lat="40.6510766" lon="14.6361988" />
+      <trkpt lat="40.6511689" lon="14.6352980" />
+      <trkpt lat="40.6505374" lon="14.6332570" />
+      <trkpt lat="40.6504617" lon="14.6332989" />
+      <trkpt lat="40.6504424" lon="14.6333450" />
+      <trkpt lat="40.6503999" lon="14.6333785" />
+      <trkpt lat="40.6503598" lon="14.6334058" />
+      <trkpt lat="40.6502788" lon="14.6334229" />
+      <trkpt lat="40.6501916" lon="14.6334483" />
+      <trkpt lat="40.6500822" lon="14.6334856" />
+      <trkpt lat="40.6500128" lon="14.6335212" />
+      <trkpt lat="40.6499980" lon="14.6334967" />
+      <trkpt lat="40.6498821" lon="14.6332176" />
+      <trkpt lat="40.6498023" lon="14.6330299" />
+      <trkpt lat="40.6497998" lon="14.6329411" />
+      <trkpt lat="40.6498093" lon="14.6329097" />
+      <trkpt lat="40.6498292" lon="14.6326910" />
+      <trkpt lat="40.6498209" lon="14.6325043" />
+      <trkpt lat="40.6497979" lon="14.6324680" />
+      <trkpt lat="40.6496834" lon="14.6322263" />
+      <trkpt lat="40.6496200" lon="14.6318500" />
+      <trkpt lat="40.6495750" lon="14.6313500" />
+      <trkpt lat="40.6495665" lon="14.6308877" />
+      <trkpt lat="40.6496100" lon="14.6304200" />
+      <trkpt lat="40.6497300" lon="14.6299700" />
+      <trkpt lat="40.6499050" lon="14.6295000" />
+      <trkpt lat="40.6500500" lon="14.6290500" />
+      <trkpt lat="40.6502100" lon="14.6285200" />
+      <trkpt lat="40.6503350" lon="14.6280600" />
+      <trkpt lat="40.6504393" lon="14.6277090" />
+    </trkseg>
+  </trk>
+</gpx>

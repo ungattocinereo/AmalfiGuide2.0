@@ -30,7 +30,8 @@ import {
     faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import type { PlaceItem } from "@/lib/markdown-parser";
-import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
+import { getImageForPlace } from "@/lib/place-images";
+import { getMapboxStaticPreviewUrl, getRouteForPlace } from "@/lib/place-routes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
@@ -86,10 +87,17 @@ interface PlaceCardProps {
 export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBadges = false }: PlaceCardProps) {
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
-    const hikingMapUrl = getHikingMapUrl(item.name);
-    const blurDataURL = getBlurDataURL(imageUrl);
+    const route = getRouteForPlace(item.name);
+    const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
+    const mapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route) : null;
+    const visualUrl = route ? mapboxPreviewUrl : imageUrl;
+    const blurDataURL = route ? undefined : getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
+
+    React.useEffect(() => {
+        setRoutePreviewFailed(false);
+    }, [route?.slug]);
 
     // Data-driven badge selection (no category regex). If a place has trail
     // fields (duration/difficulty) we show those; otherwise we surface the two
@@ -127,39 +135,36 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
             {/* Card container — horizontal on mobile (non-hiking), vertical on desktop and hiking */}
-            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden ${hikingMapUrl ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
+            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
                 {/* Image container — fixed width on mobile for horizontal layout, full width on desktop */}
                 <div className={`relative overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft ${
-                    hikingMapUrl
+                    route
                         ? `${aspectRatio || "aspect-[4/3]"} w-full`
                         : "shrink-0 w-1/3 min-h-[9rem] md:w-full md:min-h-0 md:aspect-[4/3]"
                 }`}>
-                    {hikingMapUrl ? (
-                        <iframe
-                            src={hikingMapUrl}
-                            className="map-embed"
-                            width={600}
-                            height={450}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title={`Map of ${item.name}`}
-                        />
-                    ) : (
+                    {visualUrl ? (
                         <Image
-                            src={imageUrl}
+                            src={visualUrl}
                             alt=""
                             fill
-                            quality={65}
-                            sizes={sizes || "(max-width: 768px) 33vw, 33vw"}
-                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                            quality={route ? 80 : 65}
+                            sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
+                            className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-105 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
+                            unoptimized={Boolean(mapboxPreviewUrl)}
+                            loading={route ? "eager" : "lazy"}
+                            fetchPriority={route ? "high" : "auto"}
+                            onError={mapboxPreviewUrl ? () => setRoutePreviewFailed(true) : undefined}
                         />
+                    ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-stone-100 text-orange-700 dark:bg-amalfi-espresso-soft dark:text-orange-300">
+                            <FontAwesomeIcon icon={faRoute} className="h-8 w-8 opacity-70" aria-hidden="true" />
+                        </div>
                     )}
 
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
-                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${hikingMapUrl ? "flex" : "hidden md:flex"}`}>
+                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${route ? "flex" : "hidden md:flex"}`}>
                         <FontAwesomeIcon icon={CategoryIcon} className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                         <span>{item.category}</span>
                     </div>
@@ -168,7 +173,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                 {/* Content area inside card */}
                 <div className="relative flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
                     {/* Category pill — mobile only, own row at top (non-hiking cards) */}
-                    {!hikingMapUrl && (
+                    {!route && (
                         <div className="md:hidden flex justify-end">
                             <span className="inline-flex items-center gap-1 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30">
                                 <FontAwesomeIcon icon={CategoryIcon} className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />

@@ -68,5 +68,10 @@
   "cookie.message": "Мы используем файлы cookie для улучшения вашего опыта. Продолжая просмотр, вы принимаете нашу",
   "cookie.privacyLink": "Политику конфиденциальности",
   "cookie.accept": "Принять",
-  "cookie.decline": "Отклонить"
+  "cookie.decline": "Отклонить",
+  "routeMap.downloadTitle": "Скачать маршрут",
+  "routeMap.openGoogle": "Google",
+  "routeMap.loading": "Загружаем маршрут",
+  "routeMap.previewOnly": "Карта недоступна",
+  "routeMap.mapUnavailable": "Карта недоступна"
 }

@@ -68,5 +68,10 @@
   "cookie.message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch weiteres Surfen akzeptieren Sie unsere",
   "cookie.privacyLink": "Datenschutzerklärung",
   "cookie.accept": "Akzeptieren",
-  "cookie.decline": "Ablehnen"
+  "cookie.decline": "Ablehnen",
+  "routeMap.downloadTitle": "Route herunterladen",
+  "routeMap.openGoogle": "Google",
+  "routeMap.loading": "Route wird geladen",
+  "routeMap.previewOnly": "Karte nicht verfügbar",
+  "routeMap.mapUnavailable": "Karte nicht verfügbar"
 }

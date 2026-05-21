@@ -231,7 +231,7 @@ Une promenade facile de 3 km entre Maiori et Minori à travers les citronniers e
 Situé dans l'un des endroits les plus fascinants de la côte, le « Sentier des Citrons » serpente à travers des jardins en terrasses. C'est une promenade facile à modérée (environ 1 heure) qui offre des vues magnifiques sur la mer et les villes en contrebas. En saison, vous pourriez voir des agriculteurs porter de lourds paniers de citrons « Sfusato Amalfitano » sur leur dos. Arrêtez-vous pour une limonade fraîche ou un granité au citron (*granita*) aux petits stands le long du chemin !
 
 > [!info] Liens Utiles
-> - **La Randonnée**: [Carte de randonnée](https://maps.app.goo.gl/J5qA9CQYrSiF1y5F7)
+> - **La Randonnée**: [Carte de randonnée](https://www.google.com/maps/dir/Insigne+Collegiata+Santuario+Parrocchia+S.+Maria+a+Mare,+Piazzale+Mons.+Milo+Nicola+Prevosto,+84010+Maiori+SA/Sentiero+dei+Limoni,+Via+Torre,+Minori,+SA/Via+Vescovado,+84010+Minori+SA/@40.6508666,14.6241806,15z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x133b9544093c35a3:0x35b98a06ca815918!2m2!1d14.6412516!2d40.6500664!1m5!1m1!1s0x133b956bebcba8a7:0x5aa8b541228b1cfc!2m2!1d14.6308877!2d40.6495665!1m5!1m1!1s0x133b956c24ec6179:0x88e2537289534845!2m2!1d14.627709!2d40.6504393!3e2!5m1!1e1?entry=tts&g_ep=EgoyMDI2MDEwNy4wKgosMTAwNzkyMDcxSAFQAw%3D%3D&skid=07007853-918a-4ec0-8afa-25659f00d8ca)
 
 ---
 
@@ -275,6 +275,29 @@ Le Arcate est un lieu local bien-aimé pour ceux qui veulent les meilleures plac
 > [!info] Liens Utiles
 > - **Google Maps**: [Voir l'Emplacement](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
 > - **TripAdvisor**: [4.5/5 | 700+ Avis](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
+
+---
+
+### Il Birecto (Atrani)
+**Category**: Toute La Journée
+**Tagline**: L'adresse où l'on mange toujours bien
+**Hours**: Mon-Sun 08:00-23:00
+**Price**: €€
+
+**Short info:**
+Adresse toute la journée à Atrani : petit-déjeuner, pâtes aux fruits de mer, pizza et cocktails.
+
+**The Details:**
+Son nom complet est Bar Ristorante Pizzeria Il Birecto, et il résume parfaitement l'esprit du lieu : à Atrani, c'est l'une des adresses sur lesquelles on peut presque toujours compter pour bien manger.
+
+Dès 8:00 du matin, on y trouve le classique *pasticciotto atranese*, préparé sur place, ainsi que d'excellents croissants aux différentes garnitures, réalisés par un pâtissier local. Pour un bon petit-déjeuner, mieux vaut arriver tôt : les croissants partent très vite, car c'est ici que le village commence sa journée.
+
+À partir de midi, Il Birecto passe en mode restaurant. On peut s'installer pour une bonne assiette de pâtes, une pizza ou des plats de fruits de mer préparés avec des produits frais locaux. Le propriétaire est presque toujours dans les parages, et cela se sent : la cuisine, le bar et le service sont suivis avec beaucoup d'attention. Les cocktails sont aussi très bons. Et si vous cherchez où déjeuner à 16:00, quand la plupart des cuisines sont fermées, c'est exactement l'endroit qu'il vous faut.
+
+> [!info] Liens Utiles
+> - **Google Maps**: [Voir l'Emplacement](https://maps.app.goo.gl/UDgwYSSJf1gP4iZc6)
+> - **Menu**: [Voir le Menu](https://birecto.menu.band)
+> - **TripAdvisor**: [TripAdvisor](https://www.tripadvisor.it/Restaurant_Review-g635619-d1510580-Reviews-Bistrot_Il_Birecto_Di_Domenico_Lagrotta-Atrani_Amalfi_Coast_Province_of_Salerno_C.html)
 
 ---
 

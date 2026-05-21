@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,13 +9,19 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
     faArrowLeft,
     faArrowUpRightFromSquare,
+    faBookOpen,
     faChevronLeft,
     faChevronRight,
     faClock,
+    faDownload,
+    faFileLines,
+    faFileZipper,
     faLocationDot,
     faMap,
+    faMapLocationDot,
     faMountain,
     faReceipt,
+    faRoute,
     faRuler,
     faShareNodes,
     faStarHalfStroke,
@@ -24,11 +31,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/navigation";
 import type { PlaceItem } from "@/lib/markdown-parser";
-import { getImageForPlace, getHikingMapUrl } from "@/lib/place-images";
+import { getImageForPlace } from "@/lib/place-images";
+import { getRouteForPlace } from "@/lib/place-routes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 import { getPlaceGallery } from "@/lib/place-gallery";
+
+const MapboxRouteMap = dynamic(
+    () => import("@/components/mapbox-route-map").then((mod) => mod.MapboxRouteMap),
+    {
+        ssr: false,
+        loading: () => <div className="absolute inset-0 bg-stone-100 dark:bg-amalfi-espresso-soft" />,
+    },
+);
 
 interface PlaceDetailsProps {
     item: PlaceItem;
@@ -45,11 +61,14 @@ const translateLookup = (t: (key: string) => string, namespace: string, raw: str
     return translated === key ? raw : translated;
 };
 
+const isMenuLink = (link: { label: string; url: string }): boolean =>
+    link.label.toLowerCase().includes("menu") || link.url.includes("birecto.menu.band");
+
 export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceDetailsProps) {
     const isModal = mode === "modal";
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
-    const hikingMapUrl = getHikingMapUrl(item.name);
+    const route = getRouteForPlace(item.name);
     const blurDataURL = getBlurDataURL(imageUrl);
     const modalRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -62,6 +81,12 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
     const [galleryIndex, setGalleryIndex] = useState(0);
     const hasMultiPhoto = galleryImages.length > 1;
     const currentImage = galleryImages[galleryIndex] ?? imageUrl;
+    const displayedLinks = route
+        ? item.links.filter((link) => link.url !== route.fallbackUrl)
+        : item.links;
+    const menuLinks = displayedLinks.filter(isMenuLink);
+    const standardLinks = displayedLinks.filter((link) => !isMenuLink(link));
+    const routeFormatsLabel = item.distance ? `${item.distance} · KML / KMZ / GPX` : "KML / KMZ / GPX";
     const goPrev = () => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
     const goNext = () => setGalleryIndex((i) => (i + 1) % galleryImages.length);
 
@@ -193,19 +218,12 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
     const visualSection = (
         <motion.div
             layoutId={isModal ? layoutId : undefined}
-            className={`relative w-full ${isModal ? "h-[60dvh] md:h-screen md:sticky md:top-0 md:self-start cursor-zoom-out" : "h-[50vh] md:h-auto md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]"} md:w-1/2 md:order-2 overflow-hidden flex-shrink-0`}
+            className={`relative w-full ${isModal ? "h-[60dvh] md:h-screen md:sticky md:top-0 md:self-start cursor-zoom-out" : "h-[50vh] md:h-[calc(100dvh-88px)] md:sticky md:top-0 md:self-start md:min-h-[calc(100dvh-88px)]"} md:w-1/2 md:order-2 overflow-hidden flex-shrink-0`}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            onClick={isModal ? onClose : undefined}
+            onClick={isModal && !route ? onClose : undefined}
         >
-            {hikingMapUrl ? (
-                <iframe
-                    src={hikingMapUrl}
-                    className="absolute inset-0 w-full h-full border-0 hiking-map"
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`Map of ${item.name}`}
-                />
+            {route ? (
+                <MapboxRouteMap route={route} />
             ) : (
                 <>
                     <AnimatePresence mode="wait" initial={false}>
@@ -405,6 +423,55 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         dangerouslySetInnerHTML={{ __html: item.detailsHtml }}
                     />
 
+                    {route && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.38, duration: 0.3 }}
+                            className="rounded-lg border border-orange-200/70 bg-orange-50/60 p-4 dark:border-orange-900/50 dark:bg-orange-950/20"
+                        >
+                            <div className="mb-3 flex items-center gap-3">
+                                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-600 text-white">
+                                    <FontAwesomeIcon icon={faDownload} className="h-4 w-4" />
+                                </span>
+                                <div className="min-w-0">
+                                    <p className="text-xs font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
+                                        {t("routeMap.downloadTitle")}
+                                    </p>
+                                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                                        {routeFormatsLabel}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                                {[
+                                    { label: "KML", url: route.kmlUrl, icon: faFileLines },
+                                    { label: "KMZ", url: route.kmzUrl, icon: faFileZipper },
+                                    { label: "GPX", url: route.gpxUrl, icon: faRoute },
+                                ].map((download) => (
+                                    <a
+                                        key={download.label}
+                                        href={download.url}
+                                        download
+                                        className="flex h-11 items-center justify-center gap-2 rounded-lg border border-orange-200 bg-white px-3 text-sm font-bold text-orange-700 transition hover:border-orange-300 hover:bg-orange-100 dark:border-orange-900/60 dark:bg-gray-950/40 dark:text-orange-300 dark:hover:bg-orange-950/50"
+                                    >
+                                        <FontAwesomeIcon icon={download.icon} className="h-4 w-4 flex-shrink-0" />
+                                        {download.label}
+                                    </a>
+                                ))}
+                                <a
+                                    href={route.fallbackUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex h-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-bold text-gray-800 transition hover:border-orange-300 hover:bg-orange-50 dark:border-gray-800 dark:bg-gray-950/40 dark:text-gray-100 dark:hover:bg-orange-950/30"
+                                >
+                                    <FontAwesomeIcon icon={faMapLocationDot} className="h-4 w-4 flex-shrink-0 text-orange-600 dark:text-orange-400" />
+                                    <span className="whitespace-nowrap">{t("routeMap.openGoogle")}</span>
+                                </a>
+                            </div>
+                        </motion.div>
+                    )}
+
                     {/* Links Section - larger touch targets */}
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
@@ -412,7 +479,32 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         transition={{ delay: 0.4, duration: 0.3 }}
                         className="pt-4 space-y-2"
                     >
-                        {item.links.map((link: { label: string; url: string }, i: number) => {
+                        {menuLinks.map((link: { label: string; url: string }, i: number) => (
+                            <a
+                                key={`menu-${i}`}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group mb-4 flex items-center gap-4 rounded-2xl border border-orange-200/80 bg-orange-50/65 px-4 py-4 shadow-sm shadow-orange-950/5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md dark:border-orange-900/60 dark:bg-orange-950/20 dark:hover:bg-orange-950/30"
+                            >
+                                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-orange-700 shadow-sm ring-1 ring-orange-100 transition group-hover:scale-105 dark:bg-gray-950/70 dark:text-orange-300 dark:ring-orange-900/70">
+                                    <FontAwesomeIcon icon={faBookOpen} className="h-[21px] w-[21px]" />
+                                </span>
+                                <span className="flex min-w-0 flex-1 flex-col">
+                                    <span className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
+                                        Digital Menu
+                                    </span>
+                                    <span className="text-base font-semibold text-gray-950 dark:text-white">
+                                        Menu by Greg
+                                    </span>
+                                </span>
+                                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition group-hover:bg-orange-700 dark:bg-orange-500 dark:group-hover:bg-orange-400">
+                                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-4 w-4" />
+                                </span>
+                            </a>
+                        ))}
+
+                        {standardLinks.map((link: { label: string; url: string }, i: number) => {
                             // Determine link type
                             const isGoogleMaps = link.label.toLowerCase().includes("google") ||
                                                  link.label.toLowerCase().includes("view location") ||

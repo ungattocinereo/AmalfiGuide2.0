@@ -231,7 +231,7 @@ Valle delle Ferriere — это охраняемый природный запо
 Расположенная в одном из самых завораживающих мест побережья, «Тропа лимонов» петляет среди террасных садов. Это лёгкая-средняя прогулка (около 1 часа), предлагающая потрясающие виды на море и города внизу. В сезон ты можешь увидеть фермеров, несущих тяжёлые корзины лимонов "Sfusato Amalfitano" на спинах. Останавливайся за свежим лимонадом или лимонной гранитой (*granita*) у маленьких киосков вдоль пути!
 
 > [!info] Key Links
-> - **The Hike**: [Hike map](https://maps.app.goo.gl/J5qA9CQYrSiF1y5F7)
+> - **The Hike**: [Hike map](https://www.google.com/maps/dir/Insigne+Collegiata+Santuario+Parrocchia+S.+Maria+a+Mare,+Piazzale+Mons.+Milo+Nicola+Prevosto,+84010+Maiori+SA/Sentiero+dei+Limoni,+Via+Torre,+Minori,+SA/Via+Vescovado,+84010+Minori+SA/@40.6508666,14.6241806,15z/data=!3m1!4b1!4m20!4m19!1m5!1m1!1s0x133b9544093c35a3:0x35b98a06ca815918!2m2!1d14.6412516!2d40.6500664!1m5!1m1!1s0x133b956bebcba8a7:0x5aa8b541228b1cfc!2m2!1d14.6308877!2d40.6495665!1m5!1m1!1s0x133b956c24ec6179:0x88e2537289534845!2m2!1d14.627709!2d40.6504393!3e2!5m1!1e1?entry=tts&g_ep=EgoyMDI2MDEwNy4wKgosMTAwNzkyMDcxSAFQAw%3D%3D&skid=07007853-918a-4ec0-8afa-25659f00d8ca)
 
 ---
 
@@ -275,6 +275,29 @@ Le Arcate — любимое местное место для тех, кто х�
 > [!info] Key Links
 > - **Google Maps**: [View Location](https://maps.app.goo.gl/yi8KVkk6KRUa2Cfz5)
 > - **TripAdvisor**: [4.5/5 | 700+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g635619-d1034463-Reviews-Le_Arcate-Atrani_Amalfi_Coast_Province_of_Salerno_Campania.html)
+
+---
+
+### Il Birecto (Atrani)
+**Category**: На Весь День
+**Tagline**: Здесь всегда можно хорошо поесть
+**Hours**: Mon-Sun 08:00-23:00
+**Price**: €€
+
+**Short info:**
+Место на весь день в Атрани: выпечка на завтрак, паста с морепродуктами, пицца и коктейли.
+
+**The Details:**
+Полное название — Bar Ristorante Pizzeria Il Birecto, и оно очень точно описывает это место: в Атрани сюда можно прийти почти в любой момент, когда хочется нормально поесть.
+
+С 8:00 утра здесь уже есть классический *pasticciotto atranese*, который пекут на месте, и отличные круассаны с разными начинками от местного кондитера. Если хотите хороший завтрак, приходите пораньше: круассаны разлетаются быстро, потому что именно здесь начинает день вся деревня.
+
+С полудня Il Birecto работает как ресторан. Здесь можно взять хорошую пасту, пиццу и блюда из свежих местных морепродуктов. Владелец обычно где-то рядом, и это чувствуется: качество кухни, бара и сервиса держат под внимательным контролем. Коктейли здесь тоже очень достойные. А если вы ищете обед в 16:00, когда большинство кухонь уже закрыто, вам точно сюда.
+
+> [!info] Key Links
+> - **Google Maps**: [View Location](https://maps.app.goo.gl/UDgwYSSJf1gP4iZc6)
+> - **Menu**: [View Menu](https://birecto.menu.band)
+> - **TripAdvisor**: [TripAdvisor](https://www.tripadvisor.it/Restaurant_Review-g635619-d1510580-Reviews-Bistrot_Il_Birecto_Di_Domenico_Lagrotta-Atrani_Amalfi_Coast_Province_of_Salerno_C.html)
 
 ---
 

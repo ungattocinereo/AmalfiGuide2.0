@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "prebuild": "npm run generate:blur && npm run generate:gallery",
+    "prebuild": "npm run generate:routes && npm run generate:blur && npm run generate:gallery",
     "generate:blur": "tsx scripts/generate-blur-data.mts",
     "generate:gallery": "tsx scripts/generate-place-gallery.mts",
+    "generate:routes": "tsx scripts/generate-route-assets.mts",
     "start": "next start",
     "lint": "eslint"
   },
@@ -24,6 +25,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.25.0",
+    "mapbox-gl": "^3.24.0",
     "next": "16.1.1",
     "next-intl": "^4.7.0",
     "next-themes": "^0.4.6",
@@ -42,6 +44,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "marked": "^18.0.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

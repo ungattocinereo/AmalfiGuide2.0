@@ -75,6 +75,13 @@
     "copyLink": "Link kopieren",
     "linkCopied": "Link kopiert"
   },
+  "routeMap": {
+    "downloadTitle": "Route herunterladen",
+    "openGoogle": "Google",
+    "loading": "Route wird geladen",
+    "previewOnly": "Karte nicht verfügbar",
+    "mapUnavailable": "Karte nicht verfügbar"
+  },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² Zwischen den Bergen und dem Meer",
     "gemsIntroText": "Ein kompakter Ort auf nur 0,2 km² zusammengedrängt, eingebettet zwischen Monte Aureo und Monte Civita und direkt aufs Meer hinausgehend. Wir leben hier, und dies ist eine kuratierte Einführung in die Orte, die das tägliche Leben in Atrani jenseits seiner Größe ausmachen.",

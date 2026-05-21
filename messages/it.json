@@ -75,6 +75,13 @@
     "copyLink": "Copia link",
     "linkCopied": "Link copiato"
   },
+  "routeMap": {
+    "downloadTitle": "Scarica percorso",
+    "openGoogle": "Google",
+    "loading": "Caricamento percorso",
+    "previewOnly": "Mappa non disponibile",
+    "mapUnavailable": "Mappa non disponibile"
+  },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² tra le Montagne e il Mare",
     "gemsIntroText": "Un borgo compatto racchiuso in soli 0,2 km², incastonato tra il Monte Aureo e il Monte Civita e affacciato direttamente sul mare. Noi viviamo qui, e questa è una selezione curata dei luoghi che definiscono la vita quotidiana ad Atrani ben oltre le sue dimensioni.",
