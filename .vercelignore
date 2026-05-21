@@ -1,0 +1,16 @@
+# Local build/dependency output
+.next/
+node_modules/
+.npm-cache/
+
+# Local/private workspace files
+.agents/
+.claude/
+docs/plans/
+hero-concepts/
+IMG_4393.jpeg
+heroconcepts.zip
+squirrel.toml
+
+# Heavy source assets not served by the app
+img/
