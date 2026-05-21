@@ -288,7 +288,7 @@ Le Arcate is a beloved local spot for those who want the best seats in Atrani. M
 An all-day bar, restaurant, and pizzeria in Atrani, trusted for breakfast, seafood pasta, pizza, cocktails, and late lunches when almost everything else is closed.
 
 **The Details:**
-The full name is BAR RISTORANTE PIZZERIA IL BIRECTO, and that tells you a lot: this is one of the most useful places in Atrani, open almost whenever you need it.
+The full name is Bar Ristorante Pizzeria Il Birecto, and that tells you a lot: this is one of the most useful places in Atrani, open almost whenever you need it.
 
 From 8:00 in the morning, the counter starts with classic *pasticciotto atranese* baked in-house and excellent croissants from a local pastry chef, filled in different ways. Come early if you want breakfast: the croissants disappear quickly, because this is where the village starts its day.
 

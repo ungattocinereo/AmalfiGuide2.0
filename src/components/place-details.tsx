@@ -9,6 +9,7 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
     faArrowLeft,
     faArrowUpRightFromSquare,
+    faBookOpen,
     faChevronLeft,
     faChevronRight,
     faClock,
@@ -60,6 +61,9 @@ const translateLookup = (t: (key: string) => string, namespace: string, raw: str
     return translated === key ? raw : translated;
 };
 
+const isMenuLink = (link: { label: string; url: string }): boolean =>
+    link.label.toLowerCase().includes("menu") || link.url.includes("birecto.menu.band");
+
 export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceDetailsProps) {
     const isModal = mode === "modal";
     const { t } = useLanguage();
@@ -80,6 +84,8 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
     const displayedLinks = route
         ? item.links.filter((link) => link.url !== route.fallbackUrl)
         : item.links;
+    const menuLinks = displayedLinks.filter(isMenuLink);
+    const standardLinks = displayedLinks.filter((link) => !isMenuLink(link));
     const routeFormatsLabel = item.distance ? `${item.distance} · KML / KMZ / GPX` : "KML / KMZ / GPX";
     const goPrev = () => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
     const goNext = () => setGalleryIndex((i) => (i + 1) % galleryImages.length);
@@ -473,7 +479,32 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         transition={{ delay: 0.4, duration: 0.3 }}
                         className="pt-4 space-y-2"
                     >
-                        {displayedLinks.map((link: { label: string; url: string }, i: number) => {
+                        {menuLinks.map((link: { label: string; url: string }, i: number) => (
+                            <a
+                                key={`menu-${i}`}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group mb-4 flex items-center gap-4 rounded-2xl border border-orange-200/80 bg-orange-50/65 px-4 py-4 shadow-sm shadow-orange-950/5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md dark:border-orange-900/60 dark:bg-orange-950/20 dark:hover:bg-orange-950/30"
+                            >
+                                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-orange-700 shadow-sm ring-1 ring-orange-100 transition group-hover:scale-105 dark:bg-gray-950/70 dark:text-orange-300 dark:ring-orange-900/70">
+                                    <FontAwesomeIcon icon={faBookOpen} className="h-[21px] w-[21px]" />
+                                </span>
+                                <span className="flex min-w-0 flex-1 flex-col">
+                                    <span className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
+                                        Digital Menu
+                                    </span>
+                                    <span className="text-base font-semibold text-gray-950 dark:text-white">
+                                        Menu by Greg
+                                    </span>
+                                </span>
+                                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-orange-600 text-white transition group-hover:bg-orange-700 dark:bg-orange-500 dark:group-hover:bg-orange-400">
+                                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-4 w-4" />
+                                </span>
+                            </a>
+                        ))}
+
+                        {standardLinks.map((link: { label: string; url: string }, i: number) => {
                             // Determine link type
                             const isGoogleMaps = link.label.toLowerCase().includes("google") ||
                                                  link.label.toLowerCase().includes("view location") ||

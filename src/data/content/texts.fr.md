@@ -288,7 +288,7 @@ Le Arcate est un lieu local bien-aimé pour ceux qui veulent les meilleures plac
 Un bar, restaurant et pizzeria à Atrani pour toute la journée : petit-déjeuner, pâtes aux fruits de mer, pizza, cocktails et déjeuner tardif quand presque tout le reste est fermé.
 
 **The Details:**
-Son nom complet est BAR RISTORANTE PIZZERIA IL BIRECTO, et il résume parfaitement l'esprit du lieu : à Atrani, c'est l'une des adresses sur lesquelles on peut presque toujours compter pour bien manger.
+Son nom complet est Bar Ristorante Pizzeria Il Birecto, et il résume parfaitement l'esprit du lieu : à Atrani, c'est l'une des adresses sur lesquelles on peut presque toujours compter pour bien manger.
 
 Dès 8:00 du matin, on y trouve le classique *pasticciotto atranese*, préparé sur place, ainsi que d'excellents croissants aux différentes garnitures, réalisés par un pâtissier local. Pour un bon petit-déjeuner, mieux vaut arriver tôt : les croissants partent très vite, car c'est ici que le village commence sa journée.
 
