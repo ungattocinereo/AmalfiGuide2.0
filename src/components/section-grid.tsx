@@ -65,12 +65,13 @@ const getSectionIcon = (title: string): IconDefinition => {
 };
 
 // ─── Editorial index header — shared collapsible header for every non-intro section ───
-function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber }: {
+function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber, showPlacePreviews }: {
     title: string;
     items: PlaceItem[];
     isExpanded: boolean;
     onToggle: () => void;
     sectionNumber?: number;
+    showPlacePreviews: boolean;
 }) {
     const Icon = getSectionIcon(title);
     const formattedSectionNumber = String(sectionNumber ?? 1).padStart(2, "0");
@@ -122,7 +123,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber 
                 </div>
             </div>
 
-            {items.length > 0 && (
+            {showPlacePreviews && items.length > 0 && (
                 <div className="hidden lg:flex -space-x-2.5 flex-shrink-0 items-center pl-2">
                     {items.slice(0, 4).map((item, idx) => {
                         const imgUrl = getImageForPlace(item.name);
@@ -295,10 +296,15 @@ export function SectionGrid({ title, description, items, onItemClick, sectionNum
     const isGemsOfAtrani = titleLower.includes("atrani") && !isIntro;
 
     const isHiking = titleLower.includes("hiking") ||
+                     titleLower.includes("nature") ||
                      titleLower.includes("escursioni") ||
+                     titleLower.includes("natura") ||
                      titleLower.includes("senderismo") ||
+                     titleLower.includes("naturaleza") ||
                      titleLower.includes("randonnées") ||
-                     titleLower.includes("поход");
+                     titleLower.includes("wandern") ||
+                     titleLower.includes("поход") ||
+                     titleLower.includes("природа");
 
     const isMustVisit = titleLower.includes("must visit") ||
                         titleLower.includes("da vedere") ||
@@ -319,6 +325,7 @@ export function SectionGrid({ title, description, items, onItemClick, sectionNum
                     isExpanded={isExpanded}
                     onToggle={() => toggleSection(title)}
                     sectionNumber={sectionNumber}
+                    showPlacePreviews={!isHiking}
                 />
             )}
 
