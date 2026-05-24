@@ -20,6 +20,7 @@ import { useLayout } from "@/components/layout-context";
 import { useLanguage } from "@/components/language-context";
 import { PlaceCard } from "@/components/place-card";
 import type { PlaceItem } from "@/lib/markdown-parser";
+import { getImageForPlace } from "@/lib/place-images";
 
 interface SectionGridProps {
     title: string;
@@ -120,6 +121,38 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber 
                     <span className="hidden md:block h-px w-8 bg-gray-200 dark:bg-gray-700" />
                 </div>
             </div>
+
+            {items.length > 0 && (
+                <div className="hidden lg:flex -space-x-2.5 flex-shrink-0 items-center pl-2">
+                    {items.slice(0, 4).map((item, idx) => {
+                        const imgUrl = getImageForPlace(item.name);
+                        return (
+                            <div
+                                key={idx}
+                                className="h-9 w-9 overflow-hidden rounded-full border-2 border-white bg-gray-100
+                                           shadow-md shadow-gray-900/10 ring-1 ring-gray-900/5
+                                           transition-transform duration-200 group-hover:translate-x-0.5
+                                           dark:border-gray-950 dark:bg-gray-800 dark:ring-white/10"
+                            >
+                                <Image
+                                    src={imgUrl}
+                                    alt=""
+                                    width={36}
+                                    height={36}
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+                        );
+                    })}
+                    {items.length > 4 && (
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gray-100
+                                        text-[0.65rem] font-bold text-gray-500 shadow-md shadow-gray-900/10 ring-1 ring-gray-900/5
+                                        dark:border-gray-950 dark:bg-gray-800 dark:text-gray-300 dark:ring-white/10">
+                            +{items.length - 4}
+                        </div>
+                    )}
+                </div>
+            )}
 
             <motion.div
                 animate={{ rotate: isExpanded ? 90 : 0 }}
