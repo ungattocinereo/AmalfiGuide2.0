@@ -135,7 +135,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
             {/* Card container — horizontal on mobile (non-hiking), vertical on desktop and hiking */}
-            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/60 dark:border-orange-950/40 group-hover:shadow-lg group-hover:border-gray-200 dark:group-hover:border-orange-900/60 transition-all duration-300 overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
+            <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/70 dark:border-orange-950/40 shadow-none md:group-hover:-translate-y-0.5 md:group-hover:border-orange-300/45 dark:md:group-hover:border-orange-800/65 md:group-hover:bg-white dark:md:group-hover:bg-amalfi-espresso-soft md:group-hover:shadow-[0_18px_34px_-34px_rgba(33,24,17,0.52)] dark:md:group-hover:shadow-[0_18px_34px_-36px_rgba(0,0,0,0.55)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
                 {/* Image container — fixed width on mobile for horizontal layout, full width on desktop */}
                 <div className={`relative overflow-hidden bg-gray-100 dark:bg-amalfi-espresso-soft ${
                     route
@@ -149,7 +149,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             fill
                             quality={route ? 80 : 65}
                             sizes={sizes || (route ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 33vw, 33vw")}
-                            className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-105 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
+                            className={`object-cover transition-[filter,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:scale-[1.03] md:group-hover:saturate-[1.05] motion-reduce:transition-none motion-reduce:md:group-hover:scale-100 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
                             unoptimized={Boolean(mapboxPreviewUrl)}
@@ -163,8 +163,13 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         </div>
                     )}
 
+                    <div
+                        className="pointer-events-none absolute inset-0 z-10 -translate-x-[120%] skew-x-[-14deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-[120%] md:group-hover:opacity-100 dark:via-orange-100/12 motion-reduce:hidden"
+                        aria-hidden="true"
+                    />
+
                     {/* Category pill — on image: desktop always, mobile only for hiking */}
-                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${route ? "flex" : "hidden md:flex"}`}>
+                    <div className={`absolute top-1.5 right-1.5 md:top-3 md:right-3 z-20 items-center gap-1 md:gap-1.5 bg-white/95 dark:bg-black/75 backdrop-blur-md px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-900 dark:text-white border border-black/5 dark:border-orange-400/30 ${route ? "flex" : "hidden md:flex"}`}>
                         <FontAwesomeIcon icon={CategoryIcon} className="h-3 w-3 text-orange-700 dark:text-orange-400 flex-shrink-0" />
                         <span>{item.category}</span>
                     </div>
@@ -172,6 +177,11 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
 
                 {/* Content area inside card */}
                 <div className="relative flex-1 min-w-0 flex flex-col gap-1.5 md:gap-2 p-3 md:p-5">
+                    <div
+                        className="pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/35 to-transparent opacity-0 shadow-[0_0_18px_rgba(229,72,0,0.18)] transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:opacity-100 dark:via-orange-300/25 dark:shadow-[0_0_18px_rgba(251,146,60,0.14)] motion-reduce:transition-none"
+                        aria-hidden="true"
+                    />
+
                     {/* Category pill — mobile only, own row at top (non-hiking cards) */}
                     {!route && (
                         <div className="md:hidden flex justify-end">
