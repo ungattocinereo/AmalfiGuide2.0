@@ -20,16 +20,26 @@ import { useLayout } from "@/components/layout-context";
 import { useLanguage } from "@/components/language-context";
 import { PlaceCard } from "@/components/place-card";
 import type { PlaceItem } from "@/lib/markdown-parser";
-import { getImageForPlace } from "@/lib/place-images";
 
 interface SectionGridProps {
     title: string;
     description: string;
     items: PlaceItem[];
     onItemClick: (item: PlaceItem) => void;
+    sectionNumber?: number;
 }
 
 const CONTENT_EASE = [0.16, 1, 0.3, 1] as const;
+
+export const isIntroSectionTitle = (title: string): boolean => {
+    const titleLower = title.toLowerCase();
+    return titleLower.includes("expert guide") ||
+           titleLower.includes("guida esperta") ||
+           titleLower.includes("guía experta") ||
+           titleLower.includes("guide expert") ||
+           titleLower.includes("experten-guide") ||
+           titleLower.includes("экспертный путеводитель");
+};
 
 const getSectionIcon = (title: string): IconDefinition => {
     const t = title.toLowerCase();
@@ -53,72 +63,76 @@ const getSectionIcon = (title: string): IconDefinition => {
     return faGem;
 };
 
-// ─── Shared compact strip header — same outer shape for every non-intro section ───
-function SectionHeaderStrip({ title, items, isExpanded, onToggle, hidePreviews }: {
+// ─── Editorial index header — shared collapsible header for every non-intro section ───
+function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber }: {
     title: string;
     items: PlaceItem[];
     isExpanded: boolean;
     onToggle: () => void;
-    hidePreviews?: boolean;
+    sectionNumber?: number;
 }) {
     const Icon = getSectionIcon(title);
+    const formattedSectionNumber = String(sectionNumber ?? 1).padStart(2, "0");
+    const placeLabel = `${items.length} ${items.length === 1 ? "place" : "places"}`;
 
     return (
         <button
             type="button"
             onClick={onToggle}
             aria-expanded={isExpanded}
-            className="w-full flex items-center gap-3 md:gap-4 px-4 md:px-8 py-4 md:py-5
+            className="w-full flex items-center gap-3 md:gap-5 px-4 md:px-8 py-5 md:py-6
                        text-left cursor-pointer group touch-manipulation
                        transition-colors duration-200
-                       hover:!bg-white dark:hover:!bg-gray-900/40
-                       focus-visible:outline-none focus-visible:!bg-white dark:focus-visible:!bg-gray-900/40"
+                       hover:!bg-white/90 dark:hover:!bg-gray-900/45
+                       focus-visible:outline-none focus-visible:!bg-white dark:focus-visible:!bg-gray-900/45"
         >
-            <div className="flex-shrink-0 flex items-center justify-center h-[50.6px] w-[50.6px] rounded-[12px]
-                            border-2 border-[#FF6900] bg-transparent
-                            transition-transform duration-200 group-hover:scale-[1.02]">
-                <FontAwesomeIcon icon={Icon} className="text-[23px] leading-none text-[#FF6900]" />
+            <div className="flex-shrink-0 flex w-[52px] md:w-[76px] items-center justify-start">
+                <span
+                    aria-hidden="true"
+                    style={{
+                        fontFamily: "var(--font-merriweather)",
+                        WebkitTextStroke: "1.25px #FF6900",
+                    } as React.CSSProperties}
+                    className="select-none text-[2.6rem] md:text-[3.45rem] lg:text-[3.75rem]
+                               font-bold leading-none text-transparent
+                               transition-transform duration-200 group-hover:scale-[1.02]"
+                >
+                    {formattedSectionNumber}
+                </span>
             </div>
 
             <div className="flex-1 min-w-0">
                 <h2
-                    style={{ fontFamily: 'var(--font-merriweather)' }}
-                    className="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-gray-50 tracking-tight truncate
+                    style={{ fontFamily: 'var(--font-merriweather)', textWrap: 'balance' } as React.CSSProperties}
+                    className="text-[1.55rem] sm:text-[1.75rem] md:text-[2.15rem] lg:text-[2.35rem]
+                               font-bold leading-[1.08] tracking-normal text-gray-900 dark:text-gray-50 break-words
                                group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-200"
                 >
                     {title}
                 </h2>
-                <p className="text-sm text-gray-400 dark:text-gray-500 mt-0.5">
-                    {items.length} {items.length === 1 ? 'place' : 'places'}
-                </p>
-            </div>
-
-            {items.length > 0 && !hidePreviews && (
-                <div className="hidden sm:flex -space-x-2 flex-shrink-0">
-                    {items.slice(0, 4).map((item, idx) => {
-                        const imgUrl = getImageForPlace(item.name);
-                        return (
-                            <div key={idx} className="w-8 h-8 rounded-full overflow-hidden border-2 border-white dark:border-gray-900 shadow-sm">
-                                <Image src={imgUrl} alt="" width={32} height={32} className="w-full h-full object-cover" />
-                            </div>
-                        );
-                    })}
-                    {items.length > 4 && (
-                        <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 border-2 border-white dark:border-gray-900 flex items-center justify-center text-[10px] font-bold text-gray-500 dark:text-gray-400">
-                            +{items.length - 4}
-                        </div>
-                    )}
+                <div className="mt-2 flex flex-wrap items-center gap-2.5">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-orange-50/75 px-2.5 py-1
+                                     text-[0.68rem] font-semibold uppercase leading-none tracking-normal text-orange-700
+                                     dark:border-orange-400/25 dark:bg-orange-500/10 dark:text-orange-300">
+                        <FontAwesomeIcon icon={Icon} className="h-3.5 w-3.5" />
+                        <span>{placeLabel}</span>
+                    </span>
+                    <span className="hidden md:block h-px w-8 bg-gray-200 dark:bg-gray-700" />
                 </div>
-            )}
+            </div>
 
             <motion.div
                 animate={{ rotate: isExpanded ? 90 : 0 }}
                 transition={{ duration: 0.2, ease: CONTENT_EASE }}
-                className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full"
+                className="flex-shrink-0 flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full
+                           border border-gray-200/80 bg-white/75 shadow-sm shadow-gray-900/5
+                           dark:border-gray-700/70 dark:bg-gray-900/60 dark:shadow-none
+                           group-hover:border-orange-200 group-hover:bg-orange-50/70
+                           dark:group-hover:border-orange-400/30 dark:group-hover:bg-orange-500/10"
             >
                 <FontAwesomeIcon
                     icon={faChevronRight}
-                    className="h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 transition-colors duration-200"
+                    className="h-4 w-4 text-gray-400 dark:text-gray-500 group-hover:text-orange-500 transition-colors duration-200"
                 />
             </motion.div>
         </button>
@@ -238,18 +252,12 @@ function SectionContent({
     );
 }
 
-export function SectionGrid({ title, description, items, onItemClick }: SectionGridProps) {
+export function SectionGrid({ title, description, items, onItemClick, sectionNumber }: SectionGridProps) {
     const { isSectionExpanded, toggleSection } = useLayout();
     const { t } = useLanguage();
 
     const titleLower = title.toLowerCase();
-
-    const isIntro = titleLower.includes("expert guide") ||
-                    titleLower.includes("guida esperta") ||
-                    titleLower.includes("guía experta") ||
-                    titleLower.includes("guide expert") ||
-                    titleLower.includes("experten-guide") ||
-                    titleLower.includes("экспертный путеводитель");
+    const isIntro = isIntroSectionTitle(title);
 
     const isGemsOfAtrani = titleLower.includes("atrani") && !isIntro;
 
@@ -277,7 +285,7 @@ export function SectionGrid({ title, description, items, onItemClick }: SectionG
                     items={items}
                     isExpanded={isExpanded}
                     onToggle={() => toggleSection(title)}
-                    hidePreviews={isHiking}
+                    sectionNumber={sectionNumber}
                 />
             )}
 

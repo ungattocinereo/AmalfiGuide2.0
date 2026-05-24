@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useLocale } from "next-intl";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { SectionGrid } from "@/components/section-grid";
+import { SectionGrid, isIntroSectionTitle } from "@/components/section-grid";
 import { PlaceDetails } from "@/components/place-details";
 import { Footer } from "@/components/footer";
 import { NewsletterSection } from "@/components/newsletter-section";
@@ -25,6 +25,22 @@ export function MainContent({ content }: MainContentProps) {
     const [selectedItem, setSelectedItem] = useState<PlaceItem | null>(null);
     const modalHistoryPushed = useRef(false);
     const previousUrl = useRef<string | null>(null);
+    const numberedContent = content.reduce<{
+        sections: Array<CategorySection & { sectionNumber?: number }>;
+        collapsibleSectionNumber: number;
+    }>((acc, section) => {
+        if (isIntroSectionTitle(section.title)) {
+            return {
+                sections: [...acc.sections, { ...section, sectionNumber: undefined }],
+                collapsibleSectionNumber: acc.collapsibleSectionNumber,
+            };
+        }
+
+        return {
+            sections: [...acc.sections, { ...section, sectionNumber: acc.collapsibleSectionNumber }],
+            collapsibleSectionNumber: acc.collapsibleSectionNumber + 1,
+        };
+    }, { sections: [], collapsibleSectionNumber: 1 }).sections;
 
     // When the modal opens, push a shallow history entry with the canonical
     // /place/{slug} URL so the user can share or reload straight into the
@@ -69,13 +85,14 @@ export function MainContent({ content }: MainContentProps) {
                 className="relative z-20 bg-gray-100/80 dark:bg-black"
             >
                 <div>
-                    {content.map((section, idx) => (
+                    {numberedContent.map((section, idx) => (
                         <SectionGrid
                             key={idx}
                             title={section.title}
                             description={section.descriptionHtml}
                             items={section.items}
                             onItemClick={setSelectedItem}
+                            sectionNumber={section.sectionNumber}
                         />
                     ))}
                 </div>
