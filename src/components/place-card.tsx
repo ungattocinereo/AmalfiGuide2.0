@@ -168,7 +168,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         aria-hidden="true"
                     />
                     <div
-                        className="pointer-events-none absolute inset-y-0 -left-[35%] z-20 w-[70%] -translate-x-1/2 skew-x-[-14deg] bg-[linear-gradient(105deg,transparent_6%,rgba(255,255,255,0)_24%,rgba(255,255,255,0.86)_48%,rgba(255,212,164,0.54)_60%,transparent_84%)] opacity-0 transition-[translate,opacity] duration-[1130ms] ease-[cubic-bezier(0.35,0,0.15,1)] md:group-hover:translate-x-[220%] md:group-hover:opacity-90 dark:bg-[linear-gradient(105deg,transparent_6%,rgba(255,255,255,0)_24%,rgba(255,226,188,0.50)_48%,rgba(251,146,60,0.32)_60%,transparent_84%)] motion-reduce:hidden"
+                        className="pointer-events-none absolute inset-y-0 -left-[28%] z-20 w-[52%] -translate-x-1/2 skew-x-[-14deg] bg-[linear-gradient(105deg,transparent_10%,rgba(255,255,255,0)_31%,rgba(255,255,255,0.38)_50%,rgba(255,222,182,0.20)_59%,transparent_78%)] opacity-0 transition-[translate,opacity] duration-[720ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-[255%] md:group-hover:opacity-55 dark:bg-[linear-gradient(105deg,transparent_10%,rgba(255,255,255,0)_31%,rgba(255,232,204,0.28)_50%,rgba(251,146,60,0.16)_59%,transparent_78%)] motion-reduce:hidden"
                         aria-hidden="true"
                     />
 
