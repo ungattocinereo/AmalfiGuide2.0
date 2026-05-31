@@ -33,6 +33,7 @@ import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
 import { getMapboxStaticPreviewUrl, getRouteForPlace } from "@/lib/place-routes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
+import { prewarmPlaceDetailImage } from "@/lib/image-preload";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 
@@ -86,6 +87,7 @@ interface PlaceCardProps {
 
 export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBadges = false }: PlaceCardProps) {
     const { t } = useLanguage();
+    const cardRef = React.useRef<HTMLDivElement>(null);
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
     const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
@@ -98,6 +100,24 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     React.useEffect(() => {
         setRoutePreviewFailed(false);
     }, [route?.slug]);
+
+    const prewarmDetailImage = React.useCallback((priority: "high" | "low" = "low") => {
+        if (!route) prewarmPlaceDetailImage(imageUrl, priority);
+    }, [imageUrl, route]);
+
+    React.useEffect(() => {
+        const node = cardRef.current;
+        if (!node || route || typeof IntersectionObserver === "undefined") return;
+
+        const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            prewarmDetailImage("low");
+            observer.disconnect();
+        }, { rootMargin: "900px 0px" });
+
+        observer.observe(node);
+        return () => observer.disconnect();
+    }, [prewarmDetailImage, route]);
 
     // Data-driven badge selection (no category regex). If a place has trail
     // fields (duration/difficulty) we show those; otherwise we surface the two
@@ -125,8 +145,12 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
 
     return (
         <motion.div
+            ref={cardRef}
             layoutId={layoutId}
             onClick={onClick}
+            onPointerEnter={() => prewarmDetailImage("high")}
+            onPointerDown={() => prewarmDetailImage("high")}
+            onFocus={() => prewarmDetailImage("high")}
             className="group relative w-full cursor-pointer flex flex-col touch-manipulation"
             whileTap={{ scale: 0.985 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}

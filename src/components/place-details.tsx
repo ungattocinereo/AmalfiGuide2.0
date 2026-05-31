@@ -34,6 +34,7 @@ import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
 import { getRouteForPlace } from "@/lib/place-routes";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
+import { PLACE_DETAIL_IMAGE_QUALITY } from "@/lib/image-preload";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 import { getPlaceGallery } from "@/lib/place-gallery";
@@ -240,8 +241,10 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 alt={item.name}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
+                                quality={PLACE_DETAIL_IMAGE_QUALITY}
                                 className="object-cover"
-                                priority={galleryIndex === 0}
+                                loading={galleryIndex === 0 ? "eager" : "lazy"}
+                                fetchPriority={galleryIndex === 0 ? "high" : "auto"}
                                 placeholder={galleryIndex === 0 && blurDataURL ? "blur" : "empty"}
                                 blurDataURL={galleryIndex === 0 ? blurDataURL : undefined}
                             />
