@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/output/
+/playwright-report/
+/test-results/
 
 # next.js
 /.next/
@@ -19,6 +22,10 @@
 
 # production
 /build
+/public/sw.js
+/public/sw.js.map
+/public/swe-worker-*.js
+/public/swe-worker-*.js.map
 
 # misc
 .DS_Store

@@ -71,7 +71,7 @@ export function Navbar() {
                 {/* Language pill */}
                 <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
-                        <button type="button" className={textPill} aria-label={t("navbar.language")}>
+                        <button type="button" className={textPill} aria-label={`${t("navbar.language")}: ${language.toUpperCase()}`}>
                             <span className="text-lg leading-none">{LANGUAGES[language].flag}</span>
                             <span className="hidden md:inline text-sm font-medium uppercase tracking-wide">
                                 {language}
@@ -79,7 +79,7 @@ export function Navbar() {
                             <FontAwesomeIcon icon={faChevronDown} className="h-3 w-3 opacity-50" />
                         </button>
                     </DropdownMenuTrigger>
-                    <LanguageDropdownContent setLanguage={setLanguage} />
+                    <LanguageDropdownContent currentLanguage={language} setLanguage={setLanguage} />
                 </DropdownMenu>
 
                 {/* Expand / collapse pill */}
@@ -118,8 +118,10 @@ export function Navbar() {
 }
 
 function LanguageDropdownContent({
+    currentLanguage,
     setLanguage,
 }: {
+    currentLanguage: "en" | "it" | "es" | "fr" | "de" | "ru";
     setLanguage: (lang: "en" | "it" | "es" | "fr" | "de" | "ru") => void;
 }) {
     const langs = [
@@ -144,7 +146,8 @@ function LanguageDropdownContent({
                 <DropdownMenuItem
                     key={l.code}
                     onClick={() => setLanguage(l.code)}
-                    className="gap-3 cursor-pointer rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150
+                    aria-current={currentLanguage === l.code ? "true" : undefined}
+                    className="gap-3 cursor-pointer rounded-xl px-3 py-2.5 text-sm font-medium transition-[background-color,color] duration-150
                                text-gray-800 dark:text-[#FDF6F0]/85
                                hover:bg-[#F43600]/10 hover:text-[#E54800]
                                dark:hover:bg-[#F43600]/15 dark:hover:text-[#FF6B3D]

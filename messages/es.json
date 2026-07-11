@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Guía de la Costa Amalfitana — Paseos, Joyas y Comida Local",
-    "description": "Tu guía de bolsillo de la Costa Amalfitana. Paseos seleccionados, playas secretas, restaurantes y rutas de senderismo — con mapas y consejos de transporte en 6 idiomas.",
+    "title": "Guía de la Costa Amalfitana | Playas, Rutas y Comida",
+    "description": "Una guía local de la Costa Amalfitana con playas, paseos, restaurantes, senderos, indicaciones claras y acceso sin conexión.",
     "ogTitle": "Guía de la Costa Amalfitana — Tu Compañero de Viaje de Bolsillo",
     "ogDescription": "Paseos seleccionados, playas escondidas, restaurantes auténticos y rutas de senderismo panorámicas a lo largo de la Costa Amalfitana. Mapas sin conexión, indicaciones y consejos de transporte en 6 idiomas."
   },
@@ -89,9 +89,26 @@
     "expertGuideText": "Una selección personal de los mejores rincones, joyas escondidas y sabores auténticos de la Costa Amalfitana de alguien que se mudó aquí hace años y se enamoró del lugar.",
     "expertGuideSignature": "Gregory, gestor de propiedades en Amalfi"
   },
+  "discovery": {
+    "label": "Encuentra un lugar",
+    "searchLabel": "Buscar en la guía",
+    "searchPlaceholder": "Busca playas, comida, paseos…",
+    "sectionLabel": "Sección de la guía",
+    "allSections": "Todas las secciones",
+    "openNow": "Abierto ahora",
+    "results": "{count} lugares",
+    "reset": "Restablecer filtros",
+    "noResultsKicker": "Prueba otra ruta",
+    "noResults": "Ningún lugar coincide con estos filtros"
+  },
+  "network": {
+    "offline": "Sin conexión — los lugares visitados siguen disponibles",
+    "online": "Conexión restablecida"
+  },
   "newsletter": {
     "cta": "Suscríbete y mantente al día con las noticias de la Costa Amalfitana y nuestras últimas ofertas",
-    "placeholder": "tu@email.com",
+    "emailLabel": "Correo electrónico",
+    "placeholder": "nombre@ejemplo.com…",
     "subscribe": "Suscribirse",
     "success": "¡Gracias por suscribirte!",
     "error": "Algo salió mal. Inténtalo de nuevo."
@@ -125,6 +142,7 @@
       "evening": "Tarde"
     }
   },
+  "accessibility": { "skipToGuide": "Ir a la guía" },
   "contextWidget": {
     "label": "Contexto local",
     "sunset": "Atardecer",

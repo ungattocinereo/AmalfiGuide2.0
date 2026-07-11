@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Guide de la Côte Amalfitaine — Balades, Trésors et Cuisine Locale",
-    "description": "Votre guide de poche de la Côte Amalfitaine. Balades sélectionnées, plages secrètes, restaurants et sentiers de randonnée — avec cartes et conseils de transport en 6 langues.",
+    "title": "Guide de la Côte Amalfitaine | Plages, Balades & Saveurs",
+    "description": "Un guide local de la Côte Amalfitaine avec plages, balades, restaurants, sentiers, itinéraires clairs et accès hors ligne.",
     "ogTitle": "Guide de la Côte Amalfitaine — Votre Compagnon de Voyage de Poche",
     "ogDescription": "Balades sélectionnées, plages cachées, restaurants authentiques et sentiers de randonnée panoramiques le long de la Côte Amalfitaine. Cartes hors ligne, itinéraires et conseils de transport en 6 langues."
   },
@@ -89,9 +89,26 @@
     "expertGuideText": "Une sélection personnelle des meilleurs endroits, pépites cachées et saveurs authentiques de la Côte Amalfitaine par quelqu'un qui s'y est installé il y a des années et est tombé amoureux du lieu.",
     "expertGuideSignature": "Gregory, gestionnaire immobilier à Amalfi"
   },
+  "discovery": {
+    "label": "Trouver un lieu",
+    "searchLabel": "Rechercher dans le guide",
+    "searchPlaceholder": "Plages, restaurants, balades…",
+    "sectionLabel": "Section du guide",
+    "allSections": "Toutes les sections",
+    "openNow": "Ouvert maintenant",
+    "results": "{count} lieux",
+    "reset": "Réinitialiser les filtres",
+    "noResultsKicker": "Essayez un autre itinéraire",
+    "noResults": "Aucun lieu ne correspond à ces filtres"
+  },
+  "network": {
+    "offline": "Hors ligne — les lieux visités restent disponibles",
+    "online": "Connexion rétablie"
+  },
   "newsletter": {
     "cta": "Abonnez-vous et restez informé des nouvelles de la Côte Amalfitaine et de nos dernières offres",
-    "placeholder": "votre@email.com",
+    "emailLabel": "Adresse e-mail",
+    "placeholder": "nom@exemple.fr…",
     "subscribe": "S'abonner",
     "success": "Merci pour votre inscription !",
     "error": "Une erreur est survenue. Veuillez réessayer."
@@ -125,6 +142,7 @@
       "evening": "Soir"
     }
   },
+  "accessibility": { "skipToGuide": "Aller au guide" },
   "contextWidget": {
     "label": "Contexte local",
     "sunset": "Coucher de soleil",

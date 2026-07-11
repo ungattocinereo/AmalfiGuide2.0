@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Amalfi Coast Guide — Walks, Gems & Local Food",
-    "description": "Your pocket guide to the Amalfi Coast. Curated walks, secret beaches, restaurants, and hiking trails — with maps and transport tips in 6 languages.",
+    "title": "Amalfi Coast Guide | Walks, Beaches & Food",
+    "description": "A local Amalfi Coast guide to beaches, walks, restaurants and scenic trails, with clear directions, offline access and transport tips.",
     "ogTitle": "Amalfi Coast Guide — Your Pocket Travel Companion",
     "ogDescription": "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast. Offline maps, directions & transport tips in 6 languages."
   },
@@ -89,9 +89,26 @@
     "expertGuideText": "A personally curated selection of the best spots, hidden gems, and authentic flavors on the Amalfi Coast from someone who moved here years ago and fell in love with the place.",
     "expertGuideSignature": "Gregory, Amalfi property manager"
   },
+  "discovery": {
+    "label": "Find a place",
+    "searchLabel": "Search the guide",
+    "searchPlaceholder": "Search beaches, food, walks…",
+    "sectionLabel": "Guide section",
+    "allSections": "All sections",
+    "openNow": "Open now",
+    "results": "{count} places",
+    "reset": "Reset filters",
+    "noResultsKicker": "Try another route",
+    "noResults": "No places match these filters"
+  },
+  "network": {
+    "offline": "Offline — visited places remain available",
+    "online": "Back online"
+  },
   "newsletter": {
     "cta": "Subscribe and stay up to date with Amalfi Coast news and our latest offers",
-    "placeholder": "your@email.com",
+    "emailLabel": "Email address",
+    "placeholder": "name@example.com…",
     "subscribe": "Subscribe",
     "success": "Thank you for subscribing!",
     "error": "Something went wrong. Please try again."
@@ -125,6 +142,7 @@
       "evening": "Evening"
     }
   },
+  "accessibility": { "skipToGuide": "Skip to guide" },
   "contextWidget": {
     "label": "Local context",
     "sunset": "Sunset",

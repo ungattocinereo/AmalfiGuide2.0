@@ -37,13 +37,6 @@ async function main() {
     console.log("  Generated blur: /images/hero.webp");
   }
 
-  // Process author photo
-  const gregsPath = path.join(PUBLIC, "images", "gregs-masked.png");
-  if (fs.existsSync(gregsPath)) {
-    blurMap["/images/gregs-masked.png"] = await generateBlurDataURL(gregsPath);
-    console.log("  Generated blur: /images/gregs-masked.png");
-  }
-
   // Write TypeScript output
   const lines = Object.entries(blurMap)
     .sort(([a], [b]) => a.localeCompare(b))

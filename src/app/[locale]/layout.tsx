@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Merriweather } from "next/font/google";
-import Script from "next/script";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutProvider } from "@/components/layout-context";
@@ -8,6 +7,8 @@ import { LanguageProvider } from "@/components/language-context";
 import { EnvironmentBadge } from "@/components/environment-badge";
 import { CookieBanner } from "@/components/cookie-banner";
 import { Analytics } from "@vercel/analytics/react";
+import { ConsentAnalytics } from "@/components/consent-analytics";
+import { NetworkStatus } from "@/components/network-status";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -36,6 +37,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
   const t = await getTranslations({ locale, namespace: "metadata" });
 
   const alternateLanguages: Record<string, string> = {};
@@ -104,41 +107,11 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const accessibilityT = await getTranslations({ locale, namespace: "accessibility" });
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/images/hero.webp" as="image" type="image/webp" />
-
-        {/* GTM Consent Mode v2 — default to denied until user consents */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                analytics_storage: 'denied',
-                ad_storage: 'denied',
-                ad_user_data: 'denied',
-                ad_personalization: 'denied',
-                wait_for_update: 500
-              });
-            `,
-          }}
-        />
-
-        {/* Google Analytics (gtag.js) — G-RTY4017R05 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RTY4017R05"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            gtag('js', new Date());
-            gtag('config', 'G-RTY4017R05');
-          `}
-        </Script>
-
         {/* Schema.org structured data */}
         <script
           type="application/ld+json"
@@ -235,6 +208,12 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`${merriweather.variable} font-serif antialiased`}>
+        <a
+          href="#guide-content"
+          className="fixed left-4 top-4 z-[10001] -translate-y-24 rounded-full bg-[#F43600] px-4 py-2 font-sans text-sm font-bold text-white transition-transform focus:translate-y-0"
+        >
+          {accessibilityT("skipToGuide")}
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -247,11 +226,13 @@ export default async function LocaleLayout({
                 {children}
               </LayoutProvider>
               <CookieBanner />
+              <NetworkStatus />
             </LanguageProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
         <EnvironmentBadge />
-        <Analytics />
+        <ConsentAnalytics />
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

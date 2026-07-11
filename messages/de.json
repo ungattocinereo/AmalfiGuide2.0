@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Amalfiküste Reiseführer — Spaziergänge, Geheimtipps & Lokale Küche",
-    "description": "Dein Taschenreiseführer für die Amalfiküste. Kuratierte Spaziergänge, geheime Strände, Restaurants und Wanderwege — mit Karten und Transporttipps in 6 Sprachen.",
+    "title": "Amalfiküste Reiseführer | Strände, Wege & Genuss",
+    "description": "Ein lokaler Reiseführer für die Amalfiküste mit Stränden, Spaziergängen, Restaurants, Wanderwegen und zuverlässigem Offline-Zugriff.",
     "ogTitle": "Amalfiküste Reiseführer — Dein Reisebegleiter für die Tasche",
     "ogDescription": "Kuratierte Spaziergänge, versteckte Strände, authentische Restaurants und malerische Wanderwege entlang der Amalfiküste. Offline-Karten, Wegbeschreibungen & Transporttipps in 6 Sprachen."
   },
@@ -89,9 +89,26 @@
     "expertGuideText": "Eine persönliche Auswahl der besten Orte, versteckten Juwelen und authentischen Geschmackserlebnisse an der Amalfiküste von jemandem, der vor Jahren hierher gezogen ist und sich in den Ort verliebt hat.",
     "expertGuideSignature": "Gregory, Immobilienverwalter in Amalfi"
   },
+  "discovery": {
+    "label": "Ort finden",
+    "searchLabel": "Im Reiseführer suchen",
+    "searchPlaceholder": "Strände, Essen, Spaziergänge…",
+    "sectionLabel": "Bereich des Reiseführers",
+    "allSections": "Alle Bereiche",
+    "openNow": "Jetzt geöffnet",
+    "results": "{count} Orte",
+    "reset": "Filter zurücksetzen",
+    "noResultsKicker": "Versuche eine andere Route",
+    "noResults": "Keine Orte entsprechen diesen Filtern"
+  },
+  "network": {
+    "offline": "Offline — besuchte Orte bleiben verfügbar",
+    "online": "Wieder online"
+  },
   "newsletter": {
     "cta": "Abonnieren Sie und bleiben Sie über Neuigkeiten von der Amalfiküste und unsere neuesten Angebote informiert",
-    "placeholder": "ihre@email.com",
+    "emailLabel": "E-Mail-Adresse",
+    "placeholder": "name@beispiel.de…",
     "subscribe": "Abonnieren",
     "success": "Vielen Dank für Ihre Anmeldung!",
     "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
@@ -125,6 +142,7 @@
       "evening": "Abend"
     }
   },
+  "accessibility": { "skipToGuide": "Zum Reiseführer" },
   "contextWidget": {
     "label": "Lokaler Kontext",
     "sunset": "Sonnenuntergang",

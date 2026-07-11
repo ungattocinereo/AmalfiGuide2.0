@@ -356,7 +356,7 @@ A family-run restaurant in Vettica above Amalfi, open since 1931. Free shuttle f
 Located in Vettica (just above Amalfi), Da Ciccio is an institution. They cultivate their own vegetable garden, meaning the produce on your plate is zero-kilometer. They serve perhaps the best fish carpaccio on the coast. But the real highlight is the warmth of the family management; you are treated like an old friend.
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Da+Ciccio+Cielo+Mare+Terra+Amalfi)
 > - **TripAdvisor**: [4.5/5 | 1,500+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g187780-d1154564-Reviews-Da_Ciccio_Cielo_Mare_Terra-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -513,7 +513,7 @@ Villa Cimbrone's Terrazza dell'Infinito in Ravello, 20 minutes by bus from Amalf
 Ravello sits high on the cliffs, about a 20-minute bus ride from Amalfi. The crown jewel is Villa Cimbrone and its "Terrazza dell'Infinito." Lined with marble busts and overlooking the Tyrrhenian Sea, it offers a panorama that has inspired writers and filmmakers (seen in *Tenet* and *Wonder Woman*). It's a must-visit for the gardens alone.
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Villa+Cimbrone+Ravello)
 > - **TripAdvisor**: [4.5/5 | 2,500+ Reviews](https://www.tripadvisor.com/Attraction_Review-g194883-d245903-Reviews-Villa_Cimbrone_Gardens-Ravello_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -567,7 +567,7 @@ A tiny pebble beach wedged between cliffs at the mouth of a Praiano gorge.
 Unlike Positano, Marina di Praia has a laid-back soul. The beach is located at the mouth of a gorge in Praiano. It is accessible by car (paid parking nearby) or SITA bus (stop "Marina di Praia"). The sun leaves early here due to the cliffs (usually by early afternoon), so it's perfect for a morning swim followed by a long, lazy lunch at one of the beachside trattorias (like Bar Mare Petit).
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Marina+di+Praia+Praiano)
 > - **TripAdvisor**: [4.5/5 | 500+ Reviews](https://www.tripadvisor.com/Attraction_Review-g194868-d590479-Reviews-Marina_di_Praia_Beach-Praiano_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---

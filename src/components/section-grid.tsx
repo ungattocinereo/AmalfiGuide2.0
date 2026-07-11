@@ -28,6 +28,7 @@ interface SectionGridProps {
     items: PlaceItem[];
     onItemClick: (item: PlaceItem) => void;
     sectionNumber?: number;
+    forceExpanded?: boolean;
 }
 
 const CONTENT_EASE = [0.16, 1, 0.3, 1] as const;
@@ -286,7 +287,7 @@ function SectionContent({
     );
 }
 
-export function SectionGrid({ title, description, items, onItemClick, sectionNumber }: SectionGridProps) {
+export function SectionGrid({ title, description, items, onItemClick, sectionNumber, forceExpanded = false }: SectionGridProps) {
     const { isSectionExpanded, toggleSection } = useLayout();
     const { t } = useLanguage();
 
@@ -312,7 +313,7 @@ export function SectionGrid({ title, description, items, onItemClick, sectionNum
                         titleLower.includes("incontournables") ||
                         titleLower.includes("обязательно");
 
-    const isExpanded = isIntro ? true : isSectionExpanded(title);
+    const isExpanded = isIntro || forceExpanded ? true : isSectionExpanded(title);
 
     return (
         <section className="relative max-w-7xl mx-auto border-b border-gray-100 dark:border-gray-800/60 last:border-0 before:pointer-events-none before:absolute before:top-0 before:left-4 before:right-4 before:h-px before:bg-[#2f2f2f]/12 dark:before:hidden md:before:left-8 md:before:right-8">

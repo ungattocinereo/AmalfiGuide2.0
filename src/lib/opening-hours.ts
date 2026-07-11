@@ -5,6 +5,13 @@ export type TimeInterval = { open: string; close: string };
 export type WeeklyHours = Record<DayKey, TimeInterval[] | "closed">;
 
 const DAYS: DayKey[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const AMALFI_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Rome",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+});
 
 const ABBREV_TO_KEY: Record<string, DayKey> = {
     mon: "mon", mo: "mon", monday: "mon",
@@ -119,8 +126,13 @@ export function parseOpeningHours(input: string): WeeklyHours {
 export function isOpenAt(week: WeeklyHours, when: Date = new Date()): boolean {
     const jsDay = when.getDay(); // 0 = Sun
     const todayKey = DAYS[(jsDay + 6) % 7]; // shift so Mon = 0
-    const prevKey = DAYS[(jsDay + 5) % 7];
     const minutesNow = when.getHours() * 60 + when.getMinutes();
+    return isOpenAtLocalParts(week, todayKey, minutesNow);
+}
+
+function isOpenAtLocalParts(week: WeeklyHours, todayKey: DayKey, minutesNow: number): boolean {
+    const todayIndex = DAYS.indexOf(todayKey);
+    const prevKey = DAYS[(todayIndex + DAYS.length - 1) % DAYS.length];
 
     const todayIntervals = week[todayKey];
     if (todayIntervals !== "closed") {
@@ -156,5 +168,11 @@ const toMinutes = (hhmm: string): number => {
 /** Convenience: parse + check in one call. Returns null if hours string is empty. */
 export function isOpenNow(hours: string | undefined, when: Date = new Date()): boolean | null {
     if (!hours) return null;
-    return isOpenAt(parseOpeningHours(hours), when);
+    const parts = Object.fromEntries(
+        AMALFI_TIME_FORMATTER.formatToParts(when).map((part) => [part.type, part.value]),
+    );
+    const todayKey = parseDayToken(parts.weekday ?? "");
+    if (!todayKey) return null;
+    const minutesNow = Number(parts.hour) * 60 + Number(parts.minute);
+    return isOpenAtLocalParts(parseOpeningHours(hours), todayKey, minutesNow);
 }

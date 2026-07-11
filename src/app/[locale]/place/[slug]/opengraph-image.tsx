@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { findPlaceBySlug } from "@/lib/markdown-parser";
 import type { Language } from "@/lib/i18n/types";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
 
 export const runtime = "nodejs";
 export const alt = "Amalfi.Day place card";
@@ -23,6 +25,10 @@ export default async function OgImage({
     params: Promise<{ locale: string; slug: string }>;
 }) {
     const { locale, slug } = await params;
+    if (!hasLocale(routing.locales, locale)) {
+        return new ImageResponse(<div style={{ width: "100%", height: "100%", background: "#1a0a00" }} />, size);
+    }
+
     const place = findPlaceBySlug(locale as Language, slug);
     if (!place) {
         return new ImageResponse(

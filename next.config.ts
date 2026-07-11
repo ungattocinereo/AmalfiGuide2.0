@@ -1,48 +1,24 @@
 import type { NextConfig } from "next";
-import withPWAInit from "@ducanh2912/next-pwa";
+import withSerwistInit from "@serwist/next";
 import createNextIntlPlugin from 'next-intl/plugin';
-import type { RuntimeCaching } from "workbox-build";
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
-const imageRuntimeCaching: RuntimeCaching[] = [
-  {
-    urlPattern: /\/_next\/image\?url=.+$/i,
-    handler: "CacheFirst",
-    options: {
-      cacheName: "next-image",
-      expiration: {
-        maxEntries: 192,
-        maxAgeSeconds: 60 * 60 * 24 * 30,
-      },
-      cacheableResponse: {
-        statuses: [0, 200],
-      },
-    },
-  },
-  {
-    urlPattern: /\.(?:jpg|jpeg|gif|png|svg|ico|webp|avif)$/i,
-    handler: "CacheFirst",
-    options: {
-      cacheName: "static-image-assets",
-      expiration: {
-        maxEntries: 192,
-        maxAgeSeconds: 60 * 60 * 24 * 30,
-      },
-      cacheableResponse: {
-        statuses: [0, 200],
-      },
-    },
-  },
-];
-
-const withPWA = withPWAInit({
-  dest: "public",
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
   disable: process.env.NODE_ENV === "development",
-  extendDefaultRuntimeCaching: true,
-  workboxOptions: {
-    runtimeCaching: imageRuntimeCaching,
-  },
+  cacheOnNavigation: false,
+  reloadOnOnline: false,
+  globPublicPatterns: [
+    "manifest.json",
+    "favicon.ico",
+    "favicon-*.png",
+    "apple-touch-icon.png",
+    "images/icon*.png",
+    "images/guide-logo.svg",
+    "brand/*.svg",
+  ],
 });
 
 const nextConfig: NextConfig = {
@@ -62,4 +38,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withPWA(withNextIntl(nextConfig));
+export default withSerwist(withNextIntl(nextConfig));

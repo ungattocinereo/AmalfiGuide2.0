@@ -356,7 +356,7 @@ Ristorante a conduzione familiare a Vettica sopra Amalfi, aperto dal 1931. Navet
 Situato a Vettica (appena sopra Amalfi), Da Ciccio è un'istituzione. Coltivano il proprio orto, il che significa che i prodotti nel tuo piatto sono a chilometro zero. Servono forse il miglior carpaccio di pesce della costa. Ma il vero punto forte è il calore della gestione familiare; sei trattato come un vecchio amico.
 
 > [!info] Link Chiave
-> - **Google Maps**: [Visualizza Posizione](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Visualizza Posizione](https://www.google.com/maps/search/?api=1&query=Da+Ciccio+Cielo+Mare+Terra+Amalfi)
 > - **TripAdvisor**: [4.5/5 | 1.500+ Recensioni](https://www.tripadvisor.com/Restaurant_Review-g187780-d1154564-Reviews-Da_Ciccio_Cielo_Mare_Terra-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -513,7 +513,7 @@ La Terrazza dell'Infinito di Villa Cimbrone a Ravello, a 20 minuti di autobus da
 Ravello siede alta sulle scogliere, a circa 20 minuti di autobus da Amalfi. Il gioiello della corona è Villa Cimbrone e la sua "Terrazza dell'Infinito." Fiancheggiata da busti di marmo e affacciata sul Mar Tirreno, offre un panorama che ha ispirato scrittori e registi (vista in *Tenet* e *Wonder Woman*). È una visita obbligata solo per i giardini.
 
 > [!info] Link Chiave
-> - **Google Maps**: [Visualizza Posizione](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Visualizza Posizione](https://www.google.com/maps/search/?api=1&query=Villa+Cimbrone+Ravello)
 > - **TripAdvisor**: [4.5/5 | 2.500+ Recensioni](https://www.tripadvisor.com/Attraction_Review-g194883-d245903-Reviews-Villa_Cimbrone_Gardens-Ravello_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -567,7 +567,7 @@ Piccola spiaggia di ciottoli incastonata tra le scogliere alla foce di una gola 
 A differenza di Positano, Marina di Praia ha un'anima rilassata. La spiaggia si trova alla foce di una gola a Praiano. È accessibile in auto (parcheggio a pagamento nelle vicinanze) o con l'autobus SITA (fermata "Marina di Praia"). Il sole se ne va presto a causa delle scogliere (di solito entro il primo pomeriggio), quindi è perfetto per una nuotata mattutina seguita da un lungo e pigro pranzo in una delle trattorie sulla spiaggia (come Bar Mare Petit).
 
 > [!info] Link Chiave
-> - **Google Maps**: [Visualizza Posizione](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Visualizza Posizione](https://www.google.com/maps/search/?api=1&query=Marina+di+Praia+Praiano)
 > - **TripAdvisor**: [4.5/5 | 500+ Recensioni](https://www.tripadvisor.com/Attraction_Review-g194868-d590479-Reviews-Marina_di_Praia_Beach-Praiano_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---

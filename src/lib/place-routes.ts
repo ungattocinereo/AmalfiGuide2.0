@@ -129,7 +129,17 @@ export const getRouteForPlace = (name: string): RouteAsset | null => {
 const formatMapboxCoordinate = ([lon, lat]: Coordinate): string =>
     `${lon.toFixed(5)},${lat.toFixed(5)}`;
 
-export const getMapboxStaticPreviewUrl = (route: RouteAsset): string | null => {
+type StaticPreviewSize = "compact" | "wide";
+
+const STATIC_PREVIEW_DIMENSIONS: Record<StaticPreviewSize, string> = {
+    compact: "600x450",
+    wide: "900x675",
+};
+
+export const getMapboxStaticPreviewUrl = (
+    route: RouteAsset,
+    size: StaticPreviewSize = "wide",
+): string | null => {
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
     if (!token) return null;
 
@@ -141,5 +151,5 @@ export const getMapboxStaticPreviewUrl = (route: RouteAsset): string | null => {
         `pin-s-b+b91c1c(${formatMapboxCoordinate(route.staticPreview.end)})`,
     ].join(",");
 
-    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/static/${overlays}/auto/1200x900@2x?padding=56&access_token=${encodeURIComponent(token)}`;
+    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/static/${overlays}/auto/${STATIC_PREVIEW_DIMENSIONS[size]}?padding=48&access_token=${encodeURIComponent(token)}`;
 };

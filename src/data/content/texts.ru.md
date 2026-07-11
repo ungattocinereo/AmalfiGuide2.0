@@ -356,7 +356,7 @@ Le Arcate — любимое местное место для тех, кто х�
 Расположенный в Vettica (чуть выше Amalfi), Da Ciccio — это институция. Они выращивают собственный огород, что означает, что продукты на твоей тарелке нулевого километра. Они подают, возможно, лучший карпаччо из рыбы на побережье. Но настоящая изюминка — это теплота семейного управления; к тебе относятся как к старому другу.
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Da+Ciccio+Cielo+Mare+Terra+Amalfi)
 > - **TripAdvisor**: [4.5/5 | 1,500+ Reviews](https://www.tripadvisor.com/Restaurant_Review-g187780-d1154564-Reviews-Da_Ciccio_Cielo_Mare_Terra-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -513,7 +513,7 @@ Terrazza dell'Infinito виллы Чимброне в Равелло — 20 ми
 Ravello расположен высоко на скалах, примерно в 20 минутах езды на автобусе от Amalfi. Жемчужина короны — Villa Cimbrone и её «Terrazza dell'Infinito». Украшенная мраморными бюстами и выходящая на Тирренское море, она предлагает панораму, вдохновлявшую писателей и кинематографистов (показана в *Tenet* и *Wonder Woman*). Это обязательное посещение только ради садов.
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Villa+Cimbrone+Ravello)
 > - **TripAdvisor**: [4.5/5 | 2,500+ Reviews](https://www.tripadvisor.com/Attraction_Review-g194883-d245903-Reviews-Villa_Cimbrone_Gardens-Ravello_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -567,7 +567,7 @@ Ravello расположен высоко на скалах, примерно в
 В отличие от Positano, Marina di Praia имеет расслабленную душу. Пляж расположен в устье ущелья в Praiano. Он доступен на машине (платная парковка рядом) или автобусом SITA (остановка "Marina di Praia"). Солнце уходит рано из-за скал (обычно к началу дня), так что это идеально для утреннего купания с последующим долгим, ленивым обедом в одной из пляжных траттория (например, Bar Mare Petit).
 
 > [!info] Key Links
-> - **Google Maps**: [View Location](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [View Location](https://www.google.com/maps/search/?api=1&query=Marina+di+Praia+Praiano)
 > - **TripAdvisor**: [4.5/5 | 500+ Reviews](https://www.tripadvisor.com/Attraction_Review-g194868-d590479-Reviews-Marina_di_Praia_Beach-Praiano_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---

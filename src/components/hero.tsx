@@ -141,9 +141,7 @@ export function Hero() {
                 {/* Brand cluster */}
                 <motion.div
                     className="relative z-[2] flex items-center gap-4 mb-4 md:mb-0"
-                    initial={{ opacity: 0, y: -12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease, delay: 0.3 }}
+                    initial={false}
                 >
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-[11px] md:rounded-[13px] overflow-hidden flex-shrink-0 shadow-[0_4px_20px_rgba(244,54,0,0.3)]">
                         <Image
@@ -172,9 +170,7 @@ export function Hero() {
                     {/* Kicker */}
                     <motion.div
                         className="font-sans text-[0.65rem] md:text-[0.7rem] font-semibold tracking-[0.3em] uppercase text-[#F43600] mb-3 md:mb-5 flex items-center gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease, delay: 0.5 }}
+                        initial={false}
                     >
                         <span className="w-5 md:w-8 h-0.5 bg-[#F43600] rounded-sm block" />
                         {t('hero.kicker')}
@@ -185,9 +181,7 @@ export function Hero() {
                         style={{ fontFamily: 'var(--font-merriweather)' }}
                         className="font-bold text-[#FDF6F0] leading-[1.05] tracking-tight
                                    text-[clamp(1.8rem,8vw,2.6rem)] md:text-[clamp(2.8rem,5.5vw,5rem)] lg:text-[5.2rem]"
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease, delay: 0.6 }}
+                        initial={false}
                     >
                         {t('hero.headingLine1') && <span className="block">{t('hero.headingLine1')}</span>}
                         <span className="block">
@@ -202,9 +196,7 @@ export function Hero() {
                     {/* Description */}
                     <motion.p
                         className="font-sans text-[0.82rem] md:text-[0.95rem] leading-relaxed text-[#FDF6F0]/55 max-w-none md:max-w-[380px] mt-4 md:mt-6"
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease, delay: 0.9 }}
+                        initial={false}
                     >
                         {t('hero.description')}
                     </motion.p>
@@ -212,9 +204,7 @@ export function Hero() {
                     {/* Real-time context — sunset, weather, hiking suitability */}
                     <motion.div
                         className="mt-4 md:mt-5"
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, ease, delay: 1.0 }}
+                        initial={false}
                     >
                         <ContextWidget />
                     </motion.div>
@@ -223,9 +213,7 @@ export function Hero() {
                 {/* Bottom row: Transport pills + scroll CTA */}
                 <motion.div
                     className="relative z-[2] flex items-center justify-between gap-5 pt-4 md:pt-0"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease, delay: 1.1 }}
+                    initial={false}
                 >
                     <div className="flex gap-[6px] md:gap-2">
                         {/* Bus */}
@@ -235,7 +223,7 @@ export function Hero() {
                             rel="noopener noreferrer"
                             className="flex items-center gap-[5px] md:gap-[7px] py-[7px] px-3 md:px-[14px] bg-white/[0.06] border border-white/[0.08] rounded-full
                                        text-[#FDF6F0]/65 font-sans text-[0.62rem] md:text-[0.7rem] font-medium tracking-[0.04em] uppercase whitespace-nowrap
-                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-all duration-200"
+                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-[background-color,border-color,color,transform] duration-200"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[13px] h-[13px] md:w-[15px] md:h-[15px] flex-shrink-0">
                                 <path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/>
@@ -252,7 +240,7 @@ export function Hero() {
                             rel="noopener noreferrer"
                             className="flex items-center gap-[5px] md:gap-[7px] py-[7px] px-3 md:px-[14px] bg-white/[0.06] border border-white/[0.08] rounded-full
                                        text-[#FDF6F0]/65 font-sans text-[0.62rem] md:text-[0.7rem] font-medium tracking-[0.04em] uppercase whitespace-nowrap
-                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-all duration-200"
+                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-[background-color,border-color,color,transform] duration-200"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[13px] h-[13px] md:w-[15px] md:h-[15px] flex-shrink-0">
                                 <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
@@ -270,7 +258,7 @@ export function Hero() {
                             rel="noopener noreferrer"
                             className="flex items-center gap-[5px] md:gap-[7px] py-[7px] px-3 md:px-[14px] bg-white/[0.06] border border-white/[0.08] rounded-full
                                        text-[#FDF6F0]/65 font-sans text-[0.62rem] md:text-[0.7rem] font-medium tracking-[0.04em] uppercase whitespace-nowrap
-                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-all duration-200"
+                                       hover:bg-[#F43600]/15 hover:border-[#F43600]/30 hover:text-[#FF6B3D] hover:-translate-y-0.5 transition-[background-color,border-color,color,transform] duration-200"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[13px] h-[13px] md:w-[15px] md:h-[15px] flex-shrink-0">
                                 <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
@@ -352,9 +340,7 @@ export function Hero() {
                             ? "drop-shadow(0 24px 64px rgba(244,54,0,0.12)) drop-shadow(0 8px 24px rgba(0,0,0,0.4))"
                             : "drop-shadow(0 24px 48px rgba(26,10,0,0.15)) drop-shadow(0 8px 16px rgba(26,10,0,0.1))",
                     }}
-                    initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 1.2, ease, delay: 0.5 }}
+                    initial={false}
                 >
                     <Image
                         src="/images/hero.webp"
@@ -362,6 +348,7 @@ export function Hero() {
                         width={640}
                         height={800}
                         priority
+                        fetchPriority="high"
                         sizes="(max-width: 768px) 70vw, 640px"
                         placeholder={heroBlur ? "blur" : "empty"}
                         blurDataURL={heroBlur}
@@ -374,7 +361,7 @@ export function Hero() {
                     className={`absolute z-[5] bottom-[8%] md:bottom-[8%] right-[4%] md:right-[8%]
                                flex items-center gap-2 py-[7px] px-3 md:py-[10px] md:px-[18px]
                                rounded-full font-sans text-[0.62rem] md:text-[0.75rem] font-semibold tracking-[0.02em]
-                               transition-all duration-700
+                               transition-[background-color,border-color,color,box-shadow] duration-700
                                ${isDark
                                    ? "bg-[#1A0A00]/80 backdrop-blur-md border border-[#F43600]/20 text-[#FDF6F0]/85 shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_16px_rgba(244,54,0,0.08)]"
                                    : "bg-white text-[#3D2415] shadow-[0_8px_32px_rgba(26,10,0,0.08),0_2px_8px_rgba(26,10,0,0.04)]"

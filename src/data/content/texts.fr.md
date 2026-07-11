@@ -356,7 +356,7 @@ Restaurant familial à Vettica au-dessus d'Amalfi, ouvert depuis 1931. Navette g
 Situé à Vettica (juste au-dessus d'Amalfi), Da Ciccio est une institution. Ils cultivent leur propre potager, ce qui signifie que les produits dans votre assiette sont à kilomètre zéro. Ils servent peut-être le meilleur carpaccio de poisson de la côte. Mais le véritable point fort est la chaleur de la gestion familiale ; vous êtes traité comme un vieil ami.
 
 > [!info] Liens Utiles
-> - **Google Maps**: [Voir l'Emplacement](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Voir l'Emplacement](https://www.google.com/maps/search/?api=1&query=Da+Ciccio+Cielo+Mare+Terra+Amalfi)
 > - **TripAdvisor**: [4.5/5 | 1 500+ Avis](https://www.tripadvisor.com/Restaurant_Review-g187780-d1154564-Reviews-Da_Ciccio_Cielo_Mare_Terra-Amalfi_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -513,7 +513,7 @@ La Terrazza dell'Infinito de la Villa Cimbrone à Ravello, à 20 minutes de bus 
 Ravello se trouve haut sur les falaises, à environ 20 minutes en bus d'Amalfi. Le joyau de la couronne est la Villa Cimbrone et sa « Terrazza dell'Infinito ». Bordée de bustes en marbre et surplombant la mer Tyrrhénienne, elle offre un panorama qui a inspiré écrivains et cinéastes (vue dans *Tenet* et *Wonder Woman*). C'est une visite incontournable rien que pour les jardins.
 
 > [!info] Liens Utiles
-> - **Google Maps**: [Voir l'Emplacement](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Voir l'Emplacement](https://www.google.com/maps/search/?api=1&query=Villa+Cimbrone+Ravello)
 > - **TripAdvisor**: [4.5/5 | 2 500+ Avis](https://www.tripadvisor.com/Attraction_Review-g194883-d245903-Reviews-Villa_Cimbrone_Gardens-Ravello_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---
@@ -567,7 +567,7 @@ Petite plage de galets coincée entre les falaises à l'embouchure d'une gorge d
 Contrairement à Positano, Marina di Praia a une âme décontractée. La plage est située à l'embouchure d'une gorge à Praiano. Elle est accessible en voiture (parking payant à proximité) ou en bus SITA (arrêt « Marina di Praia »). Le soleil part tôt ici en raison des falaises (généralement en début d'après-midi), c'est donc parfait pour une baignade matinale suivie d'un long déjeuner tranquille dans l'une des trattorias au bord de la plage (comme Bar Mare Petit).
 
 > [!info] Liens Utiles
-> - **Google Maps**: [Voir l'Emplacement](https://goo.gl/maps/8Xj9X6Q1X1Q2)
+> - **Google Maps**: [Voir l'Emplacement](https://www.google.com/maps/search/?api=1&query=Marina+di+Praia+Praiano)
 > - **TripAdvisor**: [4.5/5 | 500+ Avis](https://www.tripadvisor.com/Attraction_Review-g194868-d590479-Reviews-Marina_di_Praia_Beach-Praiano_Amalfi_Coast_Province_of_Salerno_Campania.html)
 
 ---

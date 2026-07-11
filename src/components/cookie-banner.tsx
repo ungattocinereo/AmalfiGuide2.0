@@ -80,9 +80,9 @@ export function CookieBanner() {
         <div
             role="dialog"
             aria-label="Cookie consent"
-            className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-5 animate-in slide-in-from-bottom duration-300"
+            className="fixed bottom-0 left-0 right-0 z-[9999] p-4 animate-in slide-in-from-bottom duration-300 sm:left-auto sm:w-[min(28rem,calc(100vw-2rem))] sm:p-5"
         >
-            <div className="max-w-2xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <div className="mx-auto flex max-w-2xl flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-xl dark:border-gray-700 dark:bg-gray-900 sm:p-5">
                 <p className="text-sm text-gray-600 dark:text-gray-300 flex-1 leading-relaxed">
                     {t("cookie.message")}{" "}
                     <a
@@ -94,7 +94,7 @@ export function CookieBanner() {
                         {t("cookie.privacyLink")}
                     </a>.
                 </p>
-                <div className="flex gap-2 shrink-0">
+                <div className="flex w-full justify-end gap-2">
                     <button
                         onClick={handleDecline}
                         className="px-3.5 py-1.5 text-sm rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -103,7 +103,7 @@ export function CookieBanner() {
                     </button>
                     <button
                         onClick={handleAccept}
-                        className="px-3.5 py-1.5 text-sm rounded-full bg-orange-600 hover:bg-orange-700 text-white transition-colors"
+                        className="rounded-full bg-[#c93400] px-3.5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#a82b00]"
                     >
                         {t("cookie.accept")}
                     </button>

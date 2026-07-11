@@ -67,6 +67,7 @@ const isMenuLink = (link: { label: string; url: string }): boolean =>
 
 export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceDetailsProps) {
     const isModal = mode === "modal";
+    const MotionHeading = isModal ? motion.h2 : motion.h1;
     const { t } = useLanguage();
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
@@ -276,7 +277,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                         type="button"
                                         onClick={(e) => { e.stopPropagation(); setGalleryIndex(i); }}
                                         aria-label={t("gallery.goTo") + ` ${i + 1}`}
-                                        className={`h-1.5 rounded-full transition-all ${i === galleryIndex ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}`}
+                                        className={`h-1.5 rounded-full transition-[width,background-color] ${i === galleryIndex ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}`}
                                     />
                                 ))}
                             </div>
@@ -293,7 +294,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                 <Link
                     href="/"
                     aria-label={t("placeDetails.backToGuide")}
-                    className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-all duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
+                    className="absolute top-4 left-4 z-50 inline-flex items-center gap-2 pl-2 pr-3.5 h-11 rounded-full bg-black/35 hover:bg-black/55 active:bg-black/65 text-white backdrop-blur-md transition-[background-color,transform] duration-150 active:scale-95 touch-manipulation font-sans text-xs font-semibold uppercase tracking-wider"
                 >
                     <FontAwesomeIcon icon={faArrowLeft} className="h-[18px] w-[18px]" />
                     <span>{t("placeDetails.backToGuide")}</span>
@@ -309,7 +310,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         handleShare();
                     }}
                     aria-label={t("placeDetails.share")}
-                    className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                    className="absolute top-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-[background-color,transform] duration-150 active:scale-90 touch-manipulation"
                 >
                     <FontAwesomeIcon icon={faShareNodes} className="h-5 w-5" />
                 </button>
@@ -363,7 +364,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                         >
                             {item.category}
                         </motion.p>
-                        <motion.h2
+                        <MotionHeading
                             id="place-details-title"
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -372,7 +373,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                             className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-50 mb-3 md:mb-5 leading-tight"
                         >
                             {item.name}
-                        </motion.h2>
+                        </MotionHeading>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -488,7 +489,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group mb-4 flex items-center gap-4 rounded-2xl border border-orange-200/80 bg-orange-50/65 px-4 py-4 shadow-sm shadow-orange-950/5 transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md dark:border-orange-900/60 dark:bg-orange-950/20 dark:hover:bg-orange-950/30"
+                                className="group mb-4 flex items-center gap-4 rounded-2xl border border-orange-200/80 bg-orange-50/65 px-4 py-4 shadow-sm shadow-orange-950/5 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md dark:border-orange-900/60 dark:bg-orange-950/20 dark:hover:bg-orange-950/30"
                             >
                                 <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-orange-700 shadow-sm ring-1 ring-orange-100 transition group-hover:scale-105 dark:bg-gray-950/70 dark:text-orange-300 dark:ring-orange-900/70">
                                     <FontAwesomeIcon icon={faBookOpen} className="h-[21px] w-[21px]" />
@@ -604,7 +605,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                     onClose?.();
                 }}
                 aria-label={t("placeDetails.close")}
-                className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                className="fixed top-4 right-4 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-[background-color,transform] duration-150 active:scale-90 touch-manipulation"
                 style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
             >
                 <FontAwesomeIcon icon={faXmark} className="h-[22px] w-[22px]" />
@@ -618,7 +619,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                     handleShare();
                 }}
                 aria-label={t("placeDetails.share")}
-                className="fixed top-4 right-[4.5rem] z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-all duration-150 active:scale-90 touch-manipulation"
+                className="fixed top-4 right-[4.5rem] z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 active:bg-black/60 text-white backdrop-blur-md transition-[background-color,transform] duration-150 active:scale-90 touch-manipulation"
                 style={{ top: 'max(1rem, env(safe-area-inset-top))' } as React.CSSProperties}
             >
                 <FontAwesomeIcon icon={faShareNodes} className="h-5 w-5" />

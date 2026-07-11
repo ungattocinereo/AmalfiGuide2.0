@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Guida alla Costiera Amalfitana — Passeggiate, Gemme e Cucina Locale",
-    "description": "La tua guida tascabile alla Costiera Amalfitana. Passeggiate curate, spiagge segrete, ristoranti e sentieri escursionistici — con mappe e suggerimenti sui trasporti in 6 lingue.",
+    "title": "Guida Costiera Amalfitana | Luoghi, Sentieri e Cibo",
+    "description": "Una guida locale alla Costiera Amalfitana con spiagge, passeggiate, ristoranti, sentieri, indicazioni chiare e accesso offline.",
     "ogTitle": "Guida alla Costiera Amalfitana — Il Tuo Compagno di Viaggio Tascabile",
     "ogDescription": "Passeggiate curate, spiagge nascoste, ristoranti autentici e sentieri panoramici lungo la Costiera Amalfitana. Mappe offline, indicazioni e suggerimenti sui trasporti in 6 lingue."
   },
@@ -89,9 +89,26 @@
     "expertGuideText": "Una selezione personale dei posti migliori, gemme nascoste e sapori autentici della Costiera Amalfitana da chi si è trasferito qui anni fa e si è innamorato del posto.",
     "expertGuideSignature": "Gregory, gestore di proprietà ad Amalfi"
   },
+  "discovery": {
+    "label": "Trova un luogo",
+    "searchLabel": "Cerca nella guida",
+    "searchPlaceholder": "Cerca spiagge, cibo, passeggiate…",
+    "sectionLabel": "Sezione della guida",
+    "allSections": "Tutte le sezioni",
+    "openNow": "Aperto ora",
+    "results": "{count} luoghi",
+    "reset": "Azzera filtri",
+    "noResultsKicker": "Prova un altro percorso",
+    "noResults": "Nessun luogo corrisponde a questi filtri"
+  },
+  "network": {
+    "offline": "Offline — i luoghi visitati restano disponibili",
+    "online": "Di nuovo online"
+  },
   "newsletter": {
     "cta": "Iscriviti e resta aggiornato sulle novità della Costiera Amalfitana e le nostre ultime offerte",
-    "placeholder": "tua@email.com",
+    "emailLabel": "Indirizzo email",
+    "placeholder": "nome@esempio.it…",
     "subscribe": "Iscriviti",
     "success": "Grazie per l'iscrizione!",
     "error": "Qualcosa è andato storto. Riprova."
@@ -125,6 +142,7 @@
       "evening": "Sera"
     }
   },
+  "accessibility": { "skipToGuide": "Vai alla guida" },
   "contextWidget": {
     "label": "Contesto locale",
     "sunset": "Tramonto",

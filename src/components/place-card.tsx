@@ -32,6 +32,7 @@ import {
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
 import { getMapboxStaticPreviewUrl, getRouteForPlace } from "@/lib/place-routes";
+import { Link } from "@/i18n/navigation";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { prewarmPlaceDetailImage } from "@/lib/image-preload";
 import { useLanguage } from "@/components/language-context";
@@ -91,8 +92,10 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
     const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
-    const mapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route) : null;
-    const visualUrl = route ? mapboxPreviewUrl : imageUrl;
+    const compactMapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route, "compact") : null;
+    const wideMapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route, "wide") : null;
+    const hasMapboxPreview = Boolean(compactMapboxPreviewUrl && wideMapboxPreviewUrl);
+    const visualUrl = route ? wideMapboxPreviewUrl : imageUrl;
     const blurDataURL = route ? undefined : getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
@@ -147,17 +150,22 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
         <motion.div
             ref={cardRef}
             layoutId={layoutId}
-            onClick={onClick}
-            onPointerEnter={() => prewarmDetailImage("high")}
-            onPointerDown={() => prewarmDetailImage("high")}
-            onFocus={() => prewarmDetailImage("high")}
-            className="group relative w-full cursor-pointer flex flex-col touch-manipulation"
+            className="relative w-full"
             whileTap={{ scale: 0.985 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
         >
+            <Link
+                href={`/place/${item.slug}`}
+                onClick={(event) => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    onClick();
+                }}
+                onPointerEnter={() => prewarmDetailImage("high")}
+                onPointerDown={() => prewarmDetailImage("high")}
+                onFocus={() => prewarmDetailImage("high")}
+                className="group flex w-full cursor-pointer flex-col touch-manipulation"
+            >
             {/* Card container — horizontal on mobile (non-hiking), vertical on desktop and hiking */}
             <div className={`rounded-2xl bg-white dark:bg-amalfi-espresso border border-gray-200/70 dark:border-orange-950/40 shadow-none md:group-hover:-translate-y-0.5 md:group-hover:border-orange-300/45 dark:md:group-hover:border-orange-800/65 md:group-hover:bg-white dark:md:group-hover:bg-amalfi-espresso-soft md:group-hover:shadow-[0_18px_34px_-34px_rgba(33,24,17,0.52)] dark:md:group-hover:shadow-[0_18px_34px_-36px_rgba(0,0,0,0.55)] transition-[translate,border-color,box-shadow,background-color] duration-700 ease-[cubic-bezier(0.35,0,0.15,1)] motion-reduce:transition-none overflow-hidden ${route ? "flex flex-col" : "flex flex-row md:flex-col"}`}>
                 {/* Image container — fixed width on mobile for horizontal layout, full width on desktop */}
@@ -166,7 +174,23 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         ? `${aspectRatio || "aspect-[4/3]"} w-full`
                         : "shrink-0 w-1/3 min-h-[9rem] md:w-full md:min-h-0 md:aspect-[4/3]"
                 }`}>
-                    {visualUrl ? (
+                    {route && hasMapboxPreview ? (
+                        <picture>
+                            <source media="(max-width: 768px)" srcSet={compactMapboxPreviewUrl!} />
+                            {/* Mapbox already returns a correctly sized raster; bypassing next/image
+                                avoids downloading a 2400px preview for a small card. */}
+                            <img
+                                src={wideMapboxPreviewUrl!}
+                                alt=""
+                                width={900}
+                                height={675}
+                                loading="lazy"
+                                decoding="async"
+                                className="absolute inset-0 h-full w-full object-cover scale-100 transition-[filter,scale] duration-[950ms] ease-[cubic-bezier(0.35,0,0.15,1)] md:group-hover:scale-[1.025] motion-reduce:transition-none motion-reduce:md:group-hover:scale-100 dark:grayscale dark:saturate-0 dark:contrast-110"
+                                onError={() => setRoutePreviewFailed(true)}
+                            />
+                        </picture>
+                    ) : visualUrl ? (
                         <Image
                             src={visualUrl}
                             alt=""
@@ -176,10 +200,8 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                             className={`object-cover scale-100 transition-[filter,scale] duration-[950ms] ease-[cubic-bezier(0.35,0,0.15,1)] md:group-hover:scale-[1.025] md:group-hover:saturate-[1.05] motion-reduce:transition-none motion-reduce:md:group-hover:scale-100 ${route ? "dark:grayscale dark:saturate-0 dark:contrast-110" : ""}`}
                             placeholder={blurDataURL ? "blur" : "empty"}
                             blurDataURL={blurDataURL}
-                            unoptimized={Boolean(mapboxPreviewUrl)}
-                            loading={route ? "eager" : "lazy"}
-                            fetchPriority={route ? "high" : "auto"}
-                            onError={mapboxPreviewUrl ? () => setRoutePreviewFailed(true) : undefined}
+                            loading="lazy"
+                            fetchPriority="auto"
                         />
                     ) : (
                         <div className="absolute inset-0 flex items-center justify-center bg-stone-100 text-orange-700 dark:bg-amalfi-espresso-soft dark:text-orange-300">
@@ -259,6 +281,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                     )}
                 </div>
             </div>
+            </Link>
         </motion.div>
     );
 }

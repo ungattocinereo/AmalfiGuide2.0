@@ -191,7 +191,7 @@ export function Footer() {
                                     key={item.label}
                                     href={item.href}
                                     target="_blank"
-                                    rel="noreferrer"
+                                    rel="noopener noreferrer"
                                     aria-label={item.label}
                                     className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(26,26,26,0.12)] text-[#1a1a1a] transition-[background,border-color,color,transform] duration-200 hover:-translate-y-px hover:border-transparent hover:text-white focus-visible:-translate-y-px focus-visible:border-transparent focus-visible:text-white dark:border-[rgba(255,255,255,0.08)] dark:text-[#f5f5f5] ${item.hoverClass}`}
                                 >
@@ -258,7 +258,7 @@ export function Footer() {
                             className="underline underline-offset-[3px] hover:text-[#ff5900]"
                             href="https://cinereo.it"
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                         >
                             Cinereo
                         </a>

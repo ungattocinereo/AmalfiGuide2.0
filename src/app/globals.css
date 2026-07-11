@@ -46,6 +46,7 @@
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+    color-scheme: dark;
   }
 
   /* Smooth system font rendering */
@@ -65,6 +66,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-merriweather);
     font-weight: 700;
+    scroll-margin-top: 8rem;
   }
 
   /* Smooth focus states */

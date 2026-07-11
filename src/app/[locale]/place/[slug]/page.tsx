@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import type { Language } from "@/lib/i18n/types";
 import {
@@ -33,6 +34,8 @@ export async function generateMetadata({
     params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
     const { locale, slug } = await params;
+    if (!hasLocale(routing.locales, locale)) notFound();
+
     const place = findPlaceBySlug(locale as Language, slug);
     if (!place) return {};
 
@@ -46,7 +49,7 @@ export async function generateMetadata({
     }
     alternateLanguages["x-default"] = `${SITE_URL}/place/${slug}`;
 
-    const title = `${place.name} — ${t("title")}`;
+    const title = `${place.name} | Amalfi.Day`;
     const description = place.shortInfo || place.tagline || t("description");
 
     return {
@@ -80,6 +83,8 @@ export default async function PlacePage({
     params: Promise<{ locale: string; slug: string }>;
 }) {
     const { locale, slug } = await params;
+    if (!hasLocale(routing.locales, locale)) notFound();
+
     setRequestLocale(locale);
 
     const place = findPlaceBySlug(locale as Language, slug);
@@ -88,7 +93,7 @@ export default async function PlacePage({
     const jsonLd = buildPlaceJsonLd(place, locale);
 
     return (
-        <main className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
+        <main id="guide-content" className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
