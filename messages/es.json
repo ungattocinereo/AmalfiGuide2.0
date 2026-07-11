@@ -89,18 +89,6 @@
     "expertGuideText": "Una selección personal de los mejores rincones, joyas escondidas y sabores auténticos de la Costa Amalfitana de alguien que se mudó aquí hace años y se enamoró del lugar.",
     "expertGuideSignature": "Gregory, gestor de propiedades en Amalfi"
   },
-  "discovery": {
-    "label": "Encuentra un lugar",
-    "searchLabel": "Buscar en la guía",
-    "searchPlaceholder": "Busca playas, comida, paseos…",
-    "sectionLabel": "Sección de la guía",
-    "allSections": "Todas las secciones",
-    "openNow": "Abierto ahora",
-    "results": "{count} lugares",
-    "reset": "Restablecer filtros",
-    "noResultsKicker": "Prueba otra ruta",
-    "noResults": "Ningún lugar coincide con estos filtros"
-  },
   "network": {
     "offline": "Sin conexión — los lugares visitados siguen disponibles",
     "online": "Conexión restablecida"

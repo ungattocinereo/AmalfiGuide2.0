@@ -89,18 +89,6 @@
     "expertGuideText": "Una selezione personale dei posti migliori, gemme nascoste e sapori autentici della Costiera Amalfitana da chi si è trasferito qui anni fa e si è innamorato del posto.",
     "expertGuideSignature": "Gregory, gestore di proprietà ad Amalfi"
   },
-  "discovery": {
-    "label": "Trova un luogo",
-    "searchLabel": "Cerca nella guida",
-    "searchPlaceholder": "Cerca spiagge, cibo, passeggiate…",
-    "sectionLabel": "Sezione della guida",
-    "allSections": "Tutte le sezioni",
-    "openNow": "Aperto ora",
-    "results": "{count} luoghi",
-    "reset": "Azzera filtri",
-    "noResultsKicker": "Prova un altro percorso",
-    "noResults": "Nessun luogo corrisponde a questi filtri"
-  },
   "network": {
     "offline": "Offline — i luoghi visitati restano disponibili",
     "online": "Di nuovo online"

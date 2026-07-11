@@ -89,18 +89,6 @@
     "expertGuideText": "Une sélection personnelle des meilleurs endroits, pépites cachées et saveurs authentiques de la Côte Amalfitaine par quelqu'un qui s'y est installé il y a des années et est tombé amoureux du lieu.",
     "expertGuideSignature": "Gregory, gestionnaire immobilier à Amalfi"
   },
-  "discovery": {
-    "label": "Trouver un lieu",
-    "searchLabel": "Rechercher dans le guide",
-    "searchPlaceholder": "Plages, restaurants, balades…",
-    "sectionLabel": "Section du guide",
-    "allSections": "Toutes les sections",
-    "openNow": "Ouvert maintenant",
-    "results": "{count} lieux",
-    "reset": "Réinitialiser les filtres",
-    "noResultsKicker": "Essayez un autre itinéraire",
-    "noResults": "Aucun lieu ne correspond à ces filtres"
-  },
   "network": {
     "offline": "Hors ligne — les lieux visités restent disponibles",
     "online": "Connexion rétablie"

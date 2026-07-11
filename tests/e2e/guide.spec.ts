@@ -5,30 +5,31 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("cookie-consent", "declined"));
 });
 
-test("search is shareable and narrows the guide", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("searchbox", { name: "Search the guide" }).fill("lemon");
+test("discovery controls are removed and legacy query parameters do not filter content", async ({ page }) => {
+  await page.goto("/?q=lemon&section=2&open=1");
 
-  await expect(page).toHaveURL(/\?q=lemon$/);
-  await expect(page.getByText("1 places", { exact: true })).toBeVisible();
+  await expect(page.locator('[name="guide-search"]')).toHaveCount(0);
+  await expect(page.locator('[name="guide-section"]')).toHaveCount(0);
+  await expect(page.locator('[name="guide-open-now"]')).toHaveCount(0);
   await expect(page.locator('a[href="/place/the-lemon-path-sentiero-dei-limoni"]')).toHaveCount(1);
+  await expect(page.locator('a[href="/place/church-of-saint-mary-magdalene"]')).toHaveCount(1);
 });
 
 test("place cards remain real links while primary clicks open an accessible modal", async ({ page }) => {
-  await page.goto("/?q=lemon");
-  const placeLink = page.locator('a[href="/place/the-lemon-path-sentiero-dei-limoni"]');
+  await page.goto("/");
+  const placeLink = page.locator('a[href="/place/church-of-saint-mary-magdalene"]');
 
   await expect(placeLink).toHaveCount(1);
-  await expect(placeLink).toHaveAttribute("href", "/place/the-lemon-path-sentiero-dei-limoni");
+  await expect(placeLink).toHaveAttribute("href", "/place/church-of-saint-mary-magdalene");
   await placeLink.click();
 
-  await expect(page).toHaveURL(/\/place\/the-lemon-path-sentiero-dei-limoni$/);
+  await expect(page).toHaveURL(/\/place\/church-of-saint-mary-magdalene$/);
   await expect(page.getByRole("dialog")).toBeVisible();
   await expect(page.locator("main > div[inert]")).toHaveAttribute("aria-hidden", "true");
   await expect(page.getByRole("button", { name: "Close", exact: true })).toBeFocused();
 
   await page.keyboard.press("Escape");
-  await expect(page).toHaveURL(/\?q=lemon$/);
+  await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 

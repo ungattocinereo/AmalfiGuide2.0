@@ -89,18 +89,6 @@
     "expertGuideText": "Eine persönliche Auswahl der besten Orte, versteckten Juwelen und authentischen Geschmackserlebnisse an der Amalfiküste von jemandem, der vor Jahren hierher gezogen ist und sich in den Ort verliebt hat.",
     "expertGuideSignature": "Gregory, Immobilienverwalter in Amalfi"
   },
-  "discovery": {
-    "label": "Ort finden",
-    "searchLabel": "Im Reiseführer suchen",
-    "searchPlaceholder": "Strände, Essen, Spaziergänge…",
-    "sectionLabel": "Bereich des Reiseführers",
-    "allSections": "Alle Bereiche",
-    "openNow": "Jetzt geöffnet",
-    "results": "{count} Orte",
-    "reset": "Filter zurücksetzen",
-    "noResultsKicker": "Versuche eine andere Route",
-    "noResults": "Keine Orte entsprechen diesen Filtern"
-  },
   "network": {
     "offline": "Offline — besuchte Orte bleiben verfügbar",
     "online": "Wieder online"

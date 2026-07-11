@@ -89,18 +89,6 @@
     "expertGuideText": "A personally curated selection of the best spots, hidden gems, and authentic flavors on the Amalfi Coast from someone who moved here years ago and fell in love with the place.",
     "expertGuideSignature": "Gregory, Amalfi property manager"
   },
-  "discovery": {
-    "label": "Find a place",
-    "searchLabel": "Search the guide",
-    "searchPlaceholder": "Search beaches, food, walks…",
-    "sectionLabel": "Guide section",
-    "allSections": "All sections",
-    "openNow": "Open now",
-    "results": "{count} places",
-    "reset": "Reset filters",
-    "noResultsKicker": "Try another route",
-    "noResults": "No places match these filters"
-  },
   "network": {
     "offline": "Offline — visited places remain available",
     "online": "Back online"
