@@ -31,7 +31,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
-import { getMapboxStaticPreviewUrl, getRouteForPlace } from "@/lib/place-routes";
+import { getMapboxStaticPreviewPath, getRouteForPlace } from "@/lib/place-routes";
 import { Link } from "@/i18n/navigation";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { prewarmPlaceDetailImage } from "@/lib/image-preload";
@@ -92,10 +92,9 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
     const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
-    const compactMapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route, "compact") : null;
-    const wideMapboxPreviewUrl = route && !routePreviewFailed ? getMapboxStaticPreviewUrl(route, "wide") : null;
-    const hasMapboxPreview = Boolean(compactMapboxPreviewUrl && wideMapboxPreviewUrl);
-    const visualUrl = route ? wideMapboxPreviewUrl : imageUrl;
+    const compactMapPreviewPath = route && !routePreviewFailed ? getMapboxStaticPreviewPath(route, "compact") : null;
+    const wideMapPreviewPath = route && !routePreviewFailed ? getMapboxStaticPreviewPath(route, "wide") : null;
+    const visualUrl = route ? wideMapPreviewPath : imageUrl;
     const blurDataURL = route ? undefined : getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
     const openNow = useIsOpenNow(item.hours);
@@ -174,13 +173,11 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         ? `${aspectRatio || "aspect-[4/3]"} w-full`
                         : "shrink-0 w-1/3 min-h-[9rem] md:w-full md:min-h-0 md:aspect-[4/3]"
                 }`}>
-                    {route && hasMapboxPreview ? (
+                    {route && compactMapPreviewPath && wideMapPreviewPath ? (
                         <picture>
-                            <source media="(max-width: 768px)" srcSet={compactMapboxPreviewUrl!} />
-                            {/* Mapbox already returns a correctly sized raster; bypassing next/image
-                                avoids downloading a 2400px preview for a small card. */}
+                            <source media="(max-width: 768px)" srcSet={compactMapPreviewPath} />
                             <img
-                                src={wideMapboxPreviewUrl!}
+                                src={wideMapPreviewPath}
                                 alt=""
                                 width={900}
                                 height={675}

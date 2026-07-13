@@ -20,6 +20,23 @@ for (const [path, mapLabel] of hikingRoutes) {
   });
 }
 
+test("keeps hiking card previews visible when the browser cannot reach Mapbox directly", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the delivery check");
+
+  await page.route("https://api.mapbox.com/**", (route) => route.abort());
+  await page.goto("/");
+  await page.getByRole("heading", { name: "Hiking & Nature" }).scrollIntoViewIfNeeded();
+
+  for (const [, mapLabel] of hikingRoutes) {
+    const card = page.getByRole("link", { name: new RegExp(mapLabel, "i") });
+    const preview = card.locator("img");
+
+    await expect(preview).toBeVisible();
+    await expect.poll(() => preview.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+    await expect(preview).toHaveAttribute("src", /\/api\/map-preview\//);
+  }
+});
+
 test("shows a static route preview when interactive Mapbox cannot initialize", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the fallback");
 

@@ -136,6 +136,11 @@ const STATIC_PREVIEW_DIMENSIONS: Record<StaticPreviewSize, string> = {
     wide: "900x675",
 };
 
+export const getMapboxStaticPreviewPath = (
+    route: RouteAsset,
+    size: StaticPreviewSize = "wide",
+): string => `/api/map-preview/${encodeURIComponent(route.slug)}?size=${size}`;
+
 export const getMapboxStaticPreviewUrl = (
     route: RouteAsset,
     size: StaticPreviewSize = "wide",
