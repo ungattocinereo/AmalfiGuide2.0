@@ -153,10 +153,10 @@ Wait for the `Deploy Dev` workflow and obtain its deployment URL from the succes
 Using Playwright CLI at desktop and mobile widths, open these four English place routes on the dev deployment:
 
 ```text
-/place/path-of-the-gods
+/place/path-of-the-gods-sentiero-degli-dei
 /place/the-lemon-path-sentiero-dei-limoni
 /place/torre-dello-ziro
-/place/sentiero-basso-della-valle-delle-ferriere
+/place/valle-delle-ferriere
 ```
 
 For each route require a visible `.mapboxgl-canvas`, no visible `Map unavailable`/`Loading route` status after load, and no console errors from Mapbox or route assets. Verify the homepage has no `/photolocations` anchor.
