@@ -35,6 +35,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
         }
 
         let cancelled = false;
+        let mapHasLoaded = false;
         const controller = new AbortController();
         let resizeTimer: number | null = null;
 
@@ -72,6 +73,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
 
                 map.on("load", () => {
                     if (cancelled) return;
+                    mapHasLoaded = true;
                     map.resize();
                     map.addSource("route", {
                         type: "geojson",
@@ -109,7 +111,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
                 });
 
                 map.on("error", () => {
-                    if (!cancelled) setStatus("error");
+                    if (!cancelled && !mapHasLoaded) setStatus("error");
                 });
             } catch (error) {
                 if (!cancelled && (error as Error).name !== "AbortError") setStatus("error");

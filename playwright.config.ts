@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const externalBaseUrl = process.env.PLAYWRIGHT_BASE_URL;
+
 export default defineConfig({
   testDir: "./tests/e2e",
   outputDir: "output/playwright",
@@ -7,7 +9,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: "line",
   use: {
-    baseURL: "http://127.0.0.1:3100",
+    baseURL: externalBaseUrl ?? "http://127.0.0.1:3100",
     channel: "chrome",
     colorScheme: "light",
     locale: "en-US",
@@ -18,7 +20,7 @@ export default defineConfig({
     { name: "desktop", use: { ...devices["Desktop Chrome"] } },
     { name: "mobile", use: { ...devices["Pixel 5"], channel: "chrome" } },
   ],
-  webServer: {
+  webServer: externalBaseUrl ? undefined : {
     command: "npm run build && npm start -- -p 3100",
     url: "http://127.0.0.1:3100",
     reuseExistingServer: !process.env.CI,
