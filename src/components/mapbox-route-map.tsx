@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import type { Map as MapboxMap } from "mapbox-gl";
-import type { RouteAsset } from "@/lib/place-routes";
+import { getMapboxStaticPreviewUrl, type RouteAsset } from "@/lib/place-routes";
 import { useLanguage } from "@/components/language-context";
 
 type RouteGeoJson = {
@@ -35,7 +36,6 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
         }
 
         let cancelled = false;
-        let mapHasLoaded = false;
         const controller = new AbortController();
         let resizeTimer: number | null = null;
 
@@ -73,7 +73,6 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
 
                 map.on("load", () => {
                     if (cancelled) return;
-                    mapHasLoaded = true;
                     map.resize();
                     map.addSource("route", {
                         type: "geojson",
@@ -109,10 +108,6 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
                     map.fitBounds(bounds, { padding: 56, maxZoom: 14, duration: 0 });
                     setStatus("ready");
                 });
-
-                map.on("error", () => {
-                    if (!cancelled && !mapHasLoaded) setStatus("error");
-                });
             } catch (error) {
                 if (!cancelled && (error as Error).name !== "AbortError") setStatus("error");
             }
@@ -135,21 +130,30 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
             : status === "error"
                 ? t("routeMap.mapUnavailable")
                 : t("routeMap.loading");
+    const staticPreviewUrl = getMapboxStaticPreviewUrl(route, "wide");
 
     return (
         <div className="absolute inset-0 overflow-hidden bg-stone-100 dark:bg-amalfi-espresso-soft">
-            {status !== "ready" && (
+            {status !== "ready" && staticPreviewUrl ? (
+                <Image
+                    src={staticPreviewUrl}
+                    alt={`${route.title} route map preview`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                />
+            ) : status !== "ready" ? (
                 <div
                     className="absolute inset-0 bg-[linear-gradient(135deg,rgba(251,146,60,0.12)_0%,rgba(255,255,255,0.92)_42%,rgba(20,83,45,0.13)_100%)] dark:bg-[linear-gradient(135deg,rgba(124,45,18,0.55)_0%,rgba(28,16,10,0.92)_48%,rgba(20,83,45,0.38)_100%)]"
                     aria-hidden="true"
                 />
-            )}
+            ) : null}
             <div
                 ref={containerRef}
                 className={`h-full w-full transition-[filter,opacity] duration-300 dark:grayscale dark:saturate-0 dark:contrast-125 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
                 aria-label={route.title}
             />
-            {status !== "ready" && (
+            {status !== "ready" && !staticPreviewUrl && (
                 <div className="absolute inset-x-4 bottom-4 z-10 rounded-lg bg-black/60 px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                     {fallbackLabel}
                 </div>

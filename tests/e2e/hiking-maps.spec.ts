@@ -19,3 +19,13 @@ for (const [path, mapLabel] of hikingRoutes) {
     await expect(page.getByText("Loading route", { exact: true })).toHaveCount(0);
   });
 }
+
+test("shows a static route preview when interactive Mapbox cannot initialize", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the fallback");
+
+  await page.route("https://api.mapbox.com/styles/v1/mapbox/outdoors-v12?*", (route) => route.abort());
+  await page.goto("/en/place/the-lemon-path-sentiero-dei-limoni");
+
+  await expect(page.getByRole("img", { name: "The Lemon Path route map preview" })).toBeVisible();
+  await expect(page.getByText("Map unavailable", { exact: true })).toHaveCount(0);
+});
