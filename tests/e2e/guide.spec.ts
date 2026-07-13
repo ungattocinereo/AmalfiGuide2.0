@@ -5,6 +5,11 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("cookie-consent", "declined"));
 });
 
+test("footer no longer links to Photo spots", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('footer a[href="https://amalfi.day/photolocations"]')).toHaveCount(0);
+});
+
 test("discovery controls are removed and legacy query parameters do not filter content", async ({ page }) => {
   await page.goto("/?q=lemon&section=2&open=1");
 

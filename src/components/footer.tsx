@@ -70,7 +70,6 @@ const footerLinks: Record<"transport" | "apartments" | "info" | "blog", FooterLi
     ],
     info: [
         { label: "footer.whatToDo", href: `${MAIN_SITE}/experience`, icon: "star" },
-        { label: "footer.photoSpots", href: `${MAIN_SITE}/photolocations` },
         { label: "footer.parkingTips", href: `${MAIN_SITE}/parking`, icon: "parking" },
         { label: "footer.beachReviews", href: `${MAIN_SITE}/beaches`, icon: "umbrella" },
         { label: "footer.motoRoads", href: `${MAIN_SITE}/moto`, icon: "map" },
