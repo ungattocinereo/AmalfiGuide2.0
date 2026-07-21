@@ -22,6 +22,17 @@ test("Hero illustration renders without a drop shadow", async ({ page }) => {
     .toBe("none");
 });
 
+test("server-rendered Hero does not include a blur placeholder", async ({ request }) => {
+  const response = await request.get("/");
+  const html = await response.text();
+  const illustration = html.match(
+    /<img[^>]+alt="Watercolor illustration of Atrani, Amalfi Coast"[^>]*>/,
+  )?.[0];
+
+  expect(illustration).toBeDefined();
+  expect(illustration).not.toContain("background-image");
+});
+
 test("discovery controls are removed and legacy query parameters do not filter content", async ({ page }) => {
   await page.goto("/?q=lemon&section=2&open=1");
 
