@@ -22,6 +22,27 @@ test("Hero illustration renders without a drop shadow", async ({ page }) => {
     .toBe("none");
 });
 
+test("Hero includes a finite cartographic intro behind the illustration", async ({ page }) => {
+  await page.goto("/");
+  const intro = page.getByTestId("hero-cartographic-intro");
+
+  await expect(intro).toBeVisible();
+  await expect(intro).toHaveAttribute("aria-hidden", "true");
+  await expect(intro).toHaveAttribute("data-motion", "full");
+  await expect(intro.locator('[data-detail="contour"]')).toHaveCount(3);
+  await expect(intro.locator('[data-detail="signal"]')).toHaveCount(3);
+});
+
+test("Hero cartographic intro settles immediately for reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  expect(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches)).toBe(true);
+
+  const intro = page.getByTestId("hero-cartographic-intro");
+  await expect(intro).toHaveAttribute("data-motion", "reduced");
+  await expect(intro.locator('[data-detail="highlight"]')).toHaveCSS("opacity", "0");
+});
+
 test("server-rendered Hero does not include a blur placeholder", async ({ request }) => {
   const response = await request.get("/");
   const html = await response.text();

@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-context";
 import { useLayout } from "@/components/layout-context";
 import { useTheme } from "next-themes";
 import { ContextWidget } from "@/components/context-widget";
+import { HeroCartographicIntro } from "@/components/hero-cartographic-intro";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -296,37 +297,7 @@ export function Hero() {
                     />
                 )}
 
-                {/* Decorative circle */}
-                <motion.div
-                    className={`absolute z-[1] rounded-full border pointer-events-none
-                               w-[85%] aspect-square md:w-[50vw] md:min-w-[600px] md:max-w-[740px] md:aspect-square md:h-auto
-                               bottom-[-15%] left-1/2 -translate-x-1/2 transition-colors duration-700
-                               ${isDark ? "border-[#F43600]/20" : "border-[#F43600]/10"}`}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease, delay: 0.4 }}
-                    style={{ transformOrigin: "center center" }}
-                >
-                    {/* Outer ring */}
-                    <div className={`absolute -inset-[30px] rounded-full border transition-colors duration-700
-                                    ${isDark ? "border-[#F43600]/10" : "border-[#F43600]/5"}`} />
-                </motion.div>
-
-                {/* Accent dots — desktop only, brighter in dark mode */}
-                <motion.div
-                    className={`hidden md:block absolute z-[3] w-3 h-3 rounded-full bg-[#F43600] bottom-[28%] left-[10%] transition-shadow duration-700
-                               ${isDark ? "shadow-[0_0_28px_rgba(244,54,0,0.6)]" : "shadow-[0_0_20px_rgba(244,54,0,0.4)]"}`}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 1.4 }}
-                />
-                <motion.div
-                    className={`hidden md:block absolute z-[3] w-[7px] h-[7px] rounded-full bg-[#F43600] bottom-[40%] left-[6%] transition-shadow duration-700
-                               ${isDark ? "shadow-[0_0_18px_rgba(244,54,0,0.5)]" : "shadow-[0_0_12px_rgba(244,54,0,0.3)]"}`}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 1.55 }}
-                />
+                <HeroCartographicIntro isDark={isDark} />
 
                 {/* Watercolor illustration */}
                 <motion.div
