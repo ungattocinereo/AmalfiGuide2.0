@@ -330,16 +330,10 @@ export function Hero() {
                     transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 1.55 }}
                 />
 
-                {/* Watercolor illustration — deeper shadow in dark mode */}
+                {/* Watercolor illustration */}
                 <motion.div
                     className="relative z-[2] flex-shrink-0 -mb-[2px]
-                               w-[70vw] max-w-[340px] md:w-[42vw] md:min-w-[520px] md:max-w-[640px]
-                               transition-[filter] duration-700"
-                    style={{
-                        filter: isDark
-                            ? "drop-shadow(0 24px 64px rgba(244,54,0,0.12)) drop-shadow(0 8px 24px rgba(0,0,0,0.4))"
-                            : "drop-shadow(0 24px 48px rgba(26,10,0,0.15)) drop-shadow(0 8px 16px rgba(26,10,0,0.1))",
-                    }}
+                               w-[70vw] max-w-[340px] md:w-[42vw] md:min-w-[520px] md:max-w-[640px]"
                     initial={false}
                 >
                     <Image

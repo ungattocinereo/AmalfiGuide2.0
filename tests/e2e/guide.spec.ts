@@ -10,6 +10,18 @@ test("footer no longer links to Photo spots", async ({ page }) => {
   await expect(page.locator('footer a[href="https://amalfi.day/photolocations"]')).toHaveCount(0);
 });
 
+test("Hero illustration renders without a drop shadow", async ({ page }) => {
+  await page.goto("/");
+  const illustration = page.getByRole("img", {
+    name: "Watercolor illustration of Atrani, Amalfi Coast",
+  });
+
+  await expect(illustration).toBeVisible();
+  await expect
+    .poll(() => illustration.evaluate((image) => getComputedStyle(image.parentElement!).filter))
+    .toBe("none");
+});
+
 test("discovery controls are removed and legacy query parameters do not filter content", async ({ page }) => {
   await page.goto("/?q=lemon&section=2&open=1");
 
