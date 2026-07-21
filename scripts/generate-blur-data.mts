@@ -9,8 +9,17 @@ const PUBLIC = path.join(ROOT, "public");
 const OUTPUT = path.join(ROOT, "src", "lib", "blur-data.generated.ts");
 
 async function generateBlurDataURL(imagePath: string): Promise<string> {
-  const buffer = await sharp(imagePath)
-    .resize(8, 8, { fit: "cover" })
+  const metadata = await sharp(imagePath).metadata();
+  const resized = sharp(imagePath).resize(8, 8, { fit: "cover" });
+
+  if (metadata.hasAlpha) {
+    const buffer = await resized
+      .png({ compressionLevel: 9, palette: true })
+      .toBuffer();
+    return `data:image/png;base64,${buffer.toString("base64")}`;
+  }
+
+  const buffer = await resized
     .jpeg({ quality: 40 })
     .toBuffer();
   return `data:image/jpeg;base64,${buffer.toString("base64")}`;
