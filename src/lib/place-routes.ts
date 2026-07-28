@@ -1,4 +1,8 @@
+import { routePreviewPaths } from "./route-previews.generated";
+
 type Coordinate = [number, number];
+
+export type StaticPreviewSize = "compact" | "wide";
 
 type RouteStaticPreview = {
     polyline: string;
@@ -12,6 +16,7 @@ export type RouteAsset = {
     matchTerms: string[];
     geoJsonUrl: string;
     staticPreview: RouteStaticPreview;
+    previewImages: Record<StaticPreviewSize, string>;
     kmlUrl: string;
     kmzUrl: string;
     gpxUrl: string;
@@ -34,6 +39,7 @@ export const routeAssets: RouteAsset[] = [
             start: [14.602727, 40.633831],
             end: [14.5819453, 40.6516803],
         },
+        previewImages: routePreviewPaths["valle-delle-ferriere"],
         kmlUrl: "/routes/valle-delle-ferriere.kml",
         kmzUrl: "/routes/valle-delle-ferriere.kmz",
         gpxUrl: "/routes/valle-delle-ferriere.gpx",
@@ -52,6 +58,7 @@ export const routeAssets: RouteAsset[] = [
             start: [14.6038208, 40.6410911],
             end: [14.6062318, 40.6357976],
         },
+        previewImages: routePreviewPaths["torre-dello-ziro"],
         kmlUrl: "/routes/torre-dello-ziro.kml",
         kmzUrl: "/routes/torre-dello-ziro.kmz",
         gpxUrl: "/routes/torre-dello-ziro.gpx",
@@ -77,6 +84,7 @@ export const routeAssets: RouteAsset[] = [
             start: [14.539765, 40.6292449],
             end: [14.5033404, 40.6287852],
         },
+        previewImages: routePreviewPaths["path-of-the-gods"],
         kmlUrl: "/routes/path-of-the-gods.kml",
         kmzUrl: "/routes/path-of-the-gods.kmz",
         gpxUrl: "/routes/path-of-the-gods.gpx",
@@ -101,6 +109,7 @@ export const routeAssets: RouteAsset[] = [
             start: [14.6412516, 40.6500664],
             end: [14.627709, 40.6504393],
         },
+        previewImages: routePreviewPaths["the-lemon-path"],
         kmlUrl: "/routes/the-lemon-path.kml",
         kmzUrl: "/routes/the-lemon-path.kmz",
         gpxUrl: "/routes/the-lemon-path.gpx",
@@ -126,35 +135,7 @@ export const getRouteForPlace = (name: string): RouteAsset | null => {
     }) ?? null;
 };
 
-const formatMapboxCoordinate = ([lon, lat]: Coordinate): string =>
-    `${lon.toFixed(5)},${lat.toFixed(5)}`;
-
-type StaticPreviewSize = "compact" | "wide";
-
-const STATIC_PREVIEW_DIMENSIONS: Record<StaticPreviewSize, string> = {
-    compact: "600x450",
-    wide: "900x675",
-};
-
-export const getMapboxStaticPreviewPath = (
+export const getRouteStaticPreviewPath = (
     route: RouteAsset,
     size: StaticPreviewSize = "wide",
-): string => `/api/map-preview/${encodeURIComponent(route.slug)}?size=${size}`;
-
-export const getMapboxStaticPreviewUrl = (
-    route: RouteAsset,
-    size: StaticPreviewSize = "wide",
-): string | null => {
-    const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-    if (!token) return null;
-
-    const encodedPolyline = encodeURIComponent(route.staticPreview.polyline);
-    const overlays = [
-        `path-10+3f1d0d-0.32(${encodedPolyline})`,
-        `path-5+f97316-1(${encodedPolyline})`,
-        `pin-s-a+166534(${formatMapboxCoordinate(route.staticPreview.start)})`,
-        `pin-s-b+b91c1c(${formatMapboxCoordinate(route.staticPreview.end)})`,
-    ].join(",");
-
-    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/static/${overlays}/auto/${STATIC_PREVIEW_DIMENSIONS[size]}?padding=48&access_token=${encodeURIComponent(token)}`;
-};
+): string => route.previewImages[size];

@@ -32,8 +32,8 @@ test("keeps hiking card previews visible when the browser cannot reach Mapbox di
     const preview = card.locator("img");
 
     await expect(preview).toBeVisible();
-    await expect.poll(() => preview.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
-    await expect(preview).toHaveAttribute("src", /\/api\/map-preview\//);
+    await expect.poll(() => preview.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
+    await expect(preview).toHaveAttribute("src", /\/route-previews\/.+-wide-[a-f0-9]{12}\.webp$/);
   }
 });
 

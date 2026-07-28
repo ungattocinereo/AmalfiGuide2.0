@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Map as MapboxMap } from "mapbox-gl";
-import { getMapboxStaticPreviewPath, type RouteAsset } from "@/lib/place-routes";
+import { getRouteStaticPreviewPath, type RouteAsset } from "@/lib/place-routes";
 import { useLanguage } from "@/components/language-context";
 
 type RouteGeoJson = {
@@ -130,7 +130,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
             : status === "error"
                 ? t("routeMap.mapUnavailable")
                 : t("routeMap.loading");
-    const staticPreviewUrl = getMapboxStaticPreviewPath(route, "wide");
+    const staticPreviewUrl = getRouteStaticPreviewPath(route, "wide");
 
     return (
         <div className="absolute inset-0 overflow-hidden bg-stone-100 dark:bg-amalfi-espresso-soft">

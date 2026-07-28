@@ -1,26 +1,9 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { getMapboxStaticPreviewUrl, getRouteForPlace, routeAssets } from "./place-routes";
+import { getRouteForPlace, routeAssets } from "./place-routes";
 
-describe("getMapboxStaticPreviewUrl", () => {
-  afterEach(() => {
-    delete process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-  });
-
-  it("returns responsive previews without oversized retina dimensions", () => {
-    process.env.NEXT_PUBLIC_MAPBOX_TOKEN = "public-token";
-    const route = getRouteForPlace("Path of the Gods");
-    expect(route).not.toBeNull();
-
-    const compact = getMapboxStaticPreviewUrl(route!, "compact");
-    const wide = getMapboxStaticPreviewUrl(route!, "wide");
-
-    expect(compact).toContain("/600x450?");
-    expect(wide).toContain("/900x675?");
-    expect(wide).not.toContain("@2x");
-  });
-
+describe("route assets", () => {
   it("defines complete downloadable assets for every hiking route", () => {
     expect(routeAssets.map((route) => route.slug)).toEqual([
       "valle-delle-ferriere",
@@ -30,9 +13,18 @@ describe("getMapboxStaticPreviewUrl", () => {
     ]);
 
     for (const route of routeAssets) {
-      for (const url of [route.geoJsonUrl, route.gpxUrl, route.kmlUrl, route.kmzUrl]) {
+      for (const url of [
+        route.geoJsonUrl,
+        route.gpxUrl,
+        route.kmlUrl,
+        route.kmzUrl,
+        route.previewImages.compact,
+        route.previewImages.wide,
+      ]) {
         expect(existsSync(join(process.cwd(), "public", url.replace(/^\//, "")))).toBe(true);
       }
+      expect(route.previewImages.compact).toMatch(/\/route-previews\/.+-compact-[a-f0-9]{12}\.webp$/);
+      expect(route.previewImages.wide).toMatch(/\/route-previews\/.+-wide-[a-f0-9]{12}\.webp$/);
     }
   });
 

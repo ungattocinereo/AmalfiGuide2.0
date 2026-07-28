@@ -1,8 +1,6 @@
 import { defaultCache } from "@serwist/next/worker";
 import type { PrecacheEntry, RuntimeCaching, SerwistGlobalConfig } from "serwist";
 import {
-  CacheFirst,
-  CacheableResponsePlugin,
   ExpirationPlugin,
   NetworkFirst,
   Serwist,
@@ -49,16 +47,6 @@ const smartOfflineCache: RuntimeCaching[] = [
       plugins: [
         new ExpirationPlugin({ maxEntries: 40, maxAgeSeconds: 30 * 24 * 60 * 60 }),
         offlineFallbackPlugin,
-      ],
-    }),
-  },
-  {
-    matcher: ({ url }) => url.hostname === "api.mapbox.com" && url.pathname.includes("/static/"),
-    handler: new CacheFirst({
-      cacheName: "amalfi-map-previews",
-      plugins: [
-        new CacheableResponsePlugin({ statuses: [0, 200] }),
-        new ExpirationPlugin({ maxEntries: 12, maxAgeSeconds: 30 * 24 * 60 * 60 }),
       ],
     }),
   },

@@ -31,7 +31,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
-import { getMapboxStaticPreviewPath, getRouteForPlace } from "@/lib/place-routes";
+import { getRouteForPlace, getRouteStaticPreviewPath } from "@/lib/place-routes";
 import { Link } from "@/i18n/navigation";
 import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { prewarmPlaceDetailImage } from "@/lib/image-preload";
@@ -88,12 +88,11 @@ interface PlaceCardProps {
 
 export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBadges = false }: PlaceCardProps) {
     const { t } = useLanguage();
-    const cardRef = React.useRef<HTMLDivElement>(null);
     const imageUrl = getImageForPlace(item.name);
     const route = getRouteForPlace(item.name);
     const [routePreviewFailed, setRoutePreviewFailed] = React.useState(false);
-    const compactMapPreviewPath = route && !routePreviewFailed ? getMapboxStaticPreviewPath(route, "compact") : null;
-    const wideMapPreviewPath = route && !routePreviewFailed ? getMapboxStaticPreviewPath(route, "wide") : null;
+    const compactMapPreviewPath = route && !routePreviewFailed ? getRouteStaticPreviewPath(route, "compact") : null;
+    const wideMapPreviewPath = route && !routePreviewFailed ? getRouteStaticPreviewPath(route, "wide") : null;
     const visualUrl = route ? wideMapPreviewPath : imageUrl;
     const blurDataURL = route ? undefined : getBlurDataURL(imageUrl);
     const CategoryIcon = getCategoryIcon(item.category);
@@ -106,20 +105,6 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
     const prewarmDetailImage = React.useCallback((priority: "high" | "low" = "low") => {
         if (!route) prewarmPlaceDetailImage(imageUrl, priority);
     }, [imageUrl, route]);
-
-    React.useEffect(() => {
-        const node = cardRef.current;
-        if (!node || route || typeof IntersectionObserver === "undefined") return;
-
-        const observer = new IntersectionObserver((entries) => {
-            if (!entries.some((entry) => entry.isIntersecting)) return;
-            prewarmDetailImage("low");
-            observer.disconnect();
-        }, { rootMargin: "900px 0px" });
-
-        observer.observe(node);
-        return () => observer.disconnect();
-    }, [prewarmDetailImage, route]);
 
     // Data-driven badge selection (no category regex). If a place has trail
     // fields (duration/difficulty) we show those; otherwise we surface the two
@@ -147,7 +132,6 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
 
     return (
         <motion.div
-            ref={cardRef}
             layoutId={layoutId}
             className="relative w-full"
             whileTap={{ scale: 0.985 }}
@@ -155,6 +139,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
         >
             <Link
                 href={`/place/${item.slug}`}
+                prefetch={false}
                 onClick={(event) => {
                     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
                     event.preventDefault();

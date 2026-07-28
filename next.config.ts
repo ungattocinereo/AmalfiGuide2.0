@@ -10,15 +10,10 @@ const withSerwist = withSerwistInit({
   disable: process.env.NODE_ENV === "development",
   cacheOnNavigation: false,
   reloadOnOnline: false,
-  globPublicPatterns: [
-    "manifest.json",
-    "favicon.ico",
-    "favicon-*.png",
-    "apple-touch-icon.png",
-    "images/icon*.png",
-    "images/guide-logo.svg",
-    "brand/*.svg",
-  ],
+  // Keep the PWA install lightweight. Resources are cached only after they are
+  // actually requested through the runtime strategies in src/app/sw.ts.
+  globPublicPatterns: [],
+  exclude: [/.*/],
 });
 
 const nextConfig: NextConfig = {
@@ -28,13 +23,6 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     qualities: [65, 75, 80],
     minimumCacheTTL: 60 * 60 * 24 * 30,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'api.mapbox.com',
-        pathname: '/styles/v1/**',
-      },
-    ],
   },
 };
 
