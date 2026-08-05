@@ -12,7 +12,6 @@ import { PlaceDetails } from "@/components/place-details";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { getLocaleUrl, SITE_URL } from "@/lib/site-config";
-import { getImageForPlace } from "@/lib/place-images";
 import { buildPlaceJsonLd } from "@/lib/places-jsonld";
 
 export const dynamic = "force-static";
@@ -40,8 +39,7 @@ export async function generateMetadata({
     if (!place) return {};
 
     const t = await getTranslations({ locale, namespace: "metadata" });
-    const imagePath = getImageForPlace(place.name);
-    const absoluteImage = imagePath.startsWith("http") ? imagePath : `${SITE_URL}${imagePath}`;
+    const socialCard = getLocaleUrl(locale, `/place/${slug}/opengraph-image`);
 
     const alternateLanguages: Record<string, string> = {};
     for (const loc of routing.locales) {
@@ -64,7 +62,7 @@ export async function generateMetadata({
             description,
             url: getLocaleUrl(locale, `/place/${slug}`),
             siteName: "AMALFI.DAY Guide",
-            images: [{ url: absoluteImage, width: 1200, height: 630, alt: place.name }],
+            images: [{ url: socialCard, width: 1200, height: 630, alt: place.name }],
             locale: locale === "en" ? "en_US" : `${locale}_${locale.toUpperCase()}`,
             type: "article",
         },
@@ -72,7 +70,7 @@ export async function generateMetadata({
             card: "summary_large_image",
             title,
             description,
-            images: [absoluteImage],
+            images: [socialCard],
         },
     };
 }

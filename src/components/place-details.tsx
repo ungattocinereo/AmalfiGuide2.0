@@ -38,6 +38,7 @@ import { PLACE_DETAIL_IMAGE_QUALITY } from "@/lib/image-preload";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 import { getPlaceGallery } from "@/lib/place-gallery";
+import { AiModifiedLabel } from "@/components/ai-modified-label";
 
 const MapboxRouteMap = dynamic(
     () => import("@/components/mapbox-route-map").then((mod) => mod.MapboxRouteMap),
@@ -251,6 +252,11 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
                             />
                         </motion.div>
                     </AnimatePresence>
+
+                    <AiModifiedLabel
+                        size="large"
+                        className="absolute -left-2 bottom-0 z-30 md:bottom-auto md:left-1/2 md:top-0 md:-translate-x-1/2"
+                    />
 
                     {hasMultiPhoto && (
                         <>

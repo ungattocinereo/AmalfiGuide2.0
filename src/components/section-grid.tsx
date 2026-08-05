@@ -19,6 +19,7 @@ import {
 import { useLayout } from "@/components/layout-context";
 import { useLanguage } from "@/components/language-context";
 import { PlaceCard } from "@/components/place-card";
+import { AiModifiedLabel } from "@/components/ai-modified-label";
 import type { PlaceItem } from "@/lib/markdown-parser";
 import { getImageForPlace } from "@/lib/place-images";
 
@@ -125,7 +126,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber,
             </div>
 
             {showPlacePreviews && items.length > 0 && (
-                <div className="hidden lg:flex -space-x-2.5 flex-shrink-0 items-center pl-2">
+                <div className="relative hidden lg:flex -space-x-2.5 flex-shrink-0 items-center pl-2">
                     {items.slice(0, 4).map((item, idx) => {
                         const imgUrl = getImageForPlace(item.name);
                         return (
@@ -153,6 +154,10 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber,
                             +{items.length - 4}
                         </div>
                     )}
+                    <AiModifiedLabel
+                        size="small"
+                        className="absolute -bottom-3 -left-2 z-20"
+                    />
                 </div>
             )}
 
@@ -182,13 +187,17 @@ function IntroWelcomeBlock({ t }: { t: (key: string) => string }) {
                 <div className="flex flex-col md:flex-row items-center gap-5 md:gap-10 p-6 md:p-10">
                     <div className="flex-shrink-0">
                         <div className="w-36 h-36 md:w-44 md:h-44 rounded-full p-[5px] bg-gradient-to-br from-orange-400 via-orange-500 to-amber-500 dark:from-orange-500 dark:via-orange-600 dark:to-amber-600 shadow-lg shadow-orange-200/40 dark:shadow-orange-900/30">
-                            <div className="w-full h-full rounded-full overflow-hidden ring-2 ring-white dark:ring-gray-900">
+                            <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-white dark:ring-gray-900">
                                 <Image
                                     src="/gregs-avatar-new.png"
                                     alt="Gregory Day"
                                     width={176}
                                     height={176}
                                     className="w-full h-full object-cover"
+                                />
+                                <AiModifiedLabel
+                                    size="medium"
+                                    className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2"
                                 />
                             </div>
                         </div>

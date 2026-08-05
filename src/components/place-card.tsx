@@ -37,6 +37,7 @@ import { getBlurDataURL } from "@/lib/blur-data.generated";
 import { prewarmPlaceDetailImage } from "@/lib/image-preload";
 import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
+import { AiModifiedLabel } from "@/components/ai-modified-label";
 
 const getCategoryIcon = (category: string): IconDefinition => {
     const c = category.toLowerCase();
@@ -189,6 +190,13 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                         <div className="absolute inset-0 flex items-center justify-center bg-stone-100 text-orange-700 dark:bg-amalfi-espresso-soft dark:text-orange-300">
                             <FontAwesomeIcon icon={faRoute} className="h-8 w-8 opacity-70" aria-hidden="true" />
                         </div>
+                    )}
+
+                    {!route && visualUrl && (
+                        <AiModifiedLabel
+                            size="medium"
+                            className="absolute -left-2 top-0 z-30"
+                        />
                     )}
 
                     <div

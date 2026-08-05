@@ -5,6 +5,9 @@
     "ogTitle": "Guida alla Costiera Amalfitana — Il Tuo Compagno di Viaggio Tascabile",
     "ogDescription": "Passeggiate curate, spiagge nascoste, ristoranti autentici e sentieri panoramici lungo la Costiera Amalfitana. Mappe offline, indicazioni e suggerimenti sui trasporti in 6 lingue."
   },
+  "aiDisclosure": {
+    "modified": "Foto parzialmente modificata con l'IA"
+  },
   "navbar": {
     "collapseAll": "Riduci Tutto",
     "expandAll": "Espandi Tutto",

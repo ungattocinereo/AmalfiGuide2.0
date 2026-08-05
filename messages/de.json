@@ -5,6 +5,9 @@
     "ogTitle": "Amalfiküste Reiseführer — Dein Reisebegleiter für die Tasche",
     "ogDescription": "Kuratierte Spaziergänge, versteckte Strände, authentische Restaurants und malerische Wanderwege entlang der Amalfiküste. Offline-Karten, Wegbeschreibungen & Transporttipps in 6 Sprachen."
   },
+  "aiDisclosure": {
+    "modified": "Foto teilweise mit KI verändert"
+  },
   "navbar": {
     "collapseAll": "Alles Einklappen",
     "expandAll": "Alles Ausklappen",

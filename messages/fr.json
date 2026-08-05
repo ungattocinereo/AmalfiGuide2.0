@@ -5,6 +5,9 @@
     "ogTitle": "Guide de la Côte Amalfitaine — Votre Compagnon de Voyage de Poche",
     "ogDescription": "Balades sélectionnées, plages cachées, restaurants authentiques et sentiers de randonnée panoramiques le long de la Côte Amalfitaine. Cartes hors ligne, itinéraires et conseils de transport en 6 langues."
   },
+  "aiDisclosure": {
+    "modified": "Photo partiellement modifiée par IA"
+  },
   "navbar": {
     "collapseAll": "Tout Réduire",
     "expandAll": "Tout Développer",

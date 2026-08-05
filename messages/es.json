@@ -5,6 +5,9 @@
     "ogTitle": "Guía de la Costa Amalfitana — Tu Compañero de Viaje de Bolsillo",
     "ogDescription": "Paseos seleccionados, playas escondidas, restaurantes auténticos y rutas de senderismo panorámicas a lo largo de la Costa Amalfitana. Mapas sin conexión, indicaciones y consejos de transporte en 6 idiomas."
   },
+  "aiDisclosure": {
+    "modified": "Foto parcialmente modificada con IA"
+  },
   "navbar": {
     "collapseAll": "Contraer Todo",
     "expandAll": "Expandir Todo",

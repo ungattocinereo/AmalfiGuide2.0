@@ -5,6 +5,9 @@
     "ogTitle": "Amalfi Coast Guide — Your Pocket Travel Companion",
     "ogDescription": "Curated walks, hidden beaches, authentic restaurants, and scenic hiking trails along the Amalfi Coast. Offline maps, directions & transport tips in 6 languages."
   },
+  "aiDisclosure": {
+    "modified": "Photo partially modified with AI"
+  },
   "navbar": {
     "collapseAll": "Collapse All",
     "expandAll": "Expand All",
