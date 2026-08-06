@@ -154,10 +154,6 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber,
                             +{items.length - 4}
                         </div>
                     )}
-                    <AiModifiedLabel
-                        size="small"
-                        className="absolute -left-2 bottom-0 z-20"
-                    />
                 </div>
             )}
 
