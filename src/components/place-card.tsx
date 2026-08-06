@@ -195,7 +195,7 @@ export function PlaceCard({ item, layoutId, onClick, aspectRatio, sizes, hideBad
                     {!route && visualUrl && (
                         <AiModifiedLabel
                             size="medium"
-                            className="absolute -left-2 top-0 z-30"
+                            className="absolute -left-2 bottom-0 z-30"
                         />
                     )}
 

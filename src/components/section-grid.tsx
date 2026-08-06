@@ -156,7 +156,7 @@ function SectionHeaderStrip({ title, items, isExpanded, onToggle, sectionNumber,
                     )}
                     <AiModifiedLabel
                         size="small"
-                        className="absolute -bottom-3 -left-2 z-20"
+                        className="absolute -left-2 bottom-0 z-20"
                     />
                 </div>
             )}
@@ -197,7 +197,7 @@ function IntroWelcomeBlock({ t }: { t: (key: string) => string }) {
                                 />
                                 <AiModifiedLabel
                                     size="medium"
-                                    className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2"
+                                    className="absolute bottom-0 left-0 z-10"
                                 />
                             </div>
                         </div>

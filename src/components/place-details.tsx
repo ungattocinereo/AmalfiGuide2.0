@@ -255,7 +255,7 @@ export function PlaceDetails({ item, layoutId, onClose, mode = "modal" }: PlaceD
 
                     <AiModifiedLabel
                         size="large"
-                        className="absolute -left-2 bottom-0 z-30 md:bottom-auto md:left-1/2 md:top-0 md:-translate-x-1/2"
+                        className="absolute -left-2 bottom-0 z-30 md:bottom-14"
                     />
 
                     {hasMultiPhoto && (
