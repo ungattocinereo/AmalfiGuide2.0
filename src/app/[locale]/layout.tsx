@@ -59,9 +59,9 @@ export async function generateMetadata({
       siteName: "AMALFI.DAY Guide",
       images: [
         {
-          url: "/images/social.png",
-          width: 2985,
-          height: 1714,
+          url: "/images/social/amalfi-social-og-v2.png",
+          width: 1200,
+          height: 630,
           alt: t("title"),
         },
       ],
@@ -72,7 +72,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/images/social.png"],
+      images: ["/images/social/amalfi-social-og-v2.png"],
     },
     icons: {
       icon: [
