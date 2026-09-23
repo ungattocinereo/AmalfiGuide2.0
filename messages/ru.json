@@ -82,7 +82,8 @@
     "openGoogle": "Google",
     "loading": "Загружаем маршрут",
     "previewOnly": "Карта недоступна",
-    "mapUnavailable": "Карта недоступна"
+    "mapUnavailable": "Карта недоступна",
+    "retry": "Повторить"
   },
   "section": {
     "gemsIntroTitle": "Атрани: 0,2 км² Между Горами и Морем",

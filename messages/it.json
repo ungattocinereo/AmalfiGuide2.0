@@ -82,7 +82,8 @@
     "openGoogle": "Google",
     "loading": "Caricamento percorso",
     "previewOnly": "Mappa non disponibile",
-    "mapUnavailable": "Mappa non disponibile"
+    "mapUnavailable": "Mappa non disponibile",
+    "retry": "Riprova"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² tra le Montagne e il Mare",

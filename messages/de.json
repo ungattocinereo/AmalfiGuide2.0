@@ -82,7 +82,8 @@
     "openGoogle": "Google",
     "loading": "Route wird geladen",
     "previewOnly": "Karte nicht verfügbar",
-    "mapUnavailable": "Karte nicht verfügbar"
+    "mapUnavailable": "Karte nicht verfügbar",
+    "retry": "Erneut versuchen"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0,2 km² Zwischen den Bergen und dem Meer",

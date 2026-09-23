@@ -13,12 +13,26 @@ for (const [path, mapLabel] of hikingRoutes) {
 
     const map = page.locator(`[aria-label="${mapLabel}"]`);
     await expect(map).toHaveClass(/opacity-100/, { timeout: 15_000 });
+    await expect(map.locator("canvas.mapboxgl-canvas")).toBeVisible();
     await page.waitForTimeout(5_000);
     await expect(map).toHaveClass(/opacity-100/);
     await expect(page.getByText("Map unavailable", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Loading route", { exact: true })).toHaveCount(0);
   });
 }
+
+test("opens a live map only after a hiking card is selected", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the card interaction");
+
+  await page.goto("/en");
+  await page.getByRole("heading", { name: "Hiking & Nature" }).scrollIntoViewIfNeeded();
+  await expect(page.locator("canvas.mapboxgl-canvas")).toHaveCount(0);
+
+  await page.getByRole("link", { name: /The Lemon Path/i }).click();
+  const map = page.locator('[aria-label="The Lemon Path"]');
+  await expect(map).toHaveClass(/opacity-100/, { timeout: 15_000 });
+  await expect(map.locator("canvas.mapboxgl-canvas")).toBeVisible();
+});
 
 test("keeps hiking card previews visible when the browser cannot reach Mapbox directly", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the delivery check");
@@ -37,12 +51,21 @@ test("keeps hiking card previews visible when the browser cannot reach Mapbox di
   }
 });
 
-test("shows a static route preview when interactive Mapbox cannot initialize", async ({ page }, testInfo) => {
+test("shows a retryable error with the static preview when Mapbox cannot initialize", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "One browser profile is enough for the fallback");
 
-  await page.route("https://api.mapbox.com/styles/v1/mapbox/outdoors-v12?*", (route) => route.abort());
+  let blockMapbox = true;
+  await page.context().route("https://api.mapbox.com/**", (route) =>
+    blockMapbox ? route.abort() : route.continue(),
+  );
   await page.goto("/en/place/the-lemon-path-sentiero-dei-limoni");
 
   await expect(page.getByRole("img", { name: "The Lemon Path route map preview" })).toBeVisible();
+  await expect(page.getByText("Map unavailable", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Retry" })).toBeVisible();
+
+  blockMapbox = false;
+  await page.getByRole("button", { name: "Retry" }).click();
+  await expect(page.locator('[aria-label="The Lemon Path"]')).toHaveClass(/opacity-100/, { timeout: 15_000 });
   await expect(page.getByText("Map unavailable", { exact: true })).toHaveCount(0);
 });

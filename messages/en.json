@@ -82,7 +82,8 @@
     "openGoogle": "Google",
     "loading": "Loading route",
     "previewOnly": "Map unavailable",
-    "mapUnavailable": "Map unavailable"
+    "mapUnavailable": "Map unavailable",
+    "retry": "Retry"
   },
   "section": {
     "gemsIntroTitle": "Atrani: 0.2 km² Between the Mountains and the Sea",

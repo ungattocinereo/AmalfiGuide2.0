@@ -82,7 +82,8 @@
     "openGoogle": "Google",
     "loading": "Chargement de l’itinéraire",
     "previewOnly": "Carte indisponible",
-    "mapUnavailable": "Carte indisponible"
+    "mapUnavailable": "Carte indisponible",
+    "retry": "Réessayer"
   },
   "section": {
     "gemsIntroTitle": "Atrani : 0,2 km² Entre les Montagnes et la Mer",
