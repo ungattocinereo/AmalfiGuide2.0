@@ -26,6 +26,7 @@ test("opens a live map only after a hiking card is selected", async ({ page }, t
 
   await page.goto("/en");
   await page.getByRole("heading", { name: "Hiking & Nature" }).scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => Boolean(navigator.serviceWorker?.controller));
   await expect(page.locator("canvas.mapboxgl-canvas")).toHaveCount(0);
 
   await page.getByRole("link", { name: /The Lemon Path/i }).click();

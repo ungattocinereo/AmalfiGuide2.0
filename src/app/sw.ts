@@ -3,7 +3,6 @@ import type { PrecacheEntry, RuntimeCaching, SerwistGlobalConfig } from "serwist
 import {
   ExpirationPlugin,
   NetworkFirst,
-  NetworkOnly,
   Serwist,
 } from "serwist";
 
@@ -41,15 +40,6 @@ const offlineFallbackPlugin = {
 
 const smartOfflineCache: RuntimeCaching[] = [
   {
-    // The generic cross-origin cache can break Mapbox style requests after
-    // the service worker takes control of a page.
-    matcher: ({ url }) =>
-      url.hostname === "api.mapbox.com" ||
-      url.hostname === "events.mapbox.com" ||
-      url.hostname.endsWith(".tiles.mapbox.com"),
-    handler: new NetworkOnly(),
-  },
-  {
     matcher: ({ request, sameOrigin }) => sameOrigin && request.mode === "navigate",
     handler: new NetworkFirst({
       cacheName: "amalfi-pages",
@@ -69,6 +59,19 @@ const serwist = new Serwist({
   clientsClaim: true,
   navigationPreload: true,
   runtimeCaching: smartOfflineCache,
+});
+
+// Mapbox requests need the browser's normal network path. Even NetworkOnly
+// through Serwist can fail once this worker controls a preview page.
+self.addEventListener("fetch", (event: FetchEvent) => {
+  const hostname = new URL(event.request.url).hostname;
+  if (
+    hostname === "api.mapbox.com" ||
+    hostname === "events.mapbox.com" ||
+    hostname.endsWith(".tiles.mapbox.com")
+  ) {
+    event.stopImmediatePropagation();
+  }
 });
 
 serwist.addEventListeners();
