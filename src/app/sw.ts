@@ -3,6 +3,7 @@ import type { PrecacheEntry, RuntimeCaching, SerwistGlobalConfig } from "serwist
 import {
   ExpirationPlugin,
   NetworkFirst,
+  NetworkOnly,
   Serwist,
 } from "serwist";
 
@@ -39,6 +40,15 @@ const offlineFallbackPlugin = {
 };
 
 const smartOfflineCache: RuntimeCaching[] = [
+  {
+    // The generic cross-origin cache can break Mapbox style requests after
+    // the service worker takes control of a page.
+    matcher: ({ url }) =>
+      url.hostname === "api.mapbox.com" ||
+      url.hostname === "events.mapbox.com" ||
+      url.hostname.endsWith(".tiles.mapbox.com"),
+    handler: new NetworkOnly(),
+  },
   {
     matcher: ({ request, sameOrigin }) => sameOrigin && request.mode === "navigate",
     handler: new NetworkFirst({
