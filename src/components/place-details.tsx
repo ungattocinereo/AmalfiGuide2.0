@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion, AnimatePresence, useDragControls, useReducedMotion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,14 +38,7 @@ import { useLanguage } from "@/components/language-context";
 import { useIsOpenNow } from "@/hooks/use-is-open-now";
 import { getPlaceGallery } from "@/lib/place-gallery";
 import { AiModifiedLabel } from "@/components/ai-modified-label";
-
-const MapboxRouteMap = dynamic(
-    () => import("@/components/mapbox-route-map").then((mod) => mod.MapboxRouteMap),
-    {
-        ssr: false,
-        loading: () => <div className="absolute inset-0 bg-stone-100 dark:bg-amalfi-espresso-soft" />,
-    },
-);
+import { MapboxRouteMap } from "@/components/mapbox-route-map";
 
 interface PlaceDetailsProps {
     item: PlaceItem;

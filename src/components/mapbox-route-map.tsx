@@ -125,11 +125,8 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
                             },
                         });
                         activeMap.fitBounds(bounds, { padding: 56, maxZoom: 14, duration: 0 });
-                        activeMap.once("idle", () => {
-                            if (cancelled || failed) return;
-                            window.clearTimeout(loadTimeout);
-                            setStatus("ready");
-                        });
+                        window.clearTimeout(loadTimeout);
+                        setStatus("ready");
                     } catch {
                         fail();
                     }
@@ -156,7 +153,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
 
     return (
         <div className="absolute inset-0 overflow-hidden bg-stone-100 dark:bg-amalfi-espresso-soft">
-            {status !== "ready" && staticPreviewUrl ? (
+            {status === "error" && staticPreviewUrl ? (
                 <Image
                     src={staticPreviewUrl}
                     alt={`${route.title} route map preview`}
@@ -165,7 +162,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                 />
-            ) : status !== "ready" ? (
+            ) : status === "error" ? (
                 <div
                     className="absolute inset-0 bg-[linear-gradient(135deg,rgba(251,146,60,0.12)_0%,rgba(255,255,255,0.92)_42%,rgba(20,83,45,0.13)_100%)] dark:bg-[linear-gradient(135deg,rgba(124,45,18,0.55)_0%,rgba(28,16,10,0.92)_48%,rgba(20,83,45,0.38)_100%)]"
                     aria-hidden="true"
@@ -173,7 +170,7 @@ export function MapboxRouteMap({ route }: MapboxRouteMapProps) {
             ) : null}
             <div
                 ref={containerRef}
-                className={`h-full w-full transition-[filter,opacity] duration-300 dark:grayscale dark:saturate-0 dark:contrast-125 ${status === "ready" ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                className={`h-full w-full transition-[filter,opacity] duration-300 dark:grayscale dark:saturate-0 dark:contrast-125 ${status === "error" ? "pointer-events-none opacity-0" : status === "loading" ? "pointer-events-none opacity-100" : "opacity-100"}`}
                 aria-label={route.title}
             />
             {status !== "ready" && (
